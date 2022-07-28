@@ -9,12 +9,12 @@
       {% endif %}
         {% if block.settings.hh_banner_img_mob != blank %}
         <div class="mobile hero--img">
-          <img src="{{ block.settings.hh_banner_img_mob | img_url: '768x800' }}" alt="">
+          <img class="lazyloading" loading="lazy" src="{{ block.settings.hh_banner_img_mob | img_url: '768x800' }}" alt="">
         </div>
         {%- endif -%}
         {% if block.settings.hh_banner_img != blank %}
         <div class="hero--img">
-          <img src="{{ block.settings.hh_banner_img | img_url: 'master' }}" alt="">
+          <img class="lazyloading" loading="lazy" src="{{ block.settings.hh_banner_img | img_url: 'master' }}" alt="">
         </div>
         {% endif %}
       {%- if block.settings.hh_banner_url != '' -%}
