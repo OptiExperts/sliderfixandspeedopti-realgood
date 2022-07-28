@@ -1,0 +1,28 @@
+.single-product__content{padding-top:0!important}
+.single-product__content .title .product-cart-action{visibility:visible!important;opacity:1!important;-webkit-transform:translateY(0)!important;-ms-transform:translateY(0)!important;transform:translateY(0)!important;position:relative!important}
+.prod-text-container{width:100%;display:inline-block;padding:0 18px}
+.prod-text-container .popup_cart_title{padding:0;margin:0;line-height:24px}
+.prod-text-container .popup_cart_title .discounted-price{color:#fbb040}
+.prod-text-container .popup_cart_title .main-price{text-decoration:line-through;color:#7b7b7b}
+.prod-text-container .popup_cart_title a{margin-bottom:0;display:unset!important}
+.product-cart-action .quantity .minus{width:2em;height:2em;text-align:center;font-weight:600;font-size:20px;-webkit-appearance:none;box-shadow:none;border:1px solid #d5d5d5;background:#ebebeb;cursor:pointer}
+.product-cart-action .quantity .input-text{width:2em;height:2em;padding:0;font-weight:600;font-size:20px;-webkit-appearance:none;box-shadow:none;border:1px solid #d5d5d5;background:#fff;cursor:pointer;color:#000;text-align:center;vertical-align:top}
+.product-cart-action .quantity .input-text::-webkit-outer-spin-button,.product-cart-action .quantity .input-text::-webkit-inner-spin-button{-webkit-appearance:none}
+.product-cart-action .quantity .plus{width:2em;height:2em;text-align:center;font-weight:600;font-size:20px;-webkit-appearance:none;box-shadow:none;border:1px solid #d5d5d5;background:#ebebeb;cursor:pointer}
+.single-product__content .title .product-cart-action a{background-color:red;width:100%;margin-top:5px;padding:5px;color:#fff!important;font-weight:600;font-size:16px;text-align:center;border-radius:5px}
+.single-product__content .title .product-cart-action a:hover{background-color:#d86d7a!important}
+.single-product__content .title .product-cart-action .nutrition_link{background-color:#fdae31!important;color:#fff!important}
+.single-product__content .title .product-cart-action .nutrition_link:hover{background-color:#fad06f!important}
+.single-product__content .title .product-cart-action{right:0;margin:auto;text-align:center}
+.product-cart-action a{width:100%;float:left}
+.product-cart-action .nutrition_link{color:red!important}
+.product-cart-action a span .nutrion_button{padding-left:5px;color:#fff!important}
+@media (max-width: 767px) {
+.single-product__content{text-align:center}
+.product-parent .popup_inner{display:inline-block!important;margin-top:30%}
+.product-parent .popup_inner .title #dynamic-title{font-size:15px!important}
+.product-parent .popup_inner .title .close-cross{font-size:30px;text-align:right;font-weight:700}
+}
+.route-widget{justify-content:center!important}
+
+

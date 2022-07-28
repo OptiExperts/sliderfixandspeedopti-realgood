@@ -1,0 +1,449 @@
+{% if section.settings.section_enable %}
+<div class="faq-area mt-15 faqItems" id="section-{{ section.id }}">
+		
+	<div class="faq-wrapper">
+		<div class="single-faq">          
+			<div class="accordion" id="shippingInfo">
+				{% for block in section.blocks %}
+				{% case block.type %}
+				{% when 'faq' %}
+				<div class="card">		
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="card-header" id="heading-{{ forloop.index }}">
+									<h5 class="mb-0">
+										<button class="btn btn-link {% unless forloop.first == true %} collapsed {% endunless %}" data-toggle="collapse" data-target="#collapse-{{ forloop.index }}"
+										aria-expanded="{% if forloop.first == true %}true {% else%} false {% endif %}" aria-controls="collapse-{{ forloop.index }}">
+										{{ block.settings.faq_title }}
+										</button>
+									</h5>
+								</div>
+						
+								<div id="collapse-{{ forloop.index }}" class="collapse {% if forloop.first == true %}show{% endif %} " aria-labelledby="heading-{{ forloop.index }}"
+								data-parent="#shippingInfo">
+									<div class="card-body">
+										{% if block.settings.faq_description != blank %}
+										<p>{{ block.settings.faq_description }}</p>
+										{% endif %}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endcase %}
+				{% endfor %}              
+			</div>
+						
+		</div>
+	</div>			
+			
+</div>
+{% endif %}
+
+<style>
+  #section-{{ section.id }} .card{
+  	/*background:#FE685C;*/
+    background:#fff;
+    padding:25px 0;
+    margin:5px 0;
+    /*color:#fff;*/
+/*     color:#FD3424;
+    border:5px solid #FE685C; */
+/*     color:#4AA946;
+    border:5px solid #4AA946; */
+    color:#ff9c00;
+    border:0px solid #ff9c00;
+    border-radius:0 !important
+  }
+  #section-{{ section.id }} .card.opened{
+  	/*background:#fff*/
+/*     background:#FE685C; */
+/*     background:#4AA946; */
+    background:#ff9c00;
+  }
+  #section-{{ section.id }} .card-header{margin:0;padding:0;padding-left:80px;position:relative}
+  #section-{{ section.id }} .collapse,
+  #section-{{ section.id }} .collapsing{padding-left:80px}
+  #section-{{ section.id }} h5{
+    font-family:'Adrianna';
+  }
+  #section-{{ section.id }} h5 button{
+    padding:0;
+    width:100%;
+    /*color:#fff;*/
+/*     color:#FD3424; */
+/*     color:#4AA946; */
+    color:#ff9c00;
+    font-size:36px;
+    line-height:1.15;
+    font-family:'Adrianna';
+/*     font-weight:bold; */
+    font-weight:600;
+    cursor:pointer !important
+  }
+  #section-{{ section.id }} .card-header:before{
+  	content:"";
+/*     width:54px; */
+/*     height:54px; */
+    width:46px;
+    height:54px;
+/*     background:url(' {{ 'pizza.png' | asset_url }} ') left center no-repeat; */
+    /*background:url(' {{ 'faq-logo.png' | asset_url }} ') left center no-repeat;*/
+    background:url('https://cdn.shopify.com/s/files/1/0233/7590/4845/files/RealGoodFoodsCo_Logo_NEW_Sterling_THUMB_15a3d51a-afbe-4853-b540-b5364390b265.png?v=1657297792') left center no-repeat;
+    background-size:100% !important;
+    position:absolute;
+    left:0;
+    top:-5px
+      
+  }
+  #section-{{ section.id }} .card.opened .card-header:before{
+/*    	 background:url(' {{ 'pizza-2.png' | asset_url }} ') left center no-repeat; */
+/*      background:url(' {{ 'faq-logo.png' | asset_url }} ') left center no-repeat; */
+     background:url('https://cdn.shopify.com/s/files/1/0233/7590/4845/files/RealGoodFoodsCo_Logo_NEW_Sterling_THUMB_15a3d51a-afbe-4853-b540-b5364390b265.png?v=1657297792') left center no-repeat;
+  }
+  #section-{{ section.id }} .card-body{padding:0;padding-top:15px}
+  #section-{{ section.id }} .card-body p{
+    /*color:#000;*/
+    color:#fff;
+    font-size:21px;
+    line-height:1.2;
+/*     font-weight:bold; */
+    font-family:'Adrianna';
+    font-weight:400;
+  }
+  #section-{{ section.id }} .card-body a{
+  	font-weight:400;
+  }
+  #section-{{ section.id }} .card.opened h5 button{/*color:#FD3424*/color:#fff}
+
+  
+  #section-simple-heading-type2 .heading h1{
+/*   	color:#4AA946; */
+    color:#ff9c00;
+    font-family:'Adrianna';
+    font-weight:800;
+  }
+  #section-simple-heading-type2 .heading:after{
+/*   	background:#4AA946; */
+    background:#ff9c00;
+  }
+/*   #faqs #section-cta-with-text-left{
+  	background:#DE362A
+  }
+   */
+  #faqs #section-cta-with-text-left .right_cta{
+  	display:none;
+  }
+  #faqs #section-cta-with-text-left .cta_heading{
+  	display:block;
+    width:100%;
+    text-align:center;
+  }
+  #faqs #section-cta-with-text-left .cta_heading a:hover{
+  	color:#ff9c00;
+    
+  }
+  
+  
+  @media screen and (max-width:1139px){
+    #section-{{ section.id }} .card{padding:30px 0}
+    #section-{{ section.id }} h5 button{font-size:30px}
+    #section-{{ section.id }} .card-body{padding-top:10px}
+    #section-{{ section.id }} .card-body p{font-size:18px}
+    #section-{{ section.id }} .card-header,
+    #section-{{ section.id }} .collapse,
+    #section-{{ section.id }} .collapsing{padding-left:70px}
+    #section-{{ section.id }} .card-header:before{width:46px;height:46px}
+  }
+  @media screen and (max-width:767px){
+    #section-{{ section.id }} .card{padding:20px 0}
+    #section-{{ section.id }} h5 button{font-size:24px}
+    #section-{{ section.id }} .card-body{padding-top:8px}
+    #section-{{ section.id }} .card-body p{font-size:14px}
+    #section-{{ section.id }} .card-header,
+    #section-{{ section.id }} .collapse,
+    #section-{{ section.id }} .collapsing{padding-left:50px}
+    #section-{{ section.id }} .card-header:before{width:36px;height:36px}
+  }
+  @media screen and (max-width:639px){
+    #section-{{ section.id }}{margin-top:0px !important;/*border-top:3px solid #FD3424;*/border-top:3px solid #ff9c00;}
+    #section-{{ section.id }} .accordion .card:first-child{margin-top:0}
+    #section-{{ section.id }} .card{padding:15px 0}
+    #section-{{ section.id }} h5 button{font-size:16px}
+    #section-{{ section.id }} .card-body{padding-top:5px}
+    #section-{{ section.id }} .card-body p{font-size:11px}
+    #section-{{ section.id }} .card-header,
+    #section-{{ section.id }} .collapse,
+    #section-{{ section.id }} .collapsing{padding-left:40px}
+    #section-{{ section.id }} .card-header:before{width:28px;height:28px}
+  }
+
+
+</style>
+
+
+{% include 'section_typography' %}
+
+{% schema %}
+  {
+    "name": "Faq",
+    "settings": [
+		{
+		  "type": "header",
+          "content": "Section Enable"
+        },
+		{
+          "type": "checkbox",
+          "id": "section_enable",
+          "label": "Section Enable",  
+          "default": true
+      	},
+		{
+		  "type": "header",
+          "content": "Section Heading"
+        },
+		{
+          "type": "text",
+          "id": "section_title",
+          "label": "Section Title",
+          "default": "Shipping information"
+      	}
+	],
+	"blocks":[
+      {
+          "type": "faq",
+          "name": "Frequently Ask Questions",
+          "settings": [
+            {
+              "type": "textarea",
+              "id": "faq_title",
+              "label": "Faq title",
+              "default": "frequently Ask Question"
+            },
+            {
+              "type": "textarea",
+              "id": "faq_description",
+              "label": "Faq Description",
+              "default": "Once your order has been shipped, you will receive an email with your tracking and shipping information."
+            }
+         ]
+  	  },
+	  {
+          "type": "section_margin",
+          "name": "Section Margin",
+		  "limit": 1,
+          "settings": [
+            {
+			  "type": "header",
+			  "content": "Large/Desktop Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_top",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_bottom",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Bottom",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "header",
+			  "content": "Tablet Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_top_md",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_bottom_md",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Bottom",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "header",
+			  "content": "Mobile Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_top_xs",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_bottom_xs",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Bottom",
+			  "unit": "px",
+			  "default": 0
+			}
+          ]
+       },
+	   {
+          "type": "section_padding",
+          "name": "Section Padding",
+		  "limit": 1,
+          "settings": [
+            {
+			  "type": "header",
+			  "content": "Large/Desktop Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_top",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_bottom",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Bottom",
+			  "unit": "px",
+			  "default": 100
+			},
+			{
+			  "type": "header",
+			  "content": "Tablet Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_top_md",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_bottom_md",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Bottom",
+			  "unit": "px",
+			  "default": 80
+			},
+			{
+			  "type": "header",
+			  "content": "Mobile Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_top_xs",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_bottom_xs",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Bottom",
+			  "unit": "px",
+			  "default": 60
+			}
+          ]
+       },
+	   {
+          "type": "section_background",
+          "name": "Section Background",
+		  "limit": 1,
+          "settings": [
+            {
+			  "type": "image_picker",
+			  "id": "section_bg_image",
+			  "label": "BG Image"
+			},
+			{
+			  "type": "color",
+			  "id": "section_bg_color",
+			  "label": "BG Color",
+			  "default": "#ffffff"
+			}
+          ]
+       }
+	],
+	"presets": [
+		{
+		  "name": "Faq",
+		  "category": "9.2 Theme Others",
+		  "blocks":[
+              {
+              	"type": "faq"
+              },
+			  {
+              	"type": "faq"
+              },
+			  {
+              	"type": "faq"
+              }
+            ]
+		}
+	]
+  }
+{% endschema %}
+
+<script>
+  $(document).ready(function(){
+    if( $('.accordion .collapse').hasClass('show') ){
+    	$('.accordion .card').eq(0).addClass('opened');
+    }
+    
+    $('.accordion .card').each(function(){
+      $(this).find('.btn').on('click', function(){
+      	//console.log('clicked');
+        $('.card').removeClass('opened');
+        if( $(this).parents('.card').find('.collapse').hasClass('show') ){
+        	$(this).parents('.card').removeClass('opened');
+        } else {
+        	$(this).parents('.card').addClass('opened');
+        }
+      });
+    });
+    
+  });
+</script>

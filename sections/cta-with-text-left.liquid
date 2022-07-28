@@ -1,0 +1,223 @@
+{% if section.settings.section_enable %}
+<div class="cta_with_left_text" id="section-{{ section.id }}">
+  	<div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          {% if section.settings.cta_heading != blank %}
+          <span class="cta_heading">{{ section.settings.cta_heading }}</span>
+          {% endif %} 
+          <span class="right_cta">
+              <a href="{{ section.settings.call_to_action_btn_link }}" {% if section.settings.new_window != blank %} target="_blank" {% endif %}>
+                {{ section.settings.call_to_action_btn }}
+            	</a>
+          </span>
+        </div>
+      </div>
+  	</div>
+  	 
+</div>
+{% endif %}
+
+
+<style>
+#section-{{ section.id }}{
+  position:relative;
+  width:100%;
+  display:block;
+  background:#B5ACFD;
+  padding:65px 0;
+  border-bottom:6px solid #B49DC9
+}
+#section-{{ section.id }} .cta_heading{
+  color:#fff;
+  font-size:40px;
+  line-height:1.15;
+/*   font-weight:bold; */
+  display:inline-block;
+  width:74%;
+  vertical-align:middle;
+  font-family:'Adrianna';
+  font-weight:600;
+}
+#section-{{ section.id }} .right_cta{
+  display:inline-block;
+  width:25.5%;
+  padding-left:15px;
+  box-sizing:border-box;
+  vertical-align:middle;
+  text-align:right
+}
+#section-{{ section.id }} .right_cta a{
+  background:#E24AC0;
+  color:#fff;
+  padding:12.5px 30px;
+  font-size:20px;
+  line-height:1;
+  font-weight:bold;
+  box-shadow: 0px 3px 6px #B7A8FE;
+  border-radius:39px;
+  text-transform:uppercase;
+  text-align:center
+}
+#section-{{ section.id }} .right_cta a:hover{
+  background:#B49DC9;
+  color:#333;
+  box-shadow: 0px 3px 6px #999;
+}
+  
+{%- if section.settings.background_color -%}
+  #section-{{ section.id }} {
+    background:{{ section.settings.background_color }}; 
+  }  
+{%- endif -%}
+{%- if section.settings.border_color -%}
+  #section-{{ section.id }} {
+    border-color:{{ section.settings.border_color }} !important; 
+  }
+  #section-{{ section.id }} .right_cta a:hover{ background: {{ section.settings.border_color }} !important}
+{%- endif -%}
+{%- if section.settings.heading_color -%}
+  #section-{{ section.id }} .cta_heading{
+    color:{{ section.settings.heading_color }}; 
+  }  
+{%- endif -%}
+{%- if section.settings.cta_text_color -%}
+  #section-{{ section.id }} .right_cta a{
+    color:{{ section.settings.cta_text_color }}; 
+  }  
+{%- endif -%}
+{%- if section.settings.cta_bg_color -%}
+  #section-{{ section.id }} .right_cta a{
+    background:{{ section.settings.cta_bg_color }}; 
+  }  
+{%- endif -%}
+  
+  @media screen and (max-width:1219px){
+    #section-{{ section.id }} .cta_heading{width:72%}
+    #section-{{ section.id }} .right_cta{width:27.5%}
+    #section-{{ section.id }} .cta_heading{font-size:32px}
+    #section-{{ section.id }} .right_cta a{padding:10px 25px;font-size:18px}
+  }
+
+  @media screen and (max-width:1139px){
+    #section-{{ section.id }}{padding:50px 0}
+    #section-{{ section.id }} .cta_heading{width:65.25%}
+    #section-{{ section.id }} .right_cta{width:34%}
+    #section-{{ section.id }} .cta_heading{font-size:28px}
+    #section-{{ section.id }} .right_cta a{padding:10px 20px;font-size:18px}
+  }
+  @media screen and (max-width:979px){
+    #section-{{ section.id }}{padding:45px 0}
+  }
+  @media screen and (max-width:767px){
+    #section-{{ section.id }}{padding:40px 0}
+    #section-{{ section.id }} .cta_heading{width:57%}
+    #section-{{ section.id }} .right_cta{width:42%}
+    #section-{{ section.id }} .cta_heading{font-size:26px}
+    #section-{{ section.id }} .right_cta a{padding:8px 16px;font-size:16px}
+    
+  }
+  @media screen and (max-width:639px){
+    #section-{{ section.id }}{padding:30px 0;border-width:3px}
+    #section-{{ section.id }} .cta_heading{width:62%}
+    #section-{{ section.id }} .right_cta{width:37%}
+    #section-{{ section.id }} .cta_heading{font-size:12px}
+    #section-{{ section.id }} .right_cta a{padding:7.5px 15px;font-size:9px;line-height:1}
+  }
+  @media screen and (max-width:479px){
+    #section-{{ section.id }}{padding:20px 0}
+    #section-{{ section.id }} .cta_heading{width:65%}
+    #section-{{ section.id }} .right_cta{width:33.5%;padding-left:5px}
+    #section-{{ section.id }} .cta_heading{font-size:10px}
+    #section-{{ section.id }} .right_cta a{padding:5px 10px;font-size:9px;line-height:1}
+  }
+  @media screen and (max-width:374px){
+    #section-{{ section.id }}{padding:15px 0 20px}
+  	#section-{{ section.id }} .cta_heading{width:100%}
+    #section-{{ section.id }} .right_cta{width:100%;padding-left:0;text-align:center;padding-top:3px}
+    #section-{{ section.id }} .cta_heading{font-size:12px;text-align:center}
+    #section-{{ section.id }} .right_cta a{padding:7.5px 15px;font-size:10px;line-height:1}
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "CTA with left TEXT",
+    "settings": [
+		{
+		  "type": "header",
+          "content": "Section Enable"
+        },
+		{
+          "type": "checkbox",
+          "id": "section_enable",
+          "label": "Section Enable",  
+          "default": true
+      	},
+		{
+          "type": "header",
+          "content": "CTA Heading"
+        },
+        {
+          "type": "textarea",
+          "id": "cta_heading",
+          "label": "Heading",
+          "default": "Sample CTA Heading"
+        },
+		{
+          "type": "text",
+          "id": "call_to_action_btn",
+          "label": "Call To Action Btn",
+          "default": "Real Good Family"
+        },
+		{
+          "type": "url",
+          "id": "call_to_action_btn_link",
+          "label": "URL"
+        },
+		{
+          "type": "checkbox",
+          "id": "new_window",
+          "label": "External Link",  
+          "default": true
+      	},
+		{
+          "type": "header",
+          "content": "Colors"
+        },
+		{
+          "type": "color",
+          "id": "background_color",
+          "label": "Background Color",
+          "default":"#B5ACFD"
+        },
+		{
+          "type": "color",
+          "id": "border_color",
+          "label": "Border Color",
+          "default":"#B49DC9"
+        },
+		{
+          "type": "color",
+          "id": "heading_color",
+          "label": "Heading Color",
+          "default":"#fff"
+        },
+		{
+          "type": "color",
+          "id": "cta_text_color",
+          "label": "CTA Text Color",
+          "default":"#fff"
+        },
+		{
+          "type": "color",
+          "id": "cta_bg_color",
+          "label": "CTA Background Color",
+          "default":"#E24AC0"
+        }
+	]
+  }
+{% endschema %}
+
+{% javascript %}
+{% endjavascript %}

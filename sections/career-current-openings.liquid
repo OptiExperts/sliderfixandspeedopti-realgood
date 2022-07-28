@@ -1,0 +1,331 @@
+{% if section.settings.enable_current_openings == true %}
+<div class="current--openings" id="section-{{ section.id }}">
+  <div class="container">
+    <div class="jobs--main">      
+      <div class="faq--item jobs open">
+        <div class="faq--q">
+          <h3>{% if section.settings.current_opening_title != blank %}{{section.settings.current_opening_title}}{% else %}Current Openings{% endif; %}</h3>
+        </div>
+        <div class="faq--ans">
+          <div class="inner">
+            <div class="head--part">
+              <h4>{% if section.settings.current_opening_heading != blank %}{{section.settings.current_opening_heading}}{% else %}RGF{% endif; %}</h4>
+              {% if section.settings.current_opening_sub != blank %}
+              <h5>{{section.settings.current_opening_sub}}</h5>
+              {% endif; %}
+              {% if section.settings.job_type_title != blank %}
+              <h6>{{section.settings.job_type_title}}</h6>
+              {% endif; %}
+            </div>
+            <div class="job--items">
+              {%- for block in section.blocks -%}
+              
+              {% assign job_title = block.settings.job_title | downcase %}
+              
+              <div class="job" id="{{ job_title | handleize }}">
+                <div class="outer--part">
+                  <h6><a href="{{canonical_url}}/?job-id={{ job_title | handleize }}">{{block.settings.job_title}}</a></h6>
+                  <p class="loc">Location: {{block.settings.job_locaion}}</p>
+                </div>
+                <div class="inner--part" style="display:none;">
+                  <h4 class="title">{{block.settings.job_title}}</h4>
+                  <p class="at">at {% if section.settings.current_opening_heading != blank %}{{section.settings.current_opening_heading}}{% else %}RGF{% endif; %}
+                    (<a href="{{section.settings.career_page_link}}">View all Jobs</a>)</p>
+                  <p class="jloc"><span>Job Location: </span>{{block.settings.job_locaion}}</p>
+                  <p class="jhours"><span>Job Hours: </span>{{block.settings.job_hours}}</p>
+                  <div class="jdesc">{{block.settings.job_desc}}</div>
+                  
+                </div>
+              </div>
+              
+              {%- endfor -%} 
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+</div>
+{% endif %}
+
+<style type="text/css">
+  #section-{{ section.id }}{
+/* 	padding-top:80px; */
+  }
+  .jobs--main .faq--item{
+    border-bottom:1px solid #e8e8e2;
+    padding:15px 0 10px;
+  }
+  .jobs--main .faq--item .faq--q{
+  	cursor:pointer;
+    position:relative;
+    padding-right:25px;
+  }
+  .jobs--main .faq--item .faq--q h3{
+    font-family:'Adrianna';
+/*     font-family: 'Adrianna-Condensed'; */
+  	font-size:48px;
+    font-weight:600;
+    line-height:1;
+    color:#DD3629;
+  }
+  .jobs--main .faq--item .faq--q:before{
+    content:"\f107";
+    font-family:fontAwesome;
+  	position:absolute;
+    top:10px;
+    right:0;
+    font-size:28px;
+    font-weight:bold;
+    color:#DD3629;
+  }
+  .jobs--main .faq--item.open .faq--q:before{
+  	content:"\f106";
+  }  
+  .jobs--main .faq--item .faq--ans{
+  	padding:5px 25px 5px 0;
+  }
+  .jobs--main .faq--item .faq--ans p{
+  	font-size:20px;
+/*     color:#888875; */
+/*     color:#DD7C01; */
+    color:#333;
+    line-height:1.25;
+  }
+  .jobs--main .faq--item .faq--ans a{
+/*     color:#FBCA40; */
+    color:#B4A0D4;
+  }
+  .jobs--main .faq--item .faq--ans a:hover{
+    opacity:0.8;
+  }
+  .jobs--main .faq--ans .inner{
+  	padding:35px 20px 50px;
+  }
+  .jobs--main .head--part h4{
+  	font-family:'Adrianna';
+    font-size:32px;
+    font-weight:700;
+    line-height:1.25;
+    margin-bottom:16px;
+  }
+  .jobs--main .head--part h5{
+    font-size:24px;
+    font-weight:600;
+    line-height:1.25;
+    margin-bottom:20px;
+  }
+  .jobs--main .head--part h6{
+    font-size:20px;
+    font-weight:600;
+    line-height:1.25;
+    margin-bottom:10px;
+  }
+  .jobs--main .job--items{
+/*   	padding-top:15px; */
+    padding-top:5px;
+  }
+  .jobs--main .job--items .job{
+  	margin-bottom:25px;
+  }
+  .jobs--main .job--items .outer--part h6{
+  	font-size:20px;
+    font-weight:600;
+    line-height:1.25;
+    margin-bottom:0;
+  }
+  .jobs--main .job--items .outer--part .loc{
+    font-size:15px;
+    line-height:1.25;
+    color:#757575;
+  }
+  .jobs--main .job--items .outer--part h6 a:hover{
+  	opacity:1;
+    text-decoration:underline;
+  }
+  .jobs--main .job--items .inner--part{
+  	
+  }
+  .jobs--main .job--items .inner--part h4{
+  	font-family:'Adrianna';
+    font-size:32px;
+    font-weight:700;
+    line-height:1.1;
+    margin-bottom:2px;
+  }
+  .jobs--main .job--items .inner--part .at{
+    font-family:'Adrianna';
+  	font-size:20px;
+    line-height:1.2;
+    margin-bottom:20px;
+  }
+  .jobs--main .job--items .inner--part .jloc,
+  .jobs--main .job--items .inner--part .jhours,
+  .jobs--main .job--items .inner--part .jdesc{
+  	font-family:'Adrianna';
+  	font-size:18px;
+    line-height:1.2;
+  }
+  .jobs--main .job--items .inner--part .jloc span,
+  .jobs--main .job--items .inner--part .jhours span{
+  	font-weight:700;
+  }
+  
+  
+  
+  @media (max-width:1199px){
+/*   	#section-{{ section.id }}{padding-top:70px;} */
+    .jobs--main .faq--item .faq--q h3{font-size:42px;}
+    .jobs--main .faq--item .faq--ans p{font-size:18px;margin-bottom:12px;}
+    .jobs--main .head--part h4,
+    .jobs--main .job--items .inner--part h4{font-size:30px;}
+    
+  }
+  @media (max-width:991px){
+/*   	#section-{{ section.id }}{padding-top:60px;} */
+    .jobs--main .faq--item .faq--q h3{font-size:36px;}
+    .jobs--main .faq--item .faq--q:before{font-size:24px;top:8px;}
+    .jobs--main .head--part h4,
+    .jobs--main .job--items .inner--part h4{font-size:28px;}
+    .jobs--main .head--part h5{font-size:22px;}
+    .jobs--main .faq--ans .inner{padding:25px 15px 40px;}
+    
+  }
+  @media (max-width:767px){
+/*     #section-{{ section.id }}{padding-top:55px;} */
+  	.jobs--main .faq--item .faq--q h3{font-size:30px;}
+    .cjobs--main .faq--item .faq--ans p{font-size:17px;}
+    .jobs--main .faq--item .faq--q:before{font-size:22px;top:4px;}
+    .cjobs--main .faq--item{padding:10px 0 8px;}
+    .jobs--main .head--part h4{font-size:26px;}
+    .jobs--main .job--items .inner--part .at{font-size:18px;}
+    .jobs--main .job--items .inner--part .jloc,
+  	.jobs--main .job--items .inner--part .jhours,
+    .jobs--main .job--items .inner--part .jdesc{font-size:16px;}
+    .jobs--main .job--items .inner--part .at{margin-bottom:16px;}
+    
+  }
+  @media (max-width:575px){
+/*   	#section-{{ section.id }}{padding-top:50px;} */
+    .jobs--main .faq--item .faq--q h3{font-size:26px;}
+    .jobs--main .faq--item .faq--ans p{font-size:16px;}
+    .jobs--main .faq--item .faq--q:before{font-size:20px;top:0;}
+    .jobs--main .faq--item{padding:8px 0 5px;}
+    .jobs--main .head--part h4,
+    .jobs--main .job--items .inner--part h4{font-size:24px;}
+    .jobs--main .head--part h5{font-size:20px;}
+    .jobs--main .head--part h6,
+    .jobs--main .job--items .outer--part h6{font-size:18px;}
+    .jobs--main .job--items .outer--part .loc{font-size:14px;}
+    .jobs--main .faq--ans .inner{padding:20px 10px 30x;}
+    
+  }
+  @media (max-width:479px){
+/*     #section-{{ section.id }}{padding-top:45px;} */
+  	.jobs--main .faq--item .faq--q h3{font-size:24px;}
+    .jobs--main .faq--item .faq--q{padding-right:20px;}
+    .jobs--main .faq--ans .inner{padding:15px 5px 25px;}
+    .jobs--main .job--items .inner--part h4{font-size:22px;}
+    .jobs--main .job--items .inner--part .at{font-size:18px;}{font-size:16px;}
+    
+  }
+  
+</style>
+
+
+{% schema %}
+  {
+    "name": "Current Openings",
+    "settings": [
+	  {
+        "type": "header",
+        "content": "Current Opening Settings"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_current_openings",
+        "label": "Enable Current Openings",  
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "current_opening_title",
+        "label": "Current Opening Title"
+      },
+	  {
+        "type": "text",
+        "id": "current_opening_heading",
+        "label": "Heading"
+      },
+	  {
+        "type": "text",
+        "id": "current_opening_sub",
+        "label": "Sub Heading"
+      },
+	  {
+        "type": "text",
+        "id": "job_type_title",
+        "label": "Job Type Title"
+      },
+	  {
+        "type": "url",
+        "id": "career_page_link",
+        "label": "Career Page Link"
+      }
+	  
+	],
+	"blocks":[
+    	{
+          "type": "Career",
+          "name": "Jobs",
+              "settings": 
+              [	
+                {
+                  "type": "text",
+                  "id": "job_title",
+                  "label": "Job Title"
+                },
+				{
+                  "type": "text",
+                  "id": "job_locaion",
+                  "label": "Job Location"
+                },
+				{
+                  "type": "text",
+                  "id": "job_hours",
+                  "label": "Job Hours"
+                },
+				{
+                  "type": "textarea",
+                  "id": "job_desc",
+                  "label": "Job Description"
+                }
+                
+              ]
+   		}
+  	]
+  }
+{% endschema %}
+
+
+<script>
+  jQuery(document).ready(function($){
+    $('.faq--item').each(function(){
+      $(this).find('.faq--q').click(function(){
+      	
+        if($(this).parents('.faq--item').hasClass('open')){
+          $(this).parents('.faq--item').find('.faq--ans').slideUp();
+          $(this).parents('.faq--item').removeClass('open');
+        } else {
+          $(this).parents('.faq--item').addClass('open');
+          $(this).parents('.faq--item').find('.faq--ans').slideDown();
+        }
+          
+      });
+    });
+    
+  	
+  });
+</script>

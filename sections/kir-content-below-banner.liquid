@@ -1,0 +1,141 @@
+{% if section.settings.section_enable %}
+<div class="kir--bnr--below--content" id="section-{{ section.id }}">
+  	<div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          {% if section.settings.kir_content != blank %}
+          <div class="kir--bnr--text">{{ section.settings.kir_content }}</div>
+          {% endif %}
+          {% if section.settings.cta_btn_label != blank %}
+          <div class="kir--bnr--btn">
+            <a href="{{ section.settings.cta_btn_link }}" {% if section.settings.new_window != blank %} target="_blank" {% endif %} class="btn">
+                {{ section.settings.cta_btn_label }}
+            </a>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+  	</div>
+  	 
+</div>
+{% endif %}
+
+
+<style>
+#section-{{ section.id }}{
+  position:relative;
+  width:100%;
+  display:block;
+  padding:35px 0 65px;
+}
+#section-{{ section.id }} .kir--bnr--text,
+#section-{{ section.id }} .kir--bnr--btn{
+  text-align:center;
+  max-width:750px;
+  width:100%;
+  margin:0 auto;
+}
+#section-{{ section.id }} .kir--bnr--text p{
+  color:#000;
+  font-size:24px;
+  line-height:1.35;
+  font-weight:300;
+  margin-bottom:20px;
+}
+#section-{{ section.id }} .kir--bnr--btn{
+  padding-top:15px;
+}
+#section-{{ section.id }} .kir--bnr--btn a.btn{
+  background:transparent url('https://cdn.shopify.com/s/files/1/0233/7590/4845/t/24/assets/button-montserrat-bg.png');
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:100% 100%;
+  color:#fff;
+  padding:14px 50px 22px;
+  font-family:"Montserrat";
+  font-size:24px;
+  line-height:1;
+  font-weight:700;
+  text-align:center;
+}
+#section-{{ section.id }} .kir--bnr--btn a.btn:hover{
+  color:#000;
+}
+  
+  @media screen and (max-width:1219px){
+
+  }
+
+  @media screen and (max-width:1139px){
+    #section-{{ section.id }}{padding:30px 0 50px}
+
+  }
+  @media screen and (max-width:979px){
+    #section-{{ section.id }}{padding:30px 0 45px}
+    #section-{{ section.id }} .kir--bnr--text p{font-size:22px;}
+    #section-{{ section.id }} .kir--bnr--btn a.btn{font-size:22px;}
+  }
+  @media screen and (max-width:767px){
+    #section-{{ section.id }}{padding:25px 0 40px;}
+    #section-{{ section.id }} .kir--bnr--text p{font-size:20px;}
+
+  }
+  @media screen and (max-width:639px){
+    #section-{{ section.id }}{padding:20px 0 30px;}
+    #section-{{ section.id }} .kir--bnr--btn a.btn{font-size:20px;padding:16px 40px 20px;}
+  }
+  @media screen and (max-width:479px){
+    #section-{{ section.id }}{padding:15px 0 30px;}
+    #section-{{ section.id }} .kir--bnr--text p{font-size:18px;}
+    #section-kir-content-below-banner .kir--bnr--btn{padding-top:10px;}
+  }
+  @media screen and (max-width:374px){
+
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "Keep It Real Banner Below",
+    "settings": [
+		{
+		  "type": "header",
+          "content": "Section Enable"
+        },
+		{
+          "type": "checkbox",
+          "id": "section_enable",
+          "label": "Section Enable",  
+          "default": true
+      	},
+		{
+          "type": "header",
+          "content": "Text Content"
+        },
+        {
+          "type": "textarea",
+          "id": "kir_content",
+          "label": "Content"
+        },
+		{
+          "type": "text",
+          "id": "cta_btn_label",
+          "label": "CTA Button Label"
+        },
+		{
+          "type": "url",
+          "id": "cta_btn_link",
+          "label": "URL"
+        },
+		{
+          "type": "checkbox",
+          "id": "new_window",
+          "label": "External Link",  
+          "default": true
+      	}
+	]
+  }
+{% endschema %}
+
+{% javascript %}
+{% endjavascript %}

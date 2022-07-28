@@ -1,0 +1,204 @@
+
+        <div class="row">
+            <div class="col-md-12">
+                {% if section.settings.phil_heading != blank  %}
+                	<h2>{{ section.settings.phil_heading }}</h2>
+                	<p>{{ section.settings.phil_desc }}</p>
+                {% else %}    
+                	<h2>Our Philosophy</h2>
+	                <p>We believe the foods you love should make you feel good — not only when eating them but also after. We want everyone to have that feeling. That’s why we use REAL ingredients to make delicious food that leaves you feeling satisfied and never guilty.</p>
+
+	            {% endif %}
+            </div>
+        </div>
+        
+        <div class="row philosphy-list">
+            <div class="col-md-6">
+                <ul>
+                	{%- for block in section.blocks -%}
+
+                		{% case block.type %}
+				          {% when 'section_features_left' %}
+				          	<li>
+				          		{%- if block.settings.feature_icon -%}
+			                        <div class="li_img">
+			                            <img src="{{ block.settings.feature_icon | img_url: '160x160' }}" alt="radio  icon">
+			                        </div>
+		                        {%- endif -%}
+		                        <div class="li_content">
+		                            <h3>{{ block.settings.feature_head }}</h3>
+		                            <p>{{ block.settings.feature_desc }}</p>
+		                        </div>
+		                    </li>
+				        {% endcase %}
+
+					{%- endfor -%}
+					<!--
+                    <li>
+                        <div class="li_img">
+                            <img src="{{ 'vegetables@2x.png' | asset_url }}" alt="radio  icon">
+                        </div>
+                        <div class="li_content">
+                            <h3>Real Food</h3>
+                            <p>We use only simple all-natural real-food ingredients, that you’d invite to your home.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="li_img">
+                            <img src="{{ 'hen@2x.png' | asset_url }}" alt="icon">
+                        </div>
+                        <div class="li_content">
+                            <h3>Protein</h3>
+                            <p>We deliver high protein through REAL food — such as all-natural chicken and cheese. So your body can absorb REAL nutrients not chemically-made protein powders.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="li_img">
+                            <img src="{{ 'broccoli@2x.png' | asset_url }}" alt="icon">
+                        </div>
+                        <div class="li_content">
+                            <h3>Toppings</h3>
+                            <p>We source our ingredients locally so our every vegetable is FRESH and every product is handmade and topped with made-from-scratch sauces.</p>
+                        </div>
+                    </li>
+                -->
+                </ul>
+            </div> 
+            
+            <div class="col-md-6">
+                <ul>
+                	{%- for block in section.blocks -%}
+
+                		{% case block.type %}
+				          {% when 'section_features_right' %}
+				          	<li>
+				          		{%- if block.settings.feature_icon -%}
+			                        <div class="li_img">
+			                            <img src="{{ block.settings.feature_icon | img_url: '160x160' }}" alt="radio  icon">
+			                        </div>
+		                        {%- endif -%}
+		                        <div class="li_content">
+		                            <h3>{{ block.settings.feature_head }}</h3>
+		                            <p>{{ block.settings.feature_desc }}</p>
+		                        </div>
+		                    </li>
+				        {% endcase %}
+
+					{%- endfor -%}
+					<!--
+                    <li>
+                        <div class="li_img">
+                            <img src="{{ 'project-management@2x.png' | asset_url }}" alt="icon">
+                        </div>
+                        <div class="li_content">
+                            <h3>Innovation</h3>
+                            <p>We believe everyone should enjoy the foods they love without sacrificing great taste. We are constantly searching for ways to provide everyone with a healthier alternative to every single food item they love.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="li_img">
+                            <img src="{{ 'sugar@2x.png' | asset_url }}" alt="icon">
+                        </div>
+                        <div class="li_content">
+                            <h3>Sweetener</h3>
+                            <p>Our food is made with no added sugar and only ingredients that have low-glycemic impacts and will not cause blood sugar spikes.</p>
+                        </div>
+                    </li>
+                    <li class="fiber-icon">
+                        <div class="li_img">
+                            <img src="{{ 'wheat@2x.png' | asset_url }}" alt="icon">
+                        </div>
+                        <div class="li_content">
+                            <h3>Fiber/Grains</h3>
+                            <p>Every product is gluten and grain free and high in fiber so you will stay satisfied and full through out the day.</p>
+                        </div>
+                    </li>
+                -->
+                </ul>
+            </div>
+            
+        </div><!-- Our Philosophy List-->
+        
+{% schema %}
+  {
+    "name": "Root: Features",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Features (Our Philosphy)"
+      },
+      {
+        "type": "text",
+        "id": "phil_heading",
+        "label": "Heading"
+      },
+      {
+        "type": "textarea",
+        "id": "phil_desc",
+        "label": "Description"
+      }
+    ],
+    "blocks":[
+    	{
+    	"type": "section_features_left",
+          "name": "Features List(Left)",
+		  "limit": 12,
+		  "settings": [
+            {
+			  "type": "header",
+			  "content": "Features List on Right"
+			},
+			{
+		        "type": "text",
+		        "id": "feature_head",
+		        "label": "Heading"
+		    },
+		    {
+		        "type": "textarea",
+		        "id": "feature_desc",
+		        "label": "Description"
+		    },
+		    {
+		        "type": "image_picker",
+		        "id": "feature_icon",
+		        "label": "Icon",
+		        "info": "Recommended Size: 160 x 160 px Transparent PNG."
+		    }
+		  ]
+    	},
+    	{
+    	"type": "section_features_right",
+          "name": "Features List(Right)",
+		  "limit": 12,
+		  "settings": [
+            {
+			  "type": "header",
+			  "content": "Features List on Right"
+			},
+			{
+		        "type": "text",
+		        "id": "feature_head",
+		        "label": "Heading"
+		    },
+		    {
+		        "type": "textarea",
+		        "id": "feature_desc",
+		        "label": "Description"
+		    },
+		    {
+		        "type": "image_picker",
+		        "id": "feature_icon",
+		        "label": "Icon",
+		        "info": "Recommended Size: 160 x 160 px Transparent PNG."
+		    }
+		  ]
+    	}
+    ],
+    "presets": [
+        {
+          "name": "Root: Features",
+          "category": "1. Our Roots"
+        }
+    ]
+  }
+{% endschema %}

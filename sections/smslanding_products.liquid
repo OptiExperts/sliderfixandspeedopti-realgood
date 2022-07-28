@@ -1,0 +1,157 @@
+<div class="smslanding_product_blocks" id="section-{{ section.id }}">
+  <div class="container">
+  	{% if section.settings.product_header_img != blank  %}
+            <img src="{{ section.settings.product_header_img | img_url: 'master' }}" alt="Real Food you feel good about eating">
+          {% else %}
+              <img src="{{ 'text_head_landing.png' | asset_url }}" alt="Real Food you feel good about eating">
+    {% endif %}
+    <div class="landing_product_list">
+      {%- for block in section.blocks -%}
+            <div id="block-{{ block.id }}" class="product_block product_block_1">
+              <div class="product_image">
+                {%- if block.settings.section_product_image -%} 
+                  <a href="{{ block.settings.section_block_link }}"><img src="{{ block.settings.section_product_image | img_url: 'master' }}"></a> 
+                {% endif %}
+              </div>
+              
+                {%- if block.settings.section_block_text != '' -%}
+                  <h2><a href="{{ block.settings.section_block_link }}">{{ block.settings.section_block_text }}</a></h2>  
+                {%- endif -%}
+              {{ block.settings.section_block_desc }}
+            </div>
+        {%- endfor -%}
+    </div>
+  </div>
+</div>	
+
+{% schema %}
+{
+    "name": "Product Three Col",
+    "settings": [
+    	{
+         "type": "header",
+         "content": "Product Block Settings"
+      },
+      {
+        "type": "image_picker",
+        "id": "product_header_img",
+        "label": "Image Header",
+        "info": "Recommended Size: 1200 x 400 px"
+      }
+    ],
+    "blocks":[
+    	{
+          "type": "section_block",
+          "name": "Section Block",
+          "limit": 3,
+              "settings": 
+              [
+                {
+                  "type": "image_picker",
+                  "id": "section_product_image",
+                  "label": "Product Image"
+                },
+                {
+                  "type": "text",
+                  "id": "section_block_text",
+                  "label": "Product Title"
+                },
+                {
+                  "type": "url",
+                  "id": "section_block_link",
+                  "label": "Product Link"
+                },
+                {
+                  "type": "richtext",
+                  "id": "section_block_desc",
+                  "label": "Product Desc"
+                }
+              ]
+   		}
+  	],
+    "presets": [
+	    {
+	        "name": "Landing : Products",
+          "category": "11. Landing Page"
+	    }
+    ]
+}
+{% endschema %}
+
+<style>
+  
+  #shopify-section-{{ section.id }}
+  {
+    background: url('{{ 'smsland_product_bg.png' | asset_url }}') center center repeat #72BCED;
+    padding: 50px 0px;
+  } 
+
+  #section-{{ section.id }}.smslanding_product_blocks .landing_product_list 
+  {
+    display: -ms-flex;
+    display: -webkit-flex;
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    flex-wrap: wrap;    
+    justify-content: center;
+  }
+
+  
+  #section-{{ section.id }}.smslanding_product_blocks .landing_product_list .product_block 
+  {
+    width: 28%;
+    position: relative;
+    max-width: 300px;
+    margin: 50px auto;
+  }
+
+  #section-{{ section.id }}.smslanding_product_blocks .landing_product_list .product_block .product_image
+  {
+    margin-bottom: 15px; 
+  }
+
+  #section-{{ section.id }}.smslanding_product_blocks .landing_product_list .product_block .product_image img
+  {
+    max-width: 100%;
+  }
+  
+  #section-{{ section.id }}.smslanding_product_blocks .landing_product_list .product_block  h2
+  {
+    color: #FFF;
+    text-align: center;
+    font: Bold 19px/33px "Avenir Next";
+    color: #FFF; 
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  #section-{{ section.id }}.smslanding_product_blocks .landing_product_list .product_block  h2 a
+  {
+    color: #FFF;
+    text-decoration: none;
+    display: block;
+  }
+
+  #section-{{ section.id }}.smslanding_product_blocks .landing_product_list .product_block  p
+  {
+    color: #FFF;
+    text-align: center;
+    font: normal 18px/22px "Avenir Next";
+    color: #FFF; 
+    text-align: center;
+    margin-bottom: 25px;
+  }
+
+  @media screen and (max-width: 800px){
+    #section-{{ section.id }}.smslanding_product_blocks .landing_product_list .product_block
+    {
+      width: 100%;
+      position: relative;
+      max-width: 425px;
+      margin: 30px auto 25px;
+    }
+
+  }
+
+</style>

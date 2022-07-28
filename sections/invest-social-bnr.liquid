@@ -1,0 +1,108 @@
+{% if section.settings.section_enable %}
+<div class="invest--social--bnr" id="section-{{ section.id }}">
+  {% if section.settings.is_banner_url != blank %}
+  <a href="{{section.settings.is_banner_url}}" {% if section.settings.is_banner_url_external != blank %}target="_blank"{% endif %}>
+  {% endif %}
+    
+    {% if section.settings.is_banner_img != blank %} 
+      <img src="{{ section.settings.is_banner_img | img_url: '1920x745' }}" alt="">
+    {% else %}
+      <img src="https://via.placeholder.com/1920x475" alt="">
+    {% endif %}
+    {% if section.settings.is_banner_img_mob != blank %} 
+      <img src="{{ section.settings.is_banner_img_mob | img_url: 'master' }}" alt="" class="mobile">  
+    {% endif %}
+    
+  {% if section.settings.is_banner_img != blank %}
+  </a>
+  {% endif %}
+</div>	
+<style>  
+  #shopify-section-{{ section.id }}{
+    display:block;
+    padding-bottom:40px;
+  }
+  #section-{{ section.id }}{
+    width:100%;
+    position:relative;
+  }
+  #section-{{ section.id }} a{
+  	display:block;
+  }
+  #section-{{ section.id }} img{
+  	display:block;
+    width:100%;
+  }
+  #section-{{ section.id }} a:hover img{
+  	opacity:0.8;
+  }
+  #section-{{ section.id }} img.mobile{
+  	display:none;
+  }
+  @media (max-width:1199px){
+  }
+  @media (max-width:991px){
+   	 #shopify-section-{{ section.id }}{padding-bottom:30px;}
+  }
+  @media (max-width:767px){
+    #section-{{ section.id }} img{
+      display:none;
+    }
+    #section-{{ section.id }} img.mobile{
+      display:block;
+    }
+  }  
+  @media (max-width:639px){
+    #shopify-section-{{ section.id }}{padding-bottom:25px;}
+  }
+  
+
+</style>
+
+{% endif %}
+
+
+{% schema %}
+  {
+    "name": "Invest Social Banner",
+    "settings": [
+	  {
+        "type": "header",
+        "content": "Banner Settings"
+      },
+	  {
+		"type": "header",
+        "content": "Section Enable"
+      },
+	  {
+        "type": "checkbox",
+        "id": "section_enable",
+        "label": "Section Enable",
+        "default": true
+      },
+      {
+        "type": "image_picker",
+        "id": "is_banner_img",
+        "label": "Banner Image",
+        "info": "Recommended Size: 1920 x 745 px"
+      },
+		{
+        "type": "image_picker",
+        "id": "is_banner_img_mob",
+        "label": "Banner Image (mobile)"
+      },
+      {
+        "type": "url",
+        "id": "is_banner_url",
+        "label": "Banner URL"
+      },
+	  {
+		"type": "checkbox",
+		"id": "is_banner_url_external",
+		"label": "Link Open New Window",
+		"default": false
+      }
+	  
+	]
+  }
+{% endschema %}

@@ -1,0 +1,95 @@
+<div class="mission-top-parent" id="section-{{ section.id }}"> <!-- Mission Top START-->
+        <div class="row middle-md">
+            <div class="col-md-5 col-sm-12">
+                            <div class="mission-top-left">
+
+                                <div class="mission-video-container-mobile show-video-mobile ">
+                                    <div class="mission-video-container-play-button play-video-mobile">
+                                        <img src="{{ 'play-icon.png' | asset_url }}" alt="PLay">
+                                    </div>
+                                    <div class="poloroid-parent ">
+                                        <div class="mission-video-container-player">
+                                            <video controls="true" id="missionVideoMobile" autobuffer="autobuffer" preload="preload">
+                                                <source type="video/mp4" src="//cdn.shopify.com/s/files/1/0233/7590/4845/files/V2_TimelineVideo_v5.mp4?9397">
+                                            </video>
+                                        </div>
+                                        <div class="poloroid-img">
+                                            
+                                            <img src="{% if section.settings.video_banner_img != blank  %} {{ section.settings.video_banner_img | img_url: 'master' }}  {% else %}  {{ 'placeholder_root_video.jpg' | asset_url }} {% endif %}" alt="Video Image">
+
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                {% if section.settings.banner_intro != blank  %}
+                                    {{ section.settings.banner_intro }}
+                                {% else %}    
+                                    <h1>Our Mission</h1>
+                                    <h3>Making the foods you love with ingredients you know and feel good about eating.</h3>
+                                    <p>Our community is our family and everything we make is based on the needs and feedback of our Real Good Fam..</p>
+                                {% endif %}
+
+                            </div>
+            </div>
+            <div class="col-md-7 hide-video-mobile">
+                            <div class="mission-top-right">
+                                <div class="mission-video-container hide-video-mobile">
+                                    <div class="mission-video-container-play-button play-video">
+                                        
+                                        <img src="{{ 'play-icon.png' | asset_url }}" alt="PLay">
+                                    </div>
+                                    <div class="poloroid-parent pol-rotate-9-right">
+                                        <div class="mission-video-container-player">
+                                           <video controls="true" id="missionVideo" autobuffer="autobuffer" preload="preload">
+                                                <source type="video/mp4" src="//cdn.shopify.com/s/files/1/0233/7590/4845/files/V2_TimelineVideo_v5.mp4?9397">
+                                                
+                                                <!-- <source type="video/mp4; codecs=avc1.42E01E, mp4a.40.2" src="http://d39cy8ulqxbvhv.cloudfront.net/wp-content/uploads/2019/05/08114211/Quest_30sec_Spot7_1920x1080_1.mp4"> -->
+                                                <!-- <source type="video/ogg; codecs=theora, vorbis" src="{{ 'RGF_feature_compressed.ogg' | asset_url }}"> -->
+                                            </video>
+                                        </div>
+                                        <div class="poloroid-img">
+                                            
+                                            <img src="{% if section.settings.video_banner_img != blank  %} {{ section.settings.video_banner_img | img_url: 'master' }}  {% else %}  {{ 'placeholder_root_video.jpg' | asset_url }} {% endif %}" alt="Video Image">
+
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>        
+        </div>
+    </div><!-- Mission Top END!!! -->
+
+
+{% schema %}
+  {
+    "name": "Intro Text & Video",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Intro Text & Video"
+      },
+      {
+        "type": "image_picker",
+        "id": "video_banner_img",
+        "label": "Video Banner Image",
+        "info": "Recommended Size: 800 x 451 px"
+      },
+      {
+        "type": "html",
+        "id": "banner_intro",
+        "label": "Banner Intro Text"
+      }
+    ],
+    "presets": [
+        {
+          "name": "Intro Text & Video",
+          "category": "1. Our Roots"
+        }
+    ]
+  }
+{% endschema %}
+
+
+    
+

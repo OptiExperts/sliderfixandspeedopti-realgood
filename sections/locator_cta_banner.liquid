@@ -1,0 +1,746 @@
+{% comment %}
+{% if section.settings.section_enable %}
+<div class="cta-area pt-50 pb-50" id="section-{{ section.id }}">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="cta-content">
+          {% if section.settings.cta_text_content != blank %}
+          <div class="cta_text_content">
+            {% if section.settings.text_heading_img != blank %}
+            	<img src="{{ section.settings.text_heading_img | img_url: 'master' }}" alt="" class="cta_text_heading_img">
+            {% endif %}
+            {{ section.settings.cta_text_content }}
+          </div>
+          {% endif %}
+          {% if section.settings.call_to_action_btn != blank %}
+          <div class="cta-button">
+            <a class="lezada-button lezada-button--medium lezada-cta-button" href="{{ section.settings.call_to_action_btn_link }}" target="_blank">{{ section.settings.call_to_action_btn }}</a>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+{% endcomment %}
+
+
+{% if section.settings.section_enable %}
+<div class="cta-area" id="section-{{ section.id }}">
+  {% if section.settings.section_bg_img != blank %}
+  <div class="bnrimg">
+    {% comment %}
+    <img data-src="{{ section.settings.section_bg_img | img_url: 'master' }}" alt="" class="section_bg_img lazy">
+    <img data-src="{{ section.settings.section_bg_img_mob | img_url: 'master' }}" alt="" class="section_bg_img mobile lazy">
+    {% endcomment %}
+    
+    <img data-src="{{ section.settings.section_bg_img | img_url: '1000x505' }}" alt="" class="section_bg_img lazy">
+    <img data-src="{{ section.settings.section_bg_img_mob | img_url: '768x385' }}" alt="" class="section_bg_img mobile lazy"> 
+   
+    {% if section.settings.cta3_btn != blank %}
+    <div class="cta-button cta--btn-3 right--sidebtn">
+      <a class="lezada-button lezada-button--medium lezada-cta-button" href="{{ section.settings.cta3_btn_link }}" target="_blank">{{ section.settings.cta3_btn }}</a>
+    </div>
+    {% endif %}
+    
+    
+  </div>
+  {% endif %}
+  
+  <div class="cta-content">
+    <div class="container">
+      <div class="row">
+      	<div class="col cta_inner">        
+          {% if section.settings.cta_text_content != blank %}
+          <div class="cta_text_content">
+            {% if section.settings.text_heading_img != blank %}
+            	<img data-src="{{ section.settings.text_heading_img | img_url: 'master' }}" alt="" class="cta_text_heading_img lazy">
+            {% endif %}
+            {{ section.settings.cta_text_content }}
+          </div>
+          {% endif %}
+          {% if section.settings.cta3_btn != blank %}
+          <div class="cta-button cta--btn-3 mobile">
+            <a class="lezada-button lezada-button--medium lezada-cta-button" href="{{ section.settings.cta3_btn_link }}" target="_blank">{{ section.settings.cta3_btn }}</a>
+          </div>
+          {% endif %}
+          {% if section.settings.call_to_action_btn != blank %}
+          <div class="cta-button">
+            <a class="lezada-button lezada-button--medium lezada-cta-button" href="{{ section.settings.call_to_action_btn_link }}" target="_blank">{{ section.settings.call_to_action_btn }}</a>
+          </div>
+          {% endif %}
+          {% if section.settings.cta2_btn != blank %}
+          <div class="cta-button cta--btn-2">
+            <a class="lezada-button lezada-button--medium lezada-cta-button" href="{{ section.settings.cta2_btn_link }}" target="_blank">{{ section.settings.cta2_btn }}</a>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+
+<style>
+  .mobile{display:none !important}
+  #section-{{ section.id }} {
+    /*color: {{ block.settings.call_to_actin_Title_color }};
+    background-size:100%;
+    padding-top:10% !important;
+    padding-bottom:10% !important;
+    background-position: left center !important;
+    background-color:#F29B32 !important*/
+    position:relative !important;
+    background:#FAB04B;
+  }
+  #section-{{ section.id }} .cta-content{
+    /*position:relative;
+    float:right;
+    max-width:58%;
+    display:block;
+    text-align:center*/
+    position:absolute;
+    top:0;
+    right:0;
+    width:100%;
+    height:100%;
+    background:transparent
+  }
+  #section-{{ section.id }} .cta-content:after{
+  	content:"";
+    position:absolute;
+    top:0;
+    right:0;
+    width:46.5%;
+    height:100%;
+    background:#FAB04B;
+    z-index:1
+  }
+  #section-{{ section.id }} .cta-content .container{z-index:9}
+  #section-{{ section.id }} .cta_inner{
+  	width:100%;
+    padding-left:58%;
+    box-sizing:border-box
+  }
+  #section-{{ section.id }} .cta-content .cta_text_content{
+  	display:block;
+    color:#fff;
+    text-align:center
+  }
+  #section-{{ section.id }} .cta_text_heading_img{width:90%}
+  #section-{{ section.id }} .cta-content .cta-button{
+  	display:block;
+    text-align:center
+  }
+  #section-{{ section.id }} .cta-content h3{
+  	color:#fff;
+    font-size:36px;
+    line-height:1.15;
+    font-weight:bold;
+    text-transform:uppercase;
+    margin:10px auto 20px
+  }
+  
+  #section-{{ section.id }} .cta-content a,
+  #section-{{ section.id }} .bnrimg .right--sidebtn a{
+  	background:#fff !important;
+    color:#000 !important;
+    text-transform:uppercase;
+    border-radius:50px;
+    border:none !important;
+    font-weight:bold;
+    font-size:22px
+    
+  }
+  #section-{{ section.id }} .cta-content a:hover,
+  #section-{{ section.id }} .bnrimg .right--sidebtn a:hover{
+  	color:#fff !important;
+    background:#000 !important
+  }
+  
+  #section-{{ section.id }} .cta--btn-2{
+  	margin-top:15px;
+  }
+  
+  {%- for block in section.blocks -%}
+  {%- case block.type -%}
+  {%- when 'call_to_action_style' -%}
+
+  #section-{{ section.id }} .lezada-cta-button,
+  #section-{{ section.id }} .bnrimg .right--sidebtn a{
+    background-color: {{ block.settings.btn_Bg_color }};
+    color: {{ block.settings.btn_color }} !important;
+    border-color: {{ block.settings.btn_border_color }};
+  }	
+  #section-{{ section.id }} .lezada-cta-button:hover,
+  #section-{{ section.id }} .bnrimg .right--sidebtn a:hover{
+    background-color: {{ block.settings.btn_hover_bg_color }};
+    color: {{ block.settings.btn_hover_color }} !important;
+    border-color: {{ block.settings.btn_hover_border_color }};
+  }	
+
+
+  {%- endcase -%}
+  {%- endfor -%}
+  
+  #section-{{ section.id }} .bnrimg img{
+  	position:relative;
+    z-index:1;
+  }
+  #section-{{ section.id }} .bnrimg .right--sidebtn{
+  	position:absolute;
+    left:6%;
+    top:58%;
+    z-index:2;
+  }
+  
+  
+  
+  
+  @media screen and (max-width:1599px){
+    /*#section-{{ section.id }}{padding-top:8.25% !important;padding-bottom:8.25% !important}*/
+    #section-{{ section.id }} .bnrimg .right--sidebtn{
+    	top:54%;
+      	left:5%;
+    }
+  }
+  
+  @media screen and (max-width:1399px){
+    /*#section-locator_cta_banner .cta-content{max-width:50%;}
+    #section-locator_cta_banner .cta-content h3{font-size:32px}*/
+    
+    #section-{{ section.id }} .bnrimg .right--sidebtn{
+    	top:55%;
+    }
+    
+  }
+  
+  @media screen and (max-width:1199px){
+    /*#section-{{ section.id }} .cta-content h3{font-size:29px}*/
+    
+  }
+  
+  @media screen and (max-width:1139px){
+    /*#section-{{ section.id }} .cta-content h3{font-size:21px}*/
+    #section-{{ section.id }} .cta_text_heading_img{width:100%}
+    #section-{{ section.id }} .cta-content h3{font-size:21px}
+    #section-{{ section.id }} .cta-content a,
+    #section-{{ section.id }} .bnrimg .right--sidebtn a{font-size:16px;padding:7.5px 25px;line-height:1}
+    #section-{{ section.id }} .bnrimg .right--sidebtn{left:8%;}
+    
+  }
+  @media screen and (max-width:979px){
+    /*#section-{{ section.id }} .cta_text_heading_img{max-width:300px}
+    #section-{{ section.id }} .cta-content h3{margin-top:5px}
+    #section-{{ section.id }}{padding-top:7% !important;padding-bottom:7% !important}*/
+    
+  }
+  
+  @media screen and (min-width:1280px){
+    #section-{{ section.id }} .bnrimg{
+		padding-right:49%;
+    }
+  }
+  @media screen and (max-width:1279px) and (min-width:768px){
+    #section-{{ section.id }} .bnrimg{
+/* 		padding-right:30%; */
+    }
+    #section-{{ section.id }} .bnrimg img{
+    	/*margin-left:-25%;*/
+      	margin-left:-2%;
+    }
+  }
+  @media screen and (max-width:1279px) and (min-width:1140px){
+    #section-{{ section.id }} .bnrimg{padding-right:50%;}
+    #section-{{ section.id }} .cta-content h3{font-size:28px;}
+    #section-{{ section.id }} .cta-content a, 
+    #section-{{ section.id }} .bnrimg .right--sidebtn a{font-size:20px;padding:8px 45px;}
+    
+  }
+  @media screen and (max-width:1139px) and (min-width:992px){
+    #section-{{ section.id }} .bnrimg{padding-right:50%;}
+    #section-{{ section.id }} .cta_inner{padding-left:52%;}
+    #section-{{ section.id }} .cta_text_heading_img{margin-top:-10px;width:95%;}
+    #section-{{ section.id }} .cta-content h3{font-size:24px;margin-top:-4px;}
+    #section-{{ section.id }} .cta-content a, 
+    #section-{{ section.id }} .bnrimg .right--sidebtn a{font-size:18px;padding:6px 40px;}
+    
+  }
+  @media screen and (max-width:991px) and (min-width:768px){
+    #section-{{ section.id }} .bnrimg{padding-right:50%;}
+    #section-{{ section.id }} .cta_inner{padding-left:52%;}
+    #section-{{ section.id }} .cta_text_heading_img{margin-top:-8px;}
+    #section-{{ section.id }} .cta-content h3{font-size:20px;margin-top:-2px;}
+    #section-{{ section.id }} .cta-content a, 
+    #section-{{ section.id }} .bnrimg .right--sidebtn a{font-size:16px;padding:5px 40px;}
+    
+  }
+  
+  
+  @media screen and (max-width:767px){
+    /*#section-{{ section.id }}{
+      background-size:auto 100% !important;
+      margin-bottom:-17%;
+      margin-left: -6%;
+      padding-top:90% !important;
+      padding-bottom:0 !important;
+      position:unset !important
+    }
+    #shopify-section-locator_cta_banner{
+      position:relative !important;
+      background:url(https://cdn.shopify.com/s/files/1/0248/5551/1106/t/2/assets/locator-sec3-mob-img.jpg) repeat-y;
+      background-position:left center;
+      padding-top:5%
+    }
+    #section-{{ section.id }} .col-lg-12{position:unset !important}
+    #section-{{ section.id }} .cta-content{
+      float:none;
+      position:absolute;
+      top:15px;
+      text-align:center;
+      max-width:90%;
+      left:0;
+      right:0;
+      margin:auto
+    }
+    #section-{{ section.id }} .cta-content h3{font-size:16px}
+    #section-{{ section.id }} .cta-content a{padding:5px 25px;font-size:12px}*/
+    
+    #section-{{ section.id }} .section_bg_img{display:none !important}
+    #section-{{ section.id }} .section_bg_img.mobile{display:block !important}
+    #section-{{ section.id }} .cta_inner{padding-left:15px}
+    #section-{{ section.id }} .cta-content:after{background:rgba(250, 176, 75, 0.89);width:100%}
+    
+    #section-{{ section.id }} .cta-content h3{font-size:28px}
+    #section-{{ section.id }} .cta-content a,
+    #section-{{ section.id }} .bnrimg .right--sidebtn a{font-size:20px;padding:10px 30px}
+    #section-{{ section.id }} .cta-content{
+      -ms-flex-direction: unset;
+      flex-direction: unset;
+    }
+    
+    #section-{{ section.id }} .cta_text_heading_img{width:85%;}
+    #section-{{ section.id }} .cta-content h3{font-size:22px;}
+    #section-{{ section.id }} .cta-content a{font-size:18px;padding:8px 25px;}
+    #section-{{ section.id }} .cta--btn-2{margin-top:10px;}
+    #section-{{ section.id }} .cta-content .cta_text_content{
+/*     	padding-bottom:50px; */
+      	padding-bottom:0;
+    }
+    #section-{{ section.id }} .bnrimg{
+      display:block;
+      position:relative;
+    }
+    #section-{{ section.id }} .bnrimg .right--sidebtn{
+/*     	left:0;
+        right:0;
+        margin:auto;
+        width:100%;
+        text-align:center; */
+/*       	display:none; */
+    }
+/*     #section-{{ section.id }} .cta-content .cta-button.mobile{
+    	display:block !important;
+      	margin-bottom:10px;
+    } */
+    
+    #section-{{ section.id }} .cta-content{
+      position:relative;
+      top:unset;
+      right:unset;
+      height:auto;
+      padding:20px 0 35px;
+    }
+    
+    
+  }
+  
+  @media screen and (max-width:639px){
+    /*#section-locator_cta_banner .cta-content a{
+    	padding:10px 25px
+    }*/
+    /*#shopify-section-locator_cta_banner{padding-top:12%}
+    #section-{{ section.id }} .cta-content h3{font-size:14px}*/
+    
+    #section-{{ section.id }} .cta_inner{max-width:400px;margin:0 auto}
+    #section-{{ section.id }} .cta-content h3{font-size:26px}
+    #section-{{ section.id }} .cta-content a,
+    #section-{{ section.id }} .bnrimg .right--sidebtn a{font-size:16px;padding:8px 20px}
+    
+    #section-{{ section.id }} .cta-content h3{/*font-size:20px;*/font-size:16px;}
+    
+    #section-{{ section.id }} .cta_text_heading_img{margin-top:-10px;}
+    
+  }
+
+  @media screen and (max-width:479px){
+  	/*#section-{{ section.id }} {
+     	padding-top: 150px !important;
+    	padding-bottom: 25px !important;
+    	background-size: 600px auto !important;
+    	background-position: left top !important;
+    }*/
+    /*#section-locator_cta_banner .cta-content a{
+    	padding:7.5px 22.5px
+    }*/
+    /*#shopify-section-locator_cta_banner{padding-top:22.5%}
+    #section-{{ section.id }} .cta-content h3{font-size:12px}
+    #section-{{ section.id }}{padding-top:100% !important}
+    #section-{{ section.id }} .cta-content{float:none}
+    #section-{{ section.id }} .cta-content a{padding:2.5px 15px}
+    #section-{{ section.id }} .cta-content{top:10px}*/
+    
+    #section-{{ section.id }} .cta_inner{max-width:350px;width:100%}
+    #section-{{ section.id }} .cta-content h3{font-size:22px}
+    #section-{{ section.id }} .cta-content a,
+    #section-{{ section.id }} .bnrimg .right--sidebtn a{font-size:13px;padding:5px 20px}
+    
+    #section-{{ section.id }} .cta-content h3{font-size:16px;}
+    #section-{{ section.id }} .cta--btn-2{margin-top:5px;}
+    #section-{{ section.id }} .cta_text_heading_img{margin-top:-5px;}
+    
+/*     #section-{{ section.id }}{height:200px;} */
+/*     #section-{{ section.id }} .bnrimg{height:100%;} */
+/*     #section-{{ section.id }} .section_bg_img.mobile{height:100%} */
+/*     #section-locator_cta_banner .cta-content .cta-button.mobile{margin-bottom:5px;} */
+    
+  }
+  @media screen and (max-width:374px){
+    #section-{{ section.id }} .cta-content h3{font-size:19px}
+    #section-{{ section.id }} .cta-content a,
+    #section-{{ section.id }} .bnrimg .right--sidebtn a{font-size:11px;padding:5px 15px}
+    
+    #section-{{ section.id }} .cta-content h3{font-size:14px;margin-top:0;margin-bottom:5px;}
+    
+  }
+  
+</style>
+
+{% include 'section_typography' %}
+
+{% schema %}
+  {
+    "name": "Call To Action",
+    "settings": [		
+		{
+		  "type": "header",
+          "content": "Section Enable"
+        },
+		{
+          "type": "checkbox",
+          "id": "section_enable",
+          "label": "Section Enable",  
+          "default": true
+      	},
+		{
+         "type": "header",
+         "content": "Call To Action With Banner"
+        },
+		{
+		  "type": "image_picker",
+          "id": "section_bg_img",
+          "label": "Background Image",
+          "info": "Section Background Image"
+        },
+		{
+		  "type": "image_picker",
+          "id": "section_bg_img_mob",
+          "label": "Background Image (Mobile)",
+          "info": "Section Background Image (Mobile)"
+        },
+		{
+		  "type": "image_picker",
+          "id": "text_heading_img",
+          "label": "Image",
+          "info": "Heading of text content"
+        },
+		{
+          "type": "textarea",
+          "id": "cta_text_content",
+          "label": "Text Content",
+          "default": "Text Content"
+        },
+		{
+          "type": "text",
+          "id": "call_to_action_btn",
+          "label": "Call To Action Btn",
+          "default": "Contact Us"
+        },
+		{
+          "type": "url",
+          "id": "call_to_action_btn_link",
+          "label": "URL"
+        },
+		{
+          "type": "text",
+          "id": "cta2_btn",
+          "label": "Call To Action 2 Btn",
+          "default": "Contact Us"
+        },
+		{
+          "type": "url",
+          "id": "cta2_btn_link",
+          "label": "CTA 2 URL"
+        },
+		{
+          "type": "text",
+          "id": "cta3_btn",
+          "label": "Call To Action 3 Btn (Left)",
+          "default": "Shop Now"
+        },
+		{
+          "type": "url",
+          "id": "cta3_btn_link",
+          "label": "CTA 3 URL"
+        }
+	],
+	"blocks": [
+		{
+          "type": "call_to_action_style",
+          "name": "Section Style",
+		  "limit": 1,
+          "settings": [
+			{
+			  "type": "header",
+			  "content": "Call TO Action Content"
+			},
+			{
+			  "type": "color",
+			  "id": "call_to_actin_Title_color",
+			  "label": "Title Color",
+			  "default": "#fff"
+			},
+			{
+			  "type": "header",
+			  "content": "Call TO Action Button"
+			},
+			{
+			  "type": "color",
+			  "id": "btn_color",
+			  "label": "Button Color",
+			  "default": "#333"
+			},
+			{
+			  "type": "color",
+			  "id": "btn_Bg_color",
+			  "label": "Button Bg Color",
+			  "default": "#fff"
+			},
+			{
+			  "type": "color",
+			  "id": "btn_border_color",
+			  "label": "Button Border Color",
+			  "default": "#fff"
+			},
+			{
+			  "type": "paragraph",
+			  "content": "Button Hover"
+			},
+			{
+			  "type": "color",
+			  "id": "btn_hover_color",
+			  "label": "Button Hover Color",
+			  "default": "#fff"
+			},
+			{
+			  "type": "color",
+			  "id": "btn_hover_bg_color",
+			  "label": "Button Hover Bg Color",
+			  "default": "#333"
+			},
+			{
+			  "type": "color",
+			  "id": "btn_hover_border_color",
+			  "label": "Button Hover Border Color",
+			  "default": "#333"
+			}
+          ]
+       },
+		{
+          "type": "section_margin",
+          "name": "Section Margin",
+		  "limit": 1,
+          "settings": [
+            {
+			  "type": "header",
+			  "content": "Large/Desktop Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_top",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_bottom",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Bottom",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "header",
+			  "content": "Tablet Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_top_md",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_bottom_md",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Bottom",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "header",
+			  "content": "Mobile Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_top_xs",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_bottom_xs",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Bottom",
+			  "unit": "px",
+			  "default": 0
+			}
+          ]
+       },
+	   {
+          "type": "section_padding",
+          "name": "Section Padding",
+		  "limit": 1,
+          "settings": [
+            {
+			  "type": "header",
+			  "content": "Large/Desktop Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_top",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_bottom",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Bottom",
+			  "unit": "px",
+			  "default": 100
+			},
+			{
+			  "type": "header",
+			  "content": "Tablet Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_top_md",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_bottom_md",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Bottom",
+			  "unit": "px",
+			  "default": 80
+			},
+			{
+			  "type": "header",
+			  "content": "Mobile Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_top_xs",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_bottom_xs",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Bottom",
+			  "unit": "px",
+			  "default": 60
+			}
+          ]
+       },
+	   {
+          "type": "section_background",
+          "name": "Section Background",
+		  "limit": 1,
+          "settings": [
+            {
+			  "type": "image_picker",
+			  "id": "section_bg_image",
+			  "label": "BG Image"
+			},
+			{
+			  "type": "color",
+			  "id": "section_bg_color",
+			  "label": "BG Color",
+			  "default": "#6D7F96"
+			}
+          ]
+       }
+	],
+	"presets": [
+		{
+		  "name": "Call To Action",
+		  "category": "9.2 Theme Others"
+		}
+	]
+  }
+{% endschema %}

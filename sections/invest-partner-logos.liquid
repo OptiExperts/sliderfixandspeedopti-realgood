@@ -1,0 +1,215 @@
+{% if section.settings.section_enable %}
+<div class="rgf_partners partner_logos invest--plogos" id="section-{{ section.id }}">
+  <div class="container wide">
+	{%- if section.settings.plogo_top_heading != '' -%}
+      <h2 class="heading">{{section.settings.plogo_top_heading }}</h2>
+    {%- endif -%}
+    <div class="pLogos">
+      {%- for block in section.blocks -%}
+          {% assign count = 0 %}
+          <div id="block-{{ block.id }}" class="plogo plogo_{{forloop.index0}}">
+            {%- if block.settings.partner_link -%}
+            <a href="{{block.settings.partner_link}}" target="_blank">
+            {% endif %}
+            
+              {%- if block.settings.partner_logo -%}
+              <img src="{{ block.settings.partner_logo | img_url: 'master' }}" alt="">
+              {% endif %}
+            {%- if block.settings.partner_link -%}
+            </a>
+            {% endif %}
+            
+          </div>
+          {% assign count = count | plus: 1 %}
+      {%- endfor -%}
+    </div>
+    
+    {%- if section.settings.plogo_button_title != '' -%} 
+    <div class="button">
+      <a href="{{ section.settings.plogo_button_link }}" class="btn--type-1">{{ section.settings.plogo_button_title }}</a>
+    </div>
+    {%- endif -%}
+    
+  </div>
+</div>	
+<style>
+  
+  #shopify-section-{{ section.id }}{
+  	background:#fff;
+    display:block;
+    margin:0px auto;
+    padding:40px 0;
+  }  
+  #shopify-section-{{ section.id }} .pLogos{
+  	text-align:center;
+  }
+  #shopify-section-{{ section.id }} .plogo{
+  	display:inline-block;
+    vertical-align:middle;
+    padding:0 30px;
+  }
+  #shopify-section-{{ section.id }} .plogo a:hover img{
+    opacity:0.85;
+  }
+  
+  #section-{{ section.id }}.rgf_partners .button{
+  	text-align:center;
+    padding-top:80px;
+  }
+  #section-{{ section.id }}.rgf_partners .lmBtn{
+    font-family:"Montserrat";
+    font-size:24px;
+    font-weight:700;
+    color:#fff;
+/*     background-image:url({{ 'button-bg-2.png' | asset_url }}) !important; */
+    background-image:url({{ 'button-montserrat-bg.png' | asset_url }}) !important;
+    background-size:100% 100%;
+    background-position:center;
+    background-repeat:no-repeat !important;
+    padding:14px 50px 22px;
+  }
+  #section-{{ section.id }}.rgf_partners .lmBtn:hover{
+  	opacity:0.95;
+    color:#000;
+  }
+  #section-{{ section.id }} .heading{
+  	text-align:center;
+    color:#DD7C01;
+    font-size:36px;
+    line-height:1.15;
+    margin-bottom:35px;
+    text-shadow:1px 1px 2px rgb(0 0 0 / 16%);
+  }
+  
+  
+  @media (min-width:1515px){
+    #section-{{ section.id }} .container.wide{max-width:1485px;}
+    
+  }
+  @media (max-width:1399px){
+    #section-{{ section.id }} .plogo{
+      padding:0 20px;
+    }
+    #section-{{ section.id }}.rgf_partners .button{
+      padding-top:60px;
+    }
+    #section-{{ section.id }}.rgf_partners .lmBtn{
+      font-size:24px;
+    }
+    
+  }
+  @media (max-width:1279px){
+    #section-{{ section.id }} .plogo{
+      margin-bottom:25px;
+    }
+    #section-{{ section.id }}.rgf_partners .button{
+      padding-top:40px;
+    }
+    
+  }
+  @media (max-width:1199px){
+    #section-{{ section.id }} .heading{font-size:26px;margin-bottom:30px;}
+  }
+  
+  @media (max-width:991px){
+    #shopify-section-{{ section.id }}{padding:30px 0;}
+  	#section-{{ section.id }}.rgf_partners .button{
+      padding-top:30px;
+    }
+    #section-{{ section.id }} .plogo{
+      margin-bottom:20px;
+      padding:0 15px;
+    }
+    #section-{{ section.id }}.rgf_partners .lmBtn{
+      font-size:22px;
+    }
+    #section-{{ section.id }} .heading{font-size:24px;margin-bottom:25px;}
+    
+  }
+  @media (max-width:639px){
+    #shopify-section-{{ section.id }}{padding:25px 0;}
+    #section-{{ section.id }}.rgf_partners .button{
+      padding-top:30px;
+    }
+    #section-{{ section.id }}.rgf_partners .lmBtn{
+      font-size:20px;
+      padding:10px 35px 16px;
+    }
+    #section-{{ section.id }} .heading{font-size:22px;}
+    
+    #section-{{ section.id }} .plogo{
+      margin-bottom:15px;
+      padding:0 10px;
+    }
+    
+  }
+  @media (max-width:479px){
+   	#section-{{ section.id }}.rgf_partners .button{
+      padding-top:25px;
+    }
+    #section-{{ section.id }}.rgf_partners .lmBtn{font-size:18px;}
+    
+  }
+  
+  
+
+</style>
+
+{% endif %}
+
+{% schema %}
+{
+    "name": "Investor Partner Logos",
+    "settings": [
+    	{
+         "type": "header",
+         "content": "Partner Logo Settings"
+      	},
+        {
+          "type": "header",
+          "content": "Section Enable"
+        },
+        {
+          "type": "checkbox",
+          "id": "section_enable",
+          "label": "Section Enable",
+          "default": true
+        },
+		{
+          "type": "text",
+          "id": "plogo_top_heading",
+          "label": "Top Heading"
+        },
+		{
+          "type": "text",
+          "id": "plogo_button_title",
+          "label": "Button Title",
+		  "default": "Find Locally"
+        },
+		{
+          "type": "url",
+          "id": "plogo_button_link",
+          "label": "Button Link"
+        }
+    ],
+    "blocks":[
+    	{
+          "type": "plogo_partner",
+          "name": "Partner",
+              "settings": 
+              [
+                {
+                  "type": "image_picker",
+                  "id": "partner_logo",
+                  "label": "Partner Logo"
+                },
+                {
+                  "type": "url",
+                  "id": "partner_link",
+                  "label": "Partner Link"
+                }
+              ]
+   		}
+  	]
+}
+{% endschema %}

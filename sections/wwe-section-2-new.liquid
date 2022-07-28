@@ -1,0 +1,203 @@
+{% if section.settings.enable_wwe_sec2_new == true %}
+<div class="wwe--sec2--new" id="section-{{ section.id }}">
+  <div class="top--part">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 content">
+          <div class="inner">
+            {% if section.settings.section_title != blank %}
+              <h2 class="heading">{{section.settings.section_title}}</h2>
+            {% endif %}
+            {% if section.settings.section_content != blank %}
+              <div class="text--content">{{section.settings.section_content}}</div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bottom--part">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="p--logos">
+            {%- for block in section.blocks -%}
+            <div class="p--logo">
+              {% if block.settings.p_link != blank %}
+              <a href="{{lock.settings.p_link}}" target="_blank">
+              {% endif %}
+                {% if block.settings.p_logo != blank %}
+                  <img src="{{ block.settings.p_logo | img_url: 'master' }}" class="lazyload img-fluid" alt="">
+                {% endif %}
+              {% if block.settings.p_link != blank %}
+              </a>
+              {% endif %}
+            </div>
+            {%- endfor -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<style>
+  #section-{{ section.id }}{padding-top:50px;padding-bottom:25px;background:#EF6A00;}
+  #section-{{ section.id }} .content{text-align:center;}
+  #section-{{ section.id }} .content .inner{
+  	max-width:1024px;
+    margin:0 auto;
+  }
+  #section-{{ section.id }} .heading{
+  	font-family:'Adrianna';
+    font-weight:800;
+    font-size:65px;
+    line-height:1.25;
+    color:#FFF;
+    margin-bottom:10px;
+  }
+  #section-{{ section.id }} .content p{
+  	font-family:'Adrianna';
+    font-weight:400;
+    font-size:30px;
+    line-height:1.35;
+    color:#FFF;
+  }  
+  #section-{{ section.id }} .bottom--part{
+  	background:#F4A05D;
+    padding:20px 0;
+    margin-top:25px;
+  }
+  #section-{{ section.id }} .bottom--part .p--logos{text-align:center;}
+  #section-{{ section.id }} .bottom--part .p--logos .p--logo{
+  	display:inline-block;
+    vertical-align:middle;
+    max-width:175px;
+    padding:0 20px;
+  }
+  #section-{{ section.id }} .bottom--part .p--logos .p--logo a{display:block;}
+  #section-{{ section.id }} .p--logos .slick-track{display:flex;align-items:center;}
+  @media (max-width:1279px){
+    #section-{{ section.id }} .heading{font-size:52px;}
+    #section-{{ section.id }} .content p{font-size:28px;}
+    #section-{{ section.id }} .bottom--part{padding:20px 0 10px;}
+    #section-{{ section.id }} .bottom--part .p--logos .p--logo{margin-bottom:15px;}
+  }
+  @media (max-width:1199px){
+    #section-{{ section.id }}{padding-top:45px;}
+    #section-{{ section.id }} .heading{font-size:42px;}
+    #section-{{ section.id }} .content p{font-size:26px;}
+    #section-{{ section.id }} .bottom--part .p--logos .p--logo{max-width:160px;}
+    
+  }
+  @media (max-width:991px){
+    #section-{{ section.id }}{padding-top:40px;}
+    #section-{{ section.id }} .heading{font-size:36px;}
+    #section-{{ section.id }} .content p{font-size:22px;}
+    #section-wwe-section-2-new .bottom--part{margin-top:20px;}
+    
+  }
+  @media (max-width:767px){
+    #section-{{ section.id }} .heading{font-size:32px;}
+    #section-{{ section.id }} .content{padding-bottom:20px;}
+    #section-{{ section.id }} .bottom--part .p--logos .p--logo{max-width:150px;}
+    
+  }
+  @media (max-width:575px){
+    #section-{{ section.id }}{padding-top:35px;}
+    #section-{{ section.id }} .heading{font-size:28px;}
+    #section-{{ section.id }} .content p{font-size:18px;}
+    #section-wwe-section-2-new .bottom--part{margin-top:15px;}
+/*     #section-{{ section.id }} .bottom--part .p--logos .p--logo{max-width:135px;} */
+    
+  }
+  @media (max-width:479px){
+    #section-{{ section.id }} .heading{font-size:24px;}
+    #section-{{ section.id }} .content p{font-size:16px;}
+/*     #section-{{ section.id }} .bottom--part .p--logos .p--logo{max-width:125px;} */
+    
+  }
+  
+</style>
+
+
+{% schema %}
+  {
+    "name": "Why We Exists Sec 2 New",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section Enable"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_wwe_sec2_new",
+        "label": "Enable Section 2 new",  
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Content Options"
+      },
+      {
+        "type": "text",
+        "id": "section_title",
+        "label": "Section Title"
+      },
+	  {
+        "type": "textarea",
+        "id": "section_content",
+        "label": "Section Content"
+      }
+
+	],
+	"blocks":[
+    	{
+          "type": "partner_logos",
+          "name": "Partner Logos",
+              "settings": 
+              [	
+                {
+                  "type": "image_picker",
+                  "id": "p_logo",
+                  "label": "Logo"
+                },
+				{
+                  "type": "url",
+                  "id": "p_link",
+                  "label": "Link"
+                }
+                
+              ]
+   		}
+  	]
+  }
+{% endschema %}
+
+
+<script>
+  	jQuery(document).ready(function($){
+      	if( $('.p--logos .p--logo').length > 0 ){
+
+  			$('.p--logos').slick({
+              infinite:true,
+              slidesToShow:1,
+              slidesToScroll:1,
+              variableWidth:true,
+              centerMode:true,
+              speed:5000,
+              autoplay:true,
+              autoplaySpeed:0,
+              cssEase:'linear',
+              dots:false,
+              arrows:false,
+              pauseOnHover:false,
+              swipeToSlide:false,
+              focusOnSelect:false,
+              adaptiveHeight:false
+  			});
+      	}
+
+  	});
+</script>

@@ -1,0 +1,189 @@
+{% if section.settings.section_enable %}
+<div class="press--highlights" id="section-{{ section.id }}">
+  <div class="container">
+	<div class="heading">
+      <h2>{{ section.settings.ph_heading }}</h2>
+    </div>
+    <div class="row ph--items">
+      {% assign count = 0 %}
+      {%- for block in section.blocks -%}
+          
+          <div id="block-{{ block.id }}" class="col-md-3 ph--item ph_{{forloop.index0}}" {%- if count > 7 -%}style="display:none;"{%- endif -%}>
+            <div class="inner">
+              {%- if block.settings.ph_link -%}
+              <a href="{{block.settings.ph_link}}" target="_blank">
+              {% endif %}
+
+                {%- if block.settings.ph_logo -%}
+                <p class="ph--logo"><img src="{{ block.settings.ph_logo | img_url: 'master' }}" alt=""></p>
+                {% endif %}
+                {%- if block.settings.ph_title -%}
+                <p class="ph--title">{{ block.settings.ph_title }}</p>
+                {% endif %}
+                
+              {%- if block.settings.ph_link -%}
+              </a>
+              {% endif %}
+            </div>
+          </div>
+          {% assign count = count | plus: 1 %}
+      {%- endfor -%}
+    </div>
+    
+    {%- if count > 8 -%} 
+    <div class="button">
+      <a href="Javascript:;" class="lmBtn">View More</a>
+    </div>
+    {%- endif -%}
+    
+  </div>
+</div>
+{% endif %}
+
+<style>
+  
+  #section-{{ section.id }}{
+  	background:#fff;
+    display:block;
+    margin:0px auto;
+    padding-top:60px;
+  }  
+  #section-{{ section.id }} .heading{margin-bottom:30px;text-align:center;}
+  #section-{{ section.id }} .heading h2{
+    font-family:'Adrianna';
+    font-weight:700;
+    color:#DD3629;
+    font-size:65px;
+    line-height:1.25;
+    text-transform:uppercase;
+  }
+  .ph--items .ph--item{margin-bottom:40px;text-align:center;}
+  .ph--item .ph--logo{text-align:center;min-height:26px;margin-bottom:12px;}
+  .ph--item .ph--logo img{width:auto;max-width:150px;max-height:26px;height:auto;}
+  .ph--item .ph--title{
+  	text-align:center;
+/*     color:#DD7C01; */
+    font-family:'Adrianna-Condensed';
+    font-weight:600;
+    font-size:20px;
+    line-height:1.2;
+    
+  }
+  .ph--items .ph--item a:hover .ph--logo{opacity:0.75;}
+  .ph--items .ph--item a:hover .ph--title{color:#DD7C01;}
+  #section-{{ section.id }} .button{padding-top:15px;text-align:center;}
+  #section-{{ section.id }} .button .lmBtn{
+  	font-family:'Adrianna';
+    font-weight:700;
+    font-size:16px;
+    line-height:1;
+    background:#DD7C01;
+    color:#fff;
+    text-transform:uppercase;
+    padding:12px 45px;
+    border-radius:50px;
+  }
+  #section-{{ section.id }} .button .lmBtn:hover{color:#000;}
+  
+  @media (min-width:1515px){
+    #section-{{ section.id }} .container.wide{max-width:1485px;}
+    
+  }
+  @media (max-width:1199px){
+    #section-{{ section.id }}{padding-top:50px;}
+    #section-{{ section.id }} .heading h2{font-size:52px;}
+  }
+  @media (max-width:991px){
+  	#section-{{ section.id }}{padding-top:45px;}
+    #section-{{ section.id }} .heading h2{font-size:42px;}
+    #section-press-highlights .heading{margin-bottom:25px;}
+    .ph--item .ph--logo{margin-bottom:10px;}
+    #section-{{ section.id }} .button .lmBtn{padding:10px 40px;}
+    
+  }
+  @media (max-width:767px){
+  	#section-{{ section.id }}{padding-top:40px;}
+    #section-{{ section.id }} .heading h2{font-size:32px;}
+    .ph--items .ph--item{margin-bottom:30px;}
+    
+  }
+  @media (max-width:575px){
+    #section-{{ section.id }}{padding-top:30px;}
+    #section-{{ section.id }} .heading h2{font-size:28px;}    
+    #section-press-highlights .heading{margin-bottom:20px;}
+    .ph--item .ph--title{font-size:18px;line-height:1.15;}
+    #section-{{ section.id }} .button .lmBtn{padding:10px 35px;}
+    
+  }
+  @media (max-width:479px){
+    #section-{{ section.id }} .heading h2{font-size:24px;}
+    .ph--item .ph--logo{margin-bottom:8px;}
+    .ph--items .ph--item{margin-bottom:25px;}
+    #section-{{ section.id }} .button .lmBtn{padding:10px 30px;font-size:14px;}
+  }
+  
+  
+
+</style>
+{% schema %}
+{
+    "name": "Press Highlights",
+    "settings": [
+		{
+		  "type": "header",
+          "content": "Section Enable"
+        },
+		{
+          "type": "checkbox",
+          "id": "section_enable",
+          "label": "Section Enable",  
+          "default": true
+      	},
+    	{
+         "type": "header",
+         "content": "Press Highlights Settings"
+      	},
+		{
+          "type": "text",
+          "id": "ph_heading",
+          "label": "Heading",
+		  "default": "Press Hightlights"
+        }
+    ],
+    "blocks":[
+    	{
+          "type": "ph_item",
+          "name": "Press",
+              "settings": 
+              [
+                {
+                  "type": "image_picker",
+                  "id": "ph_logo",
+                  "label": "Press Logo"
+                },
+       	 		{
+                  "type": "text",
+                  "id": "ph_title",
+                  "label": "Press Title"
+                },
+                {
+                  "type": "url",
+                  "id": "ph_link",
+                  "label": "Press Link"
+                }
+              ]
+   		}
+  	]
+}
+{% endschema %}
+
+<script>
+  jQuery(document).ready(function($){
+    if( $('.lmBtn').length > 0 ){
+      $('.lmBtn').click(function(){
+        $('.press--highlights .button').fadeOut('500');
+      	$('.ph--items .ph--item').fadeIn('1500');
+      });
+    }
+  });
+</script>

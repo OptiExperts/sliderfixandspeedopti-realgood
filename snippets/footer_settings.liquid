@@ -1,0 +1,7 @@
+{% if settings.footer_style == "default" %}
+{% section 'footer' %}
+{% elsif settings.footer_style == "default2" %}
+{% section 'footer_3' %}
+{% elsif settings.footer_style == "copyright" %}
+{% section 'footer_2' %}
+{% endif %}

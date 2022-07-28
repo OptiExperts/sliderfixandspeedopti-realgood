@@ -1,0 +1,96 @@
+<div class="row philosophy-bottom">
+            <div class="poloroid-parent  pol-rotate-7-left">
+                <div class="poloroid-img">
+                    {% if section.settings.card_1_img != blank  %}
+                        <img src="{{ 'bartley_v2.jpg' | asset_url }}" alt="poloroid">
+                    {% else %}
+                        <img src="{{ block.settings.card_1_img | img_url: 'master' }}" alt="poloroid">
+                    {% endif %}
+
+                </div>
+                <div class="poloroid-discription">
+                    {% if section.settings.card_1_head != blank  %}
+                        <h3>{{ section.settings.card_1_head }}</h3> 
+                        {{ section.settings.card_1_desc }}
+                    {% else %}
+                        <h3>Bartley Weaver (@dreamweaveriv) Bodybuilder, Professional Eater, Tennessee Titan</h3> 
+                        <p>I choose Real Good Foods because I can enjoy all of my favorite savory foods and still hit my macronutrient goals. Most of my savory cravings are loaded with carbs, but with the lineup at RGF I can tackle my cravings even on a low carb diet. I have used RGF throughout my contest preps the past three years. Dieting has never been easier! I love having flexibility to eat non-traditional bodybuilding food and still reach my physique goals.</p> 
+                    {% endif %}
+                </div>
+            </div>
+            <div class="poloroid-parent  pol-rotate-7-right">
+                <div class="poloroid-img">
+                    
+                    {% if section.settings.card_2_img != blank  %}
+                        <img src="{{ section.settings.card_2_img | img_url: 'master' }}" alt="poloroid">
+                    {% else %}
+                        <img src="{{ 'megan_v2.jpg' | asset_url }}" alt="poloroid">
+                    {% endif %}
+
+                </div>
+                <div class="poloroid-discription">
+                    {% if section.settings.card_2_head != blank  %}
+                        <h3>{{ section.settings.card_2_head }}</h3> 
+                        {{ section.settings.card_2_desc }}
+                    {% else %}
+                        <h3>Megan Cornelius (@pushupsnpumps) Type 1 Diabetic</h3> 
+                        <p>I choose to eat Real Good Foods because they taste like many of my favorites, without having a huge impact on my blood sugar. It’s much easier to manage diabetes when you are able to find foods you love that are lower carb, but still taste great!</p> 
+                    {% endif %}
+                </div>
+            </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Roots : Cards",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Card 1"
+      },
+      {
+        "type": "image_picker",
+        "id": "card_1_img",
+        "label": "Card 1 Image",
+        "info": "Recommended Size: 600 x 400 px"
+      },
+      {
+        "type": "text",
+        "id": "card_1_head",
+        "label": "Card 1 Heading"
+      },
+      {
+        "type": "richtext",
+        "id": "card_1_desc",
+        "label": "Card 1 Desc"
+      },
+      {
+        "type": "header",
+        "content": "Card 2"
+      },
+      {
+        "type": "image_picker",
+        "id": "card_2_img",
+        "label": "Card 2 Image",
+        "info": "Recommended Size: 600 x 400 px"
+      },
+      {
+        "type": "text",
+        "id": "card_2_head",
+        "label": "Card 2 Heading"
+      },
+      {
+        "type": "richtext",
+        "id": "card_2_desc",
+        "label": "Card 2 Desc"
+      }
+    ],
+    "presets": [
+        {
+          "name": "Roots : Cards",
+          "category": "1. Our Roots"
+        }
+    ]
+  }
+{% endschema %}
+

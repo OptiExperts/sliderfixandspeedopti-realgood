@@ -1,0 +1,169 @@
+<!-- Our STORY Desktop -->
+    <div class="our-story-parent show-desktop">
+        <div class="row our-story-heading">
+            <div class="col-md-12">
+                <h2>{{ section.settings.timeline_heading }}</h2>
+                <div class="story-button-container">
+                    <a href="#" onclick="return false;">
+                        <img src="{{ 'arrow-down.svg' | asset_url }}" alt="poloroid">
+                        {{ section.settings.button_text }}
+                    </a>
+                </div>
+            </div>
+        </div>
+         
+        <div class="story-timeline-container">
+            
+            {%- for block in section.blocks -%}
+
+                {% case block.type %}  
+                    {% when 'section_timeline_left' %}
+                        <div class="row" id="tl_2010-row"><!-- START ROW!! -->
+                                <div class="col-md-6 col-sm-12 story-timeline-left">
+                                    <div class="xpoloroid-parent  pol-rotate-7-left">
+                                        <div class="xpoloroid-img">
+                                            <img src="{{ block.settings.timeline_image | img_url: '455x340' }}" alt="{{ block.settings.feature_head }}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12 story-timeline-right">
+                                    <h2>{{ block.settings.timeline_head }}</h2>
+                                    <p>{{ block.settings.timeline_desc }}</p>
+                                </div>
+                            </div>
+                    {% else %}
+                        <div class="row" id="tl_2010-row"><!-- START ROW!! -->
+                            <div class="col-md-6 col-sm-12 story-timeline-left">
+                                <h2>{{ block.settings.timeline_head }}</h2>
+                                <p>{{ block.settings.timeline_desc }}</p>
+                            </div>
+                            <div class="col-md-6 col-sm-12 story-timeline-right">
+                                <div class="xpoloroid-parent  pol-rotate-7-right">
+                                    <div class="xpoloroid-img">
+                                        <img src="{{ block.settings.timeline_image | img_url: '455x340' }}" alt="{{ block.settings.feature_head }}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- END ROW!! -->
+                {% endcase %}
+            {%- endfor -%}
+            
+        </div>
+    </div>
+
+    <!-- Our STORY MOBILE -->
+    <div class="our-story-parent mobile-our-story show-mobile">
+        <div class="row our-story-heading">
+            <div class="col-md-12">
+                <h2>{{ section.settings.timeline_heading }}</h2>
+                <div class="story-button-container">
+                    <a href="#" onclick="return false;" id="openMobileStoriesMission">
+                        <img src="{{ 'arrow-down.svg' | asset_url }}" alt="poloroid">
+                        {{ section.settings.button_text }}
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="mobile-story-timeline-container">
+
+            <!-- BLOCK 1 2018 -->
+            {%- for block in section.blocks -%}
+                    <div class="mobile-story-timeline-block">
+                        <div class="mobile-story-timeline-top">
+                            <h2>{{ block.settings.timeline_head }}</h2>
+                            <p>{{ block.settings.timeline_desc }}</p>
+                        </div>
+
+                        <div class="mobile-story-timeline-bottom">
+                            <img src="{{ block.settings.timeline_image | img_url: '455x340' }}" alt="poloroid">
+                        </div>
+                    </div><!-- BLOCK 1 2018 -->
+            {%- endfor -%}
+          
+       </div>
+    </div>
+
+
+{% schema %}
+  {
+    "name": "Root: Timelines",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Timelines Block"
+      },
+      {
+        "type": "text",
+        "id": "timeline_heading",
+        "label": "Heading"
+      },
+      {
+        "type": "text",
+        "id": "button_text",
+        "label": "Timeline Button Text"
+      }
+    ],
+    "blocks":[
+        {
+          "type": "section_timeline_left",
+          "name": "Timeline (Left)",
+          "limit": 12,
+          "settings": [
+            {
+              "type": "header",
+              "content": "Timeline Block with Image on Left"
+            },
+            {
+                "type": "text",
+                "id": "timeline_head",
+                "label": "Heading"
+            },
+            {
+                "type": "textarea",
+                "id": "timeline_desc",
+                "label": "Description"
+            },
+            {
+                "type": "image_picker",
+                "id": "timeline_image",
+                "label": "Timeline Image",
+                "info": "Recommended Size: 455 x 340 px Tilted PNG."
+            }
+          ]
+        },
+        {
+          "type": "section_timeline_right",
+          "name": "Timeline (Right)",
+          "limit": 12,
+          "settings": [
+            {
+              "type": "header",
+              "content": "Timeline Block with Image on Right"
+            },
+            {
+                "type": "text",
+                "id": "timeline_head",
+                "label": "Heading"
+            },
+            {
+                "type": "textarea",
+                "id": "timeline_desc",
+                "label": "Description"
+            },
+            {
+                "type": "image_picker",
+                "id": "timeline_image",
+                "label": "Timeline Image",
+                "info": "Recommended Size: 455 x 340 px Tilted PNG."
+            }
+          ]
+        }
+    ],
+    "presets": [
+        {
+          "name": "Root: Timelines",
+          "category": "1. Our Roots"
+        }
+    ]
+  }
+{% endschema %}

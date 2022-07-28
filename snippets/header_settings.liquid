@@ -1,0 +1,18 @@
+{% if settings.header_type == "default" %}
+{% section 'header' %}
+{% elsif settings.header_type == "special" %}
+{% section 'header_special' %}
+{% elsif settings.header_type == "essential" %}
+{% section 'header_essentials' %}
+{% elsif settings.header_type == "wearables" %}
+{% section 'header-wearables' %}
+{% elsif settings.header_type == "overlap" %}
+{% section 'header-overlap-menu' %}
+{% elsif settings.header_type == "bottom_header" %}
+{% section 'header_below_in_slider' %}
+{% endif %}
+
+
+
+
+

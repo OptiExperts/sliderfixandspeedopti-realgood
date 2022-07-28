@@ -1,0 +1,309 @@
+<div class="product-category-container mb-90 mb-md-70 mb-sm-55" id="section-{{ section.id }}">
+  <div class="{% if section.settings.container_width == 'container' %} container {% elsif section.settings.container_width == 'fluid' %} container wide {% endif %}">
+    <div class="row">
+      <div class="col-lg-12">
+        <!--=======  product category wrapper  =======-->
+        
+        {% capture data_slick_activation %}
+        data-slick-setting='{
+        "slidesToShow": 3,
+        "arrows": true,
+        "autoplay": true,
+        {% if settings.rtl_enable %}                
+        "rtl": true,
+        {% endif %}
+        "autoplaySpeed": 5000,
+        "speed": 1000,
+        "prevArrow": {"buttonClass": "slick-prev", "iconClass": "ion-ios-arrow-thin-left" },
+        "nextArrow": {"buttonClass": "slick-next", "iconClass": "ion-ios-arrow-thin-right" }
+        }'
+        data-slick-responsive='[
+        {"breakpoint":1501, "settings": {"slidesToShow": 3} },
+        {"breakpoint":1199, "settings": {"slidesToShow": 3} },
+        {"breakpoint":991, "settings": {"slidesToShow": 2, "arrows": false} },
+        {"breakpoint":767, "settings": {"slidesToShow": 1, "arrows": false} },
+        {"breakpoint":575, "settings": {"slidesToShow": 1, "arrows": false} },
+        {"breakpoint":479, "settings": {"slidesToShow": 1, "arrows": false} }
+        ]'
+        {% endcapture %}
+
+        <div class="lezada-slick-slider product-category-slider" {{ data_slick_activation }} >
+          {% for block in section.blocks %}
+          {%- case block.type -%}
+          {%- when 'category_products' -%}
+          {% assign cat_collection = collections[block.settings.categegory_handle] %}
+          <div class="col">
+            <div class="single-category single-category--two">
+              <div class="single-category__image single-category__image--two">
+                <a href="{{ cat_collection.url }}">
+                  {% if block.settings.collection_img == 'default' %}
+                  <img data-src="{% if cat_collection.image.src != blank %}{{ cat_collection.image.src | collection_img_url: '525x280' }} {% else %} https://via.placeholder.com/525x280 {% endif %} " class="lazyload img-fluid" alt="{{ cat_collection.image.src.alt }}">
+                  {% elsif block.settings.collection_img == 'custom' %}
+                  <img data-src="{% if block.settings.custom_collection_img != blank %}{{ block.settings.custom_collection_img | img_url: '525x280' }} {% else %} https://via.placeholder.com/525x280 {% endif %} " class="lazyload img-fluid" alt="{{ block.settings.custom_collection_img.alt }}">
+                  {% endif %}
+                </a>
+              </div>
+              <div class="single-category__content single-category__content--two mt-25">
+                <div class="title">
+                  <a href="{{ cat_collection.url }}">{{ cat_collection.title | default: 'Collection' }}</a>
+                </div>
+                <p class="product-count">{{ cat_collection.all_products_count }}</p>
+              </div>
+            </div>
+          </div>
+          {%- endcase -%}
+          {%- endfor -%}
+        </div>
+        <!--=======  End of product category wrapper  =======-->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% include 'section_typography' %}
+
+
+{% schema %}
+  {
+    "name": "Collection Banner",
+    "settings": [
+		{
+          "type":  "radio",
+          "id":    "container_width",
+          "label": "Container Width",
+          "options": [
+            { "value": "container", "label": "Container" },
+            { "value": "fluid", "label": "Full Width" }
+          ],
+          "default":   "fluid"
+        }
+	],
+	"blocks": [
+       {
+        "type": "category_products",
+        "name": "Add Collection",
+        "settings": [
+            {
+              "type": "collection",
+              "id": "categegory_handle",
+              "label": "Select Collection"
+            },
+			{
+              "type":  "radio",
+              "id":    "collection_img",
+              "label": "Collection Image",
+              "options": [
+                { "value": "default", "label": "Default Collection Thumb" },
+                { "value": "custom", "label": "Custom Collection Thumb" }
+              ],
+              "default":   "default"
+            },
+			{
+              "type": "image_picker",
+              "id": "custom_collection_img",
+              "label": "Custom Collection Iamge",
+              "info": "Recommended Size: 525 x 280 px"
+            }
+          ]
+        },
+		{
+          "type": "section_margin",
+          "name": "Section Margin",
+		  "limit": 1,
+          "settings": [
+            {
+			  "type": "header",
+			  "content": "Large/Desktop Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_top",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_bottom",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Bottom",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "header",
+			  "content": "Tablet Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_top_md",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_bottom_md",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Bottom",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "header",
+			  "content": "Mobile Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_top_xs",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_bottom_xs",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Bottom",
+			  "unit": "px",
+			  "default": 0
+			}
+          ]
+       },
+	   {
+          "type": "section_padding",
+          "name": "Section Padding",
+		  "limit": 1,
+          "settings": [
+            {
+			  "type": "header",
+			  "content": "Large/Desktop Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_top",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_bottom",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Bottom",
+			  "unit": "px",
+			  "default": 100
+			},
+			{
+			  "type": "header",
+			  "content": "Tablet Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_top_md",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_bottom_md",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Bottom",
+			  "unit": "px",
+			  "default": 80
+			},
+			{
+			  "type": "header",
+			  "content": "Mobile Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_top_xs",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_bottom_xs",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Bottom",
+			  "unit": "px",
+			  "default": 60
+			}
+          ]
+       },
+	   {
+          "type": "section_background",
+          "name": "Section Background",
+		  "limit": 1,
+          "settings": [
+            {
+			  "type": "image_picker",
+			  "id": "section_bg_image",
+			  "label": "BG Image"
+			},
+			{
+			  "type": "color",
+			  "id": "section_bg_color",
+			  "label": "BG Color",
+			  "default": "#ffffff"
+			}
+          ]
+       }
+	
+	],
+	"presets": [
+		{
+		  "name": "Collection Banner Slider",
+		  "category": "5. Collection Banner",
+			"blocks":[
+				{
+					"type": "category_products"
+				},
+				{
+					"type": "category_products"
+				},
+				{
+					"type": "category_products"
+				},
+				{
+					"type": "category_products"
+				}
+			]
+		}
+	]
+  }
+{% endschema %}

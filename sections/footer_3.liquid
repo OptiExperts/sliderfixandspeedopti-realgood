@@ -1,0 +1,771 @@
+{% if section.settings.footer_section_enable == true %}
+<div class="footer-container footer-two pt-100 pt-sm-85 pt-xs-85 {% if section.settings.footer_overlay %} footer_overlay {% endif %}" id="section-{{ section.id }}">
+  <div class="{% if section.settings.container_width == 'container' %} container {% elsif section.settings.container_width == 'fluid' %} container wide {% endif %}">
+    <div class="row">
+
+      <!--=======  single widget  =======-->
+      {% for block in section.blocks %} 
+      {% case block.type %}	
+
+
+      {% when 'contact_widget' %}
+      <div class="col footer-single-widget">
+        {% if block.settings.email_id != blank %}
+        <p class="footer-email"><a href="{{ block.settings.email_id_link }}">{{ block.settings.email_id }}</a></p>
+        {% endif %}
+        
+        {% if block.settings.phone_number != blank %}
+        <p class="footer-phone">{{ block.settings.phone_number }}</p>
+        {% endif %}
+
+        <div class="store-icons"> 
+          <a href="{{ block.settings.app_link }}"> 
+          	<img src="{% if block.settings.apps_logo != blank %}{{ block.settings.apps_logo | img_url: '344x48' }} {% else %} https://via.placeholder.com/344x48 {% endif %}" class="img-fluid" alt="">
+          </a>
+       </div>
+      </div>
+
+      <!--=======  End of single widget  =======-->
+
+
+      {% when 'widget_menu' %}
+      <div class="col footer-single-widget">
+        {% if block.settings.footer_widget_title != blank %}
+        <h5 class="widget-title">{{ block.settings.footer_widget_title }}</h5>
+        {% endif %}
+
+        <div class="footer-nav-container">
+          <nav>
+            <ul>
+              {% assign footer_menu = block.settings.footer_menu_handle %}
+              {% for link in linklists[footer_menu].links %}
+              <li><a href="{{ link.url }}"> {{ link.title }}</a></li>
+              {% endfor %}
+            </ul>
+          </nav>
+        </div>
+
+        <!--=======  End of footer navigation container  =======-->
+      </div>
+
+      <!--=======  End of single widget  =======-->
+
+
+      {% when 'social_icon' %}
+      <!--=======  single widget  =======-->
+      <div class="col footer-single-widget">
+
+        {% if block.settings.footer_widget_title != blank %}
+        <h5 class="widget-title">{{ block.settings.footer_widget_title }}</h5>
+        {% endif %}
+
+        <div class="footer-nav-container footer-social-links footer-social-links--change-color">
+          <nav>
+            <ul>
+              {% if block.settings.social_icon_1_name != blank %}
+              <li><a href="{{ block.settings.social_icon_1_link }}"><i class="fa fa-{{ block.settings.social_icon_1_name }}"></i> {{ block.settings.social_icon_1_name }}</a></li>        
+              {% endif %}
+              {% if block.settings.social_icon_2_name != blank %}
+              <li><a  href="{{ block.settings.social_icon_2_link }}"><i class="fa fa-{{ block.settings.social_icon_2_name }}"></i> {{ block.settings.social_icon_2_name }} </a></li>        
+              {% endif %}   
+              {% if block.settings.social_icon_3_name != blank %}
+              <li><a  href="{{ block.settings.social_icon_3_link }}"><i class="fa fa-{{ block.settings.social_icon_3_name }}"></i> {{ block.settings.social_icon_3_name }} </a></li>        
+              {% endif %}
+              {% if block.settings.social_icon_4_name != blank %}
+              <li><a href="{{ block.settings.social_icon_4_link }}"><i class="fa fa-{{ block.settings.social_icon_4_name }}"></i> {{ block.settings.social_icon_4_name }} </a></li>        
+              {% endif %}
+              
+              {% if block.settings.social_icon_5_name != blank %}
+              <li><a href="{{ block.settings.social_icon_5_link }}"><i class="fa fa-{{ block.settings.social_icon_5_name }}"></i> {{ block.settings.social_icon_5_name }} </a></li>        
+              {% endif %}
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      {% when 'newsletter' %}
+      <div class="col footer-single-widget">
+
+        <div class="footer-subscription-widget footer-subscription-widget--change-subscription-style">
+          {% if block.settings.newsletter_title != blank %}
+          <h2 class="footer-subscription-title">{{ block.settings.newsletter_title }}</h2>
+		 {% endif %}
+          <!--=======  subscription form  =======-->
+
+          
+          
+          {%- if block.settings.newsletter_system == 'by_shopify_form' -%}
+          {%- assign formId = 'Contact_' | append: section.id -%}
+          {%- form 'customer', id: formId, class: "shopify_newsletter__form" -%}
+          {%- if form.posted_successfully? -%}
+          <p class="form-message form-success">{{ 'general.newsletter_form.confirmation'| t }} </p>
+          {%- else -%}
+          <div class="subscription-form">
+            {%- if form.errors -%}
+            <div class="form-message form-message--error">
+              {{ form.errors | default_errors }}
+            </div>
+            {%- endif -%}
+            <div class="form__inner">
+              <input type="hidden" name="contact[tags]" value="newsletter">
+              <input type="email" name="contact[email]" id="Email" value="{% if customer %}{{ customer.email }}{% endif %}"
+                     placeholder="{{ block.settings.newsletter_input_placeholder }}" aria-label="{{ 'general.newsletter_form.newsletter_email'| t }}" {% if form.errors %}aria-invalid="true"{% endif %} autocorrect="off" autocapitalize="off">
+              <button type="submit"  name="commit" id="Subscribe"><i class="ion-ios-arrow-thin-right"></i></button>
+            </div>
+          </div>
+          {%- endif -%}
+          {%- endform -%}
+
+          {%- elsif block.settings.newsletter_system == 'by_mailchimp' -%}
+          <div class="subscription-form">
+            <form id="mc-form" class="mc-form">
+              <input type="email" placeholder="{{ block.settings.newsletter_input_placeholder }}" required>
+              <button type="submit"><i class="ion-ios-arrow-thin-right"></i></button>
+            </form>
+          </div>
+          <div class="mailchimp-alerts">
+            <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
+            <div class="mailchimp-success"></div><!-- mailchimp-success end -->
+            <div class="mailchimp-error"></div><!-- mailchimp-error end -->
+          </div><!-- mailchimp-alerts end -->
+          {%- endif -%}
+
+        </div>
+
+      </div>
+      
+      {% endcase %}
+      {% endfor %}
+
+    </div>
+
+    
+
+    {% if section.settings.footer_bottom_enable == true %}
+    <div class="row align-items-center mt-50 mt-sm-0 mt-xs-0 pb-15">
+      
+      {% assign copyright_text = section.settings.copyright_text_enable %}
+      {% assign copyright_logo = section.settings.copyright_logo_enable %}
+      {% assign payment_icon = section.settings.payment_icon_enable %}
+      
+      
+      {% if copyright_text == true %}
+      <div class="{% if copyright_logo == true and payment_icon == true %} col-lg-4 col-md-4 text-left {% elsif copyright_logo == true or payment_icon == true %}  col-lg-6 col-md-6 text-left {% else %}col-12 text-center {% endif %} col-sm-12 footer-single-widget mb-0 mb-sm-30">
+        <div class="copyright-text">
+          {{ section.settings.copy_right_text }}
+        </div>
+
+      </div>
+      {% endif %}
+      
+
+      {% if copyright_logo == true %}
+      <div class="{% if copyright_text == true and payment_icon == true %} col-lg-4 col-md-4 text-left text-md-center {% elsif copyright_text == true or payment_icon == true %}  col-lg-6 col-md-6 text-left {% else %}col-12 text-center {% endif %} col-sm-12 footer-single-widget  mb-0 mb-sm-30">
+        <!--=======  logo  =======-->
+
+        <div class="logo mb-0">
+          {%- if section.settings.logo -%}
+          <a href="/">
+            <img src="{{ section.settings.logo | img_url: '300x300' }}" alt="{{ section.settings.logo.alt | default: shop.name }}">
+
+          </a>
+          {%- else -%}
+          <a href="/">
+            {{ shop.name }}
+          </a>
+          {%- endif -%}
+        </div>
+
+        <!--=======  End of logo  =======-->
+      </div>
+      {% endif %}
+      
+      {% if payment_icon == true %}
+
+      <div class="{% if copyright_text == true and copyright_logo == true %} col-lg-4 col-md-4 text-left text-md-right{% elsif copyright_text == true or copyright_logo == true %}  col-lg-6 col-md-6 text-right text-md-right {% else %}col-12 text-center {% endif %}  col-sm-12 footer-single-widget mb-0 mb-sm-20 ">
+        <!--=======  payment icon  =======-->
+
+         
+          <div class="payment-icon">
+            {% for block in section.blocks %}
+            {% case block.type %}
+            {% when 'american_express' %}
+            {{ 'american_express' | payment_type_svg_tag: 'payment-icon-name' }}
+            {% when 'apple_pay' %}
+            {{ 'apple_pay' | payment_type_svg_tag: 'payment-icon-name' }}
+            {% when 'bitcoin' %}
+            {{ 'bitcoin' | payment_type_svg_tag: 'payment-icon-name' }}
+            {% when 'dankort' %}
+            {{ 'dankort' | payment_type_svg_tag: 'payment-icon-name' }}
+            {% when 'diners_club' %}
+            {{ 'diners_club' | payment_type_svg_tag: 'payment-icon-name' }}
+            {% when 'discover' %}
+            {{ 'discover' | payment_type_svg_tag: 'payment-icon-name' }}
+            {% when 'dogecoin' %}
+            {{ 'dogecoin' | payment_type_svg_tag: 'payment-icon-name' }}
+            {% when 'dwolla' %}
+            {{ 'dwolla' | payment_type_svg_tag: 'payment-icon-name' }}
+            {% when 'forbrugsforeningen' %}
+            {{ 'forbrugsforeningen' | payment_type_svg_tag: 'payment-icon-name' }}
+            {% when 'google_pay' %}
+            {{ 'google_pay' | payment_type_svg_tag: 'payment-icon-name' }}
+            {% when 'jcb' %}
+            {{ 'jcb' | payment_type_svg_tag: 'payment-icon-name' }}
+            {% when 'klarna' %}
+            {{ 'klarna' | payment_type_svg_tag: 'payment-icon-name' }}
+            {% when 'litecoin' %}
+            {{ 'litecoin' | payment_type_svg_tag: 'payment-icon-name' }}
+            {% when 'maestro' %}
+            {{ 'maestro' | payment_type_svg_tag: 'payment-icon-name' }}
+            {% when 'master' %}
+            {{ 'master' | payment_type_svg_tag: 'payment-icon-name' }}
+            {% when 'paypal' %}
+            {{ 'paypal' | payment_type_svg_tag: 'payment-icon-name' }}
+            {% when 'shopify_pay' %}
+            {{ 'shopify_pay' | payment_type_svg_tag: 'payment-icon-name' }}
+            {% when 'sofort' %}
+            {{ 'sofort' | payment_type_svg_tag: 'payment-icon-name' }}
+            {% when 'visa' %}
+            {{ 'visa' | payment_type_svg_tag: 'payment-icon-name' }}
+            {% endcase %}
+            {% endfor %}
+          </div>
+          
+
+        <!--=======  End of payment icon  =======-->
+      </div>
+      
+      {% endif %}
+      
+    </div>
+    {% endif %}
+    
+    
+  </div>
+</div>
+
+{% endif %}
+
+<style>
+ 
+  {% for block in section.blocks %} 
+  
+  	{% case block.type %}		
+      {% when 'footer_typography' %}
+        #section-{{ section.id }}.footer-container.footer-two{
+           background: {{ block.settings.footer_bg_color }} {%- if block.settings.footer_bg_image -%}url("{{ block.settings.footer_bg_image | img_url: 'master' }}"){%- endif -%} no-repeat scroll center center / cover;
+  		}
+          #section-{{ section.id }} .footer-single-widget h5.widget-title,#section-{{ section.id }} .footer-subscription-widget .footer-subscription-title{
+            color: {{ block.settings.widget_title_color }};
+          }
+          #section-{{ section.id }} .footer-single-widget .copyright-text p,.footer-nav-container nav ul li a,.footer-subscription-widget .subscription-subtitle,.footer-single-widget p.footer-email,.footer-single-widget p.footer-phone {
+            color: {{ block.settings.footer_body_color }};
+          }
+           #section-{{ section.id }} .footer-social-links ul li a i {
+             color: {{ block.settings.social_icon_color }};
+          }
+          #section-{{ section.id }}  .mailchimp-success{
+            color: {{ block.settings.mail_sucess_color }};
+          }
+  		   #section-{{ section.id }}  .footer-nav-container nav ul li a:hover,.footer-subscription-widget--change-subscription-style .subscription-form button:hover,.footer-single-widget p.footer-email a:hover{
+              color: {{ block.settings.footer_body_hover_color }};
+          }
+		  .footer-subscription-widget .subscription-form input,.footer-subscription-widget .subscription-form input:focus {
+            border-color: {{ block.settings.input_border_color }};
+          }
+
+       .footer-subscription-widget--change-subscription-style .subscription-form button {
+            color: {{ block.settings.newsletter_submit_button_color }};
+        }
+          .footer-subscription-widget .subscription-form input {
+            color: {{ block.settings.newsletter_placholder_color }}
+          }
+        .footer-subscription-widget .subscription-form input::-webkit-input-placeholder {
+          color: {{ block.settings.newsletter_placholder_color }};
+        }
+        .footer-subscription-widget .subscription-form input:-ms-input-placeholder {
+          color: {{ block.settings.newsletter_placholder_color }};
+        }
+        .footer-subscription-widget .subscription-form input::-ms-input-placeholder {
+          color: {{ block.settings.newsletter_placholder_color }};
+        }
+        .footer-subscription-widget .subscription-form input::placeholder {
+          color: {{ block.settings.newsletter_placholder_color }};
+        }
+        .footer-subscription-widget .subscription-form input:-ms-input-placeholder {
+          color: {{ block.settings.newsletter_placholder_color }};
+        }
+        .footer-subscription-widget .subscription-form input::-ms-input-placeholder {
+          color: {{ block.settings.newsletter_placholder_color }};
+        }
+  	   
+  
+  
+  
+     {% endcase %}
+  {% endfor %}
+  
+  
+  #section-{{ section.id }}.footer_overlay::before  {
+    background: {{ section.settings.footer_overlay_color }};
+    opacity: {{ section.settings.footer_overlay_opacity }};
+  }
+
+</style>
+
+
+{% schema %}
+  {
+  "name": "Footer",
+    "settings": [
+		{
+             "type":  "radio",
+             "id":    "container_width",
+             "label": "Container Width",
+             "options": [
+               { "value": "container", "label": "Container" },
+               { "value": "fluid", "label": "Full Width" }
+             ],
+             "default":   "fluid"
+          },
+		{
+          "type": "header",
+          "content": "Footer Enable"
+        },
+        {
+          "type": "checkbox",
+          "id": "footer_section_enable",
+          "label": "Footer Section Enable",
+          "default": true
+        },
+		{
+          "type": "header",
+          "content": "Footer Bottom"
+        },
+		{
+          "type": "checkbox",
+          "id": "footer_bottom_enable",
+          "label": "Footer Bottom Enable",
+          "default": true
+        },
+		{
+          "type": "paragraph",
+          "content": "Copyright"
+        },
+		{
+          "type": "checkbox",
+          "id": "copyright_text_enable",
+          "label": "Copyright Enable",
+          "default": true
+      	},
+        {
+          "type": "richtext",
+          "id": "copy_right_text",
+          "label": "CopyRight Text",
+          "default": "<p>Copyright © Lezada Shopify All Right Reserved.</p>"
+        },
+		{
+          "type": "paragraph",
+          "content": "Footer Bottom Logo"
+        },
+		{
+          "type": "checkbox",
+          "id": "copyright_logo_enable",
+          "label": "Copyright Logo Enable",
+          "default": true
+      	},
+		{
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo"
+        },
+		{
+          "type": "paragraph",
+          "content": "Payment Icon"
+        },
+		{
+          "type": "checkbox",
+          "id": "payment_icon_enable",
+          "label": "Show Payment icon",
+          "default": true
+      	},
+		{
+                "type": "header",
+                "content": "Footer Overlay"
+              },
+              {
+                "type": "checkbox",
+                "id": "footer_overlay",
+                "label": "Footer Overlay Enable",
+                "default": false
+              },
+              {
+                "type": "color",
+                "id": "footer_overlay_color",
+                "label": "Overlay Color",
+                "default": "#000"
+              },
+              {
+                "type": "range",
+                "id": "footer_overlay_opacity",
+                "min": 0,
+                "max": 1,
+                "step": 0.1,
+                "label": "Overlay Color Opacity",
+                "default": 0.5
+              }
+		
+
+    ],
+	"blocks":[
+		{
+          "type": "footer_typography",
+          "name": "Footer Color Options",
+		  "limit": 1,
+          "settings": [
+              {
+                "type": "color",
+                "id": "footer_bg_color",
+                "label": "Footer  Bg color",
+                "default": "#f8f8f8"
+              },
+		      {
+                "type": "image_picker",
+                "id": "footer_bg_image",
+                "label": "BG Image"
+              },
+			  {
+                "type": "color",
+                "id": "widget_title_color",
+                "label": "Widget Title Color",
+                "default": "#333"
+              },
+			  {
+                "type": "color",
+                "id": "footer_body_color",
+                "label": "Footer Body color",
+                "default": "#999999"
+              },
+			  {
+                "type": "color",
+                "id": "footer_body_hover_color",
+                "label": "Footer Body Hover color",
+                "default": "#333"
+              },
+			  {
+                "type": "color",
+                "id": "social_icon_color",
+                "label": "Social Icon color",
+                "default": "#333"
+              },
+			  {
+                "type": "color",
+                "id": "input_border_color",
+                "label": "Newsletter Input Boder Color",
+                "default": "#ccc"
+              },
+			  {
+                "type": "color",
+                "id": "newsletter_placholder_color",
+                "label": "Newsletter Placeholder Color",
+                "default": "#777"
+              },
+			  {
+                "type": "color",
+                "id": "newsletter_submit_button_color",
+                "label": "Newsletter Submit Button Color",
+                "default": "#ccc"
+              }
+          ]
+		},
+		{
+          "type": "newsletter",
+          "name": "Newsletter",
+          "settings": [
+			  {
+                "type": "text",
+                "id": "newsletter_title",
+                "label": "Newsletter Widget Title",
+                "default": "Subscribe."
+              },
+			   {
+                "type": "header",
+                "content": "Newsletter Type"
+              },
+              {
+                "type": "radio",
+                "id": "newsletter_system",
+                "label": "Newsletter Accept",
+                "options": [
+                  {
+                    "label": "Shopify Form",
+                    "value": "by_shopify_form"
+                  },
+                  {
+                    "label": "MailChimp",
+                    "value": "by_mailchimp"
+                  }
+                ],
+                "default": "by_shopify_form"
+              },
+		 	  {
+                "type": "textarea",
+                "id": "newsletter_description",
+                "label": "Newsletter Widget Desc",
+                "default": "Subscribe to our newsletter to receive news on update."
+              },
+			  {
+                "type": "text",
+                "id": "newsletter_input_placeholder",
+                "label": "Placeholder Title",
+                "default": "Your email address."
+              },
+			  {
+                "type": "text",
+                "id": "subscrib_submit_button",
+                "label": "Submit Button Text",
+                "default": "Subscribe"
+              }
+          ]
+       },
+		{
+          "type": "social_icon",
+          "name": "Social Media",
+          "settings": [
+			  {
+                "type": "text",
+                "id": "footer_widget_title",
+                "label": "Footer Widget Title"
+               },
+			  {
+                "type": "header",
+                "content": "Icon With Link"
+              },
+			  {
+                "type": "text",
+                "id": "social_icon_1_name",
+                "label": "Social Icon Name",
+                "default": "twitter",
+                "info": "Fontawesome Icon [See Icon](https:\/\/fontawesome.com\/v4.7.0\/icons\/)"
+              },
+              {
+                "type": "url",
+                "id": "social_icon_1_link",
+                "label": "Link"
+              },
+              {
+                "type": "header",
+                "content": "Icon With Link"
+              },
+              {
+                "type": "text",
+                "id": "social_icon_2_name",
+                "label": "Social Icon Name",
+                "default": "instagram",
+                "info": "Fontawesome Icon [See Icon](https:\/\/fontawesome.com\/v4.7.0\/icons\/)"
+              },
+              {
+                "type": "url",
+                "id": "social_icon_2_link",
+                "label": "Link"
+              },
+              {
+                "type": "header",
+                "content": "Icon With Link"
+              },
+              {
+                "type": "text",
+                "id": "social_icon_3_name",
+                "label": "Social Icon Name",
+                "default": "google-plus",
+                "info": "Fontawesome Icon [See Icon](https:\/\/fontawesome.com\/v4.7.0\/icons\/)"
+              },
+              {
+                "type": "url",
+                "id": "social_icon_3_link",
+                "label": "Link"
+              },
+              {
+                "type": "header",
+                "content": "Icon With Link"
+              },
+              {
+                "type": "text",
+                "id": "social_icon_4_name",
+                "label": "Social Icon Name",
+                "default": "linkedin",
+                "info": "Fontawesome Icon [See Icon](https:\/\/fontawesome.com\/v4.7.0\/icons\/)"
+              },
+              {
+                "type": "url",
+                "id": "social_icon_4_link",
+                "label": "Link"
+              },
+              {
+                "type": "header",
+                "content": "Icon With Link"
+              },
+              {
+                "type": "text",
+                "id": "social_icon_5_name",
+                "label": "Social Icon Name",
+                "default": "pinterest",
+                "info": "Fontawesome Icon [See Icon](https:\/\/fontawesome.com\/v4.7.0\/icons\/)"
+              },
+              {
+                "type": "url",
+                "id": "social_icon_5_link",
+                "label": "Link"
+              }
+          ]
+       },
+		{
+          "type": "contact_widget",
+          "name": "Contact with Image Button",
+          "settings": [
+			  {
+                "type": "image_picker",
+                "id": "apps_logo",
+                "label": "Logo"
+              },
+			  {
+                  "type": "url",
+                  "id": "app_link",
+                  "label": "App Url"
+                },
+		      {
+                "type": "textarea",
+                "id": "phone_number",
+                "label": "Phone Number",
+                "default": "(+88) 123 4566 6868"
+              },
+		     {
+                "type": "textarea",
+                "id": "email_id",
+                "label": "Email Id",
+                "default": "contact@lezada.com"
+              },
+			  {
+                "type": "text",
+                "id": "email_id_link",
+                "label": "Email Id Link",
+                "default": "mailto:contact@lezada.com",
+				"info": "For Link: mailto:contact@lezada.com"
+              }
+          ]
+       },
+		{
+          "type": "widget_menu",
+          "name": "Footer Widget Menu",
+          "settings": [
+			  {
+                "type": "text",
+                "id": "footer_widget_title",
+                "label": "Footer Widget Title"
+              },
+			  {
+                  "type": "link_list",
+                  "id": "footer_menu_handle",
+                  "label": "Select Menu"
+              }
+          ]
+       },
+	   {
+          "type": "american_express",
+          "name": "American Express",
+		  "limit": 1
+        },
+		{
+          "type": "apple_pay",
+          "name": "Apple Pay",
+		  "limit": 1
+        },
+		{
+          "type": "bitcoin",
+          "name": "Bitcoin",
+		  "limit": 1
+        },
+		{
+          "type": "dankort",
+          "name": "Dankort",
+		  "limit": 1
+        },
+		{
+          "type": "diners_club",
+          "name": "Diners Club",
+		  "limit": 1
+        },
+		{
+          "type": "discover",
+          "name": "Discover",
+		  "limit": 1
+        },
+		{
+          "type": "dogecoin",
+          "name": "Dogecoin",
+		  "limit": 1
+        },
+		{
+          "type": "dwolla",
+          "name": "Dwolla",
+		  "limit": 1
+        },
+		{
+          "type": "forbrugsforeningen",
+          "name": "Forbrugsforeningen",
+		  "limit": 1
+        },
+		{
+          "type": "google_pay",
+          "name": "Google Pay",
+		  "limit": 1
+        },
+		{
+          "type": "jcb",
+          "name": "Jcb",
+		  "limit": 1
+        },
+		{
+          "type": "klarna",
+          "name": "Klarna",
+		  "limit": 1
+        },
+		{
+          "type": "litecoin",
+          "name": "Litecoin",
+		  "limit": 1
+        },
+		{
+          "type": "maestro",
+          "name": "Maestro",
+		  "limit": 1
+        },
+		{
+          "type": "master",
+          "name": "Master",
+		  "limit": 1
+        },
+		{
+          "type": "paypal",
+          "name": "Paypal",
+		  "limit": 1
+        },
+		{
+          "type": "shopify_pay",
+          "name": "Shopify Pay",
+		  "limit": 1
+        },
+		{
+          "type": "sofort",
+          "name": "Sofort",
+		  "limit": 1
+        },
+		{
+          "type": "visa",
+          "name": "Visa",
+		  "limit": 1
+        }
+	   
+	]
+  }
+{% endschema %}

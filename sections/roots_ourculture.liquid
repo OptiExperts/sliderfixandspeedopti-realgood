@@ -1,0 +1,107 @@
+    
+    {%- for block in section.blocks -%}
+
+                {% case block.type %}  
+                    {% when 'section_alt_left' %}
+                        <div class="our-culture-parent">
+                            <div class="row">
+                                <div class="col-md-5 col-sm-12 our-culture-left">
+                                    <img src="{{ block.settings.content_image | img_url: '377x445' }}" alt="Featured FAM" class="">
+                                </div>
+                                <div class="col-md-7 col-sm-12 our-culture-right">
+                                    <h2 class="mtop80">{{ block.settings.content_head }}</h2>
+                                    {{ block.settings.content_desc }}
+                                </div>
+                                
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="our-culture-parent">
+                            <div class="row">
+                                <div class="col-md-5 col-sm-12 our-culture-left">
+                                    <h2 class="">{{ block.settings.content_head }}</h2>
+                                    {{ block.settings.content_desc }}
+                                </div>
+                                <div class="col-md-7 col-sm-12 our-culture-right">
+                                    <img src="{{ block.settings.content_image | img_url: '484x314' }}" alt="Quest Collab" class="">
+
+                                </div>
+                            </div>
+                        </div>
+                {% endcase %}
+    {%- endfor -%}
+{% schema %}
+  {
+    "name": "Root: Alternate Content",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Content Blocks"
+      }
+    ],
+    "blocks":[
+        {
+          "type": "section_alt_left",
+          "name": "Content (Left)",
+          "limit": 12,
+          "settings": [
+            {
+              "type": "header",
+              "content": "Content Block with Image on Left"
+            },
+            {
+                "type": "text",
+                "id": "content_head",
+                "label": "Heading"
+            },
+            {
+                "type": "richtext",
+                "id": "content_desc",
+                "label": "Description"
+            },
+            {
+                "type": "image_picker",
+                "id": "content_image",
+                "label": "Image",
+                "info": "Recommended Size: 377 x 445 px."
+            }
+          ]
+        },
+        {
+          "type": "section_alt_right",
+          "name": "Content (Right)",
+          "limit": 12,
+          "settings": [
+            {
+              "type": "header",
+              "content": "Content Block with Image on Right"
+            },
+            {
+                "type": "text",
+                "id": "content_head",
+                "label": "Heading"
+            },
+            {
+                "type": "richtext",
+                "id": "content_desc",
+                "label": "Description"
+            },
+            {
+                "type": "image_picker",
+                "id": "content_image",
+                "label": "Image",
+                "info": "Recommended Size: 484 x 314 px."
+            }
+          ]
+        }
+    ],
+    "presets": [
+        {
+          "name": "Root: Alternate Content",
+          "category": "1. Our Roots"
+        }
+    ]
+  }
+{% endschema %}
+
+

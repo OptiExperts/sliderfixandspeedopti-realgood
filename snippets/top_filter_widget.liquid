@@ -1,0 +1,265 @@
+<div class="shop-advance-filter-area" id="shop-advance-filter-area">
+  <div class="shop-advance-filter-wrapper pt-50">
+    <div class="container">
+      <div class="row">
+
+        {% for block in section.blocks %}
+        {% case block.type %}
+
+        {% when 'search' %}
+
+        <div class="col-lg-{{ block.settings.filter_widget_lg_col }} col-md-{{ block.settings.filter_widget_md_col }} col-sm-{{ block.settings.filter_widget_xs_col }} mb-50">
+          <div class="single-filter-widget">
+            {%- if block.settings.widget_title != '' -%}
+            <h2 class="single-filter-widget--title">{{ block.settings.widget_title }}</h2>
+            {%- endif -%}
+            <div class="search-widget">
+              <form action="/search" method="get" role="search">
+                <input type="hidden" name="type" value="product">
+                <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" aria-label="{{ 'general.search.placeholder' | t }}">
+                <button type="submit">
+                  <span>{{ 'general.search.submit' | t }}</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+   
+        
+		{% when 'category' %}
+        <div class="col-lg-{{ block.settings.filter_widget_lg_col }} col-md-{{ block.settings.filter_widget_md_col }} col-sm-{{ block.settings.filter_widget_xs_col }} mb-50">
+          <!--=======  single advance filte  =======-->
+
+          <div class="single-filter-widget">
+            {%- if block.settings.widget_title != '' -%}
+            <h2 class="single-filter-widget--title">{{ block.settings.widget_title }}</h2>
+            {%- endif -%}
+            <ul class="single-filter-widget--list">
+              {% assign categories_list_limit = block.settings.categories_list_limit_hanlde %}
+              {% for c in collections limit: categories_list_limit %}
+              <li class="{% if collection and collection.handle == c.handle %}active{% endif %}"><a href="{{ c.url }}">{{ c.title }} <span>({{ c.products_count }})</span></a></li>
+              {% endfor %}
+            </ul>
+          </div>
+
+          <!--=======  End of single advance filte  =======-->
+        </div>
+        
+  		{% when 'vendor' %}
+
+        <div class="col-lg-{{ block.settings.filter_widget_lg_col }} col-md-{{ block.settings.filter_widget_md_col }} col-sm-{{ block.settings.filter_widget_xs_col }} mb-50">
+          <!--=======  single advance filte  =======-->
+
+          <div class="single-filter-widget">
+
+            {%- if block.settings.widget_title != '' -%}
+            <h2 class="single-filter-widget--title">{{ block.settings.widget_title }}</h2>
+            {%- endif -%}
+
+            <ul class="single-filter-widget--list single-filter-widget--list--category">
+              {% assign vendors_list_limit = block.settings.vendors_list_limit_hanlde %}
+              {% for vendor in shop.vendors limit: vendors_list_limit %}
+              <li class="{% if collection.current_vendor == vendor %}active{% endif %}"><a href="{{ vendor | url_for_vendor }}">{{ vendor }}</a></li> 
+              {% endfor %}
+            </ul>
+          </div>
+
+          <!--=======  End of single advance filte  =======-->
+        </div>
+        
+        
+        {% when 'type' %}
+
+        <div class="col-lg-{{ block.settings.filter_widget_lg_col }} col-md-{{ block.settings.filter_widget_md_col }} col-sm-{{ block.settings.filter_widget_xs_col }} mb-50">
+          <!--=======  single advance filte  =======-->
+
+          <div class="single-filter-widget">
+
+            {%- if block.settings.widget_title != '' -%}
+            <h2 class="single-filter-widget--title">{{ block.settings.widget_title }}</h2>
+            {%- endif -%}
+
+            <ul class="single-filter-widget--list single-filter-widget--list--category">
+              {% assign types_list_limit = block.settings.types_list_limit_hanlde %}
+              {% for type in shop.types limit: types_list_limit %}
+              {%- if type != '' -%}
+              <li class="{% if collection.current_type == type %}active{% endif %}"><a href="{{ type | url_for_type }}">{{ type }}</a></li> 
+              {%- endif -%}
+              {% endfor %}
+            </ul>
+          </div>
+
+          <!--=======  End of single advance filte  =======-->
+        </div>
+
+        
+		{% when 'color' %}
+
+        <div class="col-lg-{{ block.settings.filter_widget_lg_col }} col-md-{{ block.settings.filter_widget_md_col }} col-sm-{{ block.settings.filter_widget_xs_col }} mb-50">
+          <!--=======  single advance filte  =======-->
+
+          <div class="single-filter-widget">
+             {%- if block.settings.widget_title != '' -%}
+            <h2 class="single-filter-widget--title">{{ block.settings.widget_title }}</h2>
+            {%- endif -%}
+            
+            <ul class="single-filter-widget--list single-filter-widget--list--color">
+              
+              
+              {% assign tags = block.settings.color_picker | replace: ', ', ',' | replace: ' ,', ',' | split: ',' %}
+              {% assign colors_list_limit = block.settings.colors_list_limit_hanlde %}
+
+              {% for t in tags limit: colors_list_limit %}
+              {% assign tag = t | strip %}
+              {%- if current_tags contains tag -%}
+              <li class="{{ tag }} active" style="background: {{ tag }} no-repeat center; background-size: initial;"><a data-tippy="{{ tag }}" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme = "sharpborder" href="/collections/all/{{ tag | handle }}"></a></li>
+              {%- elsif collection.all_tags contains tag -%}
+              <li class="{{ tag }}" style="background: {{ tag }} no-repeat center; background-size: initial;"><a data-tippy="{{ tag }}" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme = "sharpborder" href="/collections/all/{{ tag | handle }}"></a></li>
+              {%- endif -%}
+              {% endfor %}
+            </ul>
+          </div>
+
+          <!--=======  End of single advance filte  =======-->
+        </div>
+
+        {% when 'size' %}
+
+        <div class="col-lg-{{ block.settings.filter_widget_lg_col }} col-md-{{ block.settings.filter_widget_md_col }} col-sm-{{ block.settings.filter_widget_xs_col }} mb-50">
+          <!--=======  single advance filte  =======-->
+
+          <div class="single-filter-widget">
+            {%- if block.settings.widget_title != '' -%}
+            <h2 class="single-filter-widget--title">{{ block.settings.widget_title }}</h2>
+            {%- endif -%}
+
+            <ul class="single-filter-widget--list single-filter-widget--list--size">
+              {% assign tags = block.settings.size_picker | replace: ', ', ',' | replace: ' ,', ',' | split: ',' %}
+              {% assign size_list_limit = block.settings.size_list_limit_hanlde %}
+
+              {% for t in tags limit: size_list_limit %}
+              {% assign tag = t | strip %}
+              {%- if current_tags contains tag -%}
+              <li class="active"><a href="/collections/all/{{ tag | handle }}">{{ tag }}</a></li>
+              {%- elsif collection.all_tags contains tag -%}
+              <li><a href="/collections/all/{{ tag | handle }}">{{ tag }}</a></li>
+              {%- endif -%}
+              {% endfor %}
+            </ul>
+          </div>
+
+          <!--=======  End of single advance filte  =======-->
+        </div>
+	
+         {% when 'tag' %}
+        
+        <div class="col-lg-{{ block.settings.filter_widget_lg_col }} col-md-{{ block.settings.filter_widget_md_col }} col-sm-{{ block.settings.filter_widget_xs_col }} mb-50">
+          <!--=======  single advance filte  =======-->
+
+          <div class="single-filter-widget">
+            {%- if block.settings.widget_title != '' -%}
+            <h2 class="single-filter-widget--title">{{ block.settings.widget_title }}</h2>
+            {%- endif -%}
+
+            <ul class="single-filter-widget--list tag_widget">
+              {% assign tags_list_limit = block.settings.tags_list_limit_hanlde %}
+              {% for tag in collection.all_tags limit: tags_list_limit %}
+              {%- if current_tags contains tag -%}
+              <li class="active"><a href="/collections/all/{{ tag | handle }}">{{ tag }}</a></li>
+              {%- else -%}
+              <li><a href="/collections/all/{{ tag | handle }}">{{ tag }}</a></li>
+              {%- endif -%}
+              {% endfor %}
+            </ul>
+          </div>
+
+          <!--=======  End of single advance filte  =======-->
+        </div>
+        
+        
+        {% when 'menu' %}
+        <div class="col-lg-{{ block.settings.filter_widget_lg_col }} col-md-{{ block.settings.filter_widget_md_col }} col-sm-{{ block.settings.filter_widget_xs_col }} mb-50">
+          <div class="single-filter-widget sidebar-widget  category-sub-menu">
+            {%- if block.settings.widget_title != '' -%}
+            <h2 class="single-filter-widget--title">{{ block.settings.widget_title }}</h2>
+            {%- endif -%}
+            <ul>
+              {% assign menu = block.settings.menu_handle %}
+              {% for link in linklists[menu].links %}
+              {% assign childlink_handle = link.title | handle %}
+              {% if linklists[childlink_handle] and linklists[childlink_handle].links.size > 0 %}
+              <li class="has-sub {% if link.active %}active{% endif %}"><a href="{{ link.url }}">{{ link.title }}</a>
+                <ul>
+                  {% for childlink in linklists[childlink_handle].links %}
+                  <li><a href="{{ childlink.url }}">{{ childlink.title }}</a></li>
+                  {% endfor %}
+                </ul>
+              </li>
+              {% else %}
+              <li class="{% if link.active %}active{% endif %}"><a href="{{ link.url }}">{{ link.title }}</a></li>
+              {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+
+
+        {% when 'banner' %}
+        {% capture i %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+        <div class="col-lg-{{ block.settings.filter_widget_lg_col }} col-md-{{ block.settings.filter_widget_md_col }} col-sm-{{ block.settings.filter_widget_xs_col }}mb-50">
+          <div class="single-filter-widget">
+            {%- if block.settings.widget_title != '' -%}
+            <h2 class="single-filter-widget--title">{{ block.settings.widget_title }}</h2>
+            {%- endif -%}
+            <div style="background: #f2f2f2;">
+              {% if block.settings.banner_image != blank and block.settings.banner_image_url != blank %}
+              <a href="{{ block.settings.banner_image_url }}">
+                <img src="{{ block.settings.banner_image | img_url: 'grande' }}" alt="{{ block.settings.banner_image.alt }}">
+              </a>
+              {% elsif block.settings.banner_image != blank %}
+              <img src="{{ block.settings.banner_image | img_url: 'grande' }}" alt="{{ block.settings.banner_image.alt }}">
+              {% else %}
+              {% if block.settings.banner_image_url != blank %}
+              <a href="{{ block.settings.banner_image_url }}">
+                {{ 'collection-' | append: i | placeholder_svg_tag }}
+              </a>
+              {% else %}
+              {{ 'collection-' | append: i | placeholder_svg_tag }}
+              {% endif %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+        {% endcase %}
+        {% endfor %}
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+  $(".sidebar-widget li.active a").removeAttr("href");
+
+  $('.category-sub-menu li.has-sub > a').on('click', function () {
+    $(this).removeAttr('href');
+    var element = $(this).parent('li');
+    if (element.hasClass('open')) {
+      element.removeClass('open');
+      element.find('li').removeClass('open');
+      element.find('ul').slideUp();
+    } else {
+      element.addClass('open');
+      element.children('ul').slideDown();
+      element.siblings('li').children('ul').slideUp();
+      element.siblings('li').removeClass('open');
+      element.siblings('li').find('li').removeClass('open');
+      element.siblings('li').find('ul').slideUp();
+    }
+  }); 
+</script>

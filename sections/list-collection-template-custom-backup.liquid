@@ -1,0 +1,630 @@
+	<!-- shop start -->
+<!-- shop start -->
+
+<!-- <script>
+$( document ).ready(function() {
+  $(".collection_filter_button").click(function() {
+var pid = $(this).data("col");
+console.log(pid);
+    if (!(pid == 136796864589)){
+    switch (pid) {
+  default:
+    text = "Looking forward to the Weekend";
+    break;
+  case :
+    text = "Today is Saturday";
+    break;
+
+}
+    }
+});
+});
+</script>    -->
+<style>
+/* .min-bottom{
+  margin-bottom:-100px;
+  }
+  #\31 59489327181 {
+  margin-bottom: 0 !important;
+} */
+  
+  .min-bottom .container > hr{border:none;}
+  
+  {% if section.settings.shop_page_title_l_heading != blank or section.settings.shop_page_title_l_content != blank or section.settings.shop_page_title_l_btn_label != blank %}
+  	.dual--banner .left--sec:before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:0;
+      background:rgba(0,0,0,0.3);
+      width:100%;
+      height:100%;
+      z-index:1;
+    }
+  {% endif %}
+  
+</style>
+<script>
+        jQuery(document).ready(function (){
+          
+          var des = jQuery('.#section-title > h2').html();  
+          alert(des;
+          
+//             jQuery("#click").click(function (){
+//                 jQuery('html, body').animate({
+//                     scrollTop: $("#section-title > ").offset().top
+//                 }, 2000);
+//             });
+        });
+</script>
+
+
+
+{% if section.settings.shop_page_enable_dual_bnr == true %}
+	<div class="collection_banner dual--banner mb-20">
+
+    {% if collection.metafields.arena.acf__enable_dual_banner == 'true' %}
+
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-12 left--sec" style="background-image:url('{% if collection.metafields.arena.acf__dualb_l_img != blank %}{{ collection.metafields.arena.acf__dualb_l_img }}{% else %} https://via.placeholder.com/1080x425 {% endif %}')">
+          <div class="inner">
+            <div class="content">
+              {% if collection.metafields.arena.acf__dualb_l_head != blank %}
+              <h2>{{collection.metafields.arena.acf__dualb_l_head}}</h2>
+              {% endif %}
+              {% if collection.metafields.arena.acf__dualb_l_text != blank %}
+              <div class="text--content">
+                {{collection.metafields.arena.acf__dualb_l_text}}
+              </div>
+              {% endif %}
+              {% if collection.metafields.arena.acf__dualb_l_btn_label != blank %}
+              <div class="cta--btn">
+                <a href="{{collection.metafields.arena.acf__dualb_l_btn_link}}" {% if collection.metafields.arena.acf__dualb_l_link_newtab == true %}target="_blank"{% endif %}>{{collection.metafields.arena.acf__dualb_l_btn_label}}</a>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-12 right--sec" style="background:{{collection.metafields.arena.acf__dualb_r_bg_color}}">
+          <div class="inner">
+            <div class="content">
+              {% if collection.metafields.arena.acf__dualb_r_head != blank %}
+              <h2>{{collection.metafields.arena.acf__dualb_r_head}}</h2>
+              {% endif %}
+              {% if collection.metafields.arena.acf__dualb_r_text != blank %}
+              <div class="text--content">
+                {{collection.metafields.arena.acf__dualb_r_text}}
+              </div>
+              {% endif %}
+              {% if collection.metafields.arena.acf__dualb_r_btn_label != blank %}
+              <div class="cta--btn">
+                <a href="{{collection.metafields.arena.acf__dualb_r_btn_link}}" {% if collection.metafields.arena.acf__dualb_r_link_newtab == true %}target="_blank"{% endif %}>{{collection.metafields.arena.acf__dualb_r_btn_label}}</a>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+
+  {% else %}
+
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-12 left--sec" style="background-image:url('{% if section.settings.shop_page_title_l_image != blank %}{{ section.settings.shop_page_title_l_image | img_url: '1080x425' }}{% else %} https://via.placeholder.com/1080x425 {% endif %}')">
+          <div class="inner">
+            <div class="content">
+              {% if section.settings.shop_page_title_l_heading != blank %}
+              <h2>{{section.settings.shop_page_title_l_heading}}</h2>
+              {% endif %}
+              {% if section.settings.shop_page_title_l_content != blank %}
+              <div class="text--content">
+                {{section.settings.shop_page_title_l_content}}
+              </div>
+              {% endif %}
+              {% if section.settings.shop_page_title_l_btn_label != blank %}
+              <div class="cta--btn">
+                <a href="{{section.settings.shop_page_title_l_btn_link}}" {% if section.settings.shop_page_title_l_btn_link_blank == true %}target="_blank"{% endif %}>{{section.settings.shop_page_title_l_btn_label}}</a>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-12 right--sec" style="background:{{ section.settings.shop_page_title_r_bg_color }}">
+          <div class="inner">
+            <div class="content">
+              {% if section.settings.shop_page_title_r_heading != blank %}
+              <h2>{{section.settings.shop_page_title_r_heading}}</h2>
+              {% endif %}
+              {% if section.settings.shop_page_title_r_content != blank %}
+              <div class="text--content">
+                {{section.settings.shop_page_title_r_content}}
+              </div>
+              {% endif %}
+              {% if section.settings.shop_page_title_r_btn_label != blank %}
+              <div class="cta--btn">
+                <a href="{{section.settings.shop_page_title_r_btn_link}}" {% if section.settings.shop_page_title_r_btn_link_blank == true %}target="_blank"{% endif %}>{{section.settings.shop_page_title_r_btn_label}}</a>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+
+  {% endif %}
+
+</div>
+
+
+{% else %}  
+
+<div class="custom_banner_image">
+  <img class="lazyload" data-src="{{ section.settings.custom_banner_image | img_url: 'master' }}">        
+</div>
+
+{% endif %}
+
+
+
+
+	{% if collection.handle == 'all' %}
+
+	{% comment %}
+
+      <div class="product_listing_filter">
+          {% for collection1 in collections %}
+          {% if collection1.id == 132886560845 or collection1.id == 136606449741 or collection1.id == 159005474893 %}
+          {% elsif collection1.id  == 135477690445 %}
+          <a href="/collections/merch" class="collection_filter_button" data-order="100" style="display:none;" rel="{{ collection1.id }}">{{ collection1.title }}</a>
+          {% elsif collection1.id  == 136796864589 %}
+          <a href='/collections/{{ collection1.handle }}' data-desc="{{ collection1.description | escape}}" data-bg="{% if collection1.image %}{{ collection1.image | img_url: 'master' }}{% endif %}" class="collection_filter_button" data-order="1" data- rel="{{ collection1.id }}">{{ collection1.title }}</a>
+          <script type="text/javascript">
+            jQuery(document).ready(function(){
+              jQuery('#product_desc').html('{{ collection1.description}}');
+            });
+          </script>
+          {% else %}
+          {% case collection1.id %}
+          {% when  137369419853 %}
+          {%- assign dataorder = 10 -%}
+          {% when  395338547455 %}
+          {%- assign dataorder = 15 -%}
+          {% when  137394094157 %}
+          {%- assign dataorder = 20 -%}
+          {% when  137397403725 %}
+          {%- assign dataorder = 30 -%}        
+          {% when  137733177421 %}
+          {%- assign dataorder = 40 -%}        
+          {% when  137393340493 %}
+          {%- assign dataorder = 50 -%}
+          {% when  135477690445 %}
+          {%- assign dataorder = 60 -%}
+          {% when  159489327181 %}
+          {%- assign dataorder = 101 -%}
+          {% else %}
+          {%- assign dataorder = 99 -%}
+          {% endcase %}
+          <a href='/collections/{{ collection1.handle }}' data-desc="{{ collection1.description | escape}}" data-bg="{% if collection1.image %}{{ collection1.image | img_url: 'master' }}{% endif %}" class="collection_filter_button" data-order="{{ dataorder }}" rel="{{ collection1.id }}">{{ collection1.title }}</a>
+          <img src="{% if collection1.image %}{{ collection1.image | img_url: 'master' }}{% endif %}" class="hide" style="display: none !important;" />
+          {% endif %}
+          {% endfor %}
+      </div>
+
+	{% endcomment %}
+      
+		<div class="product--cats-tab">
+          <div class="product_listing_filter">
+              <a href='/collections/all' data-desc="" class="collection_filter_button">All Products</a>
+
+              {% if section.settings.collection_handle == 'custom_collection' %}          
+                {% for block in section.blocks %}
+                    {% assign featured_product = collections[block.settings.featured_product_handle] %}
+                    {% assign featured_product_limit = section.settings.products_limit_handle %}
+            		{% if featured_product.id != 159489327181 %}
+                    <a href='{{ featured_product.url }}' data-desc="{{ featured_product.title }}" id="{{ featured_product.id }}" class="collection_filter_button">{{ featured_product.title }}</a>
+					{% endif %}
+                {% endfor %}
+              {% endif %}
+          </div>
+		</div>
+
+	{% endif %}
+<script>
+$( document ).ready(function() {
+  
+});
+</script>       
+              
+           
+  
+<div class="list-product-collection pt-100  pt-sm-70 pb-sm-20 ">
+
+  {% if section.settings.collection_handle == 'custom_collection' %}
+
+  {% for block in section.blocks %}
+
+  {% assign featured_product = collections[block.settings.featured_product_handle] %}
+  {% assign featured_product_limit = section.settings.products_limit_handle %}
+<div id="{{ featured_product.id }}" class="min-bottom">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="section-title {% if section.settings.section_text_align == 'section_text_left' %}text-left{% elsif section.settings.section_text_align == 'section_text_center' %}text-center{% elsif section.settings.section_text_align == 'section_text_right' %}text-right{% endif %} mb-65">
+          <h2>{{ featured_product.title }}</h2>
+          <a href="{{ featured_product.url }}">{{ section.settings.more_title }} {{ featured_product.title }} &rsaquo;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+<!--     <div class="row"> -->
+      <!-- product-item start -->
+
+      <div class="row  product-isotope shop-product-wrap three-column">
+      {% for product in featured_product.products limit: featured_product_limit %}
+{%- comment -%} Wholesale Gorilla: do not delete unless app is uninstalled{%- endcomment -%}
+{%- assign wsgTempProd = product -%}{%- assign wsgExclude = false -%}{%- if forloop.first == true -%}{%- assign wsgActive = false -%}{%- assign wsgActiveCustomer = false -%}
+{%- include 'wsg-status' wsgStatusAction: 'init' | strip -%}{%- endif -%}{%- if wsgActive -%}{%- include 'wsg-status' wsgStatusAction: 'col-item' | strip -%}{%- endif -%}{%- if wsgExclude -%} {%- continue -%} {%- endif -%}
+{%- comment -%} end WSG {%- endcomment -%}
+     {% include 'product-grid-item-custom' %}
+     
+      {% endfor %}
+    
+    </div>
+    {% unless forloop.last %}<hr class="">{% endunless %}
+<!--   </div> -->
+
+
+  </div>
+  </div>
+  {% endfor %}
+
+  {% endif %}
+
+</div>
+
+{% schema %}
+  {
+    "name": "All Collection List",
+    "settings": [
+ 
+  		{
+          "type": "header",
+          "content": "Collection Type"
+		},
+  
+  			 {
+              "type": "image_picker",
+              "id": "custom_banner_image",
+              "label": "Image"
+            },
+  	
+  		{
+          "type": "radio",
+          "id": "collection_handle",
+          "label": "Collection Handle",
+		  "options":[
+				{
+					"label": "Custom Collection",
+					"value": "custom_collection"
+				},
+				{
+					"label": "All Collection",
+					"value": "all_collection"
+				},
+  				{
+					"label": "Custom Collection without Product",
+					"value": "only_custom_collection"
+				}
+			],
+			"default": "all_collection"
+      	},
+		{
+          "type": "checkbox",
+          "id": "shop_page_enable_dual_bnr",
+          "label": "Enable Dual Banner",
+          "default": false
+        },
+        {
+          "type": "image_picker",
+          "id": "shop_page_title_l_image",
+          "label": "Custom Banner Image (Left)",
+          "info": "Recommended Size: 1080 x 425 px"
+        },
+        {
+          "type": "color",
+          "id": "shop_page_title_r_bg_color",
+          "label": "Custom Banner Right Side Color",
+          "default": "#DD7C01"
+        },
+        {
+          "type": "text",
+          "id": "shop_page_title_l_heading",
+          "label": "Left Side Heading"
+        },
+        {
+          "type": "textarea",
+          "id": "shop_page_title_l_content",
+          "label": "Left Side Content (HTML)"
+        },
+        {
+          "type": "text",
+          "id": "shop_page_title_l_btn_label",
+          "label": "Left Side Button Label"
+        },
+        {
+          "type": "url",
+          "id": "shop_page_title_l_btn_link",
+          "label": "Left Side Button Link"
+        },
+        {
+          "type": "checkbox",
+          "id": "shop_page_title_l_btn_link_blank",
+          "label": "Link to new tab",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "shop_page_title_r_heading",
+          "label": "Right Side Heading"
+        },
+        {
+          "type": "textarea",
+          "id": "shop_page_title_r_content",
+          "label": "Right Side Content (HTML)"
+        },
+        {
+          "type": "text",
+          "id": "shop_page_title_r_btn_label",
+          "label": "Right Side Button Label"
+        },
+        {
+          "type": "url",
+          "id": "shop_page_title_r_btn_link",
+          "label": "Right Side Button Link"
+        },
+        {
+          "type": "checkbox",
+          "id": "shop_page_title_r_btn_link_blank",
+          "label": "Link to new tab",
+          "default": false
+        },
+
+  		{
+          "type": "header",
+          "content": "Section Title"
+		},
+		{
+          "type": "select",
+          "id": "section_text_align",
+          "label": "Heading Text Align",
+		  "options":[
+				{
+					"label": "Left",
+					"value": "section_text_left"
+				},
+				{
+					"label": "Center",
+					"value": "section_text_center"
+				},
+				{
+					"label": "Right",
+					"value": "section_text_right"
+				}
+			],
+			"default": "section_text_center"
+      	},
+  		{
+          "type": "header",
+          "content": "Product Column",
+  		  "info": "Collection Product Column"
+		},
+		{
+          "type": "select",
+          "id": "product_column",
+          "label": "Dekstop Product Column",
+		  "options":[
+				{
+					"label": "2 Column",
+					"value": "6"
+				},
+				{
+					"label": "3 Column",
+					"value": "4"
+				},
+				{
+					"label": "4 Column",
+					"value": "3"
+				},
+				{
+					"label": "6 Column",
+					"value": "2"
+				}
+			],
+			"default": "3"
+      	},
+		
+        {
+            "type": "select",
+            "id": "product_md_column",
+            "label": "Tablet Product Column",
+            "options":[
+                  {
+                      "label": "2 Column",
+                      "value": "6"
+                  },
+                  {
+                      "label": "3 Column",
+                      "value": "4"
+                  },
+                  {
+                      "label": "4 Column",
+                      "value": "3"
+                  }
+              ],
+              "default": "4"
+          },
+          {
+            "type": "select",
+            "id": "product_column_xs",
+            "label": "Large Mobile Product Column",
+            "options":[
+                  {
+                      "label": "1 Column",
+                      "value": "12"
+                  },
+                  {
+                      "label": "2 Column",
+                      "value": "6"
+                  }
+              ],
+              "default": "6"
+          },
+
+		{
+            "type": "range",
+            "id": "products_limit_handle",
+            "min": 2,
+            "max": 34,
+            "step": 1,
+            "label": "Product Limit",
+            "default": 4,
+			"info": "How many products show on per collection"
+        },
+		{
+          "type": "text",
+          "id": "more_title",
+          "label": "More Title",
+		  "default": "More"
+      	},
+  		{
+          "type": "header",
+          "content": "Product Count Label"
+		},
+  		{
+          "type": "text",
+          "id": "product_label",
+          "label": "Product Count Title",
+		  "default": "Products"
+      	}
+	],
+  	"blocks":[
+	   {
+          "type": "custom_collection",
+          "name": "Custom Collection",
+          "settings": [
+              {
+                  "type": "collection",
+                  "id": "featured_product_handle",
+                  "label": "Select Collection"
+              },
+  			  {
+              "type":  "radio",
+              "id":    "collection_img",
+              "label": "Collection Image",
+              "options": [
+                { "value": "default", "label": "Default Collection Thumb" },
+                { "value": "custom", "label": "Custom Collection Thumb" }
+              ],
+              "default":   "default"
+            },
+			{
+              "type": "image_picker",
+              "id": "custom_collection_img",
+              "label": "Custom Collection Iamge",
+              "info": "Recommended Size: 385 x 520 px"
+            },
+  			{
+              "type": "header",
+              "content": "Collection Column"
+            },
+            {
+              "type": "select",
+              "id": "cat_column",
+              "label": "Dekstop Collection Column",
+              "options":[
+  					{
+                        "label": "1 Column",
+                        "value": "12"
+                    },
+                    {
+                        "label": "2 Column",
+                        "value": "6"
+                    },
+                    {
+                        "label": "3 Column",
+                        "value": "4"
+                    },
+                    {
+                        "label": "4 Column",
+                        "value": "3"
+                    },
+                    {
+                        "label": "6 Column",
+                        "value": "2"
+                    }
+                ],
+                "default": "3"
+            },
+
+            {
+                "type": "select",
+                "id": "cat_column_md",
+                "label": "Tablet Collection Column",
+                "options":[
+                      {
+                        "label": "1 Column",
+                        "value": "12"
+                      },
+                      {
+                          "label": "2 Column",
+                          "value": "6"
+                      },
+                      {
+                          "label": "3 Column",
+                          "value": "4"
+                      },
+                      {
+                          "label": "4 Column",
+                          "value": "3"
+                      },
+                      {
+                          "label": "6 Column",
+                          "value": "2"
+                      }
+                  ],
+                  "default": "4"
+              },
+              {
+                "type": "select",
+                "id": "cat_column_xs",
+                "label": "Large Mobile Collection Column",
+                "options":[
+                      {
+                        "label": "1 Column",
+                          "value": "12"
+                      },
+                      {
+                          "label": "2 Column",
+                          "value": "6"
+                      },
+                      {
+                          "label": "3 Column",
+                          "value": "4"
+                      },
+                      {
+                          "label": "4 Column",
+                          "value": "3"
+                      },
+                      {
+                          "label": "6 Column",
+                          "value": "2"
+                      }
+                  ],
+                  "default": "6"
+              }
+          ]
+       }
+	]
+  }
+{% endschema %}

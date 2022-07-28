@@ -1,0 +1,387 @@
+{% if section.settings.section_enable %}
+<div class="cta-area pt-75 pb-75" id="section-{{ section.id }}">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="cta-content">
+          {% if section.settings.cta_title != blank %}
+          <div class="cta-title">
+            <h2>{{ section.settings.cta_title }}</h2>
+          </div>
+          {% endif %}
+
+          {% if section.settings.call_to_action_btn != blank %}
+          <div class="cta-button">
+            <a class="lezada-button lezada-button--medium lezada-cta-button lezada-cta-button-white" href="{{ section.settings.call_to_action_btn_link }}">{{ section.settings.call_to_action_btn }}</a>
+          </div>
+          {% endif %}
+          {% if section.settings.call_to_action_btn_2 != blank %}
+          <div class="cta-button">
+            <a class="lezada-button lezada-button--medium lezada-cta-button lezada-cta-button-white" href="{{ section.settings.call_to_action_btn_link_2 }}">{{ section.settings.call_to_action_btn_2 }}</a>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<style>
+  #section-{{ section.id }} .cta-title{max-width: 400px;width: 100%;}
+  #section-{{ section.id }} .cta-title h2 {color: {{ block.settings.call_to_actin_Title_color }};font-size: 55px;line-height: 55px;font-weight: 700 !important;}
+  #section-{{ section.id }} .cta-title h2 i{display: block;}
+
+  {%- for block in section.blocks -%}
+  {%- case block.type -%}
+  {%- when 'call_to_action_style' -%}
+  #section-{{ section.id }} .cta-title{max-width: 400px;width: 100%;}
+  #section-{{ section.id }} .cta-title h2 {
+    color: {{ block.settings.call_to_actin_Title_color }};
+	font-size: 55px;line-height: 55px;font-weight: 900;}
+  #section-{{ section.id }} .cta-title h2 i{display: block;}
+  #section-{{ section.id }} .lezada-cta-button {
+    background-color: {{ block.settings.btn_Bg_color }};
+    color: {{ block.settings.btn_color }} !important;
+    border-color: {{ block.settings.btn_border_color }};
+  }	
+  #section-{{ section.id }} .lezada-cta-button:hover {
+    background-color: {{ block.settings.btn_hover_bg_color }};
+    color: {{ block.settings.btn_hover_color }} !important;
+    border-color: {{ block.settings.btn_hover_border_color }};
+  }	
+
+
+  {%- endcase -%}
+  {%- endfor -%}
+
+</style>
+
+{% include 'section_typography' %}
+<style>
+	{%- for block in section.blocks -%}
+		#shopify-section-{{ section.id }}
+		{
+			background: {{ block.settings.section_bg_color }};
+			position: relative;
+		}
+
+		{%- if block.settings.section_bg_image -%}
+			#shopify-section-{{ section.id }}::after{
+			  content: "";
+			  background: url("{{ block.settings.section_bg_image | img_url: 'master' }}") center center repeat-x transparent;
+                opacity: 0.5; top: 0;left: 0; bottom: 0;right: 0;position: absolute; z-index: 1;}
+		{%- endif -%}
+
+	{%- endfor -%}
+	#section-{{ section.id }}{
+		background: none !important;
+		position: relative;
+		z-index: 2;
+	}
+</style>
+{% schema %}
+  {
+    "name": "Call To Action",
+    "settings": [		
+		{
+		  "type": "header",
+          "content": "Section Enable"
+        },
+		{
+          "type": "checkbox",
+          "id": "section_enable",
+          "label": "Section Enable",  
+          "default": true
+      	},
+		{
+         "type": "header",
+         "content": "Call To Action 1"
+        },		
+		{
+          "type": "textarea",
+          "id": "cta_title",
+          "label": "Call To Action Title",
+          "default": "Call To Action Title"
+        },
+		{
+          "type": "text",
+          "id": "call_to_action_btn",
+          "label": "Call To Action Btn",
+          "default": "Shop Now"
+        },
+		{
+          "type": "url",
+          "id": "call_to_action_btn_link",
+          "label": "URL"
+        },
+        {
+         "type": "header",
+         "content": "Call To Action 2"
+        },		
+		{
+          "type": "textarea",
+          "id": "cta_title_2",
+          "label": "Call To Action Title",
+          "default": "Call To Action Title"
+        },
+		{
+          "type": "text",
+          "id": "call_to_action_btn_2",
+          "label": "Call To Action Btn",
+          "default": "Find a store near you"
+        },
+		{
+          "type": "url",
+          "id": "call_to_action_btn_link_2",
+          "label": "URL"
+        }
+		
+	],
+	"blocks": [
+		{
+          "type": "call_to_action_style",
+          "name": "Section Style",
+		  "limit": 1,
+          "settings": [
+			{
+			  "type": "header",
+			  "content": "Call TO Action Content"
+			},
+			{
+			  "type": "color",
+			  "id": "call_to_actin_Title_color",
+			  "label": "Title Color",
+			  "default": "#fff"
+			},
+			{
+			  "type": "header",
+			  "content": "Call TO Action Button"
+			},
+			{
+			  "type": "color",
+			  "id": "btn_color",
+			  "label": "Button Color",
+			  "default": "#333"
+			},
+			{
+			  "type": "color",
+			  "id": "btn_Bg_color",
+			  "label": "Button Bg Color",
+			  "default": "#fff"
+			},
+			{
+			  "type": "color",
+			  "id": "btn_border_color",
+			  "label": "Button Border Color",
+			  "default": "#fff"
+			},
+			{
+			  "type": "paragraph",
+			  "content": "Button Hover"
+			},
+			{
+			  "type": "color",
+			  "id": "btn_hover_color",
+			  "label": "Button Hover Color",
+			  "default": "#fff"
+			},
+			{
+			  "type": "color",
+			  "id": "btn_hover_bg_color",
+			  "label": "Button Hover Bg Color",
+			  "default": "#333"
+			},
+			{
+			  "type": "color",
+			  "id": "btn_hover_border_color",
+			  "label": "Button Hover Border Color",
+			  "default": "#333"
+			}
+          ]
+       },
+		{
+          "type": "section_margin",
+          "name": "Section Margin",
+		  "limit": 1,
+          "settings": [
+            {
+			  "type": "header",
+			  "content": "Large/Desktop Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_top",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_bottom",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Bottom",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "header",
+			  "content": "Tablet Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_top_md",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_bottom_md",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Bottom",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "header",
+			  "content": "Mobile Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_top_xs",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_bottom_xs",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Bottom",
+			  "unit": "px",
+			  "default": 0
+			}
+          ]
+       },
+	   {
+          "type": "section_padding",
+          "name": "Section Padding",
+		  "limit": 1,
+          "settings": [
+            {
+			  "type": "header",
+			  "content": "Large/Desktop Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_top",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_bottom",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Bottom",
+			  "unit": "px",
+			  "default": 100
+			},
+			{
+			  "type": "header",
+			  "content": "Tablet Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_top_md",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_bottom_md",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Bottom",
+			  "unit": "px",
+			  "default": 80
+			},
+			{
+			  "type": "header",
+			  "content": "Mobile Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_top_xs",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_bottom_xs",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Bottom",
+			  "unit": "px",
+			  "default": 60
+			}
+          ]
+       },
+	   {
+          "type": "section_background",
+          "name": "Section Background",
+		  "limit": 1,
+          "settings": [
+            {
+			  "type": "image_picker",
+			  "id": "section_bg_image",
+			  "label": "BG Image"
+			},
+			{
+			  "type": "color",
+			  "id": "section_bg_color",
+			  "label": "BG Color",
+			  "default": "#6D7F96"
+			}
+          ]
+       }
+	],
+	"presets": [
+		{
+		  "name": "Call To Action",
+		  "category": "9.2 Theme Others"
+		}
+	]
+  }
+{% endschema %}

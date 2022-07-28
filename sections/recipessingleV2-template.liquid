@@ -1,0 +1,519 @@
+<div class="blog-page-wrapper mt-100 mb-100 recipe--detail">
+  <div class="{% if section.settings.container_width == 'container' %} container {% elsif section.settings.container_width == 'fluid' %} container-fluid  {%- endif -%}">
+    <div class="row {% if section.settings.sidebar_handle == 'right_sidebar_handle' %}flex-row-reverse{% endif %}">
+
+      <div class="col-lg-12 order-1 order-lg-2 mb-md-70 mb-sm-70">
+        <div class="row">
+
+          <div class="col-md-12 mb-40">
+            <div class="single-slider-post single-slider-post--sticky pb-30">
+
+              {% comment %}
+              <!--=======  image  =======-->
+              <div class="single-slider-post__image single-slider-post--sticky__image mb-30">
+                <img class="lazyload" data-src="{{ article | img_url: 'master' }}" alt="{{ article.image.alt }}">
+              </div>
+
+              <!--=======  End of image  =======-->
+
+              {% endcomment %}
+
+              <!--=======  content  =======-->
+
+              <div class="single-slider-post__content single-slider-post--sticky__content">
+                {% if section.settings.post_title_enable %}
+                <h2 class="post-title">{{ article.title }}</h2>
+                {% endif %}
+
+                {% if section.settings.post_author_enable or section.settings.post_publish_time_enable or section.settings.post_comment_enbale %}
+                <div class="post-info d-flex flex-wrap align-items-center mb-50">
+
+                  {% if section.settings.post_author_enable %}
+                  <div class="post-user  pr-30">
+                    <i class="ion-android-person"></i><p><span>{{ section.settings.author_title }}</span> {{ article.author }}</p>
+                  </div>
+                  {% endif %}
+
+
+                  {% if section.settings.post_publish_time_enable %}
+                  <div class="post-date mb-0 pr-30">
+                    <i class="ion-android-calendar"></i>
+                    <p><time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: format: 'month_day_year' }}</time></p>
+                  </div>
+                  {% endif %}
+
+                  {% if blog.comments_enabled? and section.settings.post_comment_enbale %}
+                  <div class="post-comment pr-30">
+                    <i class="ion-ios-chatbubble-outline"></i>
+                    <a href="{{ article.url }}#comments">
+                      {{ 'blogs.comments.with_count' | t: count: article.comments_count }}
+                    </a>
+                  </div>
+                  {% endif %}
+                </div>
+
+                {% endif %}
+
+                <div class="single-blog-post-section">
+                    <div class="row top--sec">
+                        <div class="col-md-6"></div>
+                        <div class="col-md-6 backwrap">
+                            <p class="backLink">Back to <a href="/blogs/recipes">Recipes</a> &gt; </p>
+                        </div>
+                        <div class="col-md-6 lsec">
+                            <img class="lazyload" data-src="{{ article | img_url: 'master' }}" alt="{{ article.image.alt }}">
+                        </div>
+                        <div class="col-md-6 rsec">
+                            <h1 class="recipe--title">{{ article.title }}</h1>
+                            {{ article.content }}
+                        </div>
+                    </div>
+                    <div class="mid--sec">
+                        <div class="inner">
+                            <div class="row">
+                            <div class="col-md-6 lsec">
+                                {{article.metafields.recipes.recipes_ingredients}}
+                            </div>
+                            <div class="col-md-6 rsec">
+                                {{article.metafields.recipes.recipes_instruction}}
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="more--sec">
+                        {{article.metafields.recipes.bottom_content}}
+                    </div>
+                </div>
+
+                <div class="find--store">
+                  <a href="/pages/store-locator" class="btn--type-1">Find a Store</a>
+                </div>
+
+                <!--=======  End of single blog post section  =======-->
+
+                {% if section.settings.article_tag_enable or section.settings.article_social_share %}
+
+                <div class="row mt-30 align-items-center" style="display:none;">
+
+            	{% if section.settings.article_tag_enable %}
+                  <div class="col-md-6 text-center text-md-left mb-sm-15 p--tags">
+                    <div class="post-tags">
+                      <i class="ion-ios-pricetags"></i>
+                      <ul class="tag-list">
+                         {% include 'tags-article' %}
+                      </ul>
+                    </div>
+                  </div>
+                  {% endif %}
+
+                  {% if section.settings.article_social_share %}
+                  <div class="col-md-6 p--share {% if section.settings.article_tag_enable %} text-center text-md-right {% else %} text-left {% endif %}">
+                    <div class="post-share">
+                        {% include 'blog-share' %}
+                    </div>
+                  </div>
+                  {% endif %}
+                </div>
+
+                {% endif %}
+
+
+                {% if blog.next_article or blog.previous_article %}
+                <div class="article-next-previous mt-30">
+                  <hr>
+                  <p class="clearfix">
+                    {% if blog.previous_article %}
+                    <span class="left">
+                      &larr; {{ 'blogs.article.older_post' | t | link_to: blog.previous_article }}
+                    </span>
+                    {% endif %}
+                    {% if blog.next_article %}
+                    <span class="right">
+                      {{ 'blogs.article.newer_post' | t | link_to: blog.next_article }} &rarr;
+                    </span>
+                    {% endif %}
+                  </p>
+                </div>
+                {% endif %}
+
+              </div>
+
+              <!--=======  End of content  =======-->
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  jQuery(document).ready(function($){
+    if( $('.p--share').length > 0 ){
+        $('.post-share > span').text('Share this Recipe: ');
+      $('.top--sec .rsec').append( $('.post-share') );
+    }
+
+  });
+</script>
+
+<style>
+  .recipe--detail .post-title,
+  .recipe--detail .post-info,
+  .recipe--detail .p--tags,
+  .recipe--detail .p--share{display:none !important;}
+  .recipe--detail .top--sec .rsec,
+  .recipe--detail .top--sec .backwrap{padding-left:100px;}
+  .recipe--detail .top--sec .lsec img{width:100%;}
+  .recipe--detail .recipe--title{
+    font-size:36px;
+    line-height:1.15;
+    color:#FC6A00;
+    margin-bottom:30px;
+    font-weight:900;
+  }
+  .recipe--detail p{
+    font-size:18px;
+    line-height:1.5;
+    margin-bottom:14px;
+  }
+  .recipe--detail .backLink a{
+    color:#FC6A00;
+  }
+  .recipe--detail .post-share{
+    padding-top:20px;
+    margin-top:30px;
+    border-top:1px solid rgba(0,0,0,.1);
+    display:block;
+  }
+  .recipe--detail .post-share span{
+    font-size:18px;
+    line-height:32px;
+    display:block;
+    padding-bottom:5px;
+  }
+  .recipe--detail .post-share .share-button a{
+    font-size:24px;
+  }
+  .recipe--detail .post-share .share-button a:hover{
+    color:#FC6A00;
+  }
+  .recipe--detail .mid--sec{
+    margin-top:40px;
+    padding-top:25px;
+    border-top:1px solid rgba(0,0,0,.1);
+  }
+  .recipe--detail .mid--sec .inner{
+    max-width:1024px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .recipe--detail .mid--sec .head{
+    font-size:32px;
+    line-height:1.15;
+    color:#FC6A00;
+    margin-bottom:24px;
+    font-weight:900;
+  }
+  .recipe--detail .mid--sec p{
+    margin-bottom:10px;
+  }
+  .recipe--detail .pt--10{
+    padding-top:10px;
+  }
+  .recipe--detail .more--sec{
+    margin-top:40px;
+    padding-top:25px;
+    border-top:1px solid rgba(0,0,0,.1);
+  }
+
+  .recipe--detail .find--store{
+  	padding:60px 0 30px;
+    display:block;
+    text-align:center;
+  }
+/*   .recipe--detail .find--store a{
+  	width:auto;
+    padding:16px 50px;
+    font-size:22px;
+    font-weight:800;
+    text-transform:uppercase;
+    background:#FC6A00;
+    color:#fff;
+    border-radius:100px;
+  }
+  .recipe--detail .find--store a:hover{
+  	background:#FCCC66;
+  } */
+
+
+
+  @media screen and (max-width:1199px){
+   .recipe--detail .top--sec .rsec,
+   .recipe--detail .top--sec .backwrap{padding-left:15px;}
+   .recipe--detail .recipe--title{font-size:32px;margin-bottom:20px;}
+   .recipe--detail .mid--sec .head{font-size:28px;}
+   .recipe--detail .mid--sec{margin-top:30px;}
+
+  }
+  @media screen and (max-width:991px){
+   .recipe--detail .recipe--title{font-size:28px;margin-bottom:15px;}
+   .recipe--detail .mid--sec .head{font-size:26px;}
+
+  }
+  @media screen and (max-width:767px){
+    body .recipe--detail{margin-top:0 !important;}
+    .recipe--detail .top--sec .rsec{padding-top:25px;}
+    .recipe--detail .mid--sec .rsec{padding-top:15px;}
+    .recipe--detail .mid--sec .head{font-size:24px;margin-bottom:15px;}
+
+  }
+  @media screen and (max-width:639px){
+    .recipe--detail .recipe--title{font-size:26px;}
+    .recipe--detail p{font-size:16px;margin-bottom:10px;}
+
+  }
+  @media screen and (max-width:479px){
+    .recipe--detail .recipe--title{font-size:24px;}
+    .recipe--detail .mid--sec .head{font-size:22px;margin-bottom:12px;}
+
+  }
+
+</style>
+
+
+{% schema %}
+  {
+    "name": "Article Page",
+    "settings": [
+    {
+             "type":  "radio",
+             "id":    "container_width",
+             "label": "Container Width",
+             "options": [
+               { "value": "container", "label": "Container" },
+               { "value": "fluid", "label": "Full Width" }
+             ],
+             "default":   "container"
+          },
+    {
+      "type": "header",
+      "content": "Comment Box"
+    },
+    {
+      "type": "image_picker",
+      "id": "commentator_image",
+      "label": "Comment Thumb Image",
+      "info": "Recommended Size: 80 x 80px"
+    },
+    {
+            "type": "range",
+            "id": "comment_post_limit_handle",
+            "min": 1,
+            "max": 10,
+            "step": 1,
+            "label": "How Many Comment Post Show",
+            "default": 5
+        },
+    {
+      "type": "header",
+      "content": "Article Sidebar"
+    },
+    {
+      "type": "radio",
+      "id": "sidebar_handle",
+      "label": "Sidebar Position -",
+      "options": [
+        {
+          "label": "Left Sidebar",
+          "value": "left_sidebar_handle"
+        },
+        {
+          "label": "Right Sidebar",
+          "value": "right_sidebar_handle"
+        },
+        {
+          "label": "Without Sidebar",
+          "value": "without_sidebar"
+        }
+      ],
+      "default": "left_sidebar_handle"
+    },
+    {
+          "type": "header",
+          "content": "Post Meta"
+        },
+        {
+          "type": "checkbox",
+          "id": "post_author_enable",
+          "label": "Post Author Enable",
+          "default": true
+        },
+    {
+          "type": "checkbox",
+          "id": "post_publish_time_enable",
+          "label": "Post Publish Date Enable",
+          "default": true
+        },
+    {
+          "type": "checkbox",
+          "id": "post_comment_enbale",
+          "label": "Post Comment Enable",
+          "default": true
+        },
+    {
+          "type": "header",
+          "content": "Post Title Enable"
+        },
+        {
+          "type": "checkbox",
+          "id": "post_title_enable",
+          "label": "Post Title Enable",
+          "default": true
+        },
+    {
+          "type": "header",
+          "content": "Post Bottom Action"
+        },
+    {
+          "type": "checkbox",
+          "id": "article_tag_enable",
+          "label": "Post Tag Enable",
+          "default": true
+        },
+    {
+          "type": "checkbox",
+          "id": "article_social_share",
+          "label": "Post Social Share Enable",
+          "default": true
+        },
+    {
+          "type": "text",
+          "id": "social_share_title",
+          "label": "Share Post Title",
+          "default": "Share this post:"
+        }
+  ],
+  "blocks":[
+    {
+          "type": "search",
+          "name": "Search",
+      "limit": 1,
+          "settings": [
+            {
+              "type": "text",
+              "id": "wedget_title",
+              "label": "Title",
+              "default": "Search"
+            }
+          ]
+       },
+     {
+          "type": "recent_post",
+          "name": "Recent Post",
+      "limit": 1,
+          "settings": [
+            {
+              "type": "text",
+              "id": "wedget_title",
+              "label": "Recent Post Title",
+              "default": "Recent Post"
+      },
+            {
+              "type": "range",
+              "id": "recent_post_limit_handle",
+              "min": 2,
+              "max": 10,
+              "step": 1,
+              "label": "Post Limit",
+              "default": 3
+            },
+      {
+              "type": "range",
+              "id": "post_title_len",
+              "min": 2,
+              "max": 100,
+              "step": 1,
+              "label": "Post Title Length",
+              "default": 3
+            }
+          ]
+       },
+     {
+          "type": "archive",
+          "name": "Archive",
+      "limit": 1,
+          "settings": [
+            {
+              "type": "text",
+              "id": "wedget_title",
+              "label": "Archive Title",
+              "default": "Archive"
+            }
+          ]
+       },
+     {
+          "type": "tag",
+          "name": "Tag",
+      "limit": 1,
+          "settings": [
+            {
+              "type": "text",
+              "id": "wedget_title",
+              "label": "Tags Title",
+              "default": "Tags"
+      },
+            {
+              "type": "range",
+              "id": "blog_tags_list_limit_handle",
+              "min": 5,
+              "max": 20,
+              "step": 1,
+              "label": "Tag Limit",
+              "default": 10
+            }
+          ]
+       },
+     {
+          "type": "banner",
+          "name": "Banner",
+          "settings": [
+            {
+              "type": "text",
+              "id": "wedget_title",
+              "label": "Title",
+              "default": "Banner"
+            },
+            {
+              "type": "image_picker",
+              "id": "banner_image",
+              "label": "Image"
+            },
+      {
+              "type": "url",
+              "id": "banner_image_url",
+              "label": "URL"
+            }
+    ]
+     },
+     {
+          "type": "menu",
+          "name": "Menu",
+          "settings": [
+            {
+              "type": "text",
+              "id": "wedget_title",
+              "label": "Menu Title",
+              "default": "Custom Menu"
+            },
+      {
+              "type": "link_list",
+              "id": "menu_handle",
+              "label": "Menu"
+            }
+          ]
+       }
+  ]
+  }
+{% endschema %}

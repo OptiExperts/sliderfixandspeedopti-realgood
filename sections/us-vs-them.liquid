@@ -1,0 +1,244 @@
+<div class="rgf_usvsthem usvsthem" id="section-{{ section.id }}" {%- if section.settings.uvt_background -%} style="background-image:url({{ section.settings.uvt_background | img_url: 'master' }})" {% endif %}>
+  <div class="container wide">
+	
+    {%- if section.settings.uvt_title != '' -%}
+    <div class="heading">
+      <h1>{{ section.settings.uvt_title }}</h1>
+    </div>
+    {%- endif -%}
+    
+    <div class="mainImage {% if section.settings.uvt_main_img != blank  %} has_mob_img {% endif %}">
+      {%- if section.settings.uvt_main_img -%}
+      	<img src="{{ section.settings.uvt_main_img | img_url: 'master' }}" alt="" class="lazyload img-fluid">
+      {% endif %}
+      {%- if section.settings.uvt_main_img_mob -%}
+      	<img src="{{ section.settings.uvt_main_img_mob | img_url: 'master' }}" alt="" class="lazyload img-fluid mobile">
+      {% endif %}
+    </div>
+    
+    {%- if section.settings.uvt_button_title != '' -%} 
+    <div class="button">
+      <a href="{{ section.settings.uvt_button_link }}" class="lmBtn btn--type-1">{{ section.settings.uvt_button_title }}</a>
+    </div>
+    {%- endif -%}
+    
+  </div>
+</div>	
+<style>
+  
+  #section-{{ section.id }}{
+  	background:#fff;
+    display:block;
+    margin:0px auto;
+    padding:65px 0 150px;
+/*     background-size:auto 100%; */
+    background-size:100% 100%;
+    background-position:center;
+    background-repeat:no-repeat;
+  }  
+  #section-{{ section.id }} .heading{
+  	text-align:center;
+/*     padding-bottom:60px; */
+    padding-bottom:30px;
+  }
+  #section-{{ section.id }} .heading h1{
+  	text-align:center;
+    font-size:60px;
+    line-height:1.1;
+    color:#000;
+/*     font-weight:900; */
+/*     font-family:"Montserrat"; */
+    font-family:'Adrianna';
+    font-weight:800;
+  }
+  
+  #section-{{ section.id }}.rgf_usvsthem .button{
+  	text-align:center;
+    padding-top:10px;
+  }
+
+  {% comment %}
+  #section-{{ section.id }}.rgf_usvsthem .lmBtn{
+/*     font-family:"LocalBreweryFour-Regular"; */
+/*     font-family:"SourceSerifPro-Bold"; */
+    font-family:"Montserrat";
+/*   	font-size:26px; */
+    font-size:24px;
+/*     font-weight:400; */
+    font-weight:700;
+    color:#fff;
+/*     background-image:url({{ 'button-bg-3.png' | asset_url }}) !important; */
+    background-image:url({{ 'button-montserrat-bg-2.png' | asset_url }}) !important;
+/*     background-size:100%; */
+    background-size:100% 100%;
+    background-position:center;
+    background-repeat:no-repeat !important;
+/*     padding:12px 55px 28px; */
+/*     padding:22px 55px 28px; */
+    padding:16px 55px 22px;
+/*     text-shadow:1px 3px 0px rgba(0,0,0,0.34); */
+  }
+  #section-{{ section.id }}.rgf_usvsthem .lmBtn:hover{
+  	opacity:0.95;
+    color:#000;
+  }
+  {% endcomment %}
+  
+  #section-{{ section.id }} .mainImage.has_mob_img img.mobile{
+  	display:none;
+  }
+  
+  
+  @media (min-width:1630px){
+    #section-{{ section.id }} .container.wide{max-width:1600px;}
+    
+  }
+  @media (min-width:1921px){
+    #section-{{ section.id }}{background-size:100% 100%;}
+  }
+  @media (max-width:1399px){
+  	#section-{{ section.id }} .heading h1{
+     font-size:48px; 
+    }
+  
+  }
+  @media (max-width:1279px){
+  	#section-{{ section.id }} .heading h1{
+     font-size:42px; 
+    }
+/*     #section-{{ section.id }} .heading{
+      padding-bottom:45px;
+    } */
+  
+  }
+  @media (max-width:1139px){
+  	#section-{{ section.id }} .heading h1{
+     font-size:36px; 
+    }
+    #section-{{ section.id }}{
+    	background-size:auto 100%;
+    }
+  
+  }
+  @media (max-width:991px){
+    #section-{{ section.id }}{
+      padding:60px 0 100px;
+    }
+  	#section-{{ section.id }} .heading h1{
+     font-size:32px; 
+    }
+    #section-{{ section.id }}.rgf_usvsthem .lmBtn{
+/*       font-size:22px;
+      padding:18px 45px 22px; */
+      margin-top:15px;
+    }
+/*     #section-{{ section.id }} .heading{
+      padding-bottom:40px;
+    } */
+  
+  }
+  @media (max-width:767px){
+    #section-{{ section.id }}{
+      padding:60px 0 80px;
+    }
+  	#section-{{ section.id }} .heading h1{
+     font-size:30px; 
+    }
+/*     #section-{{ section.id }} .heading{
+      padding-bottom:35px;
+    } */
+    #section-{{ section.id }} .mainImage.has_mob_img img{
+      display:none;
+    }
+    #section-{{ section.id }} .mainImage.has_mob_img img.mobile{
+      display:block;
+      margin:0 auto;
+    }
+  
+  }
+  @media (max-width:639px){
+  	#section-{{ section.id }}{
+      padding:60px 0;
+    }
+    #section-{{ section.id }} .heading h1{
+     font-size:28px; 
+    }
+    #section-{{ section.id }}.rgf_usvsthem .lmBtn{
+/*       font-size:20px;
+      padding:15px 40px 18px; */
+    }
+    #section-{{ section.id }} .heading{
+      padding-bottom:30px;
+    }
+    
+  }
+  @media (max-width:479px){
+  	#section-{{ section.id }}{
+      padding:40px 0 55px;
+    }
+    #section-{{ section.id }} .heading h1{
+     font-size:24px; 
+    }
+    #section-{{ section.id }}.rgf_usvsthem .lmBtn{
+/*       font-size:16px;
+      padding:15px 25px 18px; */
+      margin-top:5px;
+    }
+    #section-{{ section.id }} .heading{
+      padding-bottom:25px;
+    }
+    
+  }
+  
+  
+
+</style>
+{% schema %}
+{
+    "name": "Us vs Them",
+    "settings": [
+    	{
+         "type": "header",
+         "content": "Us vs Them Settings"
+      	},
+		{
+          "type": "text",
+          "id": "uvt_title",
+          "label": "Section Title",
+		  "default": "Us vs. Them"
+        },
+		{
+          "type": "image_picker",
+          "id": "uvt_background",
+          "label": "Section Background Image"
+        },
+		{
+          "type": "image_picker",
+          "id": "uvt_main_img",
+          "label": "Main Image"
+        },
+		{
+          "type": "image_picker",
+          "id": "uvt_main_img_mob",
+          "label": "Main Image (Mobile)"
+        },
+		{
+          "type": "text",
+          "id": "uvt_button_title",
+          "label": "Button Title",
+		  "default": "Learn how we're different"
+        },
+		{
+          "type": "url",
+          "id": "uvt_button_link",
+          "label": "Button Link"
+        }
+    ],
+    "presets": [
+	    {
+	        "category": "4. Banner",
+	        "name": "Us vs Them"
+	    }
+    ]
+}
+{% endschema %}

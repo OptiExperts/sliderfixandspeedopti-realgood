@@ -1,0 +1,49 @@
+<script data-cfasync="false" type="text/javascript">if (typeof Shopify === "undefined") var Shopify = {}; Shopify.cart = {{ cart | json }};</script> 
+<div id="sca-fg-owl-carousel">
+  <div id="freegift_cart_container" class="sca-fg-cart-container" style="display: none;">
+    <div id="freegift_message" class="owl-carousel"></div>
+  </div> 
+  <div id="sca-fg-slider-cart" style="display: none;">
+    <div class="sca-fg-cart-title">
+      <strong>Select your free gift (s)</strong>
+    </div>
+    <div id="sca_freegift_list" class="owl-carousel"></div>
+  </div>
+</div>
+<div id="sca_fg_cart">
+{% include 'elspw_cart' %}
+{% section 'cart-template' %}
+
+
+<!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script><!--<![endif]-->
+<!--[if lte IE 9]><script src="{{ 'shopify_common.js' | shopify_asset_url }}"></script><![endif]-->
+
+{% comment %}
+
+<script>
+  $('.product-quantity').append('<span class="dec qtybtn"> (-) </span><span class="inc qtybtn"> (+) </span>');
+  $('.qtybtn').on('click', function() {
+    var $button = $(this);
+    var oldValue = $button.parent().find('input').val();
+    if ($button.hasClass('inc')) {
+      var newVal = parseFloat(oldValue) + 1;
+    } else {
+      // Don't allow decrementing below zero
+      if (oldValue > 0) {
+        var newVal = parseFloat(oldValue) - 1;
+      } else {
+        newVal = 0;
+      }
+    }
+    $button.parent().find('input').val(newVal);
+  });
+  
+  
+  
+  
+
+  
+</script>
+
+{% endcomment %}
+</div>

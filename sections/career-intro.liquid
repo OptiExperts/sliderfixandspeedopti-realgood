@@ -1,0 +1,110 @@
+{% if section.settings.enable_career_intro == true %}
+<div class="career--intro" id="section-{{ section.id }}">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 content">
+        {% if section.settings.section_title != blank %}
+          <h2 class="heading">{{section.settings.section_title}}</h2>
+        {% endif %}
+        <p>{{section.settings.section_content}}</p>
+      </div>
+      <div class="col-md-6 img text-right">
+        <img src="{% if section.settings.section_image != blank %} {{ section.settings.section_image | img_url: '640x380' }}{% else %} https://via.placeholder.com/640x380 {% endif %}" class="lazyload img-fluid" alt="">
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<style>
+  #section-{{ section.id }}{padding-top:20px;}
+  #section-{{ section.id }} .content{padding-top:25px;}
+  #section-{{ section.id }} .heading{
+  	font-family:'Adrianna';
+/*     font-weight:700; */
+    font-weight:800;
+    font-size:72px;
+    line-height:1.25;
+    color:#DD3629;
+  }
+  #section-{{ section.id }} .content p{
+  	font-family:'Adrianna';
+    font-weight:400;
+    font-size:22px;
+    line-height:1.25;
+/*     color:#DD3629; */
+    color:#DD7C01;
+  }
+  
+  @media (max-width:1199px){
+    #section-{{ section.id }} .content{padding-top:0;}
+    #section-{{ section.id }} .heading{font-size:56px;}
+    #section-{{ section.id }} .content p{font-size:20px;}
+    
+  }
+  @media (max-width:991px){
+    #section-{{ section.id }} .heading{font-size:48px;}
+    #section-{{ section.id }} .content p{font-size:18px;}
+    
+  }
+  @media (max-width:767px){
+    #section-{{ section.id }} .heading{font-size:42px;}
+    #section-{{ section.id }} .content{padding-bottom:25px;}
+    
+  }
+  @media (max-width:575px){
+    #section-{{ section.id }} .heading{font-size:36px;}
+    #section-{{ section.id }} .content p{font-size:16px;}
+  }
+  @media (max-width:479px){
+    #section-{{ section.id }} .heading{font-size:32px;}
+  }
+  
+</style>
+
+
+{% schema %}
+  {
+    "name": "Career Intro.",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section Enable"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_career_intro",
+        "label": "Enable Career Intro",  
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Content Options"
+      },
+      {
+        "type": "text",
+        "id": "section_title",
+        "label": "Section Title",
+        "default": "Careers"
+      },
+	  {
+        "type": "textarea",
+        "id": "section_content",
+        "label": "Section Content"
+      },
+      {
+        "type": "image_picker",
+        "id": "section_image",
+        "label": "Section Image",
+		"info": "Recommended Size: 640 x 380 px"
+      }
+
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

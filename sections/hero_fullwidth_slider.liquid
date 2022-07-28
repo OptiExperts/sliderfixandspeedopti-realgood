@@ -1,0 +1,333 @@
+<div class="slider-area" id="section-{{ section.id }}">
+   <div class="hero-slider-wrapper owl-carousel">
+		{% for block in section.blocks %}
+          <div class="hero-single-slider" style="background-image: url('{% if block.settings.slider_img %}{{ block.settings.slider_img | img_url: 'master' }} {% else %} https://via.placeholder.com/1920x710{% endif %}');"  id="block-{{ block.id }}">
+           <div class="container">
+              <div class="row {% if block.settings.justify_content == "start" %} justify-content-start {% elsif block.settings.justify_content == "center" %}  justify-content-center {% elsif block.settings.justify_content == "end" %} justify-content-end {% endif %} ">
+
+                <div class="hero-slider-content {% if block.settings.content_align == "left" %} text-left {% elsif block.settings.content_align == "right" %} text-right {% elsif block.settings.content_align == "center" %} text-center {% endif %}">
+                  {% if block.settings.slider_caption_title_1 != blank %}
+                  <h5>
+                    {{ block.settings.slider_caption_title_1 }}
+                  </h5>
+                  {% endif %}
+
+                  {% if block.settings.slider_caption_title_2 != blank %}
+                  <div class="main-title">
+                    <h2>{{ block.settings.slider_caption_title_2 }} </h2>
+                  </div>
+                  {% endif %}
+
+                  {% if block.settings.slider_caption_btn != blank %}
+                  <a href="{{ block.settings.slider_caption_btn_link }}" class="lezada-button lezada-button--medium">{{ block.settings.slider_caption_btn }}</a>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+            
+            <style>
+              #block-{{ block.id }} .hero-slider-content > h5 {
+                color: {{ block.settings.caption_title1_color }};
+              }	
+              #block-{{ block.id }} .hero-slider-content .main-title h2{
+                color: {{ block.settings.caption_title2_color }};
+              } 
+              #block-{{ block.id }} .hero-slider-content a.lezada-button {
+                background: {{ block.settings.slide_caption_btn_bg_color }};
+                 border-color: {{ block.settings.slide_caption_btn_bg_color }};
+                 color: {{ block.settings.slide_caption_btn_color }} !important;
+              }
+               #block-{{ block.id }} .hero-slider-content a.lezada-button:hover {
+				 background: transparent;
+                 border-color: {{ block.settings.slide_caption_btn_border_color }};
+                 color: {{ block.settings.slide_caption_btn_hover_color }} !important;
+              }
+           </style>
+          </div>
+     	{% endfor  %}
+      </div>
+</div>
+
+
+<style>
+  
+  #section-{{ section.id }} .hero-slider-wrapper.owl-carousel .owl-nav > div {
+    background: {{ section.settings.navigation_bg_color }};
+    color: {{ section.settings.navigation_color }};
+  }
+  
+  #section-{{ section.id }} .hero-slider-wrapper.owl-carousel .owl-nav > div:hover {
+    background: {{ section.settings.navigation_hover_bg_color }};
+    color: {{ section.settings.navigation_hover_color }};
+  }
+
+  
+  #section-{{ section.id }} .hero-slider-wrapper.owl-carousel .owl-dots .owl-dot {
+    background: {{ section.settings.slider_paginate_color }};
+  }
+  #section-{{ section.id }} .hero-slider-wrapper.owl-carousel .owl-dots .owl-dot.active {
+    border-color:  {{ section.settings.slider_active_paginate_color }};
+    background: transparent;
+  }
+
+  
+  #section-{{ section.id }} .hero-single-slider::before {
+    background: {{ section.settings.slider_overlay_color }};
+    opacity: {{ section.settings.slider_overlay_opacity }};
+  }
+  
+  
+
+</style>
+
+
+
+{% schema %}
+  {
+    "name": "Fluid Hero Slider", 
+    "settings": [
+		{
+			"type": "header",
+            "content": "Slider Autoplay"
+		},
+		{
+          "type": "checkbox",
+          "id": "slider_autoplay_enable",
+          "label": "Slider Autoplay True/False",
+		  "default":  false
+        },
+		{
+			"type": "header",
+            "content": "Pagination/Bullet"
+		},
+		{
+          "type": "checkbox",
+          "id": "pagination_true",
+          "label": "Pagination True/False",
+		  "default":  false
+        },
+		{
+          "type": "color",
+          "id": "slider_paginate_color",
+          "label": "Paginate Color",
+          "default": "#999"	
+      	},
+		{
+          "type": "color",
+          "id": "slider_active_paginate_color",
+          "label": "Paginate Active Color",
+          "default": "#333"	
+      	},
+		{
+			"type": "header",
+            "content": "Navigation"
+		},
+		{
+          "type": "checkbox",
+          "id": "navigation_true",
+          "label": "Navigation True/False",
+		  "default":  true
+        },
+		{
+          "type": "color",
+          "id": "navigation_bg_color",
+          "label": "Navigation Bg Color Color",
+          "default": "#fff"	
+      	},
+		{
+          "type": "color",
+          "id": "navigation_color",
+          "label": "Navigation Text Color",
+          "default": "#999"	
+      	},
+		{
+          "type": "color",
+          "id": "navigation_hover_bg_color",
+          "label": "Navigation Hover Bg Color",
+          "default": "#222"	
+      	},
+		{
+          "type": "color",
+          "id": "navigation_hover_color",
+          "label": "Navigation Hover Text Color",
+          "default": "#fff"	
+      	},
+        {
+			"type": "header",
+            "content": "Slider Overlay"
+		},
+		{
+          "type": "color",
+          "id": "slider_overlay_color",
+          "label": "Overlay Color",
+          "default": "#fff"
+        },
+        {
+          "type": "range",
+          "id": "slider_overlay_opacity",
+          "min": 0,
+          "max": 1,
+          "step": 0.1,
+          "label": "Overlay Color Opacity",
+          "default": 0.2
+        }
+	],
+	"blocks":[
+      {
+          "type": "slide",
+          "name": "Slide",
+          "settings": [
+              {
+                  "type": "image_picker",
+                  "id": "slider_img",
+                  "label": "Image",
+                  "info": "Recommended Size: 1920 x 710px"
+              },
+			  {
+                "type": "text",
+                "id": "slider_caption_title_1",
+                "label": "Slide Title 1",
+				"default": "accessories"
+			  },
+			  {
+                "type": "textarea",
+                "id": "slider_caption_title_2",
+                "default": "Bottle Grinder, <br> Small, 2-Piecehe",
+				"info": "For DefaulT Title: Content <br> Content ..",
+                "label": "Slide Title 2"
+			  },
+			  {
+                "type": "text",
+                "id": "slider_caption_btn",
+                "default": "shop now",
+                "label": "Slider Button"
+			  },
+			  {
+                "id": "slider_caption_btn_link",
+                "type": "url",
+                "label": "Slider Btn Url"
+              },
+			  {
+                "type":      "header",
+                "content":   "Justify Content" 
+              },
+			  {
+                "type":  "radio",
+                "id":    "justify_content",
+                "label": "Justify Content",
+                "options": [
+                  { "value": "start", "label": "Start" },
+                  { "value": "center", "label": "Center" },
+				  { "value": "end", "label": "end" }
+                ],
+                "default":   "end"
+              },
+			  {
+                "type":      "header",
+                "content":   "Content Alignment" 
+              },
+			  {
+                "type":  "radio",
+                "id":    "content_align",
+                "label": "Content Alignment",
+                "options": [
+                  { "value": "left", "label": "Left" },
+                  { "value": "center", "label": "Center" },
+				  { "value": "right", "label": "Right" }
+                ],
+                "default":   "left"
+              },
+			  {
+                "type":      "header",
+                "content":   "Slider Title#1" 
+              },
+			  {
+                "type": "color",
+                "id": "caption_title1_color",
+                "label": "Slider Caption Title#1",
+                "default": "#333"	
+              },
+			  {
+                "type":      "header",
+                "content":   "Slider Title#2" 
+              },
+			  {
+                "type": "color",
+                "id": "caption_title2_color",
+                "label": "Slider Caption Title#2",
+                "default": "#333333"	
+              },
+			  {
+                "type":      "header",
+                "content":   "Slider Button" 
+              },
+			  {
+                "type": "color",
+                "id": "slide_caption_btn_bg_color",
+                "label": "Slider Button Bg",
+                "default": "#333333"	
+              },
+			  {
+                "type": "color",
+                "id": "slide_caption_btn_color",
+                "label": "Slider Button Text Color",
+                "default": "#fff"	
+              },
+			  {
+                "type":      "paragraph",
+                "content":   "Slider Button Hover" 
+              },
+			  {
+                "type": "color",
+                "id": "slide_caption_btn_border_color",
+                "label": "Slider Button Hover Border Color",
+                "default": "#333333"	
+              },
+			  {
+                "type": "color",
+                "id": "slide_caption_btn_hover_color",
+                "label": "Slider Button Hover Text Color",
+                "default": "#333"	
+              }
+			  
+          ]
+        }
+     ],
+	"presets": [
+        {
+          "category": "2. SlideShow",
+          "name": "Hero Fluid Slider",
+          "blocks":[
+				{
+					"type": "slide"
+				},
+				{
+					"type": "slide"
+				},
+				{
+					"type": "slide"
+				}
+			] 
+        }
+      ]
+  }
+{% endschema %}
+
+
+
+<script>
+  var slider_autoplay = {% if section.settings.slider_autoplay %} true{% else %} false {% endif %} ;
+  $('.hero-slider-wrapper').owlCarousel({
+    autoplay: true,
+    nav: {{ section.settings.navigation_true }},
+    navText: ['<i class="ti-angle-left">','<i class="ti-angle-right">'],
+    loop: true,
+    {% if settings.rtl_enable %}
+    rtl: true, 
+    {% endif %}
+     autoplay: slider_autoplay,
+    autoplayTimeout: 8000,
+    items: 1,
+    dots: {{ section.settings.pagination_true }},
+  });
+</script>

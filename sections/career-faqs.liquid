@@ -1,0 +1,179 @@
+{% if section.settings.enable_career_faqs == true %}
+<div class="career--cases" id="section-{{ section.id }}">
+  <div class="container">
+    <div class="career--faq--main">
+      {%- for block in section.blocks -%}
+      <div class="faq--item">
+        
+        {% if block.settings.faq_question != blank %}
+        <div class="faq--q">
+          <h3>{{block.settings.faq_question}}</h3>
+        </div>
+        {% endif %}
+        
+        {% if block.settings.faq_answer != blank %}
+        <div class="faq--ans" style="display:none;">
+          <p>{{block.settings.faq_answer}}</p>
+        </div>
+        {% endif %}
+        
+      </div>
+      {%- endfor -%}      
+    </div>
+  </div>
+
+</div>
+{% endif %}
+
+<style type="text/css">
+  #section-{{ section.id }}{
+	padding-top:80px;
+  }
+  .career--faq--main .faq--item{
+    border-bottom:1px solid #e8e8e2;
+    padding:15px 0 10px;
+  }
+/*   .career--faq--main .faq--item:first-child{
+  	border-top:1px solid #e8e8e2;
+  } */
+  .career--faq--main .faq--item .faq--q{
+  	cursor:pointer;
+    position:relative;
+    padding-right:25px;
+  }
+  .career--faq--main .faq--item .faq--q h3{
+    font-family:'Adrianna';
+/*     font-family: 'Adrianna-Condensed'; */
+  	font-size:48px;
+    font-weight:600;
+    line-height:1;
+    color:#DD3629;
+  }
+  .career--faq--main .faq--item .faq--q:before{
+    content:"\f107";
+    font-family:fontAwesome;
+  	position:absolute;
+    top:10px;
+    right:0;
+    font-size:28px;
+    font-weight:bold;
+    color:#DD3629;
+  }
+  .career--faq--main .faq--item.open .faq--q:before{
+  	content:"\f106";
+  }  
+  .career--faq--main .faq--item .faq--ans{
+  	padding:5px 25px 5px 0;
+  }
+  .career--faq--main .faq--item .faq--ans p{
+  	font-size:20px;
+/*     color:#888875; */
+    color:#DD7C01;
+    line-height:1.25;
+  }
+  .career--faq--main .faq--item .faq--ans a{
+/*   	color:#DD7C01; */
+    color:#FBCA40;
+  }
+  .career--faq--main .faq--item .faq--ans a:hover{
+/*   	color:#fbca40; */
+    opacity:0.8;
+  }
+  
+  @media (max-width:1199px){
+  	#section-{{ section.id }}{padding-top:70px;}
+    .career--faq--main .faq--item .faq--q h3{font-size:42px;}
+    .career--faq--main .faq--item .faq--ans p{font-size:18px;margin-bottom:12px;}
+    
+  }
+  @media (max-width:991px){
+  	#section-{{ section.id }}{padding-top:60px;}
+    .career--faq--main .faq--item .faq--q h3{font-size:36px;}
+    .career--faq--main .faq--item .faq--q:before{font-size:24px;top:8px;}
+    
+  }
+  @media (max-width:767px){
+    #section-{{ section.id }}{padding-top:55px;}
+  	.career--faq--main .faq--item .faq--q h3{font-size:30px;}
+    .career--faq--main .faq--item .faq--ans p{font-size:17px;}
+    .career--faq--main .faq--item .faq--q:before{font-size:22px;top:4px;}
+    .career--faq--main .faq--item{padding:10px 0 8px;}
+    
+  }
+  @media (max-width:575px){
+  	#section-{{ section.id }}{padding-top:50px;}
+    .career--faq--main .faq--item .faq--q h3{font-size:26px;}
+    .career--faq--main .faq--item .faq--ans p{font-size:16px;}
+    .career--faq--main .faq--item .faq--q:before{font-size:20px;top:0;}
+    .career--faq--main .faq--item{padding:8px 0 5px;}
+    
+  }
+  @media (max-width:479px){
+    #section-{{ section.id }}{padding-top:45px;}
+  	.career--faq--main .faq--item .faq--q h3{font-size:24px;}
+    .career--faq--main .faq--item .faq--q{padding-right:20px;}
+    
+  }
+  
+</style>
+
+
+{% schema %}
+  {
+    "name": "Career Cases",
+    "settings": [
+	  {
+        "type": "header",
+        "content": "Career Case Settings"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_career_faqs",
+        "label": "Enable Career Cases",  
+        "default": true
+      }
+	  
+	],
+	"blocks":[
+    	{
+          "type": "Career",
+          "name": "CASES",
+              "settings": 
+              [	
+                {
+                  "type": "text",
+                  "id": "faq_question",
+                  "label": "Case Title"
+                },
+				{
+                  "type": "textarea",
+                  "id": "faq_answer",
+                  "label": "Case Description"
+                }
+                
+              ]
+   		}
+  	]
+  }
+{% endschema %}
+
+
+<script>
+//   jQuery(document).ready(function($){
+//     $('.faq--item').each(function(){
+//       $(this).find('.faq--q').click(function(){
+      	
+//         if($(this).parents('.faq--item').hasClass('open')){
+//           $(this).parents('.faq--item').find('.faq--ans').slideUp();
+//           $(this).parents('.faq--item').removeClass('open');
+//         } else {
+//           $(this).parents('.faq--item').addClass('open');
+//           $(this).parents('.faq--item').find('.faq--ans').slideDown();
+//         }
+          
+//       });
+//     });
+    
+  	
+//   });
+</script>

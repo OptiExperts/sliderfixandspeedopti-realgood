@@ -1,0 +1,239 @@
+<div class="slider-area mb-80 mb-md-60 mb-sm-60" id="section-{{ section.id }}">
+  
+   <div class="lezada-slick-slider decor-slider-wrapper"
+        data-slick-setting='{
+            "slidesToShow": 1,
+            "slidesToScroll": 1,
+            "arrows": {{ section.settings.slider_arrow_enable }},
+            "dots": false,
+            {% if settings.rtl_enable %}                
+            "rtl": true,
+            {% endif %}                
+            "centerMode": true,
+            "centerPadding": "360px",
+            "autoplay": {{ section.settings.slider_autoplay_enable }},
+            "autoplaySpeed": 5000,
+            "speed": 1000,
+            "prevArrow": {"buttonClass": "slick-prev", "iconClass": "ti-angle-left" },
+            "nextArrow": {"buttonClass": "slick-next", "iconClass": "ti-angle-right" }
+        }'
+        data-slick-responsive='[
+            {"breakpoint":1501, "settings": {"slidesToShow": 1, "arrows": true, "centerPadding": "160px"} },
+            {"breakpoint":1199, "settings": {"slidesToShow": 1, "arrows": true, "centerMode": false} },
+            {"breakpoint":991, "settings": {"slidesToShow": 1,"slidesToScroll": 1, "arrows": true, "centerMode": false} },
+            {"breakpoint":767, "settings": {"slidesToShow": 1, "slidesToScroll": 1, "arrows": true, "centerMode": false} },
+            {"breakpoint":575, "settings": {"slidesToShow": 1, "slidesToScroll": 1,  "arrows": true, "centerMode": false} },
+            {"breakpoint":479, "settings": {"slidesToShow": 1, "slidesToScroll": 1, "arrows": true, "centerMode": false} }
+        ]'
+        >
+     
+     
+		{% for block in section.blocks %}
+          <div class="decor-single-slider" id="block-{{ block.id }}">
+            <div class="decor-single-slider-content">
+              <div class="slider-image">
+                <img class="lazyload img-fluid" data-src="{% if block.settings.slider_img %}{{ block.settings.slider_img | img_url: 'master' }} {% else %} https://via.placeholder.com/1170x620{% endif %}" src="{% if block.settings.slider_img %}{{ block.settings.slider_img | img_url: 'master' }} {% else %} https://via.placeholder.com/1170x620{% endif %}" alt="{{ block.settings.slider_img.alt }}">
+              </div>
+              <div class="slider-content">
+                {% if block.settings.slider_caption_title_1 != blank %}
+                <div class="color-title color-name">
+                  {{ block.settings.slider_caption_title_1 }}
+                </div>
+                {% endif %}
+                
+                 {% if block.settings.slider_caption_title_2 != blank %}
+                <div class="main-title">
+                  {{ block.settings.slider_caption_title_2 }}
+                </div>
+                {% endif %}
+                
+                {% if block.settings.slider_caption_btn != blank %}
+                <a href="{{ block.settings.slider_caption_btn_link }}" class="lezada-button lezada-button--medium">{{ block.settings.slider_caption_btn }}</a>
+                {% endif %}
+                
+              </div>
+            </div>
+            <style>
+              #block-{{ block.id }} .decor-single-slider-content .color-title.color-name {
+                color: {{ block.settings.caption_title1_color }};
+              }	
+              #block-{{ block.id }} .decor-single-slider-content .main-title {
+                color: {{ block.settings.caption_title2_color }};
+              } 
+              #block-{{ block.id }} .slider-content a.lezada-button {
+                background: {{ block.settings.slide_caption_btn_bg_color }} !important;
+                 border-color: {{ block.settings.slide_caption_btn_bg_color }} !important;
+                 color: {{ block.settings.slide_caption_btn_color }} !important;
+              }
+               #block-{{ block.id }} .slider-content a.lezada-button:hover {
+				 background: transparent !important;
+                 border-color: {{ block.settings.slide_caption_btn_border_color }} !important;
+                 color: {{ block.settings.slide_caption_btn_hover_color }} !important;
+              }
+           </style>
+          </div>
+     	{% endfor  %}
+      </div>
+</div>
+
+
+<style>
+  #section-{{ section.id }} .decor-slider-wrapper .slick-arrow {
+    color: {{ section.settings.arrow_btn_color }};
+  }
+   #section-{{ section.id }} .decor-slider-wrapper .slick-arrow:hover {
+    color: {{ section.settings.arrow_btn_hover_color }};
+  }
+</style>
+
+
+
+{% schema %}
+  {
+    "name": "Hero Slider",
+    "settings": [
+		{
+			"type": "header",
+            "content": "Slider Autoplay"
+		},
+		{
+          "type": "checkbox",
+          "id": "slider_autoplay_enable",
+          "label": "Slider Autoplay True/False",
+		  "default":  false
+        },
+        {
+			"type": "header",
+            "content": "Slider Nav arrow"
+        },
+		{
+          "type": "checkbox",
+          "id": "slider_arrow_enable",
+          "label": "Slider Arrow Enable",
+		  "default":  true
+        },
+		{
+          "type": "color",
+          "id": "arrow_btn_color",
+          "label": "Arrow Button Color",
+          "default": "#e7e7e7"	
+      	},
+		{
+          "type": "color",
+          "id": "arrow_btn_hover_color",
+          "label": "Arrow Button Hover Color",
+          "default": "#333"	
+      	}
+	],
+	"blocks":[
+      {
+          "type": "slide",
+          "name": "Slide",
+          "settings": [
+              {
+                  "type": "image_picker",
+                  "id": "slider_img",
+                  "label": "Image",
+                  "info": "Recommended Size: 1170 x 620px"
+              },
+			  {
+                "type": "text",
+                "id": "slider_caption_title_1",
+                "label": "Slide Title 1",
+				"default": "accessories"
+			  },
+			  {
+                "type": "textarea",
+                "id": "slider_caption_title_2",
+                "default": "Bottle Grinder, <br> Small, 2-Piecehe",
+				"info": "For DefaulT Title: Content <br> Content ..",
+                "label": "Slide Title 2"
+			  },
+			  {
+                "type": "text",
+                "id": "slider_caption_btn",
+                "default": "shop now",
+                "label": "Slider Button"
+			  },
+			  {
+                "id": "slider_caption_btn_link",
+                "type": "url",
+                "label": "Slider Btn Url"
+              },
+			  {
+                "type":      "header",
+                "content":   "Slider Title#1" 
+              },
+			  {
+                "type": "color",
+                "id": "caption_title1_color",
+                "label": "Slider Caption Title#1",
+                "default": "#68aaeb"	
+              },
+			  {
+                "type":      "header",
+                "content":   "Slider Title#2" 
+              },
+			  {
+                "type": "color",
+                "id": "caption_title2_color",
+                "label": "Slider Caption Title#2",
+                "default": "#333333"	
+              },
+			  {
+                "type":      "header",
+                "content":   "Slider Button" 
+              },
+			  {
+                "type": "color",
+                "id": "slide_caption_btn_bg_color",
+                "label": "Slider Button Bg",
+                "default": "#333333"	
+              },
+			  {
+                "type": "color",
+                "id": "slide_caption_btn_color",
+                "label": "Slider Button Color",
+                "default": "#fff"	
+              },
+			  {
+                "type":      "paragraph",
+                "content":   "Slider Button Hover" 
+              },
+			  {
+                "type": "color",
+                "id": "slide_caption_btn_border_color",
+                "label": "Slider Button Hover Border Color",
+                "default": "#333333"	
+              },
+			  {
+                "type": "color",
+                "id": "slide_caption_btn_hover_color",
+                "label": "Slider Button Hover Color",
+                "default": "#333"	
+              }
+			  
+          ]
+        }
+     ],
+	"presets": [
+        {
+          "category": "2. SlideShow",
+          "name": "HeroSlider",
+          "blocks":[
+				{
+					"type": "slide"
+				},
+				{
+					"type": "slide"
+				},
+				{
+					"type": "slide"
+				}
+			] 
+        }
+      ]
+  }
+{% endschema %}
+
+

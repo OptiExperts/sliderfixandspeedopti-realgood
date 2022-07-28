@@ -1,0 +1,168 @@
+{% if section.settings.enable_wwe_ticker == true %}
+<div class="wwe--ticker" id="section-{{ section.id }}">
+  <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="ticker--items">
+            {%- for block in section.blocks -%}
+            <div class="ticker--item">
+              {% if block.settings.ticker_number != blank %}
+              <span class="t--number">{{block.settings.ticker_number}}</span>
+              {% endif %}
+              {% if block.settings.ticker_name != blank %}
+              <span class="t--name">{{block.settings.ticker_name}}</span>
+              {% endif %}
+            </div>
+            {%- endfor -%}
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+{% endif %}
+
+<style>
+  #section-{{ section.id }}{padding-top:25px;padding-bottom:50px;background:#EF6A00;}
+  #section-{{ section.id }} .ticker--items{text-align:center;}
+  #section-{{ section.id }} .ticker--items .ticker--item{
+  	display:inline-block; /*Comment it out when slick slider js is resumed*/
+    padding:0 30px;
+    text-align:center;
+  }
+  #section-{{ section.id }} .ticker--item .t--number{
+  	font-family:'Adrianna';
+    font-weight:800;
+    font-size:86px;
+    line-height:1;
+    color:#FFF;
+    margin-bottom:0;
+    display:block;
+    text-transform:uppercase;
+  }
+  #section-{{ section.id }} .ticker--item .t--name{
+  	font-family:'Adrianna';
+    font-weight:700;
+    font-size:24px;
+    line-height:1;
+    color:#FFF;
+    margin-bottom:0
+    display:block;
+  }
+  
+  @media (max-width:1279px){
+    #section-{{ section.id }} .ticker--items .ticker--item{padding:0 25px;}
+    #section-{{ section.id }} .ticker--item .t--number{font-size:76px;}
+  }
+  @media (max-width:1199px){
+    #section-{{ section.id }}{padding-bottom:45px;}
+    #section-{{ section.id }} .ticker--item .t--number{font-size:72px;}
+    #section-{{ section.id }} .ticker--item .t--name{font-size:22px;}
+    
+  }
+  @media (max-width:991px){
+    #section-{{ section.id }} .ticker--items .ticker--item{padding:0 20px;}
+    #section-{{ section.id }}{padding-top:20px;padding-bottom:40px;}
+    #section-{{ section.id }} .ticker--item .t--number{font-size:62px;}
+    
+  }
+  @media (max-width:767px){
+    /*#section-{{ section.id }} .ticker--item .t--number{font-size:52px;}
+    #section-{{ section.id }} .ticker--item .t--name{font-size:20px;}
+    #section-{{ section.id }} .ticker--items .ticker--item{padding:0 25px;}*/ /*Enable them while activate the JS*/
+    
+    #section-{{ section.id }} .ticker--item .t--number{font-size:48px;}
+    #section-{{ section.id }} .ticker--item .t--name{font-size:18px;}
+    #section-{{ section.id }} .ticker--items .ticker--item{padding:0 15px;}
+    
+  }
+  @media (max-width:575px){
+    #section-{{ section.id }}{padding-top:10px;padding-bottom:35px;}
+   /*	#section-{{ section.id }} .ticker--item .t--number{font-size:42px;}
+    #section-{{ section.id }} .ticker--item .t--name{font-size:18px;}
+    #section-{{ section.id }} .ticker--items .ticker--item{padding:0 20px;}*/ /*Enable them while activate the JS*/
+    #section-{{ section.id }} .ticker--item .t--number{font-size:40px;}
+    #section-{{ section.id }} .ticker--item .t--name{font-size:16px;}
+    #section-{{ section.id }} .ticker--items .ticker--item{padding:0 10px;}
+    
+  }
+  @media (max-width:479px){
+    /*#section-{{ section.id }} .ticker--item .t--number{font-size:32px;}
+    #section-{{ section.id }} .ticker--item .t--name{font-size:16px;}
+    #section-{{ section.id }} .ticker--items .ticker--item{padding:0 15px;}*/ /*Enable them while activate the JS*/
+    #section-{{ section.id }} .ticker--item .t--number{font-size:30px;}
+    #section-{{ section.id }} .ticker--item .t--name{font-size:11px;}
+    #section-{{ section.id }} .ticker--items .ticker--item{padding:0 7.5px;}
+  }
+  
+</style>
+
+
+{% schema %}
+  {
+    "name": "Why We Exists Ticker",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section Enable"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_wwe_ticker",
+        "label": "Enable Ticker Section",  
+        "default": true
+      }
+
+	],
+	"blocks":[
+    	{
+          "type": "ticker_item",
+          "name": "Ticker Item",
+              "settings": 
+              [	
+                {
+                  "type": "text",
+                  "id": "ticker_number",
+                  "label": "Ticker Number (with %)"
+                },
+				{
+                  "type": "text",
+                  "id": "ticker_name",
+                  "label": "Ticker Name"
+                }
+                
+              ]
+   		}
+  	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+
+<script>
+// 	jQuery(document).ready(function($){
+//     	if( $('.ticker--items .ticker--item').length > 0 ){
+    
+// 			$('.ticker--items').slick({
+//               	infinite:true,
+//                 slidesToShow:1,
+//                 slidesToScroll:1,
+//                 variableWidth:true,
+//                 centerMode:true,
+//               	speed:5000,
+//                 autoplay:true,
+//                 autoplaySpeed:0,
+//               	cssEase:'linear',
+//               	dots:false,
+// 				arrows:false,
+//               	pauseOnHover:false,
+//               	swipeToSlide:false,
+//               	focusOnSelect:false,
+// 			});
+//     	}
+    
+// 	});
+</script>

@@ -1,0 +1,152 @@
+<div class="investor--faqs" id="section-{{ section.id }}"> 
+	
+    <div class="invest--faq--main">
+      {%- for block in section.blocks -%}
+      <div class="faq--item">
+        
+        {% if block.settings.faq_question != blank %}
+        <div class="faq--q">
+          <h4>{{block.settings.faq_question}}</h4>
+        </div>
+        {% endif %}
+        
+        {% if block.settings.faq_answer != blank %}
+        <div class="faq--ans" style="display:none;">
+          <p>{{block.settings.faq_answer}}</p>
+        </div>
+        {% endif %}
+        
+      </div>
+      {%- endfor -%}
+    </div>
+
+</div>
+
+
+{% schema %}
+  {
+    "name": "Investor FAQs",
+    "settings": [
+	  {
+        "type": "header",
+        "content": "Inverstor FAQs Settings"
+      }
+	  
+	],
+	"blocks":[
+    	{
+          "type": "inverstor_faq",
+          "name": "FAQ",
+              "settings": 
+              [	
+                {
+                  "type": "textarea",
+                  "id": "faq_question",
+                  "label": "FAQ Question"
+                },
+				{
+                  "type": "textarea",
+                  "id": "faq_answer",
+                  "label": "FAQ Answer"
+                }
+                
+              ]
+   		}
+  	],
+	"presets": [
+		{
+		  "name": "Investor FAQs",
+		  "category": "3. collections"
+		}
+	]
+  }
+{% endschema %}
+
+
+<style type="text/css">
+  #section-{{ section.id }}{
+
+  }
+  .invest--faq--main .faq--item{
+    border-bottom:1px solid #e8e8e2;
+    padding:15px 0 10px;
+  }
+  .invest--faq--main .faq--item:first-child{
+  	border-top:1px solid #e8e8e2;
+  }
+  .invest--faq--main .faq--item .faq--q{
+  	cursor:pointer;
+    position:relative;
+    padding-right:25px;
+  }
+  .invest--faq--main .faq--item .faq--q h4{
+  	font-size:20px;
+  }
+  .invest--faq--main .faq--item .faq--q:before{
+    content:"\f107";
+    font-family:fontAwesome;
+  	position:absolute;
+    top:0;
+    right:0;
+    font-size:20px;
+    font-weight:bold;
+  }
+  .invest--faq--main .faq--item.open .faq--q:before{
+  	content:"\f106";
+  }  
+  .invest--faq--main .faq--item .faq--ans{
+  	padding:5px 25px 5px 0;
+  }
+  .invest--faq--main .faq--item .faq--ans p{
+  	font-size:17px;
+    color:#888875;
+    line-height:1.45;
+  }
+  .invest--faq--main .faq--item .faq--ans a{
+  	color:#DD7C01;
+  }
+  .invest--faq--main .faq--item .faq--ans a:hover{
+  	color:#fbca40;
+  }
+  
+  @media (max-width:767px){
+  	.invest--faq--main .faq--item .faq--q h4{
+  		font-size:18px;
+  	}
+    .invest--faq--main .faq--item .faq--ans p{
+  		font-size:15px;
+    }
+  }
+  @media (max-width:479px){
+  	.invest--faq--main .faq--item .faq--q h4{
+  		font-size:17px;
+  	}
+    .invest--faq--main .faq--item .faq--ans p{
+  		font-size:14px;
+    }
+    .invest--faq--main .faq--item .faq--q{
+      padding-right:20px;
+    }
+  }
+  
+</style>
+
+<script>
+  jQuery(document).ready(function($){
+    $('.faq--item').each(function(){
+      $(this).find('.faq--q').click(function(){
+      	
+        if($(this).parents('.faq--item').hasClass('open')){
+          $(this).parents('.faq--item').find('.faq--ans').slideUp();
+          $(this).parents('.faq--item').removeClass('open');
+        } else {
+          $(this).parents('.faq--item').addClass('open');
+          $(this).parents('.faq--item').find('.faq--ans').slideDown();
+        }
+          
+      });
+    });
+    
+  	
+  });
+</script>

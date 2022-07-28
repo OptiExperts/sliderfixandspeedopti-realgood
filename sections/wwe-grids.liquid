@@ -1,0 +1,261 @@
+{% if section.settings.wee_grids_enable == true %}
+<div class="wwe--grids" id="section-{{ section.id }}">
+  <div class="container">
+	
+    <div class="grid--items">
+      {%- for block in section.blocks -%}
+      	{% assign count = 0 %}
+      	<div id="block-{{ block.id }}" class="g--item gitem_{{forloop.index0}} {% cycle 'odd', 'even' %}">
+          
+          <div class="row">
+            <div class="col-md-6 text">
+              <div class="inner">
+                {%- if block.settings.grid_title -%}
+                	<h2>{{ block.settings.grid_title }}</h2>
+                {% endif %}
+                {%- if block.settings.grid_nutrition -%}
+                <div class="nutrition--info">{{ block.settings.grid_nutrition }}</div>
+                {% endif %}
+              </div>
+            </div>
+            <div class="col-md-6 image">
+              <div class="inner">
+                {%- if block.settings.grid_image -%}
+                	<img src="{{ block.settings.grid_image | img_url: '650x560' }}" alt="" class="lazyload">
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          
+          
+          {% comment %}
+      	
+          {% capture thecycle %}{% cycle 'odd', 'even' %}{% endcapture %}      	
+      	
+          {% if thecycle == 'odd' %}
+          
+            {%- if block.settings.partner_link -%}
+            <a href="{{block.settings.partner_link}}" target="_blank">
+              {% endif %}
+
+              {%- if block.settings.partner_logo -%}
+              <img src="{{ block.settings.partner_logo | img_url: 'master' }}" alt="">
+              {% endif %}
+              {%- if block.settings.partner_link -%}
+            </a>
+            {% endif %}
+          
+      
+          {% else %}
+
+            {%- if block.settings.partner_link -%}
+            <a href="{{block.settings.partner_link}}" target="_blank">
+              {% endif %}
+
+              {%- if block.settings.partner_logo -%}
+              <img src="{{ block.settings.partner_logo | img_url: 'master' }}" alt="">
+              {% endif %}
+              {%- if block.settings.partner_link -%}
+            </a>
+            {% endif %}          
+
+          {% endif %}
+          
+          {% endcomment %}
+              
+		</div><!--g--item-->	
+      	{% assign count = count | plus: 1 %}
+      
+      {%- endfor -%}
+    </div><!--/grid--items-->    
+    
+  </div><!--container wide-->
+</div><!--/wwe--grids-->
+{% endif %}
+
+<style>
+  
+  #shopify-section-{{ section.id }}{
+  	background:#fff;
+    display:block;
+    margin:0px auto;
+/*     padding-top:25px; */
+  }
+  #section-{{ section.id }}{
+  	padding:50px 0;
+  }
+  #section-{{ section.id }} .grid--items .g--item .col-md-6{
+  	padding:0;
+  }
+  #section-{{ section.id }} .g--item .text{
+/*   	background:#FF9F19; */
+    background:#FF5F01;
+    position:relative;
+  }
+  #section-{{ section.id }} .g--item .text .inner{
+  	padding:30px;
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:100%;
+    box-sizing:border-box;
+    text-align:center;
+  }
+  #section-{{ section.id }} .g--item .text h2{
+  	color:#fff;
+    font-size:52px;
+    line-height:1.2;
+    font-weight:bold;
+  }
+  #section-{{ section.id }} .g--item .image img{
+  	width:100%;
+  }
+  #section-{{ section.id }} .g--item.even .row{
+  	flex-direction:row-reverse;
+  }
+  #section-{{ section.id }} .nutrition--info{
+    padding-top:35px;
+    display:block;
+    text-align:center;
+  }
+  #section-{{ section.id }} .nutrition--info .item{
+  	display:inline-block;
+    padding:0 20px;
+  }
+  #section-{{ section.id }} .nutrition--info .item h3{
+    font-family:'Adrianna';
+ 	color:#fff;
+/*     font-size:72px; */
+    font-size:86px;
+    line-height:1.3;
+    font-weight:800;
+  }
+  #section-{{ section.id }} .nutrition--info .item h3 span{
+    display:block;
+/*     font-size:24px; */
+    font-size:32px;
+    line-height:1.2;
+    font-weight:600;
+    text-transform:uppercase;
+  }
+  
+  
+/*   @media (min-width:1515px){
+    #section-{{ section.id }} .container.wide{max-width:1485px;}
+    
+  }
+  @media (max-width:1399px){
+    
+    
+  } */
+  @media (max-width:1279px){
+    #section-{{ section.id }} .g--item .text h2{font-size:42px;}
+    #section-{{ section.id }} .nutrition--info{padding-top:30px;}
+/*     #section-{{ section.id }} .nutrition--info .item h3{font-size:62px;} */
+    #section-{{ section.id }} .nutrition--info .item h3{font-size:72px;}
+    #section-{{ section.id }} .nutrition--info .item h3 span{font-size:28px;}
+    
+  }
+  @media (max-width:991px){
+    #section-{{ section.id }}{padding:45px 0;}
+/*     #shopify-section-{{ section.id }}{padding-top:20px;} */
+    #section-kir-grids .g--item .text .inner{padding:20px 15px;}
+    #section-{{ section.id }} .g--item .text h2{font-size:32px;}
+    #section-{{ section.id }} .nutrition--info{padding-top:25px;}
+/*     #section-{{ section.id }} .nutrition--info .item h3{font-size:48px;}
+    #section-{{ section.id }} .nutrition--info .item h3 span{font-size:22px;} */
+    #section-{{ section.id }} .nutrition--info .item h3{font-size:62px;}
+    #section-{{ section.id }} .nutrition--info .item h3 span{font-size:26px;}
+    
+  }
+  @media (max-width:767px){
+    #section-{{ section.id }}{padding:40px 0;}
+    #section-{{ section.id }} .container{max-width:100%;padding:0;}
+    #section-{{ section.id }} .g--item .text{min-height:450px;}
+    #section-{{ section.id }} .g--item .text .inner{padding:30px;}
+    #section-{{ section.id }} .g--item .text h2{font-size:36px;}
+/*     #section-{{ section.id }} .nutrition--info .item h3{font-size:42px;} */
+    #section-{{ section.id }} .nutrition--info .item h3{font-size:56px;}
+    #section-{{ section.id }} .nutrition--info .item h3 span{font-size:24px;}
+  }
+  @media (max-width:575px){
+    #section-{{ section.id }}{padding:35px 0;}
+/*     #shopify-section-{{ section.id }}{padding-top:15px;} */
+    #section-{{ section.id }} .g--item .text{min-height:420px;}
+    #section-{{ section.id }} .g--item .text .inner{padding:20px 25px;}
+    #section-{{ section.id }} .g--item .text h2{font-size:32px;}
+    #section-{{ section.id }} .nutrition--info{padding-top:20px;}
+/*     #section-{{ section.id }} .nutrition--info .item h3{font-size:38px;}
+    #section-{{ section.id }} .nutrition--info .item h3 span{font-size:21px;} */
+    #section-{{ section.id }} .nutrition--info .item h3{font-size:52px;}
+    #section-{{ section.id }} .nutrition--info .item h3 span{font-size:22px;}
+    #section-{{ section.id }} .nutrition--info .item{padding:0 15px;}
+  }
+  @media (max-width:479px){
+    #section-{{ section.id }} .g--item .text{min-height:360px;}
+    #section-{{ section.id }} .g--item .text .inner{padding:15px 25px;}
+    #section-{{ section.id }} .g--item .text h2{font-size:30px;}
+/*     #section-{{ section.id }} .nutrition--info .item h3{font-size:34px;} */
+    #section-{{ section.id }} .nutrition--info .item h3{font-size:48px;}
+    #section-{{ section.id }} .nutrition--info .item h3 span{font-size:20px;}
+    #section-{{ section.id }} .nutrition--info .item{padding:0 10px;}
+  }
+  @media (max-width:374px){
+    #section-{{ section.id }} .g--item .text{min-height:280px;}
+    #section-{{ section.id }} .g--item .text h2{font-size:28px;}
+/*     #section-{{ section.id }} .nutrition--info .item h3{font-size:32px;}
+    #section-{{ section.id }} .nutrition--info .item h3 span{font-size:18px;} */
+    #section-{{ section.id }} .nutrition--info .item h3{font-size:42px;}
+    #section-{{ section.id }} .nutrition--info .item{padding:0 7.5px;}
+  }
+  
+  
+
+</style>
+
+{% schema %}
+{
+    "name": "Why We Exists Grids",
+    "settings": [
+		{
+          "type": "header",
+          "content": "Section Enable"
+        },
+        {
+          "type": "checkbox",
+          "id": "wee_grids_enable",
+          "label": "Enable Grids",  
+          "default": true
+        },
+    	{
+         "type": "header",
+         "content": "Grid Settings"
+      	}
+    ],
+    "blocks":[
+    	{
+          "type": "grid_item",
+          "name": "Grid Item",
+              "settings": 
+              [
+                {
+                  "type": "image_picker",
+                  "id": "grid_image",
+                  "label": "Grid Image",
+				  "info": "Recommended Size: 650 x 560 px"
+                },
+                {
+                  "type": "text",
+                  "id": "grid_title",
+                  "label": "Grid Title"
+                },
+                {
+                  "type": "textarea",
+                  "id": "grid_nutrition",
+                  "label": "Nutrition Info"
+                }
+              ]
+   		}
+  	]
+}
+{% endschema %}

@@ -1,0 +1,46 @@
+{% if section.settings.instafeed_type == 'style1' %} 
+<div class="instagram-image-slider-container">
+  <div class="instagram-feed-thumb">
+    <div id="instafeed2" class="instagram-carousel-type2" data-userid2="{{ section.settings.instafeed_user_id }}" data-accesstoken2="{{ section.settings.instafeed_access_token }}">
+    </div>
+  </div>
+</div>
+
+{% elsif section.settings.instafeed_type == 'style2' %} 
+
+<div class="instagram-image-slider-container">
+  <div class="instagram-feed-thumb">
+    <div id="instafeed2" class="instagram-carousel" data-userid2="{{ section.settings.instafeed_user_id }}" data-accesstoken2="{{ section.settings.instafeed_access_token }}">
+    </div>
+  </div>
+</div>
+
+{% endif %}
+
+
+<script>
+
+  var activeId2 = $("#instafeed2"),
+      myTemplate2 = '<div class="col"><div class="instagram-item"><a href="\{\{link\}\}" target="_blank" id="\{\{id\}\}"><img src="\{\{image\}\}" /></a><div class="instagram-hvr-content"><span class="tottallikes"><i class="fa fa-heart"></i> \{\{likes\}\} </span><span class="totalcomments"><i class="fa fa-comments"></i>  \{\{comments\}\}</span></div></div></div>';
+
+      if (activeId2.length) {
+        var userID2 = activeId2.attr('data-userid2'),
+            accessTokenID2 = activeId2.attr('data-accesstoken2'),
+
+            userFeed2 = new Instafeed({
+              get: 'user',
+              userId: userID2,
+              target: 'instafeed2',
+              accessToken: accessTokenID2,
+              resolution: '{{ section.settings.image_resolution }}',
+              template: myTemplate2,
+              sortBy: 'most-recent',
+              limit: {{ section.settings.instafeed_limit }},
+              links: false
+            });
+        userFeed2.run();
+      }
+  
+ 
+
+</script>

@@ -1,0 +1,951 @@
+<div class="page-parent temp-height-fix our-mission-page-parent"> <!-- Page START -->
+    
+    {%- section 'roots_intro_text_video' -%}
+    				
+    <div class="our-philisophy-parent"><!-- Our Philosophy -->
+        {%- section 'roots_philosophy' -%}            
+        {% comment %}{%- section 'roots_cards' -%}{% endcomment %}
+        
+    </div><!-- Our Philosophy -->
+    
+    {%- section 'roots_timelines' -%}
+
+    {%- section 'roots_ourculture' -%}
+    
+</div>
+
+<style>
+        
+    .mission-parent-container {
+        
+    }
+
+    .our-mission-page-parent {
+        max-width:1100px;
+        margin:0 auto;
+        font-family: "Avenir Next", sans-serif;
+        padding: 0px 15px;
+        margin-bottom: 45px;
+    }
+
+    .our-mission-page-parent h1,
+    .our-mission-page-parent h2,
+    .our-mission-page-parent h3
+    {
+        /*color:#179317;*/
+      	color:#ff9e10;
+        font-weight: 700;
+    }
+
+    h2.mtop80
+    {
+        margin-top: 80px !important;
+    }
+
+    .our-mission-page-parent p{
+        font-family:"Avenir Next";
+        font-weight:400;
+        line-height: 1.4;
+    }
+
+    .mission-top-parent {
+        
+    }
+
+    .mission-top-parent .mission-top-left{
+        font-family:sans-serif;
+        padding-top:80px
+    }
+
+    .mission-top-parent .mission-top-left h1{
+        /*color:#179317;*/
+      	color:#ff9e10;
+        text-transform:uppercase;
+        font-size:52px;
+        line-height: 64px;
+        margin:0;
+        font-family: "Avenir Next";
+        font-weight: 700;
+    }
+    .mission-top-parent .mission-top-left h3
+    {
+        color:#000;
+        font-family: "Avenir Next";
+        font-weight: 500;
+        line-height: 1.2;
+        font-size: 25px;
+    }
+
+    .mission-top-parent .mission-top-left p{
+        color:#000;
+        font-family: "Avenir Next";
+        font-weight: 400;
+        line-height: 1.2;
+        font-size: 22px;
+    }
+
+    .mission-top-parent .mission-top-left h3{
+        font-size:2rem;
+        margin: 0 auto 20px;
+        line-height: 1.25;
+    }
+    .mission-top-parent .mission-top-left p{
+        font-size: 1.35rem;
+        max-width:90%;
+        line-height: 1.5;
+    }
+    .mission-video-container-play-button {
+        position:absolute;
+        left:33%;
+        z-index:30;
+        top:90px;
+    }
+    .mission-video-container-play-button img{
+        max-width: 149px;
+        transform: rotate(-7.5deg);
+    }
+    #mission-video {
+    /*  display:none; */
+        position:absolute;
+        z-index: 2;
+    }
+    .mission-top-parent .mission-top-right{
+        position:relative;
+        top:80px;
+    }
+    .mission-video-container .poloroid-parent{
+        min-height:inherit;
+        max-width:625px;
+        padding:15px;
+        transition:all .25s ease;
+    }
+    .mission-video-container .poloroid-img{
+        max-width: 102%;
+        /*  border:3px solid #919191; */
+    }
+    .mission-video-container .poloroid-img img {
+        max-width: 100%;
+        border: 3px solid #919191;
+    }
+    .mission-video-container-player{
+        position:absolute;
+        z-index:-1;
+    }
+    .vid-z-up {
+        z-index:1;
+    }
+
+    .mission-video-container video {
+        max-width: 579px;
+        position: relative;
+        top: 3px;
+        left: 3px;
+    }
+
+    .mission-video-container-player{
+        
+    }
+    .poloroid-parent {}
+
+
+    .philosophy-bottom .poloroid-parent{
+        /* max-width:310px; */
+    }
+    .philosophy-bottom .poloroid-parent {
+        max-width: 352.5px;
+        /* margin: 8px; */
+    }
+    .philosophy-bottom .poloroid-parent img{
+        max-width: 300px;
+    }
+
+    .our-philisophy-parent .intro
+    {
+        margin-bottom: 40px;
+    }
+
+    .our-philisophy-parent p {
+        margin-bottom:20px;
+        font-size: 28px;
+        line-height: 42px;
+        color: #000;
+    }
+
+    .mission-video-container {
+        transform: scale(.9);
+        top:20px;
+    }
+    .our-philisophy-parent h2 {
+        margin-top:20px;
+        margin-bottom: 20px;
+        font-size: 48px;
+        line-height: 58px;
+        text-transform: uppercase;
+    }
+
+    /* Our Philosophy===================================== */
+    .our-philisophy-parent {
+        margin:70px 0 50px 0;
+    }
+    .philosphy-list {
+        
+    }
+    .row .philosphy-list p {
+        margin-bottom:0!important;
+    }
+
+    .philosphy-list ul{
+        padding:0px;
+    }
+    .philosphy-list ul li{
+        list-style:none;
+        display:inline-flex;
+        margin: 28px 0;
+        xvertical-align: middle;
+        xalign-items: center;
+        justify-content: center;
+    }
+
+    .philosphy-list ul li .li_img{
+        display:inline-flex;
+        margin-right:20px;
+        position: relative;
+        border-radius: 80px;
+/*         background: #E009096C;
+        border: 1px solid #E00909; */
+        min-width: 160px;
+        min-height: 160px;
+        max-width: 160px;
+        max-height: 160px;
+    }
+
+    .philosphy-list ul li .li_img img
+    {
+        display: block;
+/*         max-width: 100px;
+        max-height: 100px; */
+      	max-width:100%;
+        max-height:100%;
+        width: auto;
+        height: auto;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .philosphy-list ul li .li_content{
+        max-width: 75%;
+        clear: right;
+        vertical-align: middle;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0;
+    }
+
+    .philosphy-list ul li .li_content h3
+    {
+        font-size: 33px;
+        line-height: 40px;
+        color: #000;
+        margin-bottom: 15px;
+    }
+
+    .philosphy-list ul li .li_content p
+    {
+        font-size: 16px;
+        line-height: 19px;
+        color: #000;
+    }
+
+    .philosophy-bottom .poloroid-parent:nth-child(1){
+        z-index:3;
+        max-height: fit-content;
+        transform: rotate(-5deg);
+    }
+
+    .philosophy-bottom .poloroid-parent:nth-child(3){
+        z-index:1;
+        max-height: fit-content;
+    }
+
+    .philosophy-bottom .poloroid-parent:nth-child(2){
+        z-index:2;
+        max-height: fit-content;
+        transform: rotate(2deg);
+    }
+
+    /* Our Story Containers ===================================== */
+    .our-story-parent {
+        
+    }
+    .our-story-heading {
+    /*  border-bottom: 2px solid #d4d4d3; */
+        text-align:center;
+    }
+
+    .our-story-heading h2 {
+        font-size: 42px;
+        line-height: 51px;
+        /*color: #179317;*/
+      	color:#ff9e10;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+    }
+
+    .story-button-container {
+        min-width: 200px;
+        border-top: 1px solid #d4d4d3;
+        margin-bottom: 20px;
+    }
+    .story-button-container a {
+        /*background: #E0090971;*/
+      	background:#ffbf0d;
+        font-size: 2rem;
+        padding: 24px 40px 18px;
+        color:
+        white;
+        border-radius: 0 0 20px 20px;
+        text-decoration: none;
+        max-width: 341px;
+        position: relative;
+        top: -1px;
+        display: block;
+        margin: 0 auto;
+        z-index: 21;
+        font-weight: bold;
+    }
+
+    .story-button-container a img {
+        max-width: 20px;
+        margin-right: 11px;
+        position: relative;
+        top: -3px;
+        left: 0px;
+    }
+    .story-button-container a:hover{
+        background:#00aad2;
+    }
+
+    .story-timeline-container {
+        height:0px;
+        overflow:hidden;
+        transition:height .25s ease-in-out;
+    }
+
+    .story-timeline-container.open {
+        height:inherit;
+        overflow:visible;
+        padding-top:5rem;
+    }
+
+    .story-timeline-container .row {
+        margin-bottom:100px;
+    }
+    .story-timeline-container .row p{
+        margin-top:0px;
+    }
+    .story-timeline-right, .story-timeline-right {
+        position:relative;
+    }
+    .story-timeline-container .poloroid-parent{
+        min-height: inherit;
+    }
+    .story-timeline-container .poloroid-parent .poloroid-img{
+        min-height: inherit;
+    }
+
+    /* ROW 2010 */
+    #tl_2010-row {
+        position:relative;
+    }
+    #tl_2010-row > .story-timeline-right h2,
+    #tl_2010-row > .story-timeline-left h2
+    {
+        padding-top: 60px;
+        font: 400 72px/88px "local_breweryfour";
+    }
+
+    .mobile-story-timeline-block h2
+    {
+        font: 400 62px/78px "local_breweryfour";
+    }
+
+    #tl_2010-row > .story-timeline-right p,
+    #tl_2010-row > .story-timeline-left p
+    {
+        max-width: 460px;
+        color: #000;
+        font-size: 26px;
+        line-height: 32px;
+        font-weight: 700;
+    }
+
+
+    .mobile-story-timeline-block p
+    {
+        color: #000;
+        font-size: 21px;
+        line-height: 28px;
+        font-weight: 700;
+    }
+
+
+    #tl_2010-row > .story-timeline-right img {
+        xposition: absolute;
+        xtop: 120px;
+        xright: -20px;
+        xmax-width: 250px;
+        xtransform: scale(.90);
+    }
+
+    #tl_2010-row > .story-timeline-left .poloroid-parent{
+        position:relative;
+        left:60px;
+    }
+
+    #tl_2010-row > .story-timeline-left .story-bar{
+        position: absolute;
+        left: 10px;
+        top: 200px;
+        max-width: 390px;
+    }
+
+    /* ROW 2012 */
+    #tl_2012-row {
+        margin-bottom: 0;
+    }
+    #tl_2012-row .story-timeline-right {
+        transform: scale(.9);
+        top: -70px;
+    }
+    #tl_2012-row > .story-timeline-right .poloroid-parent {
+        
+    }
+    #tl_2012-row > .story-timeline-left p {
+        max-width: 90%;
+    }
+    .tl_2012-row-img {
+        position: absolute;
+        z-index: 2;
+        top: 70px;
+        right: -100px;
+        max-width: 380px;
+    }
+    /* ROW 2013 */
+    #tl_2013-row {
+        position:relative;
+        margin-bottom: 80px;
+    }
+    #tl_2013-row .story-timeline-left .poloroid-parent{
+        position:relative;
+        top: -30px;
+    }
+    #tl_2013-row .story-timeline-left .tl_2013-row-img {
+        position:absolute;
+        top: 130px;
+      left: 260px;;
+    }
+    /* ROW 2014 */
+    #tl_2014-row {
+        position:relative;
+        min-height:600px;
+        margin-bottom: 40px;
+    }
+
+    #tl_2014-row .story-timeline-left .tl_2014-row-img {
+        position:absolute;
+        top: 140px;
+        left: 110px;
+    }
+    #tl_2014-row .story-timeline-right .tl_2014-row-img {
+        z-index: 5;
+      position: absolute;
+        top: 30px;
+        right: -30px;
+    }
+    #tl_2014-row .story-timeline-right .poloroid-parent{
+        z-index:4;
+    }
+    #tl_2014-row .story-timeline-left p {
+        max-width:80%;
+    }
+    /* ROW 2015 */
+    #tl_2015-row {
+        position:relative;
+        min-height:400px;
+        margin-bottom: -30px;
+    }
+    #tl_2015-row .story-timeline-left .poloroid-parent {
+        left:80px;
+    }
+
+    #tl_2015-row .story-timeline-left .tl_2015-row-img {
+        position:absolute;
+        top: 180px;
+    }
+    #tl_2015-row .story-timeline-right .tl_2015-row-img {
+        position: relative;
+        right: -100px;
+        transform: scale(.95);
+        top: -40px;
+    }
+    /* ROW 2018 */
+    #tl_2018-row {
+        min-height: 700px;
+        position: relative;
+        border-bottom: 1px solid #c2c2c2;
+    }
+    /* ROW 2018 */
+    #tl_2018-row h2{
+        margin-top:50px
+    }
+
+    .tl_2018-row-img-a, .tl_2018-row-img-b,.tl_2018-row-img-c{
+        position:absolute;
+    }
+    .tl_2018-row-img-a {
+        bottom: 0;
+    }
+    .tl_2018-row-img-b {
+        top:;
+    }
+    .tl_2018-row-img-c {
+        bottom: 0;
+    }
+
+    /* Poloroid Containers ===================================== */
+    .our-culture-parent {
+       margin-bottom: 47px;
+    }
+
+
+    .our-culture-parent h2
+    {
+        margin-top: 0px;
+        margin-bottom: 20px;
+        font-size: 41px;
+        line-height: 50px;
+        text-transform: uppercase;
+    }
+
+    .our-culture-parent p {
+        margin-bottom:20px;
+        font-size: 20px;
+        line-height: 25px;
+        color: #000;
+    }
+
+    .our-culture-parent img
+    {
+        margin-top: 25px;
+    }
+
+    .our-culture-parent .poloroid-parent img{
+        
+    }
+    
+    .culture-pol-a{
+        position:relative;
+        top:80px;
+    }
+    .culture-pol-b {
+      top: 100px;
+      transform: rotate(-13deg)!important;
+      margin-bottom: 180px;
+    }
+    .culture-pol-c {
+      position: absolute!important;
+      top: 120px;
+      right: -10px;
+      width: 410px;
+      transform: rotate(2deg)!important;
+    }
+    .col-md-5.our-culture-left {
+        xpadding-top: 80px;
+    }
+    .our-culture-parent h2 {
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
+    .our-culture-right h2 { xtransform: translateY(90px); xmargin-bottom: 110px;}
+    /* Poloroid Containers ===================================== */
+    .poloroid-parent {
+        max-width: 352.5px;
+        max-width: max-content;
+        min-height: 350px;
+        padding: 25px;
+        background-color: rgb(255, 255, 255);
+        box-shadow: -0.977px 2.837px 9px 0px rgba(13, 18, 32, 0.28);
+        font-family: sans-serif;
+        display:block;
+        position:relative;
+    }
+    .poloroid-img {
+        position: relative;
+        max-width: 350px;
+    }
+    .poloroid-img img {
+        /* max-width: 350px; */
+    }
+    .poloroid-discription {
+        position: relative;
+        max-width: 350px;
+    }
+    .poloroid-discription h3 {
+        font-size: 10px;
+        line-height: 1.2;
+        margin-bottom: 0;
+        color: black;
+        text-align: center;
+        margin-bottom: 20px;
+        margin-top: 5px;
+    }
+
+    .poloroid-discription p {
+        font-size: 13px;
+        color:#555657;
+        line-height: 1.2;
+        margin-top:0;
+    }
+
+    .position-fix {
+        display: inline-block;
+        position: relative;
+        width: inherit;
+        margin: 50px;
+    }
+    .row.philosophy-bottom {
+        transform: scale(.94) translateX(20px);
+        max-width: 800px;
+        margin: 0px auto;
+    }
+
+    /* ROTATIONS ======================>>>>> */
+    .pol-rotate-7-left {
+        transform:rotate(-7deg);
+    }
+    .pol-rotate-9-left {
+        transform:rotate(-9deg);
+    }
+    .pol-rotate-12-left {
+        transform:rotate(-12deg);
+    }
+
+    .pol-rotate-7-right {
+        transform:rotate(7deg);
+    }
+    .pol-rotate-9-right {
+        transform:rotate(9deg);
+    }
+    .pol-rotate-12-right {
+        transform:rotate(12deg);
+    }
+    .our-culture-right {
+        /* padding-top:30px; */
+    } 
+
+
+    .fiber-icon {
+        padding-left: 20px;
+    }
+    .show-mobile {
+        display: none;
+    }
+
+    .show-dekstop {
+        display: block;
+    }
+    .show-video-mobile {
+        display: none;
+    }
+    .hide-video-mobile {
+        display: block;
+    }
+  
+  
+  
+  .mission-top-parent .mission-top-left{
+  	min-height:360px;
+  }
+  
+  .below__intro{
+  	padding-top:50px;
+  }
+  .below__intro h1{
+  	/*color: #179317;*/
+    color:#ff9e10;
+    text-transform: uppercase;
+    font-size: 52px;
+    line-height: 64px;
+    margin: 0;
+    font-family: "Avenir Next";
+    font-weight: 700;
+  }
+  .below__intro p{
+  	color: #000;
+    font-family: "Avenir Next";
+    font-weight: 400;
+    font-size: 1.35rem;
+    max-width: 90%;
+    line-height: 1.5;
+  }
+  
+  .pt-30{
+  	padding-top:30px;
+  }
+  
+  
+  
+  
+  
+  
+  
+    /*============================================================================
+
+    ##     ##  #######  ########  #### ##       ######## 
+    ###   ### ##     ## ##     ##  ##  ##       ##       
+    #### #### ##     ## ##     ##  ##  ##       ##       
+    ## ### ## ##     ## ########   ##  ##       ######   
+    ##     ## ##     ## ##     ##  ##  ##       ##       
+    ##     ## ##     ## ##     ##  ##  ##       ##       
+    ##     ##  #######  ########  #### ######## ######## 
+
+    ============================================================================*/
+    @media only screen and (max-width: 49em) {
+
+        .show-desktop {
+                display:none!important;
+        }
+        .our-story-parent {
+            /* transform: scale(.85); */
+            display:block;
+            xtransform: translateY(-16rem);
+            padding: 20px;
+        }
+        .mission-top-parent .mission-top-left h1 {
+            font-size: 4em;
+            /* padding: 10px; */
+            margin-top: 20px;
+        }
+        .show-video-mobile {
+            display: block;
+            position: relative;
+            margin-left: -10px;
+        }
+        .hide-video-mobile {
+            display: none;
+        }
+        .col-md-5.our-culture-left {
+            padding-top:0px
+        }
+        .mission-top-parent .mission-top-left {
+            padding-top:0px;
+            padding-left: 10px;
+        }
+        .mission-video-container-mobile video {
+            max-width: 94%!important;
+        }
+        .mission-video-container-mobile .poloroid-parent {
+            max-width: 100%;
+            min-height: auto;
+        }
+        .our-philisophy-parent {
+            xmargin-top: -190px;
+        }
+        #tl_2010-row {
+            margin-bottom: 160px;
+        }
+        #tl_2010-row > .story-timeline-right img {
+            transform:scale(.75);
+            top: 160px;
+        }
+        .our-story-heading {
+            margin:0 auto;
+            position:relative;
+            text-align: center;
+            width: max-content;
+        }
+        .story-button-container {
+            margin: 0 auto;
+            display: block;
+            max-width: 100%;
+            /* position: absolute; */
+        }
+        .page-parent h2 {
+            text-align:center;
+        }
+        .story-button-container .col-md-12 {
+
+        }
+
+        .story-timeline-container {
+            height: -webkit-fill-available;
+            transform: scale(1);
+            height:0;
+            display:none;
+        }
+        .story-timeline-container-open {
+            display:block;
+            height: -webkit-fill-available;
+            transform: scale(.85);
+        }
+        .mobile-story-timeline-container {
+            display:none;
+        }
+        .mobile-story-timeline-container.open {
+            display:block;
+        }
+        .fiber-icon {
+            padding-left:0;
+        }
+        .mobile-story-timeline-top {
+            text-align: center;
+            margin: 30px 0 30px;
+        }
+
+        .mobile-story-timeline-bottom {
+            margin: 0 0 70px;
+        }
+
+        .mobile-story-timeline-bottom.last2018 {
+            xmargin: 0 0 0px;
+            xpadding-bottom:0;
+            xborder-bottom: 2px solid #a9a9a9;
+        }
+        .our-culture-parent {
+            xtransform: scale(.95) translateY(-17em);
+        }
+        .our-mission-page-parent .show-mobile {
+            display:block;
+        }
+        .our-mission-page-parent {
+            xheight: 100vh + 100px;
+            xmargin-bottom: -430px;
+            display: block;
+        }
+        .template-page-our-mission {
+    /*      margin-bottom: -60vh; */
+            /* max-height: 0vh; */
+            /* overflow-y: hidden; */
+        }
+        .template-page-our-mission .shopify-section__footer{margin-top: 200px;/* overflow-y: hidden; */}
+        
+        .mission-video-container-play-button {
+            top: 90px;
+            left: 40%;
+            transform: rotate(-8deg);
+        }
+        .our-culture-left p, .our-culture-right p {
+            max-width:85%;
+            left:0;
+            right:0;
+            margin: 0 auto;
+        }
+        .template-page-our-mission {
+    /*      margin-bottom: -60vh; */
+            /* max-height: 0vh; */
+            /* overflow-y: hidden; */
+        }
+    /* =================================== */   
+    /*END MEDIA QEURY*/
+
+        .story-button-container a
+        {
+            font-size: 25px;
+            padding: 24px 10px 18px;
+        }
+
+        .mobile-story-timeline-container
+        {
+            xdisplay: block;
+        }
+
+        .mission-video-container-play-button img
+        {
+            max-width: 75px;
+        }
+
+
+        h2.mtop80
+        {
+            margin-top: 0px !important;
+        }
+
+        .philosophy-bottom .poloroid-parent
+        {
+            transform: none !important;
+            margin-top: 40px !important;
+            max-width: 100% !important;
+        }
+    }  
+  
+  
+  @media only and (max-width:784px){
+  	 .mission-top-parent .mission-top-left{
+      	min-height:unset;
+    }
+  }
+  
+  
+</style>
+<script type="text/javascript">
+    (function($){
+
+
+        //Desktop Mission Video//  ==============================================================//
+        $('.mission-video-container .play-video').click(function(){
+          $(this).hide();
+          $('.mission-video-container .poloroid-parent').removeClass('pol-rotate-9-right');
+          $('.mission-video-container-player').addClass('vid-z-up');
+          $('#missionVideo').get(0).play();
+         // $('.youtube-video')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');
+        });
+      
+        $('.stop-video').click(function(){
+          $('.youtube-video')[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
+          $('.poloroid-parent').addClass('pol-rotate-9-right');
+          $('.mission-video-container-player').removeClass('vid-z-up');
+        });
+        //END Desktop Mission Video//  ==============================================================//
+
+        //Mobile Mission Video//  ==============================================================//
+        $('.mission-video-container-mobile .play-video-mobile').click(function(){
+          $(this).hide();
+          $('.mission-video-container-player').addClass('vid-z-up');
+          $('#missionVideoMobile').get(0).play();
+        });
+      
+        $('.stop-video').click(function(){
+          $('.youtube-video')[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
+          $('.poloroid-parent').addClass('pol-rotate-9-right');
+          $('.mission-video-container-player').removeClass('vid-z-up');
+        });
+
+        $('.story-button-container > a').click(function(){
+            if($('.story-timeline-container').hasClass('open'))
+            {
+                $('.story-timeline-container').removeClass('open');
+            }
+            else
+            {
+                $('.story-timeline-container').addClass('open');    
+            }
+        });
+
+        $('#openMobileStoriesMission').click(function(){
+            if($('.mobile-story-timeline-container').hasClass('open'))
+            {
+                $('.mobile-story-timeline-container').removeClass('open');
+            }
+            else
+            {
+                $('.mobile-story-timeline-container').addClass('open');    
+            }
+        });
+
+        //END Mobile Mission Video//  ==============================================================//
+
+    })(jQuery);
+
+</script>

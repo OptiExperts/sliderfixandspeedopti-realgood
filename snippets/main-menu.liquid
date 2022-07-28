@@ -1,0 +1,213 @@
+<ul>
+  {% for link in linklists.main-menu.links %}
+  {% assign childlink_handle = link.title | handle %}
+  {% if linklists[childlink_handle] and linklists[childlink_handle].links.size > 0 %}
+  <li class="menu-item-has-children" ><a href="{{ link.url }}">{{ link.title }}</a>
+    <ul class="sub-menu">
+      {% for childlink in linklists[childlink_handle].links %}
+      {% assign grand_childlink_handle = childlink.title | handle %}
+      {% if linklists[grand_childlink_handle] and linklists[grand_childlink_handle].links.size > 0 %}
+      <li class="mega_dropdown">
+        <a class="mega-column-title" href="{{ childlink.url }}">{{ childlink.title }}</a>
+        <ul class="mega-sub-menu" >
+          {% for grand_childlink_handle in linklists[grand_childlink_handle].links %}
+          <li><a href="{{ grand_childlink_handle.url }}">{{ grand_childlink_handle.title }}</a></li>
+          {% endfor %}
+        </ul> 
+      </li> 
+      {% elsif childlink.type == "collection_link" and childlink.object.image and section.settings.collection_image_enable %}
+      <li class="mega_dropdown cat_img">
+        <div class="menu-image">
+          <a href="{{ childlink.url }}"><img src="{{ childlink.object.image | img_url: 'master' }}" alt="{{ childlink.object.image.alt }}" /></a>
+        </div>
+      </li>
+      {% else %}
+      <li class="drop_item"><a href="{{ childlink.url }}">{{ childlink.title }}</a></li>
+      {% endif %}
+      {% endfor %}
+    </ul>  
+  </li>
+  {% else %}
+  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+  {% endif %}
+  {% endfor %}
+</ul>
+
+
+
+<script>
+
+  jQuery(document).ready(function(){
+    /* Mega Menu */
+    jQuery('.mega_dropdown').parent('ul').addClass('mega-menu');
+    jQuery('.mega_dropdown.cat_img').parent('ul').addClass('cat_img_menu');
+    jQuery('.drop_item').parent('ul').addClass('single-column-menu');
+    jQuery('.multi_item').parent('ul').addClass('single-column-menu single-column-has-children');
+    
+  });
+  
+</script> 
+
+
+
+
+
+
+
+{% comment %}
+
+<ul>
+  <li class="menu-item-has-children"><a href="javascript:void(0)">Pages</a>
+    <ul class="sub-menu single-column-menu">
+      <li><a href="about-us.html">About Us</a></li>
+      <li><a href="about-us-2.html">About Us 2</a></li>
+      <li><a href="contact-us.html">Contact Us</a></li>
+      <li><a href="faq.html">F.A.Q</a></li>
+      <li><a href="coming-soon.html">Coming Soon</a></li>
+      <li><a href="404.html">404</a></li>
+    </ul>
+  </li>
+
+  
+  <li class="menu-item-has-children"><a href="index.html">Home</a>
+    <ul class="sub-menu mega-menu mega-menu-column-5">
+      <li><a href="javascript:void(0)" class="mega-column-title">Home Group</a>
+        
+        <ul class="mega-sub-menu">
+          <li><a href="index-trending.html">Trending</a><img src="assets/images/home-preview/01.jpg" class="img-fluid" alt=""></li>
+          <li><a href="index-collection.html">My collection</a><img src="assets/images/home-preview/02.jpg" class="img-fluid" alt=""></li>
+          <li><a href="index-special.html">Special</a><img src="assets/images/home-preview/03.jpg" class="img-fluid" alt=""></li>
+          <li><a href="index-concept.html">concept</a><img src="assets/images/home-preview/04.jpg" class="img-fluid" alt=""></li>
+          <li><a href="index-smart.html">smart design</a><img src="assets/images/home-preview/05.jpg" class="img-fluid" alt=""></li>
+        </ul>
+        
+      </li>
+      
+      
+      <li>
+        <div class="menu-image">
+          <img src="assets/images/menu-image/menu-element.png" class="img-fluid" alt="">
+        </div>
+      </li>
+      
+    </ul>
+  </li>
+  
+ 
+  
+  <li class="menu-item-has-children "><a href="javascript:void(0)">Blog</a>
+    <ul class="sub-menu single-column-menu single-column-has-children">
+      <li><a href="blog-standard-right-sidebar.html">Standard Layout</a>
+        <ul class="multilevel-submenu">
+          <li><a href="blog-standard-right-sidebar.html">Right Sidebar</a></li>
+          <li><a href="blog-standard-left-sidebar.html">Left Sidebar</a></li>
+          <li><a href="blog-standard-full-width.html">Full Width</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  
+  
+  
+</ul>
+
+
+<ul>
+  {% for link in linklists.main-menu.links %}
+  {% assign childlink_handle = link.title | handle %}
+  {% if linklists[childlink_handle] and linklists[childlink_handle].links.size > 0 %}
+  <li class="menu-item-has-children" ><a href="{{ link.url }}">{{ link.title }}</a>
+    <ul class="sub-menu">
+      {% for childlink in linklists[childlink_handle].links %}
+      {% assign grand_childlink_handle = childlink.title | handle %}
+      {% if linklists[grand_childlink_handle] and linklists[grand_childlink_handle].links.size > 0 %}
+      
+      {% if linklists[childlink_handle] and linklists[childlink_handle].links.size > 0 and linklists[childlink_handle].links.size < 3 %}
+      <li class="menu-item-has-children multi_item"> <a href="{{ childlink.url }}">{{ childlink.title }}</a>
+        <ul class="multilevel-submenu" >
+          {% for grand_childlink_handle in linklists[grand_childlink_handle].links %}
+          <li><a href="{{ grand_childlink_handle.url }}">{{ grand_childlink_handle.title }}</a></li>
+          {% endfor %}
+        </ul> 
+      </li> 
+      {% elsif linklists[childlink_handle] and linklists[childlink_handle].links.size >= 3 %}
+      <li class="mega_dropdown">
+        <a class="mega-column-title" href="{{ childlink.url }}">{{ childlink.title }}</a>
+        <ul class="mega-sub-menu" >
+          {% for grand_childlink_handle in linklists[grand_childlink_handle].links %}
+          <li><a href="{{ grand_childlink_handle.url }}">{{ grand_childlink_handle.title }}</a></li>
+          {% endfor %}
+        </ul> 
+      </li> 
+      {% endif %}
+      {% elsif childlink.type == "collection_link" and childlink.object.image %}
+      <li class="mega_dropdown cat_img">
+        <div class="menu-image">
+          <a href="{{ childlink.url }}"><img src="{{ childlink.object.image | img_url: 'master' }}" alt="{{ childlink.object.image.alt }}" /></a>
+        </div>
+      </li>
+
+      {% else %}
+      <li class="drop_item"><a href="{{ childlink.url }}">{{ childlink.title }}</a></li>
+      {% endif %}
+      {% endfor %}
+    </ul>  
+  </li>
+  {% else %}
+  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+  {% endif %}
+  {% endfor %}
+</ul>
+
+
+
+
+
+
+
+
+
+<nav>
+  <ul>
+    {% for link in linklists.main-menu.links %}
+    {% assign childlink_handle = link.title | handle %}
+    {% if linklists[childlink_handle] and linklists[childlink_handle].links.size > 0 %}
+    <li {% if link.active %}  class="active" {% endif %} ><a href="{{ link.url }}">{{ link.title }} <i class="fa fa-angle-down"></i> </a>
+
+      <ul class="">
+        {% for childlink in linklists[childlink_handle].links %}
+        {% assign grand_childlink_handle = childlink.title | handle %}
+        {% if linklists[grand_childlink_handle] and linklists[grand_childlink_handle].links.size > 0 %}
+        <li class="mega_dropdown">
+          <a class="mega_title" href="{{ childlink.url }}">{{ childlink.title }}</a>
+          <ul >
+            {% for grand_childlink_handle in linklists[grand_childlink_handle].links %}
+            <li><a href="{{ grand_childlink_handle.url }}">{{ grand_childlink_handle.title }}</a></li>
+            {% endfor %}
+          </ul> 
+        </li> 
+        {% else %}
+        <li class="sub_menu_li"><a href="{{ childlink.url }}">{{ childlink.title }}</a></li>
+        {% endif %}
+        {% endfor %}
+      </ul>  
+    </li>
+    {% else %}
+    <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+</nav>
+
+  
+
+{% endcomment %}
+
+
+
+
+
+
+
+
+

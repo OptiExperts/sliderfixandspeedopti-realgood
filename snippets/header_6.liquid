@@ -1,0 +1,1112 @@
+<style>
+  @font-face {font-family: "LocalBreweryFour-Regular"; 
+    src: url("{{ 'LocalBreweryFour-Regular.eot' | asset_url }}"); 
+    src: url("{{ 'LocalBreweryFour-Regular.eot' | asset_url }}?#iefix") format("embedded-opentype"), 
+      url("{{ 'LocalBreweryFour-Regular.woff2' | asset_url }}") format("woff2"), 
+      url("{{ 'LocalBreweryFour-Regular.woff' | asset_url }}") format("woff"), 
+      url("{{ 'LocalBreweryFour-Regular.ttf' | asset_url }}") format("truetype"), 
+      url("{{ 'LocalBreweryFour-Regular.svg' | asset_url }}#LocalBreweryFour-Regular") format("svg");
+  }
+  @font-face {font-family: "SourceSerifPro-Bold"; 
+    src: url("{{ 'SourceSerifPro-Bold.eot' | asset_url }}"); 
+    src: url("{{ 'SourceSerifPro-Bold.eot' | asset_url }}?#iefix") format("embedded-opentype"), 
+      url("{{ 'SourceSerifPro-Bold.woff2' | asset_url }}") format("woff2"), 
+      url("{{ 'SourceSerifPro-Bold.woff' | asset_url }}") format("woff"), 
+      url("{{ 'SourceSerifPro-Bold.ttf' | asset_url }}") format("truetype"), 
+      url("{{ 'SourceSerifPro-Bold.svg' | asset_url }}#SourceSerifPro-Bold") format("svg");
+  }
+  
+  @font-face {
+    font-family: 'Montserrat';
+    src: url('{{ 'Montserrat-Black.eot' | asset_url }}');
+    src: url('{{ 'Montserrat-Black.eot' | asset_url }}?#iefix') format('embedded-opentype'),
+        url('{{ 'Montserrat-Black.woff2' | asset_url }}') format('woff2'),
+        url('{{ 'LocalBreweryFour-Regular.eot' | asset_url }}') format('woff'),
+        url('{{ 'Montserrat-Black.ttf' | asset_url }}') format('truetype'),
+        url('{{ 'Montserrat-Black.svg' | asset_url }}#Montserrat-Black') format('svg');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+      font-family: 'Montserrat';
+      src: url('{{ 'Montserrat-Bold.eot' | asset_url }}');
+      src: url('{{ 'Montserrat-Bold.eot' | asset_url }}?#iefix') format('embedded-opentype'),
+          url('{{ 'Montserrat-Bold.woff2' | asset_url }}') format('woff2'),
+          url('{{ 'Montserrat-Bold.woff' | asset_url }}') format('woff'),
+          url('{{ 'Montserrat-Bold.ttf' | asset_url }}') format('truetype'),
+          url('{{ 'Montserrat-Bold.svg' | asset_url }}#Montserrat-Bold') format('svg');
+      font-weight: bold;
+      font-style: normal;
+      font-display: swap;
+  }
+
+  @font-face {
+      font-family: 'Montserrat';
+      src: url('{{ 'Montserrat-ExtraBold.eot' | asset_url }}');
+      src: url('{{ 'Montserrat-ExtraBold.eot' | asset_url }}?#iefix') format('embedded-opentype'),
+          url('{{ 'Montserrat-ExtraBold.woff2' | asset_url }}') format('woff2'),
+          url('{{ 'Montserrat-ExtraBold.woff' | asset_url }}') format('woff'),
+          url('{{ 'Montserrat-ExtraBold.ttf' | asset_url }}') format('truetype'),
+          url('{{ 'Montserrat-ExtraBold.svg' | asset_url }}#Montserrat-ExtraBold') format('svg');
+      font-weight: 800;
+      font-style: normal;
+      font-display: swap;
+  }
+
+  @font-face {
+      font-family: 'Montserrat';
+      src: url('{{ 'Montserrat-ExtraLight.eot' | asset_url }}');
+      src: url('{{ 'Montserrat-ExtraLight.eot' | asset_url }}?#iefix') format('embedded-opentype'),
+          url('{{ 'Montserrat-ExtraLight.woff2' | asset_url }}') format('woff2'),
+          url('{{ 'Montserrat-ExtraLight.woff' | asset_url }}') format('woff'),
+          url('{{ 'Montserrat-ExtraLight.ttf' | asset_url }}') format('truetype'),
+          url('{{ 'Montserrat-ExtraLight.svg' | asset_url }}#Montserrat-ExtraLight') format('svg');
+      font-weight: 200;
+      font-style: normal;
+      font-display: swap;
+  }
+
+  @font-face {
+      font-family: 'Montserrat';
+      src: url('{{ 'Montserrat-Medium.eot' | asset_url }}');
+      src: url('{{ 'Montserrat-Medium.eot' | asset_url }}?#iefix') format('embedded-opentype'),
+          url('{{ 'Montserrat-Medium.woff2' | asset_url }}') format('woff2'),
+          url('{{ 'Montserrat-Medium.woff' | asset_url }}') format('woff'),
+          url('{{ 'Montserrat-Medium.ttf' | asset_url }}') format('truetype'),
+          url('{{ 'Montserrat-Medium.svg' | asset_url }}#Montserrat-Medium') format('svg');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+  }
+
+  @font-face {
+      font-family: 'Montserrat';
+      src: url('{{ 'Montserrat-Light.eot' | asset_url }}');
+      src: url('{{ 'Montserrat-Light.eot' | asset_url }}?#iefix') format('embedded-opentype'),
+          url('{{ 'Montserrat-Light.woff2' | asset_url }}') format('woff2'),
+          url('{{ 'Montserrat-Light.woff' | asset_url }}') format('woff'),
+          url('{{ 'Montserrat-Light.ttf' | asset_url }}') format('truetype'),
+          url('{{ 'Montserrat-Light.svg' | asset_url }}#Montserrat-Light') format('svg');
+      font-weight: 300;
+      font-style: normal;
+      font-display: swap;
+  }
+
+  @font-face {
+      font-family: 'Montserrat';
+      src: url('{{ 'Montserrat-Regular.eot' | asset_url }}');
+      src: url('{{ 'Montserrat-Regular.eot' | asset_url }}?#iefix') format('embedded-opentype'),
+          url('{{ 'Montserrat-Regular.woff2' | asset_url }}') format('woff2'),
+          url('{{ 'Montserrat-Regular.woff' | asset_url }}') format('woff'),
+          url('{{ 'Montserrat-Regular.ttf' | asset_url }}') format('truetype'),
+          url('{{ 'Montserrat-Regular.svg' | asset_url }}#Montserrat-Regular') format('svg');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+  }
+
+  @font-face {
+      font-family: 'Montserrat';
+      src: url('{{ 'Montserrat-SemiBold.eot' | asset_url }}');
+      src: url('{{ 'Montserrat-SemiBold.eot' | asset_url }}?#iefix') format('embedded-opentype'),
+          url('{{ 'Montserrat-SemiBold.woff2' | asset_url }}') format('woff2'),
+          url('{{ 'Montserrat-SemiBold.woff' | asset_url }}') format('woff'),
+          url('{{ 'Montserrat-SemiBold.ttf' | asset_url }}') format('truetype'),
+          url('{{ 'Montserrat-SemiBold.svg' | asset_url }}#Montserrat-SemiBold') format('svg');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+  }
+
+  @font-face {
+      font-family: 'Montserrat';
+      src: url('{{ 'Montserrat-Thin.eot' | asset_url }}');
+      src: url('{{ 'Montserrat-Thin.eot' | asset_url }}?#iefix') format('embedded-opentype'),
+          url('{{ 'Montserrat-Thin.woff2' | asset_url }}') format('woff2'),
+          url('{{ 'Montserrat-Thin.woff' | asset_url }}') format('woff'),
+          url('{{ 'Montserrat-Thin.ttf' | asset_url }}') format('truetype'),
+          url('{{ 'Montserrat-Thin.svg' | asset_url }}#Montserrat-Thin') format('svg');
+      font-weight: 100;
+      font-style: normal;
+      font-display: swap;
+  }
+  @font-face {
+      font-family: 'Adrianna';
+      src: url('{{ 'Adrianna-Regular.eot' | asset_url }}');
+      src: url('{{ 'Adrianna-Regular.eot' | asset_url }}?#iefix') format('embedded-opentype'),
+          url('{{ 'Adrianna-Regular.woff2' | asset_url }}') format('woff2'),
+          url('{{ 'Adrianna-Regular.woff' | asset_url }}') format('woff'),
+          url('{{ 'Adrianna-Regular.ttf' | asset_url }}') format('truetype'),
+          url('{{ 'Adrianna-Regular.svg' | asset_url }}#Adrianna-Regular') format('svg');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+  }
+  @font-face {
+      font-family: 'Adrianna';
+      src: url('{{ 'Adrianna-Bold.eot' | asset_url }}');
+      src: url('{{ 'Adrianna-Bold.eot' | asset_url }}?#iefix') format('embedded-opentype'),
+          url('{{ 'Adrianna-Bold.woff2' | asset_url }}') format('woff2'),
+          url('{{ 'Adrianna-Bold.woff' | asset_url }}') format('woff'),
+          url('{{ 'Adrianna-Bold.ttf' | asset_url }}') format('truetype'),
+          url('{{ 'Adrianna-Bold.svg' | asset_url }}#Adrianna-Bold') format('svg');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+  }
+  @font-face {
+      font-family: 'Adrianna';
+      src: url('{{ 'Adrianna-Extrabold.eot' | asset_url }}');
+      src: url('{{ 'Adrianna-Extrabold.eot' | asset_url }}?#iefix') format('embedded-opentype'),
+          url('{{ 'Adrianna-Extrabold.woff2' | asset_url }}') format('woff2'),
+          url('{{ 'Adrianna-Extrabold.woff' | asset_url }}') format('woff'),
+          url('{{ 'Adrianna-Extrabold.ttf' | asset_url }}') format('truetype'),
+          url('{{ 'Adrianna-Extrabold.svg' | asset_url }}#Adrianna-Extrabold') format('svg');
+      font-weight: 800;
+      font-style: normal;
+      font-display: swap;
+  }
+  @font-face {
+      font-family: 'Adrianna-Condensed';
+      src: url('{{ 'AdriannaCondensed-DemiBold.eot' | asset_url }}');
+      src: url('{{ 'AdriannaCondensed-DemiBold.eot' | asset_url }}?#iefix') format('embedded-opentype'),
+          url('{{ 'AdriannaCondensed-DemiBold.woff2' | asset_url }}') format('woff2'),
+          url('{{ 'AdriannaCondensed-DemiBold.woff' | asset_url }}') format('woff'),
+          url('{{ 'AdriannaCondensed-DemiBold.ttf' | asset_url }}') format('truetype'),
+          url('{{ 'AdriannaCondensed-DemiBold.svg' | asset_url }}#AdriannaCondensed-DemiBold') format('svg');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+  }
+  @font-face {
+      font-family: 'Adrianna-Condensed';
+      src: url('{{ 'AdriannaCondensed-Bold.eot' | asset_url }}');
+      src: url('{{ 'AdriannaCondensed-Bold.eot' | asset_url }}?#iefix') format('embedded-opentype'),
+          url('{{ 'AdriannaCondensed-Bold.woff2' | asset_url }}') format('woff2'),
+          url('{{ 'AdriannaCondensed-Bold.woff' | asset_url }}') format('woff'),
+          url('{{ 'AdriannaCondensed-Bold.ttf' | asset_url }}') format('truetype'),
+          url('{{ 'AdriannaCondensed-Bold.svg' | asset_url }}#AdriannaCondensed-Bold') format('svg');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+  }
+  @font-face {
+      font-family: 'Adrianna-Condensed';
+      src: url('{{ 'AdriannaCondensed-Extrabold.eot' | asset_url }}');
+      src: url('{{ 'AdriannaCondensed-Extrabold.eot' | asset_url }}?#iefix') format('embedded-opentype'),
+          url('{{ 'AdriannaCondensed-Extrabold.woff2' | asset_url }}') format('woff2'),
+          url('{{ 'AdriannaCondensed-Extrabold.woff' | asset_url }}') format('woff'),
+          url('{{ 'AdriannaCondensed-Extrabold.ttf' | asset_url }}') format('truetype'),
+          url('{{ 'AdriannaCondensed-Extrabold.svg' | asset_url }}#AdriannaCondensed-Extrabold') format('svg');
+      font-weight: 800;
+      font-style: normal;
+      font-display: swap;
+  }
+
+  
+  
+  .header--6 .container.wide{
+  	max-width:95%;
+  }
+  .header--6 .header-top{
+/*     background:#301d00 !important; */
+    background:#FBCA40 !important;
+/*     color:#fff !important; */
+    color:#000 !important;
+    text-align:center;
+    padding:12px 0 8px;
+    border-color:#d2a31f !important;
+    background:#fff !important;
+    border-color:#f9f9f9 !important;
+    
+  }
+  .header--6 .header-top .container{
+  	/*max-width:640px;*/
+/*     max-width:750px; */
+  }
+  .header-top .order-online-text_mod{
+      text-align: left;
+      letter-spacing: 0;
+      /*color: #000000;*/
+      text-transform: uppercase;
+  }
+  #section-header .order-online-text_mod p{
+      text-align: left !important;
+      font-family: "Avenir Next", sans-serif;
+      font-weight: 700;
+  }
+  #section-header .order-online-text_mod{ 
+      text-align:center;
+  }
+  .header-top .topLeftPhone{display:none;}
+  .header-top .header-top-right,
+  .header-top .header-top-left{
+  	font-size:15px;
+    line-height:1;
+    font-weight:600;
+  }
+  
+  
+  .header-top .header-top-left{
+  	display:none;
+  }
+  .header-top-container .header-top-right{
+  	-ms-flex-preferred-size:100%;
+    flex-basis:100%;
+    justify-content:center;
+    text-align:center;
+  }
+  
+  
+  /*New css - May 18, 2021*/
+  .header-bottom.mobile{
+  	display:none !important;
+  }
+  .left--side--mob--nav{
+  	display:none;
+  }
+  /*New css - May 18, 2021 end*/
+/*   .header-bottom.desktop{
+  	background:#fff;
+  } */
+  
+  
+  
+  /*New css - Jun 3, 2021*/
+  .site-main-nav .site-nav .material-icons{
+  	display:none !important;
+  }
+  
+  /*New css - Jun 3, 2021 end*/
+  
+  
+  
+  /*css for US vs THEM page*/
+  #us-vs-them .item{
+  	text-align:center;
+    margin-bottom:100px;
+  }
+  #us-vs-them .create-custom-page .container .item:last-child{
+  	margin-bottom:50px;
+  }
+  #us-vs-them .item img{
+  	display:block;
+    margin:0 auto;
+  }
+  
+  .header-top a{
+  	color:#fff !important;
+  }
+  
+  /*css for top header - nov 12, 2021*/
+  .header--6 .header-top-container{
+  	display:block;
+    text-align:center;
+  }
+  .header--6 .header-top-container .text--bar p{
+  	font-size:15px;
+    font-weight:600;
+    line-height:1;
+  }
+  .header--6 .header-top-container .text--bar a{
+/*   	color:#fff; */
+    text-decoration:underline;
+    color:#00f !important;
+  }
+  .header--6 .header-top-container.has--lr--text{
+  	display:flex;
+    flex-wrap:wrap;
+    grid-gap:20px;
+    text-align:unset;
+  }
+  .header--6 .has--lr--text .text--bar{
+  	flex:49%
+  }
+  .header--6 .has--lr--text .left--text{
+  	text-align:left;
+  }
+  .header--6 .has--lr--text .right--text{
+  	text-align:right;
+  }
+  /*end*/
+  
+  
+/*   #section-header .desktop.header-bottom.header-sticky.is-sticky{background:rgba(255,255,255,0.6) !important;} */
+  
+  
+  .btn--type-1,
+  .btn--type-2{
+  	font-family:'Adrianna-Condensed' !important;
+    font-size:22px;
+    font-weight:600;
+    line-height:1 !important;
+    border-radius:0;
+    text-transform:uppercase;
+    letter-spacing:0.1em;    
+    padding:15px 24px;
+    filter:drop-shadow(0px 3px 2px rgba(0, 0, 0, 0.2));
+  }
+  .btn--type-1{
+    color:#fff;
+    background:#DD7C01;
+    border-color:#DD7C01;
+  }
+  .btn--type-2{
+    color:#DD7C01;
+    background:#fff;
+    border:1px solid #DD7C01;
+  }
+  .btn--type-1:hover,
+  .btn--type-2:hover{opacity:0.85;}
+  .btn--type-1:hover{color:#fff;}
+  .btn--type-2:hover{color:#DD7C01;}
+  
+  
+  
+  @media (min-width:1515px){
+    .header--6 .container.wide{max-width:1485px;}
+    
+  }
+  
+  @media screen and (max-width:1279px){
+    .btn--type-1,
+  	.btn--type-2{
+      font-size:21px;
+    }
+  }
+  @media screen and (max-width:1199px){
+    .btn--type-1,
+  	.btn--type-2{
+      font-size:20px;
+      padding:12px 24px;
+    }
+  }
+  
+  @media (min-width:992px){
+    /*.template-index #section-header.header--6,*/
+    #investors.template-page #section-header.header--6{
+      background:transparent;
+      position:absolute;
+      left:0;
+      top:0;
+      width:100%;
+      z-index:99;
+    }
+    .template-index main,
+    #investors.template-page main{
+      position:relative;
+      /*top:-80px;*/
+      z-index:1;
+    }
+    
+    /*body.template-index #section-header.header--6,*/
+    #investors.template-page #section-header.header--6{
+      background:rgba(255,255,255,0.6);
+    }
+    
+    body.template-index #section-header.header--6{background:#fff;}
+    
+    
+    /*klaviyo popup Desktop css*/
+    form.klaviyo-form[data-testid="klaviyo-form-SN83Hn"] > .kl-private-reset-css-Xuajs1:first-child > .needsclick:first-child{display:none !important;}
+    
+    
+  }
+  
+  @media (min-width:768px){
+    /*.template-index #section-header.header--6,*/
+    #investors.template-page #section-header.header--6{
+      background:transparent;
+      position:absolute;
+      left:0;
+      top:0;
+      width:100%;
+      z-index:99;
+    }
+    .template-index main,
+    #investors.template-page main{
+      position:relative;
+      /*top:-80px;*/
+      z-index:1;
+    }
+    
+    body .product_listing_filter{
+      margin:35px auto 45px;
+    }
+    
+    
+  }
+  
+  @media screen and (max-width:1199px){
+    .header-bottom-container .logo-with-offcanvas .theme-logo img{max-width:135px;}
+    nav.site-nav>ul>li{margin:0 12px;}
+    nav.site-nav>ul>li.menu-item-has-children{margin-right:18px;}
+    .site-nav{margin:0;margin-left:10px;}
+    body #section-header nav.site-nav--mobile>ul>li>a, body #section-header nav.site-nav>ul>li>a{font-size:14px;}
+    
+    /*css for US vs THEM page*/
+    #us-vs-them .item{margin-bottom:80px;}
+    #us-vs-them .create-custom-page .container .item:last-child{margin-bottom:40px;}
+    
+    .header--6 .has--lr--text .text--bar{flex:48%}
+    
+  }
+  @media screen and (max-width:1139px){
+    .header--6 .container.wide{max-width:98%;}
+    .header-right-icons .single-icon{margin-left:10px;}
+    .header-bottom-container .header-right-container,
+    .header-bottom-container .logo-with-offcanvas{-ms-flex-preferred-size:18%;flex-basis:18%;}
+    .header-bottom-container .logo-with-offcanvas .theme-logo img{max-width:125px;}
+    nav.site-nav>ul>li{margin:0 10px;}
+    nav.site-nav>ul>li.menu-item-has-children{margin-right:18px;}
+  }
+  
+  @media screen and (max-width:991px){
+    .header-top .header-top-left{display:block;width:100%;text-align:center;margin-top:0;}
+  	.header-top .topLeftPhone{display:block;width:100%;margin-bottom:5px;}
+    .header-top .topRightPhone{display:none;}
+    .header-top .header-top-left .order-online-text_mod{width:100%;text-align:center !important;}
+    #section-header .header-top .header-top-left .order-online-text_mod p{text-align:center !important;margin-bottom:5px;}
+    .header--6 .header-top{padding:10px 0 5px;}
+    .header-top .header-top-right{display:none;}
+    .header--6 .header-bottom{padding:20px 0 !important;}
+    .header--6 .dl-menuwrapper .dl-menu{margin:0;top:20px;}
+    .header--6 .site-mobile-nav .dl-trigger{top:-40px;}
+    
+    /*.template-index #section-header.header--6{
+      background:transparent;
+      position:absolute;
+      left:0;
+      top:0;
+      width:100%;
+      z-index:99;
+    }
+    .template-index main{
+      position:relative;
+      z-index:1;
+    }*/
+    
+    .header-top .topLeftPhone{display:none !important;}
+    .header-top .header-top-right,
+    .header-top .topRightPhone{display:block;}
+    
+    .header-top .header-top-left{display:none !important;}
+    
+    
+    /*New css - May 18, 2021*/
+    .header-bottom.mobile{
+      display:block !important;
+    }
+    .header-bottom.desktop{
+      display:none !important;
+    }
+    .header-bottom.mobile .header-bottom-container{
+      display:block;
+      position:relative;
+    }
+    .header-bottom.mobile .logo{
+      display:block;
+      width:100%;
+      text-align:center;
+      padding:0 30%;
+      position:relative;
+    }
+    .header-bottom.mobile .site-mobile-navigation{
+      position:absolute;
+      left:0;
+      top:50%;
+      transform:translateY(-50%);
+      width:30%;
+    }
+    .header-bottom.mobile .header-right-container{
+      display:block;
+      -ms-flex-preferred-size:unset;
+      flex-basis:unset;
+      position:absolute;
+      right:0;
+      top:50%;
+      transform:translateY(-50%);
+      width:30%;
+      text-align:right;
+      z-index:2;
+    }
+    .header-bottom.mobile .hamburger--spin{
+      position:relative;
+      top:unset;
+      right:unset;
+    }
+    .header-bottom.mobile .header-right-icons{
+      margin-right:0;
+    }
+    .header-bottom.mobile .header-right-icons > div{
+      display:inline-block;
+      vertical-align:middle;
+      margin-left:15px;
+    }
+    body .left--side--mob--nav{
+      display:none;
+      position:fixed;
+      left:0;
+      top:0;
+      width:100%;
+      max-width:210px;
+      height:100%;
+      z-index:999999;
+      background:#fff;
+    }
+    body .left--side--mob--nav .inner{
+      display:block;
+/*       padding:30px 15px; */
+      padding:30px 0;
+    }
+    body .left--side--mob--nav li img{
+      display:none !important;
+    }
+    body .left--side--mob--nav li{
+/*       padding-top:6px;
+      padding-bottom:6px; */
+/*       padding:12px 20px 12px 12px; */
+      padding:0;
+    }
+    body .left--side--mob--nav .dl-menu > li{
+      border-top:1px solid #d9d9d9;
+    }
+    body .left--side--mob--nav li a{
+/*       font-size:17px;
+      line-height:26px; */
+      font-size:20px;
+      line-height:1;
+      font-weight:800;
+    }
+    body .left--side--mob--nav li a .material-icons{
+/*       font-size:22px; */
+      font-size:26px;
+      line-height:26px;
+      vertical-align:middle;
+      margin-bottom:4px;
+      margin-right:10px;
+      display:none !important; /*Edited May 12, 2022*/
+    }
+    .left--side--mob--nav .dl-menu > li .dl-submenu{
+      display:none;
+/*       padding-left:15px; */
+    }
+    .left--side--mob--nav .has--submenu{
+      position:relative;
+/*       padding-right:25px; */
+    }
+    .left--side--mob--nav .has--submenu.active{
+      padding-bottom:10px;
+    }
+    .left--side--mob--nav .has--submenu .subToggle{
+      position:absolute;
+      top:0;
+      right:0;
+      width:36px;
+      font-size:24px;
+      line-height:1;
+      font-weight:bold;
+      z-index:2;
+      cursor:pointer;
+      text-align:center;
+    }
+    .left--side--mob--nav .has--submenu .subToggle i{
+      line-height:46px;
+      padding:0 8px;
+    }
+    body .left--side--mob--nav .dl-menu > li > a{
+      padding:13px 10px;
+      width:100%;
+    }
+    body .left--side--mob--nav .dl-menu > li.has--submenu > a{
+      padding:13px 30px 13px 10px;
+    }
+    .left--side--mob--nav .dl-menu > li .dl-submenu a{
+      width:100%;
+      font-size:14px;
+      line-height:1;
+      font-weight:400;
+      padding:8px 10px;
+    }
+    
+    
+    body .wrapper{
+      display:block;
+      position:relative;
+      width:100%;
+    }
+    html{
+      overflow-x:hidden;
+    }
+    
+    /*New css - May 18, 2021 end*/
+    
+    
+    /*css for US vs THEM page*/
+    #us-vs-them .item{margin-bottom:60px;}
+    #us-vs-them .create-custom-page .container .item:last-child{margin-bottom:30px;}
+    
+    .header--6 .header-top-container.has--lr--text{
+    	display:block;
+    }
+    .header--6 .has--lr--text .text--bar{
+      flex:unset;
+      display:block;
+      width:100%;
+      text-align:center !important;
+    }
+    .header--6 .has--lr--text .left--text{
+    	margin-bottom:5px;
+    }
+    
+    
+    /*klaviyo popup mobile css*/
+    form.klaviyo-form[data-testid="klaviyo-form-SN83Hn"]{padding:0 0 20px !important;}
+    form.klaviyo-form[data-testid="klaviyo-form-SN83Hn"] > .kl-private-reset-css-Xuajs1:first-child > .needsclick:nth-child(2){display:none !important;}
+    form.klaviyo-form[data-testid="klaviyo-form-SN83Hn"] > .kl-private-reset-css-Xuajs1:first-child > .needsclick{padding:0 15px !important;}
+    form.klaviyo-form[data-testid="klaviyo-form-SN83Hn"] > .kl-private-reset-css-Xuajs1:first-child > .needsclick:first-child,
+    form.klaviyo-form[data-testid="klaviyo-form-SN83Hn"] > .kl-private-reset-css-Xuajs1:first-child > .needsclick:first-child > .needsclick{padding:0!important;}
+    button.needsclick.kl-teaser-SN83Hn{opacity:0 !important;z-index:-2 !important;}
+/*     body > div > div.needsclick.kl-private-reset-css-Xuajs1{display:flex !important;} */
+    
+    
+  }
+  @media screen and (max-width:767px){
+    .header--6 .header-top{
+      /*display:none;*/
+      position:relative;
+      
+   	}
+    
+    .btn--type-1,
+  	.btn--type-2{
+      font-size:18px;
+      padding:9px 18px;
+      filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.2));
+    }
+   	 
+  }
+  @media screen and (max-width:639px){
+    
+    .header--6 .site-mobile-nav .dl-trigger{
+      right:-10px !important;
+    }
+    .header-bottom.mobile .logo{
+      padding:0 35%;
+    }
+    .header-bottom.mobile .logo img{
+      width:100%;
+    }
+    .header-bottom.mobile .site-mobile-navigation{
+      width:35%;
+    }
+    .header-bottom.mobile .header-right-container{
+      width:35%;
+    }
+    
+    .header--6 .site-mobile-nav .dl-trigger{
+      right:-10px !important;
+    }
+    
+    .header--6 .site-mobile-nav .dl-trigger{
+      right:-5px !important;
+      top:-23px !important;
+    }
+    
+    
+    /*css for US vs THEM page*/
+    #us-vs-them .create-custom-page{padding:40px 0;}
+    #us-vs-them .item{margin-bottom:50px;}
+    #us-vs-them .create-custom-page .container .item:last-child{margin-bottom:10px;}
+
+  }
+  @media screen and (max-width:479px){
+    .header-bottom.mobile .header-right-icons > div{
+      margin-left:3px;
+    }
+    .header-bottom.mobile .header-right-icons > div:first-child(){
+      margin-left:0;
+    }
+    .header-bottom.mobile .logo{
+/*       padding:0 37%; */
+      padding:0 34%;
+    }
+    .header-bottom.mobile .site-mobile-navigation{
+/*       width:37%; */
+      width:34%;
+    }
+    .header-bottom.mobile .header-right-container{
+/*       width:37%; */
+      width:34%;
+    }
+    
+    .header--6 .container.wide{
+      max-width:98%;
+    }
+    
+    
+    /*css for US vs THEM page*/
+    #us-vs-them .create-custom-page{padding:30px 0 35px;}
+    #us-vs-them .item{margin-bottom:40px;}
+    #us-vs-them .create-custom-page .container .item:last-child{margin-bottom:0;}
+    
+    
+    .btn--type-1,
+  	.btn--type-2{
+      font-size:16px;
+      padding:8px 12px;
+    }
+    
+    
+  }
+  
+  
+  
+</style>
+
+<script>
+    $(document).ready(function(){
+      if( $('.hamburger--spin').length > 0 ){
+      
+        var slidenavWidth = $(".left--side--mob--nav").width();
+        $(".hamburger--spin").click(function(e){
+          e.preventDefault();
+          $(".left--side--mob--nav").animate({width:'toggle'},350);
+          $(".left--side--mob--nav").toggleClass('opened');
+          
+          $(".hamburger--spin").toggleClass('dl-active');
+          
+          var isOut = $(".left--side--mob--nav").hasClass('opened');
+          $("body .wrapper").animate({marginLeft: isOut ? '210px' : '0'}, 350);
+          
+//           if( $('.left--side--mob--nav').hasClass('opened') ){ 
+//           	$("body .wrapper").animate({marginleft:'0'},350);
+//           } else{
+//           	$("body .wrapper").animate({marginleft:'20%'},350);
+//           }            
+
+        });
+        
+        $('.left--side--mob--nav li a').click(function(){
+//           console.log('clicked!!!!!!');
+          $(".left--side--mob--nav").animate({width:'toggle'},350);
+          $(".left--side--mob--nav").removeClass('opened');
+          $(".hamburger--spin").removeClass('dl-active');
+          
+          var isOut = $(".left--side--mob--nav").hasClass('opened');
+          $("body .wrapper").animate({marginLeft: isOut ? '210px' : '0'}, 350);
+          
+        });
+        
+      }
+      
+      $('.left--side--mob--nav .dl-submenu').before('<span class="subToggle"><i class="fa fa-angle-down"></i></span>');
+      $('.left--side--mob--nav .dl-submenu').parents('li').addClass('has--submenu');
+      
+      
+      $('.left--side--mob--nav .subToggle').click(function(){
+      	$(this).parents('li').find('.dl-submenu').eq(0).slideToggle();
+        $(this).parents('li').toggleClass('active');
+       	
+        if( $(this).parents('li').hasClass('active') ){
+          $(this).html('<i class="fa fa-angle-up"></i>');
+        } else {
+          $(this).html('<i class="fa fa-angle-down"></i>');
+        }
+        
+      });
+      
+    });
+  	
+  
+  	$(window).on('load', function(){
+      if ($(window).width() < 992) {
+  		setTimeout(function() { 
+          if( $('button.needsclick.kl-teaser-SN83Hn').length > 0){
+            $('button.needsclick.kl-teaser-SN83Hn').trigger('click');
+          }
+        }, 3000);
+        
+      }
+    });
+  
+</script>
+
+
+<header id="section-{{ section.id }}" class="header {% unless section.settings.header_top_enable == true  %} header-without-topbar {% endunless %} {% if section.settings.header_transparent == true and template == 'index' %} header-transparent-background {% endif %} {% if section.settings.header_sticky_enable and  section.settings.header_transparent == true %}header-sticky {% endif %} header_2 header--6">
+  {% if section.settings.header_top_enable == true  %}
+  <div class="header-top {% if section.settings.header_sticky_enable and section.settings.header_transparent != true %}header-sticky {% endif %}">
+    <div class="container">
+      <div class="header-top-container {% if section.settings.ht_lr_text_enable == true %} has--lr--text{% endif %}">
+        
+        {%comment%}
+        
+        <div class="header-top-left">
+          
+          {% if section.settings.welcome_text_phone_number %}
+          <span class="topLeftPhone">Text or call us @ <a href="{{ section.settings.phone_number_link }}"><span class="number"> {{ section.settings.welcome_text_phone_number}}</span></a></span>
+          {% endif %}
+          
+          {% if settings.currency_enable %}
+          <div class="currency-change change-dropdown">
+            {% include 'currency-picker' %}
+          </div>
+          <span class="header-separator d-none d-sm-block">|</span>
+          {% endif %}
+
+          
+          <div class="order-online-text_mod d-sm-block">
+            {% if section.settings.welcome_text_msg != '' %}
+              {{ section.settings.welcome_text_msg }} <!--<a href="{{ section.settings.phone_number_link }}"><span class="number"> {{ section.settings.welcome_text_phone_number }}</span></a>-->
+            {% endif %}
+          </div>
+        </div>
+        
+        <div class="header-top-right  {% unless section.settings.social_media_enable == true %} without_social {% endunless %}">
+
+          {% if section.settings.dropdown_menu_enable %}
+          <div class="top-shop-dropdown change-dropdown">
+            <a href="javascript:void(0)">{{ section.settings.topbar_right_info_title }}</a>
+            <ul>
+              {% assign header_right_menu = section.settings.header_right_menu %}
+              {% if header_right_menu != blank %}
+              {% for link in linklists[header_right_menu].links %}
+              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+              {% endfor %}
+              {% else %}
+              <li><a href="/cart">{{ section.settings.shopping_cart_title }}</a></li>
+              <li><a href="/checkout">{{ section.settings.checkout_title }}</a></li>
+              {% endif %}
+            </ul>
+          </div>
+          {% endif %}
+          
+          {% if section.settings.social_media_enable == true %}
+            <span class="header-separator">|</span>
+            <div class="top-social-icons">
+              {% include 'social-midea' %}
+            </div>
+          {% endif %}
+          {% if section.settings.welcome_text_phone_number %}          
+          <!--- <span class="topRightPhone">Text or Call Us @ <a href="{{ section.settings.phone_number_link }}"><span class="number"> {{ section.settings.welcome_text_phone_number}}</span></a></span> -->
+          <span class="topRightPhone">Now Listed on the Nasdaq: <a href="https://investors.realgoodfoods.com/" style="text-decoration: underline;">RGF</a></span>
+          {% endif %}
+        </div>
+        
+        {%endcomment%}
+        
+        
+        {% if section.settings.ht_center_text_enable == true %}
+        <div class="text--bar center--text">
+          <p>{{ section.settings.welcome_text_msg }}</p>
+        </div>
+        {% endif %}
+		
+        {% if section.settings.ht_lr_text_enable == true %}
+        <div class="text--bar left--text">
+			<p>{{ section.settings.ht_left_text }}</p>
+        </div>
+        <div class="text--bar right--text">
+			<p>{{ section.settings.ht_right_text }}</p>
+        </div>
+        {% endif %} 
+        
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  
+  
+<div class="header-bottom desktop {% if section.settings.header_sticky_enable and section.settings.header_transparent != true %}header-sticky {% endif %} pt-md-40 pb-md-40 pt-sm-40 pb-sm-40">
+    <div class="container wide">
+      <!--=======  header bottom container  =======-->
+
+      <div class="header-bottom-container">
+        <div class="logo-with-offcanvas d-flex">
+
+          <div class="logo">
+            {% include 'header-logo' %}
+          </div>
+        </div>
+
+
+        <!--=======  header bottom navigation  =======-->
+        <div class="header-bottom-navigation">
+          <div class="site-main-nav d-none d-lg-block">
+            <nav class="site-nav center-menu">
+                {% include 'main-menu' %}
+            </nav>
+          </div>
+        </div>
+
+        <!--=======  End of header bottom navigation  =======-->
+        {% if section.settings.header_right_info %}
+        <div class="header-right-container">
+          <div class="header-right-icons d-flex justify-content-end align-items-center h-100">
+            <!--=======  single-icon  =======-->
+
+            {% if section.settings.search_bar_enable %}
+            <div class="single-icon search">
+              <a href="javascript:void(0)" id="search-icon">
+                <i class="ion-ios-search-strong"></i>
+              </a>
+            </div>
+            {% endif %}
+            
+            {% if section.settings.account_icon %}
+            <div class="single-icon user-login">
+              {% if customer and shop.customer_accounts_enabled %}
+              <a href="/account">
+               <i class="ion-person-add"></i>
+              </a>
+              {% else %}
+               <a href="/account/login">
+                 <i class="ion-android-person"></i>
+              </a>
+             {% endif %}
+            </div>
+            {% endif %}
+
+            <!--=======  End of single-icon  =======-->
+            <!--=======  single-icon  =======-->
+
+            {% if section.settings.wishlist_enable %}
+            <div class="single-icon wishlist">
+              <a href="/pages/wishlist" id="offcanvas-wishlist-icon">
+                <i class="ion-android-favorite-outline"></i>
+              </a>
+            </div>
+            {% endif %}
+
+            <!--=======  End of single-icon  =======-->
+            <!--=======  single-icon  =======-->
+            
+            {% if section.settings.mini_cart_enable %}
+            <div class="single-icon cart">
+              {%- assign item_count = cart.item_count -%}
+              <a href="javascript:void(0)" id="offcanvas-cart-icon">
+                <i class="ion-ios-cart"></i>
+                <span class="count bigcounter">{{ item_count }}</span>
+              </a>
+            </div>
+            {% endif %}
+            <!--=======  End of single-icon  =======-->
+          </div>
+          <!--=======  End of header right icons  =======-->
+
+        </div>
+        {% endif %}
+
+      </div>
+
+
+      <!-- Mobile Navigation Start Here -->
+
+      <div class="site-mobile-navigation d-block d-lg-none">
+        <div id="dl-menu" class="dl-menuwrapper site-mobile-nav">
+          <!--Site Mobile Menu Toggle Start-->
+          <button class="dl-trigger hamburger hamburger--spin">
+            <span class="hamburger-box">
+              <span class="hamburger-inner"></span>
+            </span>
+          </button><!--Site Mobile Menu Toggle End-->
+          {% include 'mobile_nav' %}
+        </div>
+      </div>
+
+      <!-- Mobile Navigation End Here -->
+
+    </div>
+  </div>
+  
+  
+  <div class="header-bottom mobile {% if section.settings.header_sticky_enable and section.settings.header_transparent != true %}header-sticky {% endif %} pt-md-40 pb-md-40 pt-sm-40 pb-sm-40">
+    <div class="container wide">
+      <!--=======  header bottom container  =======-->
+
+      <div class="header-bottom-container">
+        
+        <div class="site-mobile-navigation d-block d-lg-none">
+          <div id="dl-menu" class="dl-menuwrapper site-mobile-nav">
+            <button class="hamburger hamburger--spin">
+              <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+              </span>
+            </button>
+
+          </div>
+        </div>
+
+        <div class="logo">
+          {% include 'header-logo' %}
+        </div>
+
+
+        <!--=======  End of header bottom navigation  =======-->
+        {% if section.settings.header_right_info %}
+        <div class="header-right-container">
+          <div class="header-right-icons">
+            <!--=======  single-icon  =======-->
+
+            {% if section.settings.search_bar_enable %}
+            <div class="single-icon search">
+              <a href="javascript:void(0)" id="search-icon">
+                <i class="ion-ios-search-strong"></i>
+              </a>
+            </div>
+            {% endif %}
+            
+            {% if section.settings.account_icon %}
+            <div class="single-icon user-login">
+              {% if customer and shop.customer_accounts_enabled %}
+              <a href="/account">
+               <i class="ion-person-add"></i>
+              </a>
+              {% else %}
+               <a href="/account/login">
+                 <i class="ion-android-person"></i>
+              </a>
+             {% endif %}
+            </div>
+            {% endif %}
+
+            <!--=======  End of single-icon  =======-->
+            <!--=======  single-icon  =======-->
+
+            {% if section.settings.wishlist_enable %}
+            <div class="single-icon wishlist">
+              <a href="/pages/wishlist" id="offcanvas-wishlist-icon">
+                <i class="ion-android-favorite-outline"></i>
+              </a>
+            </div>
+            {% endif %}
+
+            <!--=======  End of single-icon  =======-->
+            <!--=======  single-icon  =======-->
+            
+            {% if section.settings.mini_cart_enable %}
+            <div class="single-icon cart">
+              {%- assign item_count = cart.item_count -%}
+              <a href="javascript:void(0)" id="offcanvas-cart-icon">
+                <i class="ion-ios-cart"></i>
+                <span class="count bigcounter">{{ item_count }}</span>
+              </a>
+            </div>
+            {% endif %}
+            <!--=======  End of single-icon  =======-->
+          </div>
+          <!--=======  End of header right icons  =======-->
+
+        </div>
+        {% endif %}
+
+      </div>
+
+    </div>
+  </div>
+  
+
+  <!--=======  End of header bottom  =======-->
+</header>

@@ -1,0 +1,174 @@
+{% if section.settings.investor_subnav == true %}
+
+<div class="investor--menu">
+  <div class="container wide">
+  
+    <ul class="invest--nav">
+      {% for link in linklists.investor.links %}
+        <li class="menu-link">
+          <a href="{{ link.url }}">{{ link.title }}</a>
+
+          {% comment %}
+
+          {% if link.links.size > 0 %}
+            <ul class="menu dropdown-child">
+              {% for child_link in link.links %}
+                <li class="menu-link">
+                  <a href="{{ child_link.url }}">{{ child_link.title }}</a>
+
+                  {% if child_link.links.size > 0 %}
+                    <ul class="menu dropdown-grandchild">
+                      {% for grandchild_link in child_link.links %}
+                        <li class="menu-link">
+                          <a href="{{ grandchild_link.url }}">{{ grandchild_link.title }}</a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+
+          {% endcomment %}
+
+        </li>
+      {% endfor %}
+    </ul>
+    
+  </div>
+</div>
+
+{% endif %}
+
+
+{% schema %}
+  {
+    "name": "Investor Sub Nav",
+    "settings": [
+		{
+		  "type": "header",
+          "content": "Section Enable"
+        },
+		{
+          "type": "checkbox",
+          "id": "investor_subnav",
+          "label": "Investor Sub Nav Enable",  
+          "default": true
+      	}
+	],
+	"presets": [
+		{
+			"name": "Investor Sub Nav",
+			"category": "3. collections"
+		}
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+
+
+<style type="text/css">
+  .investor--menu{
+  	position:relative;
+    padding:30px 0;
+    border-top:1px solid #e7e7e7;
+    border-bottom:1px solid #e7e7e7;
+  }
+  .investor--menu .container.wide {
+      max-width:95%;
+  }
+  .investor--menu .invest--nav{
+  	text-align:center;
+  }
+  .investor--menu .invest--nav li{
+  	display:inline-block;
+    position:relative;
+  }
+  .investor--menu .invest--nav li a{
+/*   	font-size:18px; */
+    font-size:17px;
+    padding:0 15px;
+  }
+  .investor--menu .invest--nav li a:hover{
+  	color:#DD7C01;
+  }
+  
+  @media (max-width:1549px){
+    .investor--menu .invest--nav li a{
+      font-size:17px;
+      padding:0 12px;
+      letter-spacing:-0.5px;
+    }
+  }
+  @media (max-width:1399px){
+    .investor--menu .invest--nav li a{font-size:16px;padding:0 10px;}
+  }
+  
+  @media (min-width:1515px){
+    .investor--menu .container.wide {
+        max-width:1485px;
+    }
+  }
+  
+  @media (max-width:1279px){
+/*   	.investor--menu .invest--nav li a{
+      font-size:18px;
+      padding:0 12px;
+    } */
+    .investor--menu .invest--nav li a{font-size:14.5px;padding:0 7.5px;}
+  }
+  
+/*   @media (max-width:1139px){
+    .investor--menu{
+      padding:20px 0;
+    }
+    .investor--menu .invest--nav li a{
+      font-size:16px;
+      padding:0 10px;
+    }
+    
+  } */
+  
+  @media (max-width:1139px){
+    .investor--menu{
+      padding:15px;
+      overflow-y:scroll;
+    }
+    .investor--menu .invest--nav li a{
+      font-size:16px;
+      padding:0 15px;
+    }
+    .investor--menu .invest--nav li:after{
+      content:"";
+      width:1px;
+      height:100%;
+      background:#e7e7e7;
+      position:absolute;
+      top:0;
+      right:-1px;
+    }
+    .investor--menu .invest--nav li:last-child::after{
+      display:none;
+    }
+    .investor--menu .invest--nav li:last-child{
+      padding-right:15px;
+    }
+    .investor--menu .container.wide {
+      max-width:100%;
+      padding:0;
+  	}
+    .investor--menu .invest--nav{
+      white-space:nowrap;
+    }
+    
+  }
+  
+  
+  
+</style>

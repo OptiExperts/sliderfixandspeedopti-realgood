@@ -1,0 +1,68 @@
+<div class="row">
+  <div class="col-md-3 order-2 order-md-1">
+      
+      {%- if product.images.size > 1 -%}
+      <div class="shop-product__small-image-gallery-wrapper">
+        <div class="shop-product__small-image-gallery-slider--vertical" id="ProductThumbs">
+          {% for image in product.images %}
+          <div class="single-image">
+            <a class="product-single__thumbnail {% if forloop.first and section.settings.product_zoom_enable %}active{% endif %}" href="{{ image.src | img_url: '1024x1024' }}" 
+               data-image="{{ image.src | img_url: '1024x1024' }}" data-zoom-image="{{ image.src | img_url: '1024x1024' }}" data-image-id="{{ image.id }}">
+              <img src="{{ image.src | img_url: '170x225', crop: 'center' }}" alt="{{ image.alt | escape }}">
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {%- endif -%} 
+
+
+  </div>
+
+  <div class="col-md-9 order-1 order-sm-1">
+    <!--=======  shop product big image gallery  =======-->
+
+    <div class="shop-product__big-image-gallery-wrapper mb-0 mb-sm-30">
+
+      <!--=======  shop product gallery icons  =======-->
+
+      <div class="single-product__floating-badges single-product__floating-badges--shop-product">
+       {%- include 'product-badge' -%}
+      </div>
+
+
+      <div class="shop-product-rightside-icons">
+        {% comment %}
+        <span class="wishlist-icon">
+          {% include 'wishlist-button' %}
+        </span>
+        {% endcomment %}
+
+        {% if section.settings.product_zoom_enable %}
+        <span class="enlarge-icon">
+          <a class="product-zoom" href="{{ featured_image | img_url: '1024x1024' }}" data-tippy="Click to enlarge" data-tippy-placement="left" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme = "sharpborder" ><i class="ion-android-expand"></i></a>
+        </span>
+        {% endif %}
+
+      </div>
+      <!--=======  End of shop product gallery icons  =======-->
+
+      <div class="product_image_inner">
+
+        <div class="" id="ProductPhoto">
+          {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}              
+          {%- comment -%} "product_variant_image" this Class is needed for Ajax popup cart {%- endcomment -%}
+          <img id="ProductPhotoImg" class="product_variant_image {% if section.settings.product_zoom_enable %} zoom_mouse {% endif %}" 
+               data-image-id="{{ image.id }}" alt="{{ featured_image.alt | escape }}" 
+               data-zoom-image="{{ featured_image | img_url: '1024x1024' }}"
+               src="{{ featured_image | img_url: '810x1080', crop: 'center' }}">
+        </div>
+
+        <!--=======  End of single image  =======-->
+      </div>
+
+    </div>
+
+    <!--=======  End of shop product big image gallery  =======-->
+  </div>
+</div>

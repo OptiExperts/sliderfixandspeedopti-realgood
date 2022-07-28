@@ -1,0 +1,581 @@
+<div class="rgf_home_hero_banner home_hero_banner home_video_banner" id="section-{{ section.id }}">
+  <div class="img--video">
+    
+    <div class="img {% if section.settings.hh_banner_img_mob != blank %}hasMobBnr{% endif %}">
+      {% if section.settings.hh_banner_img != blank %}
+      <img src="{{ section.settings.hh_banner_img | img_url: '1920x475' }}" alt="" class="lazyload">
+      {% else %}
+      <img src="https://via.placeholder.com/1920x475" alt="" class="lazyload">
+      {% endif %}
+      {% if section.settings.hh_banner_img_mob != blank %}
+      <img src="{{ section.settings.hh_banner_img_mob | img_url: '768x420' }}" alt="" class="lazyload mobile">
+      {% endif %}
+    </div>
+    <div class="video">
+      {% if section.settings.hh_banner_video != blank %}
+      <video preload="auto" controls disablepictureinpicture controlslist="nodownload noplaybackrate" class="hh__video">
+      	<source src="{{section.settings.hh_banner_video}}" type="video/mp4" />
+      </video>
+      {% else %} 
+      <video preload="auto" controls disablepictureinpicture controlslist="nodownload noplaybackrate" class="hh__video">
+      	<source src="{{ 'rgf-on-nasdaq.mp4' | asset_url }}" type="video/mp4" />
+      </video>
+      {% endif %}
+    </div>
+    
+  </div>
+  <div class="hh__caption">
+	
+    <div class="container wide">
+      <div class="text">
+        {%- if section.settings.hh_banner_caption1 != '' -%}
+        <h2>{{ section.settings.hh_banner_caption1 }}</h2>  
+        {%- endif -%}
+        {%- if section.settings.hh_banner_caption2 != '' -%}
+        <h6>{{ section.settings.hh_banner_caption2 }}</h6>  
+        {%- endif -%}        
+      </div>
+    </div>
+    
+  </div>
+  <div class="buttons">
+    <span class="playBtn"><i class="ion-play"></i></span>
+  </div>
+</div>	
+<style>
+  
+  /*#shopify-section-{{ section.id }}{
+  	display:none !important;
+  }*/
+  
+  #shopify-section-{{ section.id }}
+  {
+  	background:#fff;
+    /*max-width: 1900px;*/
+    display:block;
+    margin:0px auto;
+    
+  }
+  #section-{{ section.id }}{
+    width:100%;
+    background-position:center center;
+    background-size:cover;
+    background-repeat:no-repeat;
+    padding-top:39.75%;
+    height:0;
+    position:relative;
+    background:#000;
+  }
+  #section-{{ section.id }} .img--video{
+  	display:block;
+	width:100%;
+/*     position:relative; */
+    z-index:1;
+    overflow:hidden;
+    vertical-align:center;
+    position:absolute;
+    top:0;
+    left:0;
+    height:100%;
+  }
+  #section-{{ section.id }} .img--video .img{
+  	width:100%;
+    height:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:2;
+  }
+  #section-{{ section.id }} .img--video .img img{
+  	height:100%;
+    width:100%;
+    display:block;
+    margin:0 auto;
+    object-fit:cover;
+  }
+  #section-{{ section.id }} .img--video .hasMobBnr img.mobile{
+  	display:none;
+  }
+  #section-{{ section.id }} .img--video .video{
+  	position:relative;
+    width:100%;
+    height:auto;
+    z-index:1; 
+    height:100%;
+  }
+/*   #section-{{ section.id }} .img--video .video:before{
+  	content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#000;
+  } */
+  #section-{{ section.id }} .img--video .video video{
+  	object-fit:cover;
+    object-fit:fill;
+    object-fit:contain;
+    width:100%;
+    height:820px;
+    height:100%;
+    opacity:0;
+    position:relative;
+    z-index:2;
+  }
+  #section-{{ section.id }} .img--video .video.ziUP{
+  	z-index:3;
+  }
+  #section-{{ section.id }} .img--video .video.ziUP video{
+  	opacity:1;
+  }
+  #section-{{ section.id }} .hh__caption{
+  	position:absolute;
+    left:0;
+    right:0;
+    margin:auto;
+    top:52%;
+    transform:translateY(-50%);
+    width:100%;
+    z-index:2;
+  }
+  #section-{{ section.id }} .hh__caption .text{
+/*   	max-width:460px !important; */
+    max-width:550px !important;
+  }
+  #section-{{ section.id }} .hh__caption .text h2{
+    font-family:'Montserrat';
+/*     font-size:48px; */
+    font-size:60px;
+    font-weight:800;
+    margin-bottom:40px;
+    line-height:1.1;
+    color:#fff;
+    text-shadow:rgb(0 0 0 / 16%) 0px 4px 4px;
+  }
+  #section-{{ section.id }} .hh__caption .text h6{
+    font-family:'Montserrat';
+    max-width:325px;
+    font-size:18px;
+    font-weight:600;
+    margin-bottom:40px;
+    line-height:1.1;
+    color:#fff;
+	text-shadow:rgb(0 0 0 / 16%) 0px 4px 4px;
+  }
+  #section-{{ section.id }} .playBtn{
+  	position:absolute;
+/*     bottom:30px;
+    left:30px; */
+    left:0;
+    right:0;
+    margin:auto;
+    top:52%;
+    transform:translateY(-50%);
+    z-index:3;
+    cursor:pointer;
+    text-align:center;
+    height:200px;
+    width:200px;
+  }
+  #section-{{ section.id }} .playBtn i{
+  	color:rgba(0,0,0,0.5);
+/*     height:50px;
+    width:50px;
+    border:2px solid #fff; */
+    height:220px;
+    width:220px;
+    border:10px solid rgba(0,0,0,0.5);
+    border-radius:100%;
+    text-align:center;
+    display:block;
+    margin:0 auto;
+  }
+  #section-{{ section.id }} .playBtn i:before{
+/*   	font-size:36px;
+    line-height:46px;
+    margin-left:4px; */
+    font-size:160px;
+    line-height:200px;
+    margin-left:15px;
+  }
+  #section-{{ section.id }} .playBtn:hover i{
+  	opacity:0.8;
+  }
+  
+  
+  @media (min-width:1515px){
+    #section-{{ section.id }} .container.wide{max-width:1485px;}
+    
+  }
+  @media (max-width:1599px){
+   	 #section-{{ section.id }} .img--video .video video{
+/*     	height:720px; */
+    }
+  }
+  @media (max-width:1399px){
+    #section-{{ section.id }} .hh__caption .text{
+/*       max-width:400px !important; */
+      max-width:440px !important;
+    }
+    #section-{{ section.id }} .hh__caption .text h2{
+      font-size:40px;
+      font-size:48px;
+      margin-bottom:30px;
+    }
+    #section-{{ section.id }} .hh__caption .text h6{
+      margin-bottom:30px;
+    }
+    
+    #section-{{ section.id }} .img--video .video video{
+/*     	height:620px; */
+    }
+    
+  }
+  @media (max-width:1279px){
+    #section-{{ section.id }} .container.wide{max-width:95% !important;}
+    #section-{{ section.id }} .hh__caption .text{
+/*       max-width:290px !important; */
+      max-width:340px !important;
+    }
+    #section-{{ section.id }} .hh__caption .text h2{
+/*       font-size:30px; */
+      font-size:36px;
+      margin-bottom:15px;
+    }
+    #section-{{ section.id }} .hh__caption .text h6{
+      margin-bottom:25px;
+      font-size:17px
+    }
+    #section-{{ section.id }} .img--video .video video{
+/*     	height:560px; */
+/*       height:auto; */
+    }
+    #section-{{ section.id }} .playBtn{
+      height:160px;
+      width:160px;
+    }
+    #section-{{ section.id }} .playBtn i{
+      height:160px;
+      width:160px;
+      border-width:8px;
+    }
+    #section-{{ section.id }} .playBtn i:before{
+      font-size:125px;
+      line-height:144px;
+      margin-left:12px;
+    }
+    
+  }
+  @media (max-width:1139px){
+/*     #section-{{ section.id }}{
+      padding-top:45%;
+    }
+     */
+    
+    #section-{{ section.id }} .img--video .video video{
+/*     	height:480px; */
+    }
+  }
+  @media (max-width:991px){
+/*     #section-{{ section.id }}{
+      padding-top:70%;
+    } */
+    #section-{{ section.id }} .img--video .img.hasMobBnr img{
+      display:none;
+    }
+    #section-{{ section.id }} .img--video .img.hasMobBnr img.mobile{
+      display:block;
+    }
+    
+    #section-{{ section.id }} .hh__caption{
+/*       top:19%; */
+/*       top:60px; */
+      top:20px;
+      transform:unset;
+    }
+    #section-{{ section.id }} .hh__caption .text{
+      max-width:275px !important;
+      margin:0 auto;
+      text-align:center;
+    }
+    #section-{{ section.id }} .hh__caption .text h2{
+      font-size:28px;
+      margin-bottom:12px;
+    }
+    #section-{{ section.id }} .hh__caption .text h6{
+      margin-bottom:18px;
+      font-size:16px
+    }
+    #section-{{ section.id }} .img--video .video video{
+/*     	height:400px; */
+    }
+/*     #section-{{ section.id }} .playBtn{
+      left:20px;
+      bottom:20px;
+    }
+    #section-{{ section.id }} .playBtn i{
+      color:#fff;
+      height:42px;
+      width:42px;
+    }
+    #section-{{ section.id }} .playBtn i:before{
+      font-size:28px;
+      line-height:38px;
+      margin-left:2px;
+    } */
+    #section-{{ section.id }} .playBtn{
+      height:120px;
+      width:120px;
+    }
+    #section-{{ section.id }} .playBtn i{
+      height:120px;
+      width:120px;
+      border-width:6px;
+    }
+    #section-{{ section.id }} .playBtn i:before{
+      font-size:95px;
+      line-height:108px;
+      margin-left:10px;
+    }
+    
+  }
+  @media (max-width:767px){
+/*     #section-{{ section.id }}{
+      padding-top:118%;
+      margin-top:-20px
+    } */
+    #section-{{ section.id }} .hh__caption .text h6{
+      display:none;
+    }
+    #section-{{ section.id }} .hh__caption{
+      text-align:center;
+/*       top:70px; */
+/*       top:40px; */
+    }
+    #section-{{ section.id }} .hh__caption .text{
+      text-align:center;
+      margin:0 auto;
+    }
+    #section-{{ section.id }} .hh__caption .text h2{
+      margin-bottom:20px;
+    }
+    #section-{{ section.id }} .img--video .video video{
+/*     	height:350px; */
+    }
+    #section-{{ section.id }} .playBtn{
+      height:90px;
+      width:90px;
+      height:80px;
+      width:80px;
+    }
+    #section-{{ section.id }} .playBtn i{
+      height:90px;
+      width:90px;
+      height:80px;
+      width:80px;
+      border-width:5px;
+    }
+    #section-{{ section.id }} .playBtn i:before{
+      font-size:65px;
+      line-height:80px;
+      font-size:60px;
+      line-height:70px;
+      margin-left:5px;
+    }
+    
+  }
+  @media (max-width:639px){
+   #section-{{ section.id }} .hh__caption{
+/*       top:38px; */
+      top:15px;
+    }
+    #section-{{ section.id }} .hh__caption .text h2{
+/*       font-size:26px; */
+      font-size:22px;
+    }
+    #section-{{ section.id }} .hh__caption .text{
+      max-width:265px !important;
+    }
+    #section-{{ section.id }} .img--video .video video{
+/*     	height:260px; */
+    }
+/*     #section-{{ section.id }} .playBtn{
+      left:15px;
+      bottom:15px;
+    }
+    #section-{{ section.id }} .playBtn i{
+      color:#fff;
+      height:36px;
+      width:36px;
+    }
+    #section-{{ section.id }} .playBtn i:before{
+      font-size:24px;
+      line-height:32px;
+      margin-left:2px;
+    } */
+    #section-{{ section.id }} .playBtn{
+      height:60px;
+      width:60px;
+      height:50px;
+      width:50px;
+    }
+    #section-{{ section.id }} .playBtn i{
+      height:60px;
+      width:60px;
+      height:50px;
+      width:50px;
+      border-width:3px;
+    }
+    #section-{{ section.id }} .playBtn i:before{
+      font-size:42px;
+      line-height:54px;
+      font-size:36px;
+      line-height:44px;
+      margin-left:4px;
+    }
+    
+  }
+  @media (max-width:479px){
+/*     #section-{{ section.id }}{
+      padding-top:145%;
+      margin-top:-15px;
+      background-position:top center;
+    } */
+    #section-{{ section.id }} .hh__caption .text{
+      max-width:230px !important;
+    }
+    #section-{{ section.id }} .hh__caption .text h2{
+/*       font-size:22px; */
+      font-size:24px;
+      margin-bottom:12px;
+    }
+    #section-{{ section.id }} .hh__caption{
+/*       top:22px; */
+      top:5px;
+    }
+    
+    #section-{{ section.id }} .img--video .video video{
+/*     	height:200px; */
+    }
+/*     #section-{{ section.id }} .playBtn{
+      left:10px;
+      bottom:10px;
+    }
+    #section-{{ section.id }} .playBtn i{
+      color:#fff;
+      height:30px;
+      width:30px;
+    }
+    #section-{{ section.id }} .playBtn i:before{
+      font-size:20px;
+      line-height:26px;
+      margin-left:2px;
+    } */
+    #section-{{ section.id }} .playBtn{
+      height:42px;
+      width:42px;
+      height:30px;
+      width:30px;
+    }
+    #section-{{ section.id }} .playBtn i{
+      height:42px;
+      width:42px;
+      height:30px;
+      width:30px;
+      border-width:2px;
+    }
+    #section-{{ section.id }} .playBtn i:before{
+      font-size:30px;
+      line-height:38px;
+      font-size:20px;
+      line-height:26px;
+      margin-left:2px;
+    }
+    
+  }
+  @media (max-width:359px){
+    #section-{{ section.id }} .hh__caption .text h2{
+      font-size:20px;
+    }
+  }
+  
+  
+  
+
+</style>
+
+
+{% schema %}
+  {
+    "name": "Home Video Banner",
+    "settings": [
+	  {
+        "type": "header",
+        "content": "Banner Settings"
+      },
+      {
+        "type": "image_picker",
+        "id": "hh_banner_img",
+        "label": "Banner Image",
+        "info": "Recommended Size: 1920 x 745 px"
+      },
+		{
+        "type": "image_picker",
+        "id": "hh_banner_img_mob",
+        "label": "Banner Image (mobile)"
+      },
+      {
+        "type": "textarea",
+        "id": "hh_banner_caption1",
+        "label": "Banner Caption #1",
+		"default": "Introducing the 1st Ever Grain Free Entrée Bowls"
+      },
+      {
+        "type": "textarea",
+        "id": "hh_banner_caption2",
+        "label": "Banner Caption #2",
+        "default": "Low Carb. High Protein. Available now in Grocery Stores Nationwide."
+      },
+      /*{
+        "type": "text",
+        "id": "hh_banner_btn_text",
+        "label": "Banner Button Text",
+        "default": "Find a Store"
+      },
+      {
+        "type": "url",
+        "id": "hh_banner_btn_url",
+        "label": "Banner Button URL"
+      }*/
+	  {
+        "type": "text",
+        "id": "hh_banner_video",
+        "label": "Banner Video Link"
+      }
+	  
+	],
+	"presets": [
+		{
+		  "name": "Home Video Banner",
+		  "category": "4. Banner"
+		}
+	]
+  }
+{% endschema %}
+
+<script>
+  
+  jQuery(document).ready(function($){
+    if( $('.home_video_banner .hh__video').length > 0 ){
+      $('.home_video_banner .playBtn').click(function(){
+        $('.home_video_banner .img--video .img').hide();
+      	$('.home_video_banner .img--video .video').addClass('ziUP');
+        $('.home_video_banner .img--video .video video').get(0).play();
+        $('.home_video_banner .playBtn').hide();
+        
+      });
+    }
+  });
+  
+</script>

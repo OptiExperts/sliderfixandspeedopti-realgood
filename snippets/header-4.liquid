@@ -1,0 +1,210 @@
+<header class="header header-vertical d-none d-xl-block" id="section-{{ section.id }}">
+  <!--=======  vertical header container  =======-->
+
+  <div class="vertical-header-container">
+
+    <!--=======  logo  =======-->
+
+    <div class="vertical-header-logo">
+      {% include 'header-logo' %}
+    </div>
+
+    <!--=======  End of logo  =======-->
+
+    <!--=======  menu icon  =======-->
+
+    <div class="menu-icon-container">
+      <a href="javascript:void(0)" class="" id="vertical-menu-icon">
+        <span class="menu-icon"></span>
+        <span class="menu-icon"></span>
+        <span class="menu-icon"></span>
+      </a>
+    </div>
+
+    <!--=======  End of menu icon  =======-->
+
+    <!--=======  headeer bottom container  =======-->
+
+    <div class="header-bottom-container">
+
+
+      <!--=======  header right icons  =======-->
+
+      <div class="header-right-icons vertical-dark-menu-bottom">
+
+        <!--=======  copyright text  =======-->
+
+        {% if section.settings.copyright_text != blank %}	
+        <p class="copyright-text">{{ section.settings.copyright_text }}</p>
+        {% endif %}	
+
+        <!--=======  End of copyright text  =======-->
+
+        <!--=======  single-icon  =======-->
+
+
+        <div class="single-icon search">
+          <a href="javascript:void(0)" id="search-icon">
+            <i class="ion-ios-search-strong"></i>
+          </a>
+        </div>
+
+        <!--=======  End of single-icon  =======-->
+
+        <!--=======  single-icon  =======-->
+
+        <div class="single-icon wishlist">
+          <a href="/pages/wishlist" id="offcanvas-wishlist-icon">
+            <i class="ion-android-favorite-outline"></i>
+          </a>
+        </div>
+
+        <!--=======  End of single-icon  =======-->
+        <!--=======  single-icon  =======-->
+
+
+        <div class="single-icon cart">
+          {%- assign item_count = cart.item_count -%}
+          <a href="javascript:void(0)" id="offcanvas-cart-icon">
+            <i class="ion-ios-cart"></i>
+            <span class="count bigcounter">{{ item_count }}</span>
+          </a>
+        </div>
+        <!--=======  End of single-icon  =======-->
+      </div>
+      <!--=======  End of header right icons  =======-->
+
+    </div>
+
+    <!--=======  End of headeer right container  =======-->
+
+
+  </div>
+
+  <!--=======  End of vertical header container  =======-->
+
+</header>
+
+<!--===== End of Header wide topbar ======-->
+
+<!--=============================================
+=            Header wide topbar         =
+=============================================-->
+
+<header class="header header-wide-topbar vertical-menu-mobile-header d-block d-xl-none" id="section-{{ section.id }}">
+
+
+
+  <!--=======  header bottom  =======-->
+
+  <div class="header-bottom pt-md-40 vertical_mobile pb-md-40 pt-sm-40 pb-sm-40">
+    <div class="container wide">
+
+
+      <!--=======  header bottom container  =======-->
+
+      <div class="header-bottom-container vertical-header-bottom">
+
+        <!--=======  logo with off canvas  =======-->
+
+        <div class="logo-with-offcanvas d-flex">
+
+
+
+          <!--=======  logo   =======-->
+
+          <div class="logo">
+            {% include 'header-logo' %}
+          </div>
+
+          <!--=======  End of logo   =======-->
+        </div>
+
+        <!--=======  End of logo with off canvas  =======-->
+
+
+        <!--=======  headeer right container  =======-->
+
+        <div class="header-right-container">
+
+          <!--=======  header right icons  =======-->
+
+          <div class="header-right-icons d-flex justify-content-end align-items-center h-100">
+            <!--=======  single-icon  =======-->
+
+            <div class="single-icon search">
+              <a href="javascript:void(0)" id="search-icon-2">
+                <i class="ion-ios-search-strong"></i>
+              </a>
+            </div>
+
+            <!--=======  End of single-icon  =======-->
+            <!--=======  single-icon  =======-->
+
+            <div class="single-icon user-login">
+              {% if customer and shop.customer_accounts_enabled %}
+              <a href="/account">
+                <i class="ion-person-add"></i>
+              </a>
+              {% else %}
+              <a href="/account/login">
+
+                <i class="ion-android-person"></i>
+              </a>
+              {% endif %}
+            </div>
+
+            <!--=======  End of single-icon  =======-->
+            <!--=======  single-icon  =======-->
+
+            <div class="single-icon wishlist">
+              <a href="/pages/wishlist" id="offcanvas-wishlist-icon">
+                <i class="ion-android-favorite-outline"></i>
+              </a>
+            </div>
+
+            <!--=======  End of single-icon  =======-->
+            <!--=======  single-icon  =======-->
+
+            <div class="single-icon cart">
+          {%- assign item_count = cart.item_count -%}
+          <a href="javascript:void(0)" id="offcanvas-cart-icon">
+            <i class="ion-ios-cart"></i>
+            <span class="count bigcounter">{{ item_count }}</span>
+          </a>
+        </div>
+            <!--=======  End of single-icon  =======-->
+          </div>
+          <!--=======  End of header right icons  =======-->
+
+        </div>
+
+        <!--=======  End of headeer right container  =======-->
+
+
+      </div>
+
+      <!--=======  End of header bottom container  =======-->
+
+      <!-- Mobile Navigation Start Here -->
+
+      <div class="site-mobile-navigation d-block d-xl-none">
+        <div id="dl-menu" class="dl-menuwrapper site-mobile-nav">
+          <!--Site Mobile Menu Toggle Start-->
+          <button class="dl-trigger hamburger hamburger--spin">
+            <span class="hamburger-box">
+              <span class="hamburger-inner"></span>
+            </span>
+          </button><!--Site Mobile Menu Toggle End-->
+          {% include 'mobile_nav' %}
+        </div>
+      </div>
+
+      <!-- Mobile Navigation End Here -->
+
+
+    </div>
+  </div>
+
+  <!--=======  End of header bottom  =======-->
+</header>

@@ -1,0 +1,156 @@
+{% if section.settings.section_enable %}
+<div class="wwe--social" id="section-{{ section.id }}">
+  {% comment %} 
+  <div class="container">
+  {% endcomment %} 
+    {% if section.settings.social_img != blank %}
+    <div class="image {% if section.settings.social_img_mob != blank %}has--mob--img{% endif %}">
+      {% if section.settings.social_link != blank %}
+      <a href="{{section.settings.social_link}}" target="_blank">
+      {% endif %}
+      	
+        <img class="SocialImg" src="{{ section.settings.social_img | img_url: '1920x745' }}" class="lazyload img-fluid" alt="">
+        {% if section.settings.social_img_mob != blank %} 
+          <img src="{{ section.settings.social_img_mob | img_url: 'master' }}" alt="" class="mobile">  
+        {% endif %}
+        
+      {% if section.settings.social_link != blank %}
+      </a>
+      {% endif %}
+    </div>
+    {% endif %}
+    {% comment %}    
+    <div class="content">
+      {{ section.settings.sec_desc }}
+    </div>
+    {% endcomment %}
+  {% comment %}   
+  </div>
+  {% endcomment %}
+</div>
+{% endif %}
+
+<style>
+  #section-{{ section.id }}{
+    position:relative;
+    width:100%;
+    display:block;
+    /*background:#FF9C00;
+    padding:60px 0 50px;*/
+  }
+  #section-{{ section.id }} .image{
+  	display:block;
+/*     padding-bottom:30px; */
+  }
+  #section-{{ section.id }} .image img{
+  	max-width:100%;
+    display:block;
+    margin:0 auto;
+    width:100%;
+  }
+  #section-{{ section.id }} .content{
+    max-width:1066px;
+    margin:0 auto;
+    text-align:center;
+  }
+  #section-{{ section.id }} .content h4{
+  	font-size:36px;
+    line-height:1.35;
+    font-weight:bold;
+    color:#fff;
+    margin-bottom:0;
+    padding-top:10px;
+  }
+  #section-{{ section.id }} .content p{
+  	font-size:22px;
+    line-height:1.35;
+    color:#fff;
+  }
+  
+  #section-{{ section.id }} .image img.mobile{display:none;}
+  #section-{{ section.id }} .image a{display:block;}
+  
+  
+  @media screen and (max-width:1279px){
+    #section-{{ section.id }} .content h4{font-size:32px;}
+    
+  }
+
+  @media screen and (max-width:1139px){
+    #section-{{ section.id }} .content h4{font-size:30px;}
+    #section-{{ section.id }} .content p{font-size:20px;}
+  }
+  @media screen and (max-width:991px){
+    #section-{{ section.id }}{/*padding:45px 0 40px;*/}
+    #section-{{ section.id }} .container{max-width:95%;}
+    #section-{{ section.id }} .content h4{font-size:26px;padding-top:5px;}
+    #section-{{ section.id }} .content p{font-size:18px;}
+    #section-{{ section.id }} .image{/*padding-bottom:25px;*/}
+    
+  }
+  @media screen and (max-width:767px){
+    #section-{{ section.id }} .container{max-width:100%;}
+    #section-{{ section.id }} .content h4{font-size:24px;}
+    
+    #section-{{ section.id }} .image.has--mob--img img{display:none;}
+    #section-{{ section.id }} .image.has--mob--img img.mobile{display:block;}
+  }
+  @media screen and (max-width:639px){
+    #section-{{ section.id }}{/*padding:35px 0 30px;*/}
+    #section-{{ section.id }} .content h4{font-size:22px;padding-top:0;}
+    #section-{{ section.id }} .content p{font-size:16px;}
+    #section-{{ section.id }} .image{/*padding-bottom:20px;*/}
+    
+  }
+  @media screen and (max-width:479px){
+    #section-{{ section.id }} .content h4{font-size:20px;line-height:1.15;}
+    #section-{{ section.id }} .content p{font-size:16px;line-height:1.2;}
+    
+  }
+  
+</style>
+
+{% schema %}
+  {
+    "name": "Why We Exists Social",
+    "settings": [
+		{
+		  "type": "header",
+          "content": "Section Enable"
+        },
+		{
+          "type": "checkbox",
+          "id": "section_enable",
+          "label": "Section Enable",  
+          "default": true
+      	},
+		{
+          "type": "header",
+          "content": "Content"
+        },
+        {
+          "type": "image_picker",
+          "id": "social_img",
+          "label": "Image"
+        },
+		{
+			"type": "image_picker",
+        	"id": "social_img_mob",
+        	"label": "Image (mobile)"
+      	},
+		{
+          "type": "url",
+          "id": "social_link",
+          "label": "Social Link"
+        },
+		{
+          "type": "textarea",
+          "id": "sec_desc",
+          "label": "Content (inc. HTML tags)"
+        }
+	]
+  }
+{% endschema %}
+
+{% javascript %}
+{% endjavascript %}

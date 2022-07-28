@@ -1,0 +1,154 @@
+{% if section.settings.section_enable %}
+<div class="product--detail--wtbuy v2">
+  <div class="container">
+    <div class="top--part">
+      <h2 class="title">Where to Find</h2>
+      <div class="img"><img src="https://cdn.shopify.com/s/files/1/0233/7590/4845/files/rgf-logo-350.png?v=1646732023" alt=""></div>
+    </div>
+    <div class="buttons">
+      <a href="/collections/all" class="btn--1">
+<!--         <span class="icon"><img src="https://cdn.shopify.com/s/files/1/0233/7590/4845/files/IMG_2153-56.png?v=1653062534" alt=""></span> -->
+        <span class="label">Shop Online</span>
+      </a>
+      <a href="/pages/store-locator" class="btn--2">
+<!--         <span class="icon"><img src="https://cdn.shopify.com/s/files/1/0233/7590/4845/files/IMG_2151-56.png?v=1653062534" alt=""></span> -->
+        <span class="label">Find in Stores</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .product--detail--wtbuy{padding:60px 0;}
+  .product--detail--wtbuy .top--part{text-align:center;}
+  .product--detail--wtbuy .top--part .title,
+  .product--detail--wtbuy .top--part .img{display:inline-block;vertical-align:middle;}
+  .product--detail--wtbuy .top--part .img{max-width:200px;margin-left:30px;}
+  .product--detail--wtbuy .top--part .title{
+  	font-family:'Adrianna';
+/*     font-weight:800; */
+/*     font-size:68px; */
+/*     font-size:60px; */
+    font-size:48px;
+    font-weight:400;
+    line-height:1.2;
+/*     color:#ef521f; */
+    color:#000;
+/*     text-transform:uppercase; */
+  }
+  .product--detail--wtbuy .buttons{text-align:center;/*padding-top:40px;*/padding-top:20px;}
+  .product--detail--wtbuy .buttons a{
+    display:inline-block;
+    color:#fff;
+    font-family:'Adrianna-Condensed' !important;
+    font-size:22px;
+    font-weight:600;
+    line-height:1 !important;
+    background:#DD7C01;
+    border-radius:0;
+    text-transform:uppercase;
+    letter-spacing:0.1em;    
+    padding:15px 24px;
+    filter:drop-shadow(0px 3px 2px rgba(0, 0, 0, 0.2));
+    min-width:208px;
+  }
+  .product--detail--wtbuy .buttons .btn--2{margin-left:35px;}
+  .product--detail--wtbuy .buttons a span{
+  	display:block;
+  }
+  .product--detail--wtbuy .buttons a .icon{margin-right:5px;}
+  .product--detail--wtbuy .buttons a span img{max-height:36px;display:block;}
+  .product--detail--wtbuy .buttons a:hover{opacity:0.8;}  
+  
+  @media screen and (max-width:1279px){
+    .product--detail--wtbuy .buttons a{
+      font-size:21px;
+      min-width:202px;
+    }
+  }
+  
+  @media (max-width:1199px){    
+    .product--detail--wtbuy{padding:50px 0;}
+    .product--detail--wtbuy .top--part .title{/*font-size:56px;*/font-size:42px;}
+    .product--detail--wtbuy .top--part .img{max-width:185px;margin-left:25px;}
+    .product--detail--wtbuy .buttons .btn--2{margin-left:30px;}
+    .product--detail--wtbuy .buttons a{font-size:20px;padding:12px 24px;min-width:194px;}
+    
+  }
+  @media (max-width:991px){    
+    .product--detail--wtbuy{padding:45px 0;}
+    .product--detail--wtbuy .top--part .title{/*font-size:48px;*/font-size:40px;}
+    .product--detail--wtbuy .top--part .img{max-width:170px;margin-left:20px;}
+    .product--detail--wtbuy .buttons .btn--2{margin-left:25px;}
+/*     .product--detail--wtbuy .buttons a{font-size:20px;padding:10px 30px 8px;} */
+    .product--detail--wtbuy .buttons{/*padding-top:35px;*/}
+    .product--detail--wtbuy .buttons a span img{max-height:32px;}
+  }
+  @media (max-width:767px){
+    .product--detail--wtbuy{padding:40px 0;}
+    .product--detail--wtbuy .top--part .title{/*font-size:42px;*/font-size:38px;display:block;line-height:1.1;}
+    .product--detail--wtbuy .top--part .img{max-width:200px;margin:0 auto;display:block;}
+    .product--detail--wtbuy .buttons .btn--2{margin-left:20px;}
+    .product--detail--wtbuy .buttons a{
+      font-size:18px;
+      padding:9px 18px;
+      filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.2));
+      min-width:168px;
+   
+    }
+    .product--detail--wtbuy .buttons a span img{max-height:30px;}
+    
+  }
+  @media (max-width:575px){
+/*     .product--detail--wtbuy{padding:35px 0;} */
+    .product--detail--wtbuy .top--part .title{font-size:36px;}
+    .product--detail--wtbuy .top--part .img{max-width:180px;}
+    .product--detail--wtbuy .buttons .btn--2{margin-left:12px;}
+/*     .product--detail--wtbuy .buttons a{font-size:18px;padding:8px 25px 10px;} */
+    .product--detail--wtbuy .buttons a span img{max-height:28px;}
+    
+  }
+  @media (max-width:479px){
+    .product--detail--wtbuy .top--part .title{font-size:30px;}
+    .product--detail--wtbuy .top--part .img{max-width:165px;}
+    .product--detail--wtbuy .buttons .btn--2{margin:15px 0 0;}
+    .product--detail--wtbuy .buttons a{
+      font-size:16px;
+      padding:8px 12px;
+      min-width:142px;
+    }
+    
+  }
+  
+  
+</style>
+
+{% endif %}
+
+
+
+
+{% schema %}
+  {
+    "name": "PD Where To Buy",
+    "settings": [
+	  {
+		  "type": "header",
+          "content": "Section Enable"
+        },
+		{
+          "type": "checkbox",
+          "id": "section_enable",
+          "label": "Section Enable",
+          "default": true
+      	}
+	  
+	],
+	"presets": [
+		{
+		  "name": "PD Where To Buy",
+		  "category": "4. Banner"
+		}
+	]
+  }
+{% endschema %}

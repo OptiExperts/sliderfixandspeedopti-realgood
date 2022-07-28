@@ -1,0 +1,20 @@
+{% layout none %}
+{% capture results %}
+  {% for item in search.results %}
+{%- comment -%} Wholesale Gorilla: do not delete unless app is uninstalled{%- endcomment -%}
+{%- assign wsgTempProd = item -%}{%- assign wsgExclude = false -%}{%- if forloop.first == true -%}{%- assign wsgActive = false -%}{%- assign wsgActiveCustomer = false -%}
+{%- include 'wsg-status' wsgStatusAction: 'init' | strip -%}{%- endif -%}{%- if wsgActive -%}{%- if wsgTempProd.object_type == 'product' -%}{%- include 'wsg-status' wsgStatusAction: 'col-item' | strip -%}{%- endif -%}{%- endif -%}{%- if wsgExclude -%} {%- continue -%} {%- endif -%}
+{%- comment -%} end WSG {%- endcomment -%}
+    {% assign product = item %}
+    { 
+      "title"    : {{ product.title | json }},
+      "url"      : {{ product.url | within: product.collections.last | json }},
+      "thumbnail": {{ product.featured_image.src | product_img_url: 'thumb' | json }}
+    }
+    {% unless forloop.last %},{% endunless %}
+  {% endfor %}
+{% endcapture %}
+{
+  "results_count": {{ search.results_count }},
+  "results": [{{ results }}]
+}

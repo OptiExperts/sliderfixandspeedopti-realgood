@@ -1,0 +1,208 @@
+{% if section.settings.home_hero_slider_enable == true %}
+<div class="rgf__home_slider_main v2" id="section-{{ section.id }}">
+  <div class="rgf_hl__inner">
+    {%- for block in section.blocks -%}
+    {% assign count = 0 %}
+    <div id="block-{{ block.id }}" class="rgf_home_hero_banner home_hero_slider hl__item-{{forloop.index0}}">
+      {%- if block.settings.hh_banner_url != '' -%}
+      <a href="{{block.settings.hh_banner_url}}" {%- if block.settings.hh_url_new_tab == true -%}target="_blank"{% endif %}>
+      {% endif %}
+        {% if block.settings.hh_banner_img_mob != blank %}
+        <div class="mobile hero--img">
+          <img src="{{ block.settings.hh_banner_img_mob | img_url: '768x800' }}" alt="">
+        </div>
+        {%- endif -%}
+        {% if block.settings.hh_banner_img != blank %}
+        <div class="hero--img">
+          <img src="{{ block.settings.hh_banner_img | img_url: 'master' }}" alt="">
+        </div>
+        {% endif %}
+      {%- if block.settings.hh_banner_url != '' -%}
+      </a>
+      {% endif %}
+    </div>
+    {% assign count = count | plus: 1 %}
+    {%- endfor -%}
+  </div>
+</div>
+{%- endif -%}
+
+<style>
+  
+  #shopify-section-{{ section.id }}{
+  	background:#fff;
+    display:block;
+    margin:0px auto;
+    position:relative;
+    
+  }
+  #section-{{ section.id }} .hero--img a{
+  	width:100%;
+    height:auto;
+  }
+  #section-{{ section.id }} .rgf_home_hero_banner a{display:block;}
+  #section-{{ section.id }} .hero-slider-wrapper.owl-carousel .owl-dots .owl-dot{
+  	background:#DD7C01;
+    width:15px;
+    height:15px;
+  }
+  #section-{{ section.id }} .hero-slider-wrapper.owl-carousel .owl-dots .owl-dot.active{
+  	background:transparent;
+  }
+  #section-{{ section.id }} .mobile.hero--img{display:none;}
+  
+  @media (min-width:1515px){
+    #section-{{ section.id }} .container.wide{max-width:1485px;}
+    
+  }
+  
+  @media (max-width:1349px){
+    
+  }
+  @media (max-width:1279px){
+    #section-{{ section.id }} .container.wide{max-width:95% !important;}
+    
+  }
+  @media (max-width:1199px){
+    
+  }
+  @media (max-width:991px){
+    #section-{{ section.id }} .hero-slider-wrapper.owl-carousel .owl-dots .owl-dot{
+      width:12px;
+      height:12px;
+    }
+    #section-{{ section.id }} .hero--img{display:none;}
+    #section-{{ section.id }} .mobile.hero--img{display:block;position:relative;z-index:1;}
+    #section-{{ section.id }} .mobile.hero--img img{width:100%;height:auto;}
+    #section-{{ section.id }} .hero-slider-wrapper.owl-carousel:hover .owl-nav > div.owl-prev{left:20px;}
+    #section-{{ section.id }} .hero-slider-wrapper.owl-carousel:hover .owl-nav > div.owl-next{right:20px;}
+    #section-{{ section.id }} .hero-slider-wrapper.owl-carousel .owl-nav > div{
+      width:36px;
+      height:36px;
+      line-height:42px;
+    }
+    
+  }
+  @media (max-width:767px){
+    #section-{{ section.id }} .hero-slider-wrapper.owl-carousel .owl-dots{display:none;}
+    
+  }
+  @media (max-width:575px){
+    #section-{{ section.id }} .hero-slider-wrapper.owl-carousel:hover .owl-nav > div.owl-prev{left:15px;}
+    #section-{{ section.id }} .hero-slider-wrapper.owl-carousel:hover .owl-nav > div.owl-next{right:15px;}
+    #section-{{ section.id }} .hero-slider-wrapper.owl-carousel .owl-nav > div{
+      width:30px;
+      height:30px;
+      line-height:34px;
+    }
+  }
+  @media (max-width:479px){
+    #section-{{ section.id }} .hero-slider-wrapper.owl-carousel:hover .owl-nav > div.owl-prev{left:10px;}
+    #section-{{ section.id }} .hero-slider-wrapper.owl-carousel:hover .owl-nav > div.owl-next{right:10px;}
+    #section-{{ section.id }} .hero-slider-wrapper.owl-carousel .owl-nav > div{
+      width:24px;
+      height:24px;
+      line-height:30px;
+    }
+    
+  }
+   @media (max-width:359px){
+    
+  }
+  
+  
+  
+
+</style>
+
+
+{% schema %}
+  {
+    "name": "Home Hero Slider 2",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section Enable"
+      },
+      {
+        "type": "checkbox",
+        "id": "home_hero_slider_enable",
+        "label": "Enable Home Hero Slider",  
+        "default": true
+      },
+	  {
+        "type": "header",
+        "content": "Slider Settings"
+      }
+	],
+	"blocks":[
+    	{
+          "type": "section_block",
+          "name": "Slider Content",
+          "limit": 50,
+              "settings": 
+              [
+                {
+                  "type": "image_picker",
+                  "id": "hh_banner_img",
+                  "label": "Banner Image",
+                  "info": "Recommended Size: 1920 x 745 px"
+                },
+         		{
+                  "type": "image_picker",
+                  "id": "hh_banner_img_mob",
+                  "label": "Banner Image (mobile)",
+				  "info": "Recommended Size: 768 x 800 px"
+                },
+                {
+                  "type": "url",
+                  "id": "hh_banner_url",
+                  "label": "Banner URL"
+                },
+            	{
+                  "type": "checkbox",
+                  "id": "hh_url_new_tab",
+                  "label": "Link to open in new tab",  
+                  "default": false
+                }
+              ]
+   		}
+  	],
+	"presets": [
+		{
+		  "name": "Home Hero Slider 2",
+		  "category": "2. SlideShow"
+		}
+	]
+  }
+{% endschema %}
+
+
+<script>
+  if( $('.rgf__home_slider_main .home_hero_slider').length > 1 ){
+    
+    $('.rgf_hl__inner').addClass('hero-slider-wrapper owl-carousel');
+    
+    setTimeout(function(){
+      $('.rgf_hl__inner').owlCarousel({
+        autoplay: true,
+        nav: true,
+        navText: ['<i class="ti-angle-left">','<i class="ti-angle-right">'],
+        loop: true,
+        autoplay: true,
+        autoplayTimeout: 40000,
+        items: 1,
+        dots: true,
+        animateIn: 'fadeIn',
+  		animateOut: 'fadeOut'
+      });
+    }, 250);
+    
+  }
+  
+//   jQuery(document).on('click', '[data-toggle="lightbox"]', function(event) {
+//     event.preventDefault();
+//     jQuery(this).ekkoLightbox();
+//   });
+  
+</script>

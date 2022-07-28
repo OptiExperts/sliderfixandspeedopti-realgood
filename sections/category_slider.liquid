@@ -1,0 +1,245 @@
+<div class="category__slider" id="section-{{ section.id }}">
+  <div class="cs__inner">    
+	
+    <div class="container wide">
+      <div class="cat_slider_main">
+        {%- for block in section.blocks -%}
+        <div class="item">
+          {%- if block.settings.category_link -%}
+          <a href="{{block.settings.category_link}}">
+          {% endif %}
+            <div class="inner" style="{% if block.settings.category_img != blank %} background-image:url({{ block.settings.category_img | img_url: 'master' }}) {% else %} background-image:url(https://via.placeholder.com/250x100) {% endif %}">
+              <div class="text">
+                {%- if block.settings.category_title -%}
+                <h6>{{block.settings.category_title}}</h6>
+                {% endif %}
+              </div>
+            </div>
+          {%- if block.settings.category_link -%}
+          </a>
+          {% endif %}
+        </div>
+        {%- endfor -%}
+        
+        {% comment %}
+        <div class="item">
+          <a href="/collections/breakfast-sandwiches-1">
+            <div class="inner" style="background-image:url('https://via.placeholder.com/250x100')">
+              <div class="text">
+                <h6>Breakfast Sandwiches</h6>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="item">
+          <a href="/collections/stuffed-chicken">
+          <div class="inner" style="background-image:url('https://via.placeholder.com/250x100')">
+            <div class="text">
+              <h6>Stuffed Chicken</h6>
+            </div>
+          </div>
+          </a>
+        </div>
+        <div class="item">
+          <a href="/collections/enchilada">
+            <div class="inner" style="background-image:url('https://via.placeholder.com/250x100')">
+              <div class="text">
+                <h6>Entrees</h6>
+              </div>
+            </div>
+      	  </a>
+        </div>
+        <div class="item">
+          <a href="/collections/all#costco">
+            <div class="inner" style="background-image:url('https://via.placeholder.com/250x100')">
+              <div class="text">
+                <h6>Costco</h6>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="item">
+          <a href="/collections/all#ice-cream">
+            <div class="inner" style="background-image:url('https://via.placeholder.com/250x100')">
+              <div class="text">
+                <h6>Ice Cream</h6>
+              </div>
+            </div>
+          </a>
+        </div>
+        {% endcomment %}
+        
+      </div>
+    </div>
+    
+  </div>
+</div>	
+<style>
+  
+  #shopify-section-{{ section.id }}{
+  	display:none !important;
+  }
+  
+  #section-{{ section.id }}
+  {
+  	background:#fff;
+    /*max-width: 1900px;*/
+    display:block;
+    margin:0px auto;
+    
+  }
+  #section-{{ section.id }} .item{
+  	position:relative;
+  }
+  #section-{{ section.id }} .item a{
+  	display:block;
+  }
+  #section-{{ section.id }} .item .inner{
+  	height:100px;
+    background-size:cover;
+    background-position:center center;
+    border-radius:4px;
+    overflow:hidden;
+    position:relative;
+  }
+  #section-{{ section.id }} .item .inner:before{
+  	content:"";
+    width:100%;
+    height:100%;
+    background:rgba( 0,0,0,0.4 );
+    position:absolute;
+    left:0;
+    top:0;
+    z-index:1;
+  }
+  #section-{{ section.id }} .item .inner .text{
+    text-align:center;
+    padding:10px 15px 5px;
+    width:100%;
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    z-index:2;
+  }
+  #section-{{ section.id }} .item .text h6{
+  	color:#fff;
+    font-size:14px;
+    line-height:1.2;
+  }
+  #section-{{ section.id }} .bx-wrapper{
+  	background:transparent;
+    box-shadow:none;
+    margin-bottom:30px;
+  }
+  
+  @media screen and (max-width:991px){
+  	#shopify-section-{{ section.id }}{
+      display:block !important;
+/*       padding-top:150px; */
+      padding-top:15px;
+    }
+    #section-{{ section.id }} .container{
+      max-width:100%;
+    }
+    #section-{{ section.id }} .item .inner{
+      height:85px;      
+    }
+    
+    
+  }
+  @media screen and (max-width:767px){
+  	#shopify-section-{{ section.id }}{
+      display:block !important;
+/*       padding-top:95px; */
+      padding-top:5px;
+    }
+    
+  }
+  @media screen and (max-width:479px){
+  	#shopify-section-{{ section.id }}{
+      display:block !important;
+      /*padding-top:145px;*/
+/*       padding-top:70px; */
+    }
+    #section-{{ section.id }} .bx-wrapper .item{
+      width:135px !important;
+    }
+    #section-{{ section.id }} .item .inner{
+      height:65px;
+      
+    }
+    
+  }
+  
+
+</style>
+
+<script>
+  
+//   jQuery('.cat_slider_main').owlCarousel({
+//     loop:true,
+//     margin:10,
+//     nav:false,
+//     items:3
+//   })
+  
+  jQuery(function(){
+    jQuery('.cat_slider_main').bxSlider({
+      maxSlides: 5,
+      minSlides: 1,
+      infiniteLoop: true,
+      responsive: true,
+      slideWidth: 200,
+      slideMargin: 10,
+      pager: false,
+      controls: false,
+      auto: true,
+    });
+  });
+  
+</script>
+  
+  
+
+{% schema %}
+  {
+    "name": "Category Slider",
+    "settings": [
+	  {
+        "type": "header",
+        "content": "Category Slider Settings"
+      }
+	  
+	],
+	"blocks":[
+    	{
+          "type": "category_slide",
+          "name": "Category Slide",
+              "settings": 
+              [	
+                {
+                  "type": "text",
+                  "id": "category_title",
+                  "label": "Category Title"
+                },
+				{
+                  "type": "image_picker",
+                  "id": "category_img",
+                  "label": "Category Image"
+                },
+                {
+                  "type": "url",
+                  "id": "category_link",
+                  "label": "Category Link"
+                }
+              ]
+   		}
+  	],
+	"presets": [
+		{
+		  "name": "Category Slider",
+		  "category": "3. collections"
+		}
+	]
+  }
+{% endschema %}

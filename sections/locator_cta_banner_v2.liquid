@@ -1,0 +1,235 @@
+{% if section.settings.section_enable %}
+<div class="cta-area locator--cta--v2" id="section-{{ section.id }}">
+  <div class="row">
+    <div class="col-lg-6 bnrImg left--part">
+      <img data-src="{{ section.settings.section_bg_img_2 | img_url: '1000x505' }}" alt="" class="section_bg_img lazy">
+      <img data-src="{{ section.settings.section_bg_img_2_mob | img_url: '768x385' }}" alt="" class="section_bg_img mobile lazy"> 
+
+      {% if section.settings.call_to_action_btn != blank %}
+      <div class="cta-button">
+        <a class="btn--type-2" href="{{ section.settings.call_to_action_btn_link }}" target="_blank">{{ section.settings.call_to_action_btn }}</a>
+      </div>
+      {% endif %}
+
+      {% if section.settings.cta2_btn != blank %}
+      <div class="cta-button cta--btn-2">
+        <a class="lezada-button lezada-button--medium lezada-cta-button" href="{{ section.settings.cta2_btn_link }}" target="_blank">{{ section.settings.cta2_btn }}</a>
+      </div>
+      {% endif %}
+    </div>
+
+    <div class="col-lg-6 bnrImg right--part">
+      <img data-src="{{ section.settings.section_bg_img | img_url: '1000x505' }}" alt="" class="section_bg_img lazy">
+      <img data-src="{{ section.settings.section_bg_img_mob | img_url: '768x385' }}" alt="" class="section_bg_img mobile lazy"> 
+
+      {% if section.settings.cta3_btn != blank %}
+      <div class="cta-button cta--btn-3 right--sidebtn">
+        <a class="btn--type-2" href="{{ section.settings.cta3_btn_link }}" target="_blank">{{ section.settings.cta3_btn }}</a>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endif %}
+
+
+<style>
+  .mobile{display:none !important}
+  #section-{{ section.id }} {
+    position:relative !important;
+/*     background:#FAB04B; */
+    background:#fff;
+  }
+  #section-{{ section.id }} .bnrImg{
+  	padding:0;
+  }
+  #section-{{ section.id }} .bnrImg img{
+  	width:100%;
+    display:block;
+    z-index:1;
+    position:relative;
+  }
+  #section-{{ section.id }} .bnrImg .cta-button{
+  	position:absolute;
+    z-index:2;
+    top:60%;
+  }
+/*   #section-{{ section.id }} .bnrImg .cta-button a{
+    background:#fff !important;
+    color:#000 !important;
+    text-transform:uppercase;
+    border-radius:50px;
+    border:none !important;
+    font-weight:bold;
+    font-size:22px
+  } */
+/*   #section-{{ section.id }} .bnrImg .cta-button a:hover{
+    color:#fff !important;
+    background:#000 !important
+  } */
+  #section-{{ section.id }} .bnrImg.left--part .cta-button{
+/*   	left:50%;
+    transform:translateX(50%); */
+    right:10%;
+  }
+  #section-{{ section.id }} .bnrImg.right--part .cta-button{
+/*   	right:75%;
+    transform:translateX(50%); */
+    left:10%;
+    
+  }
+  
+/*   #section-{{ section.id }} .bnrImg .cta-button a{min-width:188px;text-align:center;} */
+  
+  
+  @media screen and (max-width:1599px){
+    #section-{{ section.id }} .bnrImg .cta-button{top:55%;}
+  }
+  
+  @media screen and (max-width:1399px){
+    #section-{{ section.id }} .bnrImg.left--part .cta-button{right:6%;}
+    #section-{{ section.id }} .bnrImg.right--part .cta-button{left:6%;}
+/*     #section-{{ section.id }} .bnrImg .cta-button a{font-size:20px;padding:8px 45px;} */
+    
+  }
+  
+  @media screen and (max-width:1199px){
+    #section-{{ section.id }} .bnrImg.left--part .cta-button{right:15px;}
+    #section-{{ section.id }} .bnrImg.right--part .cta-button{left:15px;}
+/*     #section-{{ section.id }} .bnrImg .cta-button a{font-size:18px;padding:6px 40px;} */
+  }
+  @media screen and (max-width:1139px){
+    
+    
+  }
+  @media screen and (max-width:991px){
+    #section-{{ section.id }} .bnrImg{padding-left:15px;padding-right:15px;}
+    #section-{{ section.id }} .bnrImg.left--part .cta-button{top:63%;right:12%;}
+    #section-{{ section.id }} .bnrImg.right--part .cta-button{top:48%;left:11%;}
+    
+  }  
+  @media screen and (max-width:767px){
+    #section-{{ section.id }} .bnrImg.left--part .cta-button{top:63%;right:11%;}
+    #section-{{ section.id }} .bnrImg.right--part .cta-button{top:48%;left:10%;}
+/*     #section-{{ section.id }} .bnrImg .cta-button a{font-size:17px;padding:5px 35px;} */
+    
+  }
+  @media screen and (max-width:575px){
+    #section-{{ section.id }} .bnrImg.left--part .cta-button{top:60%;right:40px;}
+    #section-{{ section.id }} .bnrImg.right--part .cta-button{top:50%;left:40px;}
+/*     #section-{{ section.id }} .bnrImg .cta-button a{font-size:16px;padding:5px 25px;} */
+    
+    #section-{{ section.id }} .bnrImg.left--part .cta-button{}
+    #section-{{ section.id }} .bnrImg.right--part .cta-button{}
+    
+    
+  }
+  @media screen and (max-width:479px){
+/*     #section-{{ section.id }} .bnrImg.left--part .cta-button{top:60%;right:unset;left:50%;transform:translateX(-50%);}
+    #section-{{ section.id }} .bnrImg.right--part .cta-button{top:60%;left:50%;transform:translateX(-50%);} */
+    #section-{{ section.id }} .bnrImg.left--part .cta-button{top:58%;right:8%;}
+    #section-{{ section.id }} .bnrImg.right--part .cta-button{top:55%;left:8%;}
+/*     #section-{{ section.id }} .bnrImg .cta-button a{font-size:14px;padding:4px 15px;} */
+    
+  }
+  @media screen and (max-width:374px){
+    
+  }
+  
+</style>
+
+{% comment %}
+{% include 'section_typography' %}
+{% endcomment %}
+
+
+{% schema %}
+  {
+    "name": "Locator CTA V2",
+    "settings": [		
+		{
+		  "type": "header",
+          "content": "Section Enable"
+        },
+		{
+          "type": "checkbox",
+          "id": "section_enable",
+          "label": "Section Enable",  
+          "default": true
+      	},
+		{
+         "type": "header",
+         "content": "Call To Action With Banner"
+        },
+		{
+		  "type": "image_picker",
+          "id": "section_bg_img",
+          "label": "Background Image (Right)",
+          "info": "Section Right Background Image"
+        },
+		{
+		  "type": "image_picker",
+          "id": "section_bg_img_mob",
+          "label": "Background Image Right (Mobile)",
+          "info": "Section RIght Background Image (Mobile)"
+        },
+		{
+		  "type": "image_picker",
+          "id": "section_bg_img_2",
+          "label": "Background Image (Left)",
+          "info": "Section Left Background Image"
+        },
+		{
+		  "type": "image_picker",
+          "id": "section_bg_img_2_mob",
+          "label": "Background Image Left (Mobile)",
+          "info": "Section Left Background Image (Mobile)"
+        },
+		{
+		  "type": "image_picker",
+          "id": "text_heading_img",
+          "label": "Image",
+          "info": "Heading of text content"
+        },
+		{
+          "type": "textarea",
+          "id": "cta_text_content",
+          "label": "Text Content",
+          "default": "Text Content"
+        },
+		{
+          "type": "text",
+          "id": "call_to_action_btn",
+          "label": "Call To Action Btn",
+          "default": "Contact Us"
+        },
+		{
+          "type": "url",
+          "id": "call_to_action_btn_link",
+          "label": "URL"
+        },
+		{
+          "type": "text",
+          "id": "cta2_btn",
+          "label": "Call To Action 2 Btn",
+          "default": "Contact Us"
+        },
+		{
+          "type": "url",
+          "id": "cta2_btn_link",
+          "label": "CTA 2 URL"
+        },
+		{
+          "type": "text",
+          "id": "cta3_btn",
+          "label": "Call To Action 3 Btn (Right)",
+          "default": "Shop Now"
+        },
+		{
+          "type": "url",
+          "id": "cta3_btn_link",
+          "label": "CTA 3 URL"
+        }
+	]
+  }
+{% endschema %}

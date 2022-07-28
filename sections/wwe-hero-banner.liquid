@@ -1,0 +1,185 @@
+{% if section.settings.section_enable %}
+<div class="wwe--hero" id="section-{{ section.id }}">
+  <div class="image">
+  	<img class="bnrImg" src="{% if section.settings.banner_img != blank %} {{ section.settings.banner_img | img_url: 'master' }}{% else %} https://via.placeholder.com/922x329 {% endif %}" class="lazyload img-fluid" alt="">
+  </div>
+  {% if section.settings.banner_heading != blank or section.settings.banner_desc != blank %}
+  <div class="content">
+    <div class="container wide">
+      <div class="wrap">
+        {% if section.settings.banner_heading != blank %}
+        <h2>{{ section.settings.banner_heading }}</h2>
+        {% endif %}
+        {% if section.settings.banner_desc != blank %}
+        <p class="desc">{{ section.settings.banner_desc }}</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endif %}  
+</div>
+{% endif %}
+
+<style>
+  #section-{{ section.id }}{position:relative;width:100%;display:block;overflow:hidden;}
+  #section-{{ section.id }} .image{/*margin-top:-10%;*/margin-top:-7.5%;}
+  #section-{{ section.id }} .image,
+  #section-{{ section.id }} img{width:100%;max-width:100%;height:auto;display:block}
+  #section-{{ section.id }} .content{
+    position:absolute;
+    left:0;
+/*     top:50%;
+    transform:translateY(-50%); */
+/*     top:7%; */
+    top:5%;
+    width:100%;
+  }
+  #section-{{ section.id }} .content .wrap{
+/*     width:50%; */
+    width:60%;
+  }
+  #section-{{ section.id }} .content h2{
+/*   	font-size:36px;
+    line-height:1.35; */
+    font-size:42px;
+    line-height:1.25;
+    font-weight:800;
+/*     margin-bottom:15px; */
+    margin-bottom:10px;
+    font-family:'Adrianna';
+  }
+  #section-{{ section.id }} .content .desc{
+/*   	font-size:30px;
+    line-height:1.35; */
+/*     max-width:425px; */
+    max-width:750px;
+    font-family:'Adrianna';
+    font-size:28px;
+    line-height:1.2;
+    font-weight:400;
+  }
+  #section-{{ section.id }} .container.wide{max-width:95%;}
+  @media (min-width:1515px){
+  	#section-{{ section.id }} .container.wide{max-width:1485px;}
+  }
+  
+  @media screen and (max-width:1499px){
+    #section-{{ section.id }} .image{margin-top:-5%;}
+    #section-{{ section.id }} .content{top:5%;}
+    #section-{{ section.id }} .content h2{font-size:40px;margin-bottom:5px;}
+  }
+	
+  @media screen and (max-width:1279px){
+    #section-{{ section.id }} .content .wrap{/*width:52%;*/width:70%;}
+    #section-{{ section.id }} .image{/*margin-top:-9%;*/}
+    #section-{{ section.id }} .content h2{/*font-size:32px;margin-bottom:12px;*/font-size:36px;}
+    #section-{{ section.id }} .content .desc{/*font-size:28px;max-width:390px;*/font-size:26px;}
+    
+  }
+  @media screen and (max-width:1139px){
+    #section-{{ section.id }} .content .wrap{/*width:50%;*/}
+    #section-{{ section.id }} .content h2{/*font-size:30px;margin-bottom:10px;*/font-size:32px;}
+    #section-{{ section.id }} .content .desc{/*font-size:26px;max-width:360px;*/font-size:24px;}
+    #section-{{ section.id }} .image{margin-top:-3%;}
+  }
+  @media screen and (max-width:991px){
+    #section-{{ section.id }}{/*background:#D0D0D0;*/}
+    #section-{{ section.id }}{background:#F4F1F2;}
+    #section-{{ section.id }} .container{max-width:95%;}
+    #section-{{ section.id }} .content .wrap{/*width:56%;*/}
+    #section-{{ section.id }} .image{margin-top:0;/*padding-top:50px;*/}
+    #section-{{ section.id }} .image img{/*width:110%;max-width:110%;margin-left:-10%;*/}
+    #section-{{ section.id }} .content h2{font-size:26px;}
+    #section-{{ section.id }} .content .desc{font-size:22px;/*max-width:300px;*/}
+    #section-{{ section.id }} .content{/*transform:unset;top:17%;*/}
+    
+  }
+  @media screen and (max-width:767px){
+    #section-{{ section.id }} .container{max-width:100%;}
+    #section-{{ section.id }} .container.wide{max-width:100%;}
+    #section-{{ section.id }} .content .wrap{width:100%;}
+    #section-{{ section.id }} .image{margin-top:0;}
+    #section-{{ section.id }} .image img{/*width:180%;max-width:180%;margin-left:-80%;*//*width:150%;max-width:150%;margin-left:-50%;*/}
+    #section-{{ section.id }} .image img{width:165%;max-width:165%;margin-left:-50%;}
+    #section-{{ section.id }} .content{/*top:45px;transform:unset;*/top:45px;}
+    #section-{{ section.id }} .content h2{font-size:24px;}
+    #section-{{ section.id }} .content .desc{font-size:20px;/*max-width:95%;*/max-width:100%;}
+    #section-{{ section.id }} .content .desc br{display:none;}
+    
+  }
+  @media screen and (max-width:619px){
+   	 #section-{{ section.id }} .content{top:30px;}
+  }
+  @media screen and (max-width:575px){
+    #section-{{ section.id }} .image{/*padding-top:70px;*/}
+    #section-{{ section.id }} .image img{/*width:190%;max-width:190%;margin-left:-90%;*//*width:160%;max-width:160%;margin-left:-60%;*/}
+    #section-{{ section.id }} .image img{width:170%;max-width:170%;margin-left:-56%;}
+    #section-{{ section.id }} .content{/*top:25px;*/top:20px;}
+    #section-{{ section.id }} .content h2{font-size:22px;}
+    #section-{{ section.id }} .content .desc{font-size:18px;max-width:100%;}
+  }
+  @media screen and (max-width:479px){
+    #section-{{ section.id }} .image{/*padding-top:80px;*/padding-top:20px;}
+    #section-{{ section.id }} .image img{/*width:230%;max-width:230%;margin-left:-130%;*/}
+    #section-{{ section.id }} .content{top:30px;}
+    #section-{{ section.id }} .content h2{font-size:20px;/*line-height:1.15;*/margin-bottom:5px;}
+    #section-{{ section.id }} .content .desc{font-size:16px;line-height:1.2;}
+    
+  }
+  @media screen and (max-width:399px){
+   	#section-{{ section.id }} .image{padding-top:40px;}
+    #section-{{ section.id }} .content{top:25px;}
+  }
+  @media screen and (max-width:372px){
+   	#section-{{ section.id }} .image{padding-top:60px;}
+    #section-{{ section.id }} .content{top:20px;}
+  }
+  @media screen and (max-width:349px){
+   	#section-{{ section.id }} .image{padding-top:75px;}
+    #section-{{ section.id }} .content{top:15px;}
+  }
+  
+</style>
+
+{% schema %}
+  {
+    "name": "Why We Exists Hero",
+    "settings": [
+		{
+		  "type": "header",
+          "content": "Section Enable"
+        },
+		{
+          "type": "checkbox",
+          "id": "section_enable",
+          "label": "Section Enable",  
+          "default": true
+      	},
+		{
+          "type": "header",
+          "content": "Banner"
+        },
+        {
+          "type": "image_picker",
+          "id": "banner_img",
+          "label": "Image",
+          "info": "Recommended Size: 1920 x 600 px"
+        },
+		{
+          "type": "text",
+          "id": "banner_heading",
+          "label": "Heading",
+          "default": "We Make Delicious Food You’ll Feel Good About Eating"
+        },
+		{
+          "type": "textarea",
+          "id": "banner_desc",
+          "label": "Description",
+          "default": "It’s high in protein, grain free and always made from real, nutrient dense ingredients."
+        }
+	]
+  }
+{% endschema %}
+
+{% javascript %}
+{% endjavascript %}

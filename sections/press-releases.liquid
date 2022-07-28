@@ -1,0 +1,204 @@
+{% if section.settings.section_enable %}
+<div class="press--releases" id="section-{{ section.id }}">
+  <div class="container">
+	<div class="heading">
+      <h2>{{ section.settings.ph_heading }}</h2>
+    </div>
+    <div class="pr--items">
+      {% assign count = 0 %}
+      {%- for block in section.blocks -%}
+          
+          <div id="block-{{ block.id }}" class="pr--item pr_{{forloop.index0}}">
+            <div class="inner">
+              <a href="{{block.settings.pr_link}}" target="_blank">
+                <p class="pr--title">{{ block.settings.ph_title }}</p>
+              </a>
+              <p class="button"><a href="{{block.settings.pr_link}}" target="_blank" class="btn--type-1">Read More</a></p>
+            </div>
+          </div>
+          {% assign count = count | plus: 1 %}
+      {%- endfor -%}
+    </div>
+    
+  </div>
+</div>
+{% endif %}
+
+<style>
+  
+  #section-{{ section.id }}{
+  	background:#fff;
+    display:block;
+    margin:0px auto;
+    padding-top:60px;
+  }
+  #section-{{ section.id }} .container{max-width:920px;}
+  #section-{{ section.id }} .heading{margin-bottom:30px;text-align:center;}
+  #section-{{ section.id }} .heading h2{
+    font-family:'Adrianna';
+    font-weight:700;
+    color:#DD3629;
+    font-size:65px;
+    line-height:1.25;
+    text-transform:uppercase;
+  }
+  #section-{{ section.id }} .pr--items{
+  	padding:30px 70px;
+    border:2px solid #DD3629;
+  }
+  #section-{{ section.id }} .pr--items .pr--item{text-align:center;}
+  #section-{{ section.id }} .pr--items .slick-track{
+    display: flex;
+    align-items: center;
+  }
+  .pr--item .pr--title{
+  	text-align:center;
+/*     color:#DD7C01; */
+    font-family:'Adrianna-Condensed';
+    font-weight:600;
+    font-size:24px;
+    line-height:1.2;
+    color:#000;
+  }
+  .pr--items .pr--item a:hover .pr--title{color:#DD7C01;}
+  #section-{{ section.id }} .button{padding-top:20px;text-align:center;}
+  #section-{{ section.id }} .button .lmBtn{
+  	font-family:'Adrianna';
+    font-weight:700;
+    font-size:16px;
+    line-height:1;
+    background:#DD7C01;
+    color:#fff;
+    text-transform:uppercase;
+    padding:12px 45px;
+    border-radius:50px;
+  }
+  #section-{{ section.id }} .button .lmBtn:hover{color:#000;}
+  #section-{{ section.id }} .slick-arrow{
+  	position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+  }
+  #section-{{ section.id }} .slick-arrow.slick-prev{left:25px;}
+  #section-{{ section.id }} .slick-arrow.slick-next{right:25px;}
+  #section-{{ section.id }} .slick-arrow:before{
+  	color:#DD7C01;
+    font-size:28px;
+  }
+  
+  @media (min-width:1515px){
+    #section-{{ section.id }} .container.wide{max-width:1485px;}
+    
+  }
+  @media (max-width:1199px){
+    #section-{{ section.id }}{padding-top:50px;}
+    #section-{{ section.id }} .heading h2{font-size:52px;}
+  }
+  @media (max-width:991px){
+  	#section-{{ section.id }}{padding-top:45px;}
+    #section-{{ section.id }} .heading h2{font-size:42px;}
+    #section-{{ section.id }} .heading{margin-bottom:25px;}
+    #section-{{ section.id }} .button .lmBtn{padding:10px 40px;}
+    #section-{{ section.id }} .pr--items{padding:25px 60px;}
+    #section-{{ section.id }} .slick-arrow.slick-prev{left:20px;}
+  	#section-{{ section.id }} .slick-arrow.slick-next{right:20px;}
+    .pr--item .pr--title{font-size:22px;}
+    
+  }
+  @media (max-width:767px){
+  	#section-{{ section.id }}{padding-top:40px;}
+    #section-{{ section.id }} .heading h2{font-size:32px;}
+    #section-{{ section.id }} .pr--items{padding:20px 50px;}
+    #section-{{ section.id }} .slick-arrow.slick-prev{left:15px;}
+  	#section-{{ section.id }} .slick-arrow.slick-next{right:15px;}
+    .pr--item .pr--title{font-size:22px;}
+    #section-{{ section.id }} .slick-arrow:before{font-size:24px;}
+    
+  }
+  @media (max-width:575px){
+    #section-{{ section.id }}{padding-top:30px;}
+    #section-{{ section.id }} .heading h2{font-size:28px;}    
+    #section-{{ section.id }} .heading{margin-bottom:20px;}
+    #section-{{ section.id }} .button .lmBtn{font-size:14px;padding:10px 30px;}
+    #section-{{ section.id }} .pr--items{padding:20px 40px;}
+    #section-{{ section.id }} .slick-arrow.slick-prev{left:15px;}
+  	#section-{{ section.id }} .slick-arrow.slick-next{right:15px;}
+    .pr--item .pr--title{font-size:20px;}
+    #section-{{ section.id }} .slick-arrow:before{font-size:22px;}
+    
+  }
+  @media (max-width:479px){
+    #section-{{ section.id }} .heading h2{font-size:24px;}
+    #section-{{ section.id }} .button .lmBtn{padding:8px 24px;font-size:14px;}
+    #section-{{ section.id }} .pr--items{padding:15px 34px;}
+    #section-{{ section.id }} .slick-arrow.slick-prev{left:6px;}
+  	#section-{{ section.id }} .slick-arrow.slick-next{right:6px;}
+    .pr--item .pr--title{font-size:18px;}
+    #section-{{ section.id }} .slick-arrow:before{font-size:20px;}
+  }
+  
+  
+
+</style>
+{% schema %}
+{
+    "name": "Press Releases",
+    "settings": [
+		{
+		  "type": "header",
+          "content": "Section Enable"
+        },
+		{
+          "type": "checkbox",
+          "id": "section_enable",
+          "label": "Section Enable",  
+          "default": true
+      	},
+    	{
+         "type": "header",
+         "content": "Press Releases Settings"
+      	},
+		{
+          "type": "text",
+          "id": "ph_heading",
+          "label": "Heading",
+		  "default": "Press Releases"
+        }
+    ],
+    "blocks":[
+    	{
+          "type": "pr_item",
+          "name": "Press",
+              "settings": 
+              [
+       	 		{
+                  "type": "text",
+                  "id": "ph_title",
+                  "label": "Press Title"
+                },
+                {
+                  "type": "url",
+                  "id": "pr_link",
+                  "label": "Press Link"
+                }
+              ]
+   		}
+  	]
+}
+{% endschema %}
+
+<script>
+  jQuery(document).ready(function($){
+    if( $('.pr--item').length > 0 ){
+      $('.pr--items').slick({
+        dots:true,
+        infinite:true,
+        speed:300,
+        slidesToShow:1,
+        adaptiveHeight:false,
+        arrows:true,
+        dots:false,
+      });
+    }
+  });
+</script>

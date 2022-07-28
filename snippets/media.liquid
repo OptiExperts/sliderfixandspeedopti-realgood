@@ -1,0 +1,30 @@
+    {% case media.media_type %}
+      {% when 'image' %}
+      {% when 'external_video' %}
+        <div class="product-single__media single-image single-video" data-media-id="{{ media.id }}">
+          <a href="Javascript:;" class="thumbLink vidAnchor">
+          {{ media | external_video_tag }}
+          </a>
+        </div>
+      {% when 'video' %}
+        <div class="product-single__media single-image" data-media-id="{{ media.id }}">
+          <a href="Javascript:;" class="vidAnchor">
+          {{ media | video_tag: controls: true }}
+            </a>
+        </div>
+	  {% when 'image' %}
+		<div class="product-single__media single-image">
+          <a class="thumbLink product-single__thumbnail {% if forloop.first and section.settings.product_zoom_enable %}active{% endif %}" href="{{ media.src | img_url: '1024x1024' }}" 
+             data-image="{{ media.src | img_url: '1024x1024' }}" data-zoom-image="{{ media.src | img_url: '1024x1024' }}" data-image-id="{{ media.id }}">
+            <img src="{{ media.src | img_url: 'compact',crop: 'center' }}" alt="{{ media.alt | escape }}">
+          </a>
+		</div>
+      {% when 'model' %}
+        <div class="product-single__media single-image" style="padding-top: 100%" data-media-id="{{ media.id }}">
+          {{ media | model_viewer_tag }}
+        </div>
+      {% else %}
+        <div class="product-single__media single-image" style="padding-top: 100%;" data-media-id="{{ media.id }}">
+          {{ media | media_tag }}
+        </div>
+    {% endcase %}

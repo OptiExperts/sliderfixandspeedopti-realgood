@@ -1,0 +1,157 @@
+<div class="two_col_fullw_beta">
+	<div class="fullw_left">
+		{% if section.settings.left_bg_img != blank  %}
+        	<img src="{{ section.settings.left_bg_img | img_url: 'master' }}" alt="{{ section.settings.btn_text }}">
+        {% else %}
+            <img src="{{ 'walmart_lp.jpg' | asset_url }}" alt="{{ section.settings.btn_text }}">
+        {% endif %}
+
+	</div>
+	<div class="fullw_right">
+		<div class="store_locator_text">
+			{% if section.settings.btn_link != blank  %}
+			<div class="btn_holder">
+				<a href="{{ section.settings.btn_link }}" class="lezada-button lezada-button--medium lezada-cta-button">{{ section.settings.btn_text }}</a>
+			</div>
+			{% endif %}
+			<div class="store_text">
+				{{ section.settings.block_head }}
+			</div>
+		</div>
+	</div>
+</div>
+
+{% schema %}
+  {
+    "name": "Landing : Two Blocks(MC)",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Left Image Section"
+      },
+      {
+        "type": "image_picker",
+        "id": "left_bg_img",
+        "label": "Left Image",
+        "info": "Recommended Size: 900 x 1200 px"
+      },
+      {
+        "type": "html",
+        "id": "block_head",
+        "label": "Heading"
+      },
+      {
+        "type": "text",
+        "id": "btn_text",
+        "label": "Button Text"
+      },
+      {
+        "type": "url",
+        "id": "btn_link",
+        "label": "Button Link"
+      }
+    ],
+    "presets": [
+        {
+          "name": "Landing : Two Blocks(MC)",
+          "category": "11. Landing Page"
+        }
+    ]
+  }
+{% endschema %}
+
+
+<style>
+	.two_col_fullw_beta
+	{
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		justify-content: flex-start;
+		align-items: stretch;
+		min-height: 784px;
+		overflow: hidden;
+	}
+
+	.two_col_fullw_beta .fullw_left, .two_col_fullw_beta .fullw_right
+	{
+		flex-grow: 1;
+		flex: 0 1 50%;
+		align-self: stretch;
+	}
+
+	.two_col_fullw_beta .fullw_left
+	{
+		position: relative;
+	}
+
+	.two_col_fullw_beta .fullw_left img
+	{
+		display: block;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		min-height: 100%;
+		min-width: 100%;
+		height: auto;
+		width: auto;
+	}
+
+	.two_col_fullw_beta .fullw_right
+	{
+		padding: 45px;
+		background: #FFF;
+		max-width: 600px;
+		-webkit-box-shadow: -10px 0px 5px 0px rgba(209,209,209,1);
+		-moz-box-shadow: -10px 0px 5px 0px rgba(209,209,209,1);
+		box-shadow: -10px 0px 5px 0px rgba(209,209,209,1);
+
+	}
+
+	.two_col_fullw_beta .fullw_right .btn_holder
+	{
+		margin-bottom: 40px;
+	}
+
+	.two_col_fullw_beta .fullw_right h2
+	{
+		color: #2A2A2A;
+		font: 400 72px/88px "local_breweryfour"
+	}
+
+	.two_col_fullw_beta .fullw_right h2 span
+	{
+		font: 400 65px/88px "local_brewerytwo";
+	}
+
+	@media screen and (max-width: 800px){
+		.two_col_fullw_beta
+		{
+			min-height: 600px;
+			flex-wrap: wrap;
+		}	
+
+		.two_col_fullw_beta .fullw_left, .two_col_fullw_beta .fullw_right
+		{
+			flex: 0 1 100%;
+			
+		}
+
+		.two_col_fullw_beta .fullw_left img
+		{
+			position: inherit;
+			width: 100%;
+			height: auto;
+			min-height: 1px;
+			min-width: 1px;
+			margin-bottom: 0px;
+		}
+
+		.two_col_fullw_beta .fullw_right
+		{
+			padding: 40px 15px;
+		}
+
+	}
+
+</style>

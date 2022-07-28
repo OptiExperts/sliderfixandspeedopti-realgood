@@ -1,0 +1,173 @@
+{% if section.settings.section_enable %}
+<div class="invest--rgf--news" id="section-{{ section.id }}" style="{% if section.settings.irn_banner_img != blank %} background-image:url({{ section.settings.irn_banner_img | img_url: '1920x745' }}) {% endif %}">
+  <div class="container">
+    
+    {%- if section.settings.irn_top_heading != '' -%}
+    <h2 class="heading">{{section.settings.irn_top_heading}}</h2>
+    {%- endif -%}
+    <div class="ir--news">
+      <ul class="n--items">
+        {%- for block in section.blocks -%}
+        <li><a href="{{block.settings.irn_link}}" {%- if block.settings.is_banner_url_external -%}target="_blank"{%- endif -%}>{{block.settings.irn_title}}</a></li>
+        {%- endfor -%}
+      </ul>
+    </div>
+    {% if section.settings.irn_show_disclaimer %}
+    <div class="disclaimer">
+      <p>{{section.settings.irn_disclaimer}}</p>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+  #shopify-section-{{ section.id }}{
+    display:block;
+    margin:0px auto;
+    padding-top:40px;
+  }
+  #section-{{ section.id }}{
+  	width:100%;
+    background-position:center center;
+    background-size:cover;
+    background-repeat:no-repeat;
+    position:relative;
+    padding:50px 0 35px;
+  }
+  #section-{{ section.id }}:before{
+  	content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba( 221, 124, 1, 0.75 );
+  }
+  #section-{{ section.id }} .container{
+  	position:relative;
+    z-index:2;
+  }
+  #section-{{ section.id }} .heading{
+  	font-size:36px;
+    line-height:1.15;
+    color:#fff;
+/*     text-decoration:underline; */
+    margin-bottom:40px;
+  }
+  #section-{{ section.id }} .n--items{
+  	list-style:disc;
+    list-style-position:inside;
+  }
+  #section-{{ section.id }} .n--items li{
+  	margin-bottom:25px;
+    color:#fff;
+    font-size:24px;
+    line-height:1.15;
+    font-weight:bold;
+  }
+  #section-{{ section.id }} .n--items li a{
+  	color:#fff;
+    text-decoration:underline;
+    display:inline;
+  }
+  #section-{{ section.id }} .n--items li a:hover{
+  	color:#000;
+  }
+  #section-{{ section.id }} .disclaimer{
+    padding:5px 0;
+  }
+  #section-{{ section.id }} .disclaimer p{
+  	font-size:13px;
+    line-height:1.15;
+    color:#fff;
+  }
+  
+  @media (max-width:1199px){
+    #section-{{ section.id }} .heading{font-size:26px;margin-bottom:35px;}
+    #section-{{ section.id }} .n--items li{font-size:22px;margin-bottom:22px;}
+  }
+  @media (max-width:991px){
+    #shopify-section-{{ section.id }}{padding-bottom:30px;padding-top:30px;}
+    #section-{{ section.id }} .heading{font-size:24px;margin-bottom:30px;}
+    #section-{{ section.id }} .n--items li{font-size:20px;margin-bottom:20px;}
+  }
+  @media (max-width:575px){
+    #shopify-section-{{ section.id }}{padding-bottom:25px;padding-top:25px;}
+	#section-{{ section.id }} .heading{font-size:22px;margin-bottom:25px;}
+    #section-{{ section.id }} .n--items li{font-size:18px;margin-bottom:15px;}
+  }
+  @media (max-width:479px){
+    #shopify-section-{{ section.id }}{padding-top:20px;}
+  }
+  
+</style>
+
+{% endif %}
+
+{% schema %}
+{
+    "name": "Investor RGF News",
+    "settings": [
+    	{
+         "type": "header",
+         "content": "RGF News Settings"
+      	},
+		{
+		  "type": "header",
+          "content": "Section Enable"
+        },
+		{
+          "type": "checkbox",
+          "id": "section_enable",
+          "label": "Section Enable",
+          "default": true
+      	},
+		{
+          "type": "text",
+          "id": "irn_top_heading",
+          "label": "Top Heading"
+        },
+		{
+          "type": "image_picker",
+          "id": "irn_banner_img",
+          "label": "Banner Image",
+          "info": "Recommended Size: 1920 x 745 px"
+        },
+		{
+          "type": "checkbox",
+          "id": "irn_show_disclaimer",
+          "label": "Show Disclaimer",
+          "default": true
+      	},
+		{
+          "type": "textarea",
+          "id": "irn_disclaimer",
+          "label": "Disclaimer"
+        }
+    ],
+    "blocks":[
+      {
+        "type": "ir_news",
+        "name": "News",
+        "settings": [
+          {
+            "type": "text",
+            "id": "irn_title",
+            "label": "News Title"
+          },
+          {
+            "type": "url",
+            "id": "irn_link",
+            "label": "News Link"
+          },
+          {
+            "type": "checkbox",
+            "id": "is_banner_url_external",
+            "label": "Link Open New Window",
+            "default": false
+          }
+        ]
+      }
+  	]
+}
+{% endschema %}

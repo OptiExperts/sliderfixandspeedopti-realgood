@@ -1,0 +1,213 @@
+<div class="two_col_fullw">
+	<div class="fullw_right">
+		<h1 class="logo">Realgood Foods</h1>
+		<h2>{{ section.settings.form_head }}</h2>
+		{{ section.settings.form_desc }}
+		
+		<div id="ez-widget" class="">
+			{{ section.settings.form_html }}
+			{% comment %}
+			<form
+						            enctype="application/x-www-form-urlencoded"
+						            action="https://app.eztexting.com/widgets?_method=subscribe"
+						            id="ez-form"
+						            method="post"
+						                        target="subscribed"
+						                        onsubmit="
+						                                                window.open(
+						                        '',
+						                        'subscribed',
+						                        'width=530,' +
+						                        'height=370,' +
+						                        'scrollbars=no,resizable=yes,status=no,toolbar=0'
+						                );
+						                            "
+						        >
+					<input type="hidden" name="serializedData" value="eNpdUM1PwjAU/1dmzzN0nSjbzQMiRgyJchIPpX3bql27tF2QEP53X9lC1Nv7fb0vQWkupciYEDTLOKMsv5tyynYsv2Vyxo9E+YWzfedfQYMIypp7re0eJCkJJSnhAxo8pHwnjBbFNM/JR0oqBVpGMkPgVW367hG4BIfZBYREYMYan/jguKqbkASbHGzvkq6xBq6wu++FAO+rXl+Cbw03X9GGsvJzw3ca5JNVZoVGXsO41+cf5rd33nKlX2xQlRI8HjQmIPIP1v2TUAmHLjZhWBrejv1E74Ntl8KajdNINSF05XaynaDW8u9xtl+DW1kTGnRMUdkrOdQ0jmwgno0wzyNU4jyxUs6H6zNISe/BLfHZN6woZkVK6vjoZ+Uxdbz8uiRr2yWbjpxOP9mBlRk=">
+
+						            
+					<div class="ez-el">
+						    <div class="ez-in">
+						        <input id="PhoneNumber" class="ez-text" name="PhoneNumber" type="tel"
+						               value=""
+						               placeholder="Enter 10 digit phone number no spaces or special characters" />
+						    </div>
+					</div>                       
+		            <div class="ez-el clear">
+		                <div class="ez-in">
+		                    <button class="ez-button" type="submit">Sign Up</button>
+		                </div>
+		            </div>
+		    </form>
+		    <p>For terms and conditions, and more info, visit <a target="_blank" href="https://realgoodfoods.com/tbd">realgoodfoods.com/tbd</a>.</p>
+		    {% endcomment %}
+		</div>
+	</div>
+	<div class="fullw_left">
+		{% if section.settings.left_bg_img != blank  %}
+        	<img src="{{ section.settings.left_bg_img | img_url: 'master' }}" alt="{{ section.settings.form_head }}">
+        {% else %}
+            <img src="{{ 'lp_ez_text.jpg' | asset_url }}" alt="{{ section.settings.form_head }}">
+        {% endif %}
+
+	</div>
+</div>
+
+{% schema %}
+  {
+    "name": "Landing : Forms(MC)",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Left Image Section"
+      },
+      {
+        "type": "image_picker",
+        "id": "left_bg_img",
+        "label": "Left Image",
+        "info": "Recommended Size: 900 x 1200 px"
+      },
+      {
+        "type": "text",
+        "id": "form_head",
+        "label": "Form Heading"
+      },
+      {
+        "type": "richtext",
+        "id": "form_desc",
+        "label": "Form Desc"
+      },
+      {
+        "type": "html",
+        "id": "form_html",
+        "label": "Form HTML"
+      }
+    ],
+    "presets": [
+        {
+          "name": "Landing : Forms(MC)",
+          "category": "11. Landing Page"
+        }
+    ]
+  }
+{% endschema %}
+
+
+<style>
+	.two_col_fullw
+	{
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		justify-content: flex-end;
+		align-items: stretch;
+		min-height: 784px;
+		overflow: hidden;
+	}
+
+	.two_col_fullw .fullw_left, .two_col_fullw .fullw_right
+	{
+		flex-grow: 1;
+		flex: 0 1 50%;
+		align-self: flex-start;
+	}
+
+	.two_col_fullw .fullw_left
+	{
+		position: relative;
+	}
+
+	.two_col_fullw .fullw_left img
+	{
+		display: block;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		min-height: 100%;
+		min-width: 100%;
+		height: auto;
+		width: auto;
+	}
+
+	.two_col_fullw .fullw_right
+	{
+		padding: 45px;
+		background: #FFF;
+		max-width: 600px;
+	}
+
+	.two_col_fullw .fullw_right h1.logo
+	{
+		background: url('{{ '2019_rgf_logo_125x.png' | asset_url }}') 0 0 no-repeat #FFF;	
+		width: 124px;
+		height: 54px;
+		display: block;
+		margin: 20px auto 40px;
+		text-indent: -9999px;
+		outline: none;
+	}
+
+	.two_col_fullw .fullw_right h2
+	{
+		font-size: 24px;
+		text-transform: uppercase;
+		text-align: center;
+		margin-bottom: 30px;
+		color: #2A2A2A;
+	}
+
+
+	.two_col_fullw .fullw_right p
+	{
+		font-size: 16px;
+		line-height: 20px;
+		text-align: center;
+		margin-bottom: 10px;
+		color: #2A2A2A;
+	}
+
+	.two_col_fullw .fullw_right form
+	{
+		max-width: 400px;
+		margin: 40px auto;
+	}
+
+	.two_col_fullw .fullw_right form input[type="text"],
+	.two_col_fullw .fullw_right form input[type="tel"],
+	.two_col_fullw .fullw_right form input[type="email"]
+	{
+		border: 2px solid #000 !important;
+		padding-left: 5px !important;
+	}
+
+	@media screen and (max-width: 800px){
+		.two_col_fullw
+		{
+			min-height: 600px;
+			flex-wrap: wrap;
+		}	
+
+		.two_col_fullw .fullw_left, .two_col_fullw .fullw_right
+		{
+			flex: 0 1 100%;
+			
+		}
+
+		.two_col_fullw .fullw_left img
+		{
+			position: inherit;
+			width: 100%;
+			height: auto;
+			min-height: 1px;
+			min-width: 1px;
+			margin-bottom: 0px;
+		}
+
+		.two_col_fullw .fullw_right
+		{
+			padding: 40px 15px;
+		}
+
+	}
+
+</style>

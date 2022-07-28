@@ -1,0 +1,68 @@
+{% if section.settings.investor_corp_profile == true %}
+<div class="corp--profile">
+  <div class="container">
+    <div class="row">
+      {% if section.settings.section_title != blank %}
+      <div class="col-lg-12 heading">
+        <h2>{{section.settings.section_title}}</h2>
+      </div>
+      {% endif %}
+      <div class="clearfix"></div>
+      <div class="col-md-6 desc">
+        <p>{{section.settings.section_content}}</p>
+      </div>
+      <div class="col-md-6 img text-right">
+        <img src="{% if section.settings.section_image != blank %} {{ section.settings.section_image | img_url: '600x300' }}{% else %} https://via.placeholder.com/600x300 {% endif %}" class="lazyload img-fluid" alt="">
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+
+
+{% schema %}
+  {
+    "name": "Investor Corp Profile",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section Enable"
+      },
+      {
+        "type": "checkbox",
+        "id": "investor_corp_profile",
+        "label": "Investor Corporate Profile Enable",  
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Content Options"
+      },
+      {
+        "type": "text",
+        "id": "section_title",
+        "label": "Section Title",
+        "default": "Corporate Profile"
+      },
+	  {
+        "type": "textarea",
+        "id": "section_content",
+        "label": "Section Content",
+        "default": "We have a singular focused mission: To make nutrient dense foods more accessible and improve human health."
+      },
+      {
+        "type": "image_picker",
+        "id": "section_image",
+        "label": "Section Image"
+      }
+
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,94 @@
+{% if section.settings.overlay_menu_type == 'style1' %}
+{% include 'overlap_menu_1' %}
+{% elsif section.settings.overlay_menu_type == 'style2' %}
+{% include 'overlap_menu_2' %}
+{% endif %}
+
+<style>
+  {%- for block in section.blocks -%}
+  {%- case block.type -%}
+  {%- when 'header_style' -%}
+  
+  #section-{{ section.id }}.header{
+    background-color: {{ block.settings.background_color }};
+  }
+  #section-{{ section.id }}.header-nontransparent-overlay-menu:hover {
+    background-color: {{ block.settings.transparent_background_color }};
+
+  }
+  #section-{{ section.id }}.header-sticky.is-sticky {
+    background-color: {{ block.settings.sticky_background_color }};
+  }
+
+  .header-nontransparent-overlay-menu .header-bottom-container .logo-with-offcanvas .overlay-menu-icon a,.header-overlay-menu .header-bottom .header-bottom-container .logo-with-offcanvas .overlay-menu-icon a {
+    color: {{ block.settings.header_bar_icon_color }};
+  }
+  .overlay-navigation-menu .overlay-menu-close-icon a {
+    color: {{ block.settings.overlay_menu_close_icon_color }};
+  }
+  #section-{{ section.id }} .header-right-icons .single-icon a span.count{
+    border-color:  {{ block.settings.cart_bg_color }};
+    background: {{ block.settings.cart_bg_color }};
+    color: {{ block.settings.cart_color }};
+  }
+  #section-{{ section.id }} .header-right-icons .single-icon a i {
+    color: {{ block.settings.header_account_icon_color }};
+  }
+  .overlay-navigation-menu::after {
+    background-color: {{ block.settings.menu_overlay_color }};
+    opacity: {{ block.settings.menu_overlay_opaicty }};
+  }
+  .overlay-navigation-menu .overlay-navigation-menu-container nav ul li a {
+    color: {{ block.settings.overlay_menu_color }};
+  }
+  .overlay-navigation-menu .overlay-navigation-menu-container nav ul li a::after {
+    background-color: {{ block.settings.overlay_menu_hover_border_color }};
+  }
+
+
+  #section-{{ section.id }} .site-mobile-nav .dl-menu li a span,.overlay-navigation-active .overlay-navigation-menu-container nav > ul > li > a span{
+    background: {{ block.settings.menu_badge_bg_color }};
+    color: {{ block.settings.menu_badge_color }};
+  }
+  #section-{{ section.id }} .site-mobile-nav .dl-menu li a span::before,.overlay-navigation-active .overlay-navigation-menu-container nav > ul > li > a span::before {
+    background: {{ block.settings.menu_badge_bg_color }};
+  }
+  #section-{{ section.id }} .site-mobile-nav .dl-menu li a span.sale,.overlay-navigation-active .overlay-navigation-menu-container nav > ul > li > a span.sale {
+    background: {{ block.settings.menu_sale_badge_bg_color }};
+    color: {{ block.settings.menu_sale_badge_color }};
+  }
+  #section-{{ section.id }} .site-mobile-nav .dl-menu li a span.sale::before,.overlay-navigation-active .overlay-navigation-menu-container nav > ul > li > a span.sale::before { 
+    background: {{ block.settings.menu_sale_badge_bg_color }};
+  }
+
+
+  #section-{{ section.id }} .site-mobile-nav .hamburger .hamburger-box .hamburger-inner,
+  #section-{{ section.id }} .site-mobile-nav .hamburger .hamburger-box .hamburger-inner::before, 
+  #section-{{ section.id }} .site-mobile-nav .hamburger .hamburger-box .hamburger-inner::after,
+  #section-{{ section.id }}.header-transparent-background .site-mobile-navigation .hamburger .hamburger-box .hamburger-inner::after,
+  #section-{{ section.id }}.header-transparent-background .site-mobile-navigation .hamburger .hamburger-box .hamburger-inner::before, 
+  #section-{{ section.id }}.header-transparent-background .site-mobile-navigation .hamburger .hamburger-box .hamburger-inner{
+    background-color: {{ block.settings.mobile_menu_bar_color }};
+  }
+  #section-{{ section.id }} .site-mobile-nav .dl-menu {
+    background-color: {{ block.settings.mobile_menu_bg_color }};
+  }
+  #section-{{ section.id }} .site-mobile-nav .dl-menu li {
+    border-color: {{ block.settings.menu_item_border_color }};
+  }
+  #section-{{ section.id }} .site-mobile-nav .dl-menu li > a:not(:only-child)::after {
+    color: {{ block.settings.mobile_menu_arrow_color }};
+  }
+  #section-{{ section.id }} .site-mobile-nav .dl-menu li > a {
+    color: {{ block.settings.mobile_menu_item_color }};
+  }
+  #section-{{ section.id }}  .site-mobile-nav .dl-menu li:hover > a {
+    color: {{ block.settings.mobile_menu_hover_color }};
+    background-color: {{ block.settings.mobile_menu_hover_bg_color }};
+  }
+  #section-{{ section.id }}  .site-mobile-nav .dl-menu li:hover > a::after {
+    color: {{ block.settings.hover_dropdown_arrow_color }};
+  }
+  {%- endcase -%}
+  {%- endfor -%}
+</style>

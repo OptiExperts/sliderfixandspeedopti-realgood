@@ -1,0 +1,122 @@
+{% if section.settings.section_enable %}
+<div class="wwe--video--sec invest-mission-video" id="section-{{ section.id }}">
+  <div class="container">
+    <div class="videoWrap">
+      <div class="image">
+        <img class="bnrImg" src="{% if section.settings.vid_img != blank %} {{ section.settings.vid_img | img_url: 'master' }}{% else %} https://via.placeholder.com/900x508 {% endif %}" class="lazyload img-fluid" alt="">
+      </div>
+      <div class="video">
+        <div class="inner">
+          <video controls="true" id="wweVideo" autobuffer="autobuffer" preload="preload">
+            <source type="video/mp4" src="//cdn.shopify.com/s/files/1/0233/7590/4845/files/Mission_to_Make_Nutritious_Foods.-720p.mp4?v=1629906081">
+          </video>
+<!--           <iframe id="wweVideo" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"width="788.54" height="443" type="text/html" src="https://www.youtube.com/embed/weBgnsb3ICo?fs=0&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0"></iframe> -->
+        </div>
+      </div>
+    </div>
+  </div>  
+</div>
+
+
+<style>
+  #section-{{ section.id }}{
+    position:relative;
+    width:100%;
+    display:block;
+    padding:40px 0;
+    background:#F4F3F2;
+  }
+  #section-{{ section.id }} .videoWrap{
+  	display:block;
+    max-width:900px;
+    margin:0 auto;
+    position:relative;
+  }
+  #section-{{ section.id }} .videoWrap .image{
+  	position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:1;
+  }
+  #section-{{ section.id }} .videoWrap .image img{
+  	cursor:pointer;
+  }
+  #section-{{ section.id }} .videoWrap .image,
+  #section-{{ section.id }} .videoWrap .image img{
+  	width:100%;
+  }
+  #section-{{ section.id }} .videoWrap .video{
+  	width:100%;
+    position:relative;
+    z-index:-1;
+  }
+  #section-{{ section.id }} .videoWrap .video video{
+  	width:100%;
+  }
+  #section-{{ section.id }} .videoWrap .video.zindexUp{
+  	z-index:1;
+  }
+  
+  
+  @media screen and (max-width:991px){
+    #section-{{ section.id }} {padding:30px 0;}
+    #section-{{ section.id }} .container{max-width:95%;}
+  }
+  @media screen and (max-width:767px){
+    #section-{{ section.id }} .container{max-width:100%;}
+  }
+  @media screen and (max-width:639px){
+    #section-{{ section.id }} {padding:25px 0;}
+  }
+  @media screen and (max-width:479px){
+    
+  }
+  
+</style>
+
+<script>
+  jQuery(document).ready(function($){
+    if( $('#wweVideo').length ){
+      $('.videoWrap .image img').click(function(){
+        $(this).parents('.image').hide();
+        $(this).parents('.videoWrap').find('.video').addClass('zindexUp');
+        $(this).parents('.videoWrap').find('#wweVideo').get(0).play();
+        
+      });
+    }
+  });
+</script>
+
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Invest Mission Video",
+    "settings": [
+		{
+		  "type": "header",
+          "content": "Section Enable"
+        },
+		{
+          "type": "checkbox",
+          "id": "section_enable",
+          "label": "Section Enable",  
+          "default": true
+      	},
+		{
+          "type": "header",
+          "content": "Content"
+        },
+        {
+          "type": "image_picker",
+          "id": "vid_img",
+          "label": "Video Image"
+        }
+	]
+  }
+{% endschema %}
+
+{% javascript %}
+{% endjavascript %}

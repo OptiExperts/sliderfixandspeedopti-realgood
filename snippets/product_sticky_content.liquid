@@ -1,0 +1,38 @@
+<div class="shop-product__big-image-gallery-wrapper mb-30">
+
+  <!--=======  shop product gallery icons  =======-->
+
+  <div class="single-product__floating-badges single-product__floating-badges--shop-product">
+    {%- include 'product-badge' -%}
+  </div>
+
+  <div class="shop-product-rightside-icons">
+    {% comment %}
+    <span class="wishlist-icon">
+      {% include 'wishlist-button' %}
+    </span>
+    {% endcomment %}
+
+  </div>
+
+  <!--=======  End of shop product gallery icons  =======-->
+
+  <div class="featured-image shop-product__big-image-gallery-sticky">
+
+    {% for image in product.images %}
+    {%- comment -%} "product_variant_image" this Class is needed for Ajax popup cart {%- endcomment -%}
+    <div class="single-image mb-10">
+      <img class="product_variant_image {% if section.settings.product_zoom_enable %}product-zoom{% endif %}" 
+           alt="{{ image.alt | escape }}"
+           data-image-id="{{ image.id }}" alt="{{ image.src.alt | escape }}" 
+           data-zoom-image="{{ image.src | img_url: '810x1080', crop: 'center' }}" 
+           src="{{ image.src | img_url: '810x1080', crop: 'center' }}">
+
+    </div>
+  {% endfor %}
+
+</div>
+
+</div>
+
+

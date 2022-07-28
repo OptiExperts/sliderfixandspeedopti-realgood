@@ -1,0 +1,151 @@
+{% if section.settings.section_enable %}
+<div class="wwe--sec2" id="section-{{ section.id }}">
+  <div class="image">
+  	<img class="bnrImg" src="{% if section.settings.banner_img != blank %} {{ section.settings.banner_img | img_url: 'master' }}{% else %} https://via.placeholder.com/922x329 {% endif %}" class="lazyload img-fluid" alt="">
+  </div>
+  {% if section.settings.banner_heading != blank or section.settings.banner_desc != blank %}
+  <div class="content">
+    <div class="container">
+      <div class="wrap">
+        {% if section.settings.banner_heading != blank %}
+        <h2>{{ section.settings.banner_heading }}</h2>
+        {% endif %}
+        {% if section.settings.banner_desc != blank %}
+        <p class="desc">{{ section.settings.banner_desc }}</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endif %}  
+</div>
+{% endif %}
+
+<style>
+  #section-{{ section.id }}{position:relative;width:100%;display:block;overflow:hidden;}
+  #section-{{ section.id }} .image,
+  #section-{{ section.id }} img{width:100%;max-width:100%;height:auto;display:block}
+  #section-{{ section.id }} .content{
+    position:absolute;
+    left:0;
+    top:55px;
+    width:100%;
+  }
+  #section-{{ section.id }} .content .wrap{
+    width:80%;
+  }
+  #section-{{ section.id }} .content h2{
+  	font-size:36px;
+    line-height:1.35;
+    font-weight:bold;
+    margin-bottom:15px;
+    color:#fff;
+  }
+  #section-{{ section.id }} .content .desc{
+  	font-size:30px;
+    line-height:1.35;
+    color:#fff;
+    max-width:690px;
+  }
+  
+  @media screen and (min-width:1600px){
+    #section-{{ section.id }} .content{
+      top:15%;
+    }
+  }
+  
+  @media screen and (min-width:1400px) and (max-width:1599px){
+    #section-{{ section.id }} .content{
+      top:12%;
+    }
+  }
+  
+  @media screen and (max-width:1279px){
+    #section-{{ section.id }} .content{top:40px;}
+    #section-{{ section.id }} .content .wrap{width:90%;}
+    #section-{{ section.id }} .content h2{font-size:32px;margin-bottom:12px;}
+    #section-{{ section.id }} .content .desc{font-size:28px;max-width:620px;}
+    
+  }
+
+  @media screen and (max-width:1139px){
+    #section-{{ section.id }} .content{top:35px;}
+    #section-{{ section.id }} .content h2{font-size:30px;margin-bottom:10px;}
+    #section-{{ section.id }} .content .desc{font-size:26px;max-width:600px;}
+  }
+  @media screen and (max-width:991px){
+    #section-{{ section.id }} .container{max-width:95%;}
+    #section-{{ section.id }} .content{top:20px;}
+    #section-{{ section.id }} .content h2{font-size:26px;}
+    #section-{{ section.id }} .content .desc{font-size:22px;max-width:475px;}
+    
+  }
+  @media screen and (max-width:767px){
+    #section-{{ section.id }}{background:#F93B37;}
+    #section-{{ section.id }} .container{max-width:100%;}
+    #section-{{ section.id }} .content{top:15px;}
+    #section-{{ section.id }} .image img{width:180%;max-width:180%;margin-left:-80%;}
+    #section-{{ section.id }} .content .wrap{width:100%;}
+    #section-{{ section.id }} .content h2{font-size:24px;}
+    #section-{{ section.id }} .content .desc{font-size:20px;max-width:75%;}
+    
+  }
+  @media screen and (max-width:639px){
+    #section-{{ section.id }} .content{top:20px;}
+    #section-{{ section.id }} .image{padding-top:90px;}
+    #section-{{ section.id }} .image img{width:200%;max-width:200%;margin-left:-100%;}
+    #section-{{ section.id }} .content h2{font-size:22px;}
+    #section-{{ section.id }} .content .desc{font-size:18px;max-width:100%;}
+    
+    
+  }
+  @media screen and (max-width:479px){
+    #section-{{ section.id }} .image{padding-top:120px;}
+    #section-{{ section.id }} .content h2{font-size:20px;line-height:1.15;margin-bottom:5px;}
+    #section-{{ section.id }} .content .desc{font-size:16px;line-height:1.2;}
+    
+  }
+  
+</style>
+
+{% schema %}
+  {
+    "name": "Why We Exists Section #2",
+    "settings": [
+		{
+		  "type": "header",
+          "content": "Section Enable"
+        },
+		{
+          "type": "checkbox",
+          "id": "section_enable",
+          "label": "Section Enable",  
+          "default": true
+      	},
+		{
+          "type": "header",
+          "content": "Banner"
+        },
+        {
+          "type": "image_picker",
+          "id": "banner_img",
+          "label": "Image",
+          "info": "Recommended Size: 1920 x 600 px"
+        },
+		{
+          "type": "text",
+          "id": "banner_heading",
+          "label": "Heading",
+          "default": "We Believe There is a Better Way to Feed our Future"
+        },
+		{
+          "type": "textarea",
+          "id": "banner_desc",
+          "label": "Description",
+          "default": "Our mission is to make nutritious foods— grain free, high in protein, never added sugar"
+        }
+	]
+  }
+{% endschema %}
+
+{% javascript %}
+{% endjavascript %}

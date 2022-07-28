@@ -1,0 +1,103 @@
+{% if section.settings.section_enable %}
+<div class="kir--hero--bnr" id="section-{{ section.id }}">
+  <div class="image">
+  	<img class="bnrImg" src="{% if section.settings.banner_img != blank %} {{ section.settings.banner_img | img_url: 'master' }}{% else %} https://via.placeholder.com/1920x805 {% endif %}" class="lazyload img-fluid" alt="">
+  </div>
+  
+  {%- comment -%}
+  {% if section.settings.banner_heading != blank %}
+  <div class="heading">
+    <h1>{{ section.settings.banner_heading }}</h1>
+  </div>
+  {% endif %} 
+  {%- endcomment -%}
+  
+</div>
+{% endif %}
+
+<style>
+#section-{{ section.id }}{position:relative;width:100%;display:block}
+#section-{{ section.id }} .image,
+#section-{{ section.id }} img{width:100%;max-width:100%;height:auto;display:block}
+#section-{{ section.id }} .heading{
+  position:absolute;
+  width:auto;
+  height:100%;
+  top:0;
+  left:0;
+  padding:15px 5%;
+  background:rgba(175,71,26, 0.75);
+  box-sizing:border-box
+}
+#section-{{ section.id }} .heading h1{
+  color:#fff;
+  font-size:62px;
+  line-height:1.15;
+  font-weight:bold;
+  position:relative;
+  top:50%;
+  transform:translateY(-50%);
+  text-transform:uppercase;
+  margin:auto
+}
+
+  @media screen and (max-width:1139px){
+    #section-{{ section.id }} .heading h1{font-size:52px}
+  }
+  @media screen and (max-width:979px){
+    #section-{{ section.id }} .heading{padding:15px 25px}
+    #section-{{ section.id }} .heading h1{font-size:42px}
+  }
+  @media screen and (max-width:767px){
+    #section-{{ section.id }} .heading{padding:10px 25px}
+    #section-{{ section.id }} .heading h1{font-size:30px}
+  }
+  @media screen and (max-width:639px){
+    #section-{{ section.id }} .heading h1{font-size:24px}
+  }
+  @media screen and (max-width:479px){
+    #section-{{ section.id }} .heading{padding:10px 15px}
+    #section-{{ section.id }} .heading h1{font-size:18px}
+  }
+  @media screen and (max-width:374px){
+   	#section-{{ section.id }} .heading{padding:5px 10px}
+    #section-{{ section.id }} .heading h1{font-size:14px}
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "Keep It Real Nasdaq Bnr",
+    "settings": [
+		{
+		  "type": "header",
+          "content": "Section Enable"
+        },
+		{
+          "type": "checkbox",
+          "id": "section_enable",
+          "label": "Section Enable",  
+          "default": true
+      	},
+		{
+          "type": "header",
+          "content": "Banner"
+        },
+        {
+          "type": "image_picker",
+          "id": "banner_img",
+          "label": "Image",
+          "info": "Recommended Size: 1920 x 805 px"
+        }
+		/*{
+          "type": "text",
+          "id": "banner_heading",
+          "label": "Heading",
+          "default": "Live Up <br> Real Good"
+        }*/
+	]
+  }
+{% endschema %}
+
+{% javascript %}
+{% endjavascript %}

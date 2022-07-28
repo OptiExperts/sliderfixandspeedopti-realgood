@@ -1,0 +1,41 @@
+{% if section.settings.section_enable %}
+<div class="press--banner" id="section-{{ section.id }}">
+  <img class="bnrImg lazy" data-src="{% if section.settings.banner_img != blank %} {{ section.settings.banner_img | img_url: 'master' }}{% else %} https://via.placeholder.com/1920x600 {% endif %}" class="lazyload img-fluid" alt="">
+</div>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Press Banner",
+    "settings": [
+		{
+		  "type": "header",
+          "content": "Section Enable"
+        },
+		{
+          "type": "checkbox",
+          "id": "section_enable",
+          "label": "Section Enable",  
+          "default": true
+      	},
+		{
+          "type": "header",
+          "content": "Banner"
+        },
+        {
+          "type": "image_picker",
+          "id": "banner_img",
+          "label": "Image",
+          "info": "Recommended Size: 1920 x 600 px"
+        }
+	]
+  }
+{% endschema %}
+
+<style>
+#section-{{ section.id }}{position:relative;width:100%;display:block}
+#section-{{ section.id }} img{width:100%;max-width:100%;height:auto;display:block}
+</style>
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,65 @@
+<div class="career--lp">
+  {%- section 'career-intro' -%}
+  {%- section 'career-faqs' -%}
+  {%- section 'career-current-openings' -%}
+  {%- section 'career-video' -%}
+</div>
+
+<style>
+  .career--lp{
+    padding-bottom:80px;
+  }
+  @media (min-width:1300px){
+    .career--lp .container{max-width:1280px;}
+  }
+  @media (max-width:1199px){
+  	.career--lp{padding-bottom:70px;}
+  }
+  @media (max-width:991px){
+  	.career--lp{padding-bottom:60px;}
+  }
+  @media (max-width:767px){
+  	.career--lp{padding-bottom:55px;}
+  }
+  @media (max-width:575px){
+  	.career--lp{padding-bottom:50px;}
+  }
+  @media (max-width:479px){
+    .career--lp{padding-bottom:45px;}
+  }
+</style>
+<script>
+  jQuery(document).ready(function($){
+    if( $('.job--items .job').length > 0 ){
+      var current_url = new URL(location.href);
+      var params = new URLSearchParams(current_url.search);
+      var job_id = params.get('job-id');
+      if ( job_id != null && $('#'+job_id).length > 0 ){
+        $('.jobs--main .head--part').hide();
+        $('.job--items .job').hide();
+        $('#'+job_id).show();
+        $('#'+job_id).find('.outer--part').hide();
+        $('#'+job_id).find('.inner--part').show();
+        //           $('html, body').animate({
+        //           	scrollTop: $('#'+job_id).offset().top - 250
+        //           }, 1500);
+      }
+    }
+  });
+  jQuery(window).load(function(){
+    var current_url = new URL(location.href);
+    var params = new URLSearchParams(current_url.search);
+    var job_id = params.get('job-id');
+    if ( job_id != null ){
+      if( jQuery('#'+job_id).length > 0 ){
+        jQuery('html, body').animate({
+          scrollTop: jQuery('#'+job_id).offset().top - 250
+        }, 1500);
+      } else {
+        jQuery('html, body').animate({
+          scrollTop: jQuery('.job--items').offset().top - 350
+        }, 1500);
+      }
+    }
+  });
+</script>

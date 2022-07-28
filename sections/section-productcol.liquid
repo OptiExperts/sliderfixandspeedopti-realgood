@@ -1,0 +1,220 @@
+<div class="rgf_product_blocks" id="section-{{ section.id }}">
+	{%- for block in section.blocks -%}
+        <div id="block-{{ block.id }}" class="product_block product_block_1" {%- if block.settings.section_bg_image -%} style="background-image: url({{ block.settings.section_bg_image | img_url: 'master' }});" {% endif %}>
+          <a href="{{ block.settings.section_block_link }}">
+            {%- if block.settings.section_block_text != '' -%}
+              <h2>{{ block.settings.section_block_text }}</h2>  
+            {%- endif -%}
+          </a>
+          <div class="block_links">
+          	<a href="{{ block.settings.section_block_link }}" class="text-link">BUY NOW</a>
+          	<a href="{{ block.settings.section_store_link }}" class="text-link">FIND IN STORE</a>
+          	<div class="clear"></div>
+          </div>
+        </div>
+        {%- if block.settings.section_block_bg != blank -%} 
+          <style>
+            #section-{{ section.id }}.rgf_product_blocks #block-{{ block.id }}.product_block 
+            {
+                background-color: {{ block.settings.section_block_bg  }} !important;
+                background-size: contain !important;
+                background-position: center center !important;
+            }
+          </style>
+        {% endif %}
+    {%- endfor -%}
+</div>	
+<style>
+  
+  #shopify-section-{{ section.id }}
+  {
+  	background: #C6C6C6;
+    max-width: 1900px;
+    display: block;
+    margin: 0px auto;
+  }	
+
+  #section-{{ section.id }}.rgf_product_blocks 
+  {
+  	background: #C6C6C6;
+  	display: -ms-flex;
+    display: -webkit-flex;
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    flex-wrap: wrap;    
+  }
+
+  
+  #section-{{ section.id }}.rgf_product_blocks .product_block 
+  {
+    width: 25%;
+    position: relative;
+    xmax-width: 425px;
+  }
+
+  #section-{{ section.id }}.rgf_product_blocks .product_block.product_block_1
+  {
+    background: #C6C6C6;
+    background-size: 100% auto;
+    background-size: cover; 
+    min-height: 452px;
+    background-position: left center;
+  }
+
+  #section-{{ section.id }}.rgf_product_blocks .product_block  h2
+  {
+    position: absolute;
+    margin: 0px auto;
+    display: block;
+    font: Bold 27px/33px "Avenir Next";
+    color: #FFF; 
+    top: 21px;
+    z-index: 2;
+    text-transform: uppercase; 
+    display: block;
+	width: 100%;
+	text-align: center;
+  text-shadow: 0px 3px 6px #0000009B;
+  }
+
+
+  #section-{{ section.id }}.rgf_product_blocks .block_links
+  {
+      position: absolute;
+      bottom: 5px;
+      width: 100%;
+      margin: 0px auto;
+      display: block;
+      z-index: 2;
+      display: flex;
+  	  flex-direction: row;
+  	  align-content: space-between;
+  }
+
+  #section-{{ section.id }}.rgf_product_blocks .block_links a
+  {
+  	align-self: center;
+  	text-align: center;
+  	display: inline-block;
+  	float: left;
+  	width: 50%;
+  	margin-bottom: 10px;
+  	text-align: center;
+  	font: Bold 20px/25px 'Avenir Next';
+	  color: #626262;
+	  text-transform: uppercase; 
+	  text-decoration: underline;
+
+  }  
+
+  #section-{{ section.id }}.rgf_product_blocks .block_links a:hover
+  {
+  	opacity: 0.7;
+  }
+
+  @media screen and (max-width: 1400px) and (min-width: 1200px){
+    #section-{{ section.id }}.rgf_product_blocks .product_block.product_block_1
+    {
+      min-height: 322px;
+    }
+
+    #section-{{ section.id }}.rgf_product_blocks .block_links a
+    {
+      font: Bold 18px/22px 'Avenir Next';
+    }
+  }
+
+
+  @media screen and (max-width: 1199px) and (min-width: 799px){
+    #section-{{ section.id }}.rgf_product_blocks .product_block.product_block_1
+    {
+      min-height: 280px;
+    }
+
+
+    #section-{{ section.id }}.rgf_product_blocks .block_links a
+    {
+      font: Bold 16px/20px 'Avenir Next';
+    }
+
+  }
+
+
+  @media screen and (max-width: 800px){
+    #section-{{ section.id }}.rgf_product_blocks .product_block
+    {
+      width: 100%;
+      position: relative;
+      max-width: 425px;
+      margin: 0px auto;
+    }
+
+    #section-{{ section.id }}.rgf_product_blocks .block_links a 
+    {
+      width: 100%;
+      float: none;
+    }
+  }
+
+  @media screen and (max-width: 1240px){
+    #section-{{ section.id }}.rgf_product_blocks .product_block.product_block_1
+    {
+      background-position: center center;
+      background-size: cover;
+    }
+  }
+
+</style>
+{% schema %}
+{
+    "name": "Product Three Col",
+    "settings": [
+    	{
+         "type": "header",
+         "content": "Product Block Settings"
+      	}
+    ],
+    "blocks":[
+    	{
+          "type": "section_block",
+          "name": "Section Block",
+          "limit": 4,
+              "settings": 
+              [
+                {
+                  "type": "image_picker",
+                  "id": "section_bg_image",
+                  "label": "BG Image"
+                },
+                {
+                  "type": "text",
+                  "id": "section_block_text",
+                  "label": "Product Title"
+                },
+                {
+                  "type": "url",
+                  "id": "section_block_link",
+                  "label": "Product Link"
+                },
+                {
+                  "type": "url",
+                  "id": "section_store_link",
+                  "label": "Store Link"
+                },
+                {
+                  "type": "color",
+                  "id": "section_block_bg",
+                  "label": "Image Block BG"
+                }
+              ]
+   		}
+  	],
+    "presets": [
+	    {
+	        "category": "3. collections",
+	        "name": "Product Three Col"
+	    }
+    ]
+}
+{% endschema %}

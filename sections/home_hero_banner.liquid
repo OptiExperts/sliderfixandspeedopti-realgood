@@ -1,0 +1,347 @@
+<div class="rgf_home_hero_banner home_hero_banner" id="section-{{ section.id }}" style="{% if section.settings.hh_banner_img != blank %} background-image:url({{ section.settings.hh_banner_img | img_url: 'master' }}) {% else %} background-image:url(https://via.placeholder.com/1920x475) {% endif %}">
+  <div class="hh__caption">    
+	
+    <div class="container wide">
+      <div class="text">
+        {%- if section.settings.hh_banner_caption1 != '' -%}
+        <h2>{{ section.settings.hh_banner_caption1 }}</h2>  
+        {%- endif -%}
+        {%- if section.settings.hh_banner_caption2 != '' -%}
+        <h6>{{ section.settings.hh_banner_caption2 }}</h6>  
+        {%- endif -%}        
+      </div>
+      <div class="buttons">
+        {%- if section.settings.hh_banner_btn_text != '' -%}
+        <a href="{{ section.settings.hh_banner_btn_url }}" class="lmBtn">{{ section.settings.hh_banner_btn_text }}</a>
+        {%- endif -%} 
+      </div>
+    </div>
+    
+  </div>
+</div>	
+<style>
+  
+  /*#shopify-section-{{ section.id }}{
+  	display:none !important;
+  }*/
+  
+  #shopify-section-{{ section.id }}
+  {
+  	background:#fff;
+    /*max-width: 1900px;*/
+    display:block;
+    margin:0px auto;
+    
+  }
+  #section-{{ section.id }}{
+    width:100%;
+    background-position:center center;
+    background-size:cover;
+    background-repeat:no-repeat;
+    padding-top:39.75%;
+    height:0;
+    position:relative;
+  }
+  #section-{{ section.id }} .hh__caption{
+  	position:absolute;
+    left:0;
+    right:0;
+    margin:auto;
+    top:52%;
+    transform:translateY(-50%);
+    width:100%;
+  }
+  #section-{{ section.id }} .hh__caption .text{
+  	max-width:460px !important;
+    text-align:center;
+  }
+  #section-{{ section.id }} .hh__caption .text h2{
+/*   	font-family:"LocalBreweryFour-Regular"; */
+/*     font-family:"SourceSerifPro-Bold"; */
+    font-family: 'Montserrat';
+    font-weight:800;
+    font-size:48px;
+    margin-bottom:40px;
+    line-height:1.1;
+    text-shadow:rgb(0 0 0 / 16%) 0px 8px 8px;
+    color:#fff;
+  }
+  #section-{{ section.id }} .hh__caption .text h6{
+/*     max-width:325px; */
+    font-size:18px;
+    margin-bottom:40px;
+    line-height:1.1;
+	text-shadow:rgb(0 0 0 / 16%) 0px 8px 8px;
+    font-family:'Montserrat';
+    color:#fff;
+  }
+
+  #section-{{ section.id }} .buttons{
+  	max-width:460px !important;
+    text-align:center;
+  }
+  #section-{{ section.id }} .buttons .lmBtn{
+/*   	background-image:url({{ 'button-bg-1.png' | asset_url }}) !important; */
+    background-image:url({{ 'button-montserrat-bg.png' | asset_url }}) !important;
+/*     background-size:100%; */
+    background-size:100% 100%;
+    background-position:center;
+    background-repeat:no-repeat !important;
+    border:none !important;
+    padding:13px 45px 22px !important;
+    padding:20px 45px 22px !important;
+ 	border-radius:unset !important;
+/*     text-shadow:1px 3px 0px rgba(0,0,0,0.34); */
+/*     font-family:"LocalBreweryFour-Regular"; */
+/*     font-family:"SourceSerifPro-Bold"; */
+    font-family:"Montserrat";
+/*     font-weight:400 !important; */
+    font-weight:600 !important;
+    color:#fff;
+    text-align:center;
+/*     font-size:25px; */
+    font-size:22px;
+  }
+  #section-{{ section.id }} .buttons .lmBtn:hover{
+  	opacity:0.95;
+    color:#000;
+  }
+  
+  
+  @media (min-width:1515px){
+    #section-{{ section.id }} .container.wide{max-width:1485px;}
+    
+  }
+  
+  @media (max-width:1399px){
+    #section-{{ section.id }} .hh__caption .text,
+    #section-{{ section.id }} .buttons{
+      max-width:400px !important;
+    }
+    #section-{{ section.id }} .hh__caption .text h2{
+      font-size:40px;
+      margin-bottom:30px;
+    }
+    #section-{{ section.id }} .hh__caption .text h6{
+      margin-bottom:30px;
+    }
+    #section-{{ section.id }} .buttons .lmBtn{
+      font-size:20px;
+/*       padding:8px 40px 18px !important; */
+      padding:15px 40px 18px !important;
+    }
+    
+  }
+  @media (max-width:1279px){
+    #section-{{ section.id }} .container.wide{max-width:95% !important;}
+    #section-{{ section.id }} .hh__caption .text,
+    #section-{{ section.id }} .buttons{
+      max-width:290px !important;
+    }
+    #section-{{ section.id }} .hh__caption .text h2{
+      font-size:30px;
+      margin-bottom:15px;
+    }
+    #section-{{ section.id }} .hh__caption .text h6{
+      margin-bottom:25px;
+      font-size:17px
+    }
+    #section-{{ section.id }} .buttons .lmBtn{
+      font-size:18px;
+/*       padding:6px 35px 16px !important; */
+      padding:13px 35px 16px !important;
+    }
+    
+  }
+  @media (max-width:1139px){
+    #section-{{ section.id }}{
+      padding-top:45%;
+    }
+    
+  }
+  @media (max-width:991px){
+    #section-{{ section.id }}{
+      padding-top:70%;
+    }
+    
+    {% if section.settings.hh_banner_img_mob != blank %}
+    #section-{{ section.id }}{
+      background-image:url( {{ section.settings.hh_banner_img_mob | img_url: 'master' }} ) !important;
+      padding-top:115%;
+      background-position:top left;
+    }
+    {%- endif -%}
+    
+    #section-{{ section.id }} .hh__caption{
+      top:19%;
+      transform:unset;
+    }
+    #section-{{ section.id }} .hh__caption .text,
+    #section-{{ section.id }} .buttons{
+      max-width:275px !important;
+    }
+    #section-{{ section.id }} .hh__caption .text h2{
+      font-size:28px;
+      margin-bottom:12px;
+      color:#fff;
+    }
+    #section-{{ section.id }} .hh__caption .text h6{
+      margin-bottom:18px;
+      font-size:16px;
+      color:#fff;
+    }
+    #section-{{ section.id }} .buttons .lmBtn{
+      font-size:16px;
+/*       padding:5px 30px 15px !important; */
+      padding:12px 30px 15px !important;
+    }
+    
+    
+  }
+  @media (max-width:767px){
+    #section-{{ section.id }}{
+      padding-top:118%;
+      margin-top:-20px
+    }
+    #section-{{ section.id }} .hh__caption .text h6{
+      display:none;
+    }
+    #section-{{ section.id }} .hh__caption{
+      text-align:center;
+      top:70px;
+    }
+    #section-{{ section.id }} .hh__caption .text,
+    #section-{{ section.id }} .buttons{
+      text-align:center;
+      margin:0 auto;
+    }
+    #section-{{ section.id }} .hh__caption .text h2{
+      margin-bottom:20px;
+    }
+    #section-{{ section.id }} .buttons .lmBtn{
+      font-size:20px;
+/*       padding:6px 32px 16px !important; */
+      padding:13px 30px 16px !important;
+    }
+    
+  }
+  @media (max-width:639px){
+   #section-{{ section.id }} .hh__caption{
+/*       top:38px; */
+      top:25px;
+    }
+    #section-{{ section.id }} .hh__caption .text h2{
+      font-size:28px;
+      line-height:1.25;
+      letter-spacing:1px;
+    }
+    #section-{{ section.id }} .hh__caption .text,
+    #section-{{ section.id }} .buttons{
+/*       max-width:290px !important; */
+      max-width:315px !important;
+/*       padding-top:30px; */
+      padding-top:0;
+    }
+    
+  }
+  @media (max-width:479px){
+    #section-{{ section.id }}{
+      padding-top:150%;
+      margin-top:0;
+      background-position:top center;
+    }
+    #section-{{ section.id }} .hh__caption .text{
+      /*max-width:230px !important;*/
+    }
+    #section-{{ section.id }} .hh__caption .text h2{
+/*       font-size:28px;
+      margin-bottom:20px; */
+      font-size:26px;
+      margin-bottom:15px;
+    }
+    #section-{{ section.id }} .hh__caption{
+/*       top:10px; */
+      top:15px;
+    }
+    #section-{{ section.id }} .buttons .lmBtn{
+/*       padding:6px 25px 12px !important; */
+      padding:10px 25px 12px !important;
+    }
+    
+  }
+  @media (max-width:359px){
+    #section-{{ section.id }} .hh__caption .text,
+    #section-{{ section.id }} .buttons{
+      max-width:265px !important;
+    }
+    #section-{{ section.id }} .hh__caption .text h2{
+/*       font-size:26px;
+      margin-bottom:15px; */
+      font-size:24px;
+      margin-bottom:10px;
+    }
+    #section-{{ section.id }} .buttons .lmBtn{
+      padding:8px 20px 10px !important;
+      font-size:18px;
+    }
+    
+  }
+  
+  
+  
+
+</style>
+
+
+{% schema %}
+  {
+    "name": "Home Hero Banner",
+    "settings": [
+	  {
+        "type": "header",
+        "content": "Banner Settings"
+      },
+      {
+        "type": "image_picker",
+        "id": "hh_banner_img",
+        "label": "Banner Image",
+        "info": "Recommended Size: 1920 x 745 px"
+      },
+		{
+        "type": "image_picker",
+        "id": "hh_banner_img_mob",
+        "label": "Banner Image (mobile)"
+      },
+      {
+        "type": "textarea",
+        "id": "hh_banner_caption1",
+        "label": "Banner Caption #1",
+		"default": "Introducing the 1st Ever Grain Free Entrée Bowls"
+      },
+      {
+        "type": "textarea",
+        "id": "hh_banner_caption2",
+        "label": "Banner Caption #2",
+        "default": "Low Carb. High Protein. Available now in Grocery Stores Nationwide."
+      },
+      {
+        "type": "text",
+        "id": "hh_banner_btn_text",
+        "label": "Banner Button Text",
+        "default": "Find a Store"
+      },
+      {
+        "type": "url",
+        "id": "hh_banner_btn_url",
+        "label": "Banner Button URL"
+      }
+	  
+	],
+	"presets": [
+		{
+		  "name": "Home Hero Banner",
+		  "category": "4. Banner"
+		}
+	]
+  }
+{% endschema %}

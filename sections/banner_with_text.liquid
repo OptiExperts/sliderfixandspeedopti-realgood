@@ -1,0 +1,395 @@
+<div class="footer-banner-section-area mb-0 mb-md-0 mb-sm-0 homesec2" id="section-{{ section.id }}">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2">
+        <!--=======  ad section  =======-->
+
+        <div class="footer-banner-section text-center">
+          <!--=======  ad section image  =======-->
+
+          <div class="footer-banner-section-image mb-5 {% if section.settings.banner_img_mob != blank  %} has_mob_img {% endif %}">
+            <img data-src="{% if section.settings.banner_img != blank %} {{ section.settings.banner_img | img_url: 'master' }}{% else %} https://via.placeholder.com/922x329 {% endif %}" class="lazyload img-fluid" alt="">
+          	
+            {% if section.settings.banner_img_mob != blank  %}
+            	<img src="{{ section.settings.banner_img_mob | img_url: 'master' }}" at="" class="lazyload img-fluid mobile">            
+          	{% endif %}
+            
+          </div>
+
+          
+      	{% if section.settings.banenr_tab_enable %}
+          <div class="footer-banner-tags mb-35">
+            <ul>
+              {% if section.settings.bannerTag1 != blank  %}
+              <li><a href="{{ section.settings.bannerTag1_link }}">{{ section.settings.bannerTag1 }}</a></li>
+              {% endif %}
+              
+              {% if section.settings.bannerTag2 != blank  %}
+              <li><a href="{{ section.settings.bannerTag2_link }}">{{ section.settings.bannerTag2  }}</a></li>
+              {% endif %}
+              
+              {% if section.settings.bannerTag3 != blank  %}
+              <li><a href="{{ section.settings.bannerTag3_link }}">{{ section.settings.bannerTag3  }}</a></li>
+              {% endif %}
+              
+            </ul>
+          </div>
+          
+          {% endif %}
+
+          <!--=======  End of ad tags  =======-->
+
+          <!--=======  ad-content  =======-->
+
+          <div class="footer-banner-content">
+            
+            {% if section.settings.banner_title != blank %}
+            <h2 class="mb-30">{{ section.settings.banner_title }}</h2>
+            {% endif %}
+            
+            {% if section.settings.banner_button_text != blank %}
+            <a href="{{ section.settings.banner_url }}" class="lezada-button lezada-button--medium">{{ section.settings.banner_button_text }}</a>
+            {% endif %}
+            
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% include 'section_typography' %}
+
+<style type="text/css">
+	{%- for block in section.blocks -%}
+		#shopify-section-{{ section.id }}
+		{
+			background: {{ block.settings.section_bg_color }};
+			position: relative;
+		}
+
+		{%- if block.settings.section_bg_image -%}
+			#shopify-section-{{ section.id }}::after{
+			  content: "";
+			  background: url("{{ block.settings.section_bg_image | img_url: 'master' }}") center center repeat-x transparent;
+			  /*opacity: 0.12;*/
+			  top: 0;
+			  left: 0;
+			  bottom: 0;
+			  right: 0;
+			  position: absolute;
+			  z-index: 1;   
+			}
+		{%- endif -%}
+
+	{%- endfor -%}
+
+	#section-{{ section.id }}{
+		/*background: none !important;*/
+      padding:20px 0 50px !important;
+	}
+    #section-{{ section.id }}.homesec2{
+      background-size:100% 100%;
+    }
+  	
+    #shopify-section-{{ section.id }}::after{
+      opacity:0;
+      display:none !important;
+    }
+  
+  	#section-{{ section.id }}.homesec2 .has_mob_img img.mobile{
+      display:none;
+    }
+  
+  
+
+	@media (min-width: 1200px){
+		#section-{{ section.id }} > .container
+		{
+			max-width: 1600px;
+		}
+	}
+  
+  @media (max-width:767px){
+    #section-{{ section.id }}.homesec2 .has_mob_img img{
+      display:none;
+    }
+    #section-{{ section.id }}.homesec2 .has_mob_img img.mobile{
+      display:block;
+      max-width:225px;
+      margin:0 auto;
+    }
+    #section-{{ section.id }}.homesec2{
+      padding:30px 0 55px !important;
+      background-size:cover;
+    }
+  }
+  
+</style>
+{% schema %}
+  {
+    "name": "Banner With Text",
+    "settings": [
+	  {
+        "type": "header",
+        "content": "Banner"
+      },
+      {
+        "type": "image_picker",
+        "id": "banner_img",
+        "label": "Image",
+        "info": "Recommended Size: 922 x 329 px"
+      },
+      {
+        "type": "image_picker",
+        "id": "banner_img_mob",
+        "label": "Image (Mobile)"
+      },
+      {
+        "type": "textarea",
+        "id": "banner_title",
+        "label": "Banner Title",
+		"default": "Up To 40% Off Final Sale Items. Caught in the moment!"
+      },
+	  {
+          "type": "text",
+          "id": "banner_button_text",
+          "label": "Banner Button Text",
+		  "default": "Show Now"
+        },
+      {
+        "type": "url",
+        "id": "banner_url",
+        "label": "URL"
+      },
+	  {
+        "type": "header",
+        "content": "Banner Tag"
+      },
+		{
+          "type": "checkbox",
+          "id": "banenr_tab_enable",
+          "label": "Banner Tag Enable",
+		  "default": true
+        }, 
+	  {
+        "type": "text",
+        "id": "bannerTag1",
+        "label": "Banner Tag#1",
+		"default": "#summer"
+      },
+      {
+        "type": "url",
+        "id": "bannerTag1_link",
+        "label": "Banner Tag#1 Url"
+      },
+	  {
+        "type": "text",
+        "id": "bannerTag2",
+        "label": "Banner Tag#2",
+		"default": "#shelf"
+      },
+      {
+        "type": "url",
+        "id": "bannerTag2_link",
+        "label": "Banner Tag#2 Url"
+      },
+	  {
+        "type": "text",
+        "id": "bannerTag3",
+        "label": "Banner Tag#3",
+		"default": "#Sale"
+      },
+      {
+        "type": "url",
+        "id": "bannerTag3_link",
+        "label": "Banner Tag#3 Url"
+      }
+	],
+	"blocks":[
+		{
+          "type": "section_margin",
+          "name": "Section Margin",
+		  "limit": 1,
+          "settings": [
+            {
+			  "type": "header",
+			  "content": "Large/Desktop Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_top",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_bottom",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Bottom",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "header",
+			  "content": "Tablet Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_top_md",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_bottom_md",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Bottom",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "header",
+			  "content": "Mobile Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_top_xs",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_margin_bottom_xs",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Margin Bottom",
+			  "unit": "px",
+			  "default": 0
+			}
+          ]
+       },
+	   {
+          "type": "section_padding",
+          "name": "Section Padding",
+		  "limit": 1,
+          "settings": [
+            {
+			  "type": "header",
+			  "content": "Large/Desktop Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_top",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_bottom",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Bottom",
+			  "unit": "px",
+			  "default": 100
+			},
+			{
+			  "type": "header",
+			  "content": "Tablet Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_top_md",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_bottom_md",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Bottom",
+			  "unit": "px",
+			  "default": 80
+			},
+			{
+			  "type": "header",
+			  "content": "Mobile Device"
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_top_xs",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Top",
+			  "unit": "px",
+			  "default": 0
+			},
+			{
+			  "type": "range",
+			  "id": "section_padding_bottom_xs",
+			  "min": 0,
+			  "max": 150,
+			  "step": 5,
+			  "label": "Padding Bottom",
+			  "unit": "px",
+			  "default": 60
+			}
+          ]
+       },
+	   {
+          "type": "section_background",
+          "name": "Section Background",
+		  "limit": 1,
+          "settings": [
+            {
+			  "type": "image_picker",
+			  "id": "section_bg_image",
+			  "label": "BG Image"
+			},
+			{
+			  "type": "color",
+			  "id": "section_bg_color",
+			  "label": "BG Color",
+			  "default": "#ffffff"
+			}
+          ]
+       }
+	],
+	"presets": [
+		{
+		  "name": "Banner With Text",
+		  "category": "4. Banner"
+		}
+	]
+  }
+{% endschema %}

@@ -1,0 +1,333 @@
+{% if section.settings.ourMnR_enable == true %}
+<div class="mission--n--review v2" id="section-{{ section.id }}">
+  <div class="container wide">
+    <div class="row">
+      <div class="col-lg-6 heading">
+        <div class="inner">
+          {%- if section.settings.ourMnR_top_head != '' -%}
+          <h4 class="top--head">{{ section.settings.ourMnR_top_head }}</h4>
+          {%- endif -%}
+          {%- if section.settings.ourMnR_main_head != '' -%}
+          <h2 class="main--head">{{ section.settings.ourMnR_main_head }}</h2>
+          {%- endif -%}
+          {%- if section.settings.ourMnR_btn_label != '' -%}
+          <div class="btns">
+            <a href="{{ section.settings.ourMnR_btn_link }}" {% if section.settings.ourMnR_new == true %}target="_blank"{%- endif -%}>{{ section.settings.ourMnR_btn_label }}</a>
+          </div>
+          {%- endif -%}
+          
+        </div><!--/heading-->
+      </div>
+
+      <div class="col-lg-6 reviews">
+          <div class="rvw--main v2">
+          
+            {%- for block in section.blocks -%}
+              {% assign count = 0 %}
+              <div id="block-{{ block.id }}" class="rvw--item rvw--item-{{forloop.index0}}">
+				<div class="inn">
+                  <div class="top--sec">
+                    <div class="inner">
+                      <img src="https://cdn.shopify.com/s/files/1/0233/7590/4845/files/Vector.svg?v=1655976908" alt="" class="lazyload quote--icon">
+                      {%- if block.settings.rvw_heading != '' -%}<h5 class="title">{{ block.settings.rvw_heading }}</h5>{% endif %}
+                    </div>
+                  </div>
+                  <div class="bottom--sec">
+                    <div class="auth--info">
+                      {%- if block.settings.rvw_auth_thumb != '' -%}
+                      <span class="auth--thumb"><img src="{{ block.settings.rvw_auth_thumb | img_url: '100x100' }}" alt="" class="lazyload"></span>
+                      {% endif %}
+                      {%- if block.settings.rvw_auth_name != '' -%}
+                      <span class="auth--name">@{{ block.settings.rvw_auth_name }}</span>
+                      {% endif %}
+                    </div>
+                  </div>
+                  
+                </div>
+              </div><!--gridItem-->
+              {% assign count = count | plus: 1 %}
+            {%- endfor -%}
+            
+          </div><!--/rvw--main-->          
+      </div><!--/reviews-->
+      
+    </div><!--/row-->  
+  </div><!--/container wide-->
+</div>
+{% endif %}
+
+<style>
+  
+  #section-{{ section.id }}{
+    background:#FFF;
+    display:block;
+    margin:0px auto;
+    padding:70px 0;
+  }
+  #section-{{ section.id }} .container > .row{align-items:center;}
+  #section-{{ section.id }} .heading{text-align:center;}
+  #section-{{ section.id }}.v2 .heading .top--head{
+  	font-family:'Adrianna';
+    font-weight:700;
+    font-size:24px;
+    line-height:1.15;
+    color:#DD7C01;
+    margin-bottom:10px;
+  }
+  #section-{{ section.id }}.v2 .heading .main--head{
+  	font-family:'Adrianna';
+    font-weight:400;
+    font-size:48px;
+    line-height:1.2;
+    color:#000;
+    margin-bottom:15px;
+  }
+  #section-{{ section.id }}.v2 .heading .btns{text-align:center;}
+  #section-{{ section.id }}.v2 .heading .btns a{
+  	display:inline-block;
+    font-size:22px;
+    line-height:1;
+    font-family:'Adrianna-Condensed';
+    font-weight:600;
+    color:#fff;
+    background:#DD7C01;
+    letter-spacing:0.1em;    
+    padding:15px 24px;
+    filter:drop-shadow(0px 3px 2px rgba(0, 0, 0, 0.2));
+	text-transform:uppercase;
+  }
+  #section-{{ section.id }}.v2 .heading .btns a:hover{opacity:0.8;}
+  #section-{{ section.id }}.v2 .reviews{padding-left:5.5%;}
+  .rvw--main.v2 .rvw--item{
+    border-radius:0;
+    padding:0 4px;
+  }
+  .rvw--main.v2 .rvw--item .inn{
+  	box-shadow:0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+  .rvw--main.v2 .rvw--item .top--sec,
+  .rvw--main.v2 .rvw--item .bottom--sec{
+	display:block;
+  }
+  .rvw--main.v2 .rvw--item .top--sec{
+  	padding:30px 55px 70px;
+    text-align:center;
+  }
+  .rvw--main.v2 .rvw--item .quote--icon{
+    max-width:33px;
+    margin:0 auto 12px;
+    display:block;
+  }
+  .rvw--main.v2 .rvw--item .title{
+    font-family:'Adrianna';
+    font-weight:400;
+    font-size:24px;
+    line-height:1.15;
+    text-align:center;
+    color:#000;
+  }
+  .rvw--main.v2 .rvw--item .bottom--sec{
+  	height:110px;
+    background:#DD7C01;
+    position:relative;
+  }
+  .rvw--main.v2 .rvw--item .auth--thumb{
+    overflow: hidden;
+    border-radius:100%;
+    max-width:90px;
+    margin:0 auto 15px;
+    background-image:none;
+    display:block;
+  }
+  .rvw--main.v2 .rvw--item .auth--thumb img{
+    width:100%;
+    border-radius:100%;
+    padding:0;
+    overflow:hidden;
+  }
+  .rvw--main.v2 .rvw--item .auth--name{
+    display:block;
+    font-family:'Adrianna';
+    font-weight:700;
+    font-size:18px;
+    line-height:1.1;
+    color:#fff;
+  }
+  .rvw--main.v2 .rvw--item .auth--info{
+    position:absolute;
+    top:-43px;
+    left:0;
+    right:0;
+    margin:auto;
+    width:100%;
+    text-align:center;
+  }
+  
+  
+  
+  
+  
+  @media (min-width:1515px){
+    #section-{{ section.id }} .container.wide{max-width:1485px;}
+    
+  }
+  
+  @media (max-width:1399px){
+    
+  
+  }
+  @media (max-width:1279px){
+    #section-{{ section.id }}{padding:55px 0 50px;}
+    #section-{{ section.id }}.v2 .reviews{padding-left:40px;}
+  
+  }
+  @media (max-width:1199px){
+    #section-{{ section.id }}{padding:50px 0 45px;}
+    #section-{{ section.id }}.v2 .heading .top--head{font-size:22px;}
+    #section-{{ section.id }}.v2 .heading .main--head{font-size:38px;}
+    #section-{{ section.id }}.v2 .heading .btns a{font-size:21px;}
+    #section-{{ section.id }}.v2 .reviews{padding-left:15px;}
+    .rvw--main.v2 .rvw--item .top--sec{padding:25px 30px 65px;}
+    
+  }
+  @media (max-width:991px){
+    #section-{{ section.id }}{padding:45px 0 40px;}
+    #section-{{ section.id }}.v2 .reviews{padding-top:45px;}
+    #section-{{ section.id }}.v2 .heading .main--head{font-size:32px;}
+    #section-{{ section.id }}.v2 .heading .btns a{font-size:20px;padding:10px 30px 8px;}
+    
+  }
+  @media (max-width:767px){
+    #section-{{ section.id }}{padding:40px 0 35px;}
+    #section-{{ section.id }} .container.wide{max-width:100%;}
+    #section-{{ section.id }}.v2 .reviews{padding-top:40px;}
+    #section-{{ section.id }}.v2 .heading .top--head{font-size:20px;margin-bottom:10px;}
+    #section-{{ section.id }}.v2 .heading .main--head{font-size:28px;line-height:1.15;}
+    .rvw--main.v2 .rvw--item .title{font-size:22px;}
+    
+  }
+  @media (max-width:575px){
+/*     #section-{{ section.id }}{padding:35px 0;} */
+    #section-{{ section.id }}.v2 .heading .main--head{font-size:24px;margin-bottom:15px;}
+    #section-{{ section.id }}.v2 .heading .btns a{font-size:18px;padding:8px 25px 10px;}
+    .rvw--main.v2 .rvw--item .quote--icon{max-width:30px;margin-bottom:10px;}
+    .rvw--main.v2 .rvw--item .title{font-size:20px;}
+    .rvw--main.v2 .rvw--item .top--sec{padding:20px 20px 55px}
+    .rvw--main.v2 .rvw--item .auth--thumb{max-width:80px;margin-bottom:12px;}
+    .rvw--main.v2 .rvw--item .auth--info{top:-40px;}
+    .rvw--main.v2 .rvw--item .bottom--sec{height:100px;}
+    
+  }
+  @media (max-width:479px){
+    #section-{{ section.id }}.v2 .heading .top--head{font-size:18px;}
+    #section-{{ section.id }}.v2 .heading .main--head{font-size:22px;}
+    .rvw--main.v2 .rvw--item .quote--icon{max-width:26px;}
+    .rvw--main.v2 .rvw--item .title{font-size:18px;}
+    .rvw--main.v2 .rvw--item .top--sec{padding:15px 15px 45px}
+    .rvw--main.v2 .rvw--item .auth--thumb{max-width:70px;margin-bottom:10px;}
+    .rvw--main.v2 .rvw--item .auth--info{top:-35px;}
+    .rvw--main.v2 .rvw--item .bottom--sec{height:90px;}
+    .rvw--main.v2 .rvw--item .auth--name{font-size:16px;}
+    
+  }
+  
+  
+
+</style>
+{% schema %}
+{
+    "name": "Our Mission + Reviews v2",
+    "settings": [
+		{
+          "type": "header",
+          "content": "Section Enable"
+      	},
+        {
+          "type": "checkbox",
+          "id": "ourMnR_enable",
+          "label": "Enable Section",  
+          "default": true
+        },
+    	{
+          "type": "header",
+          "content": "Mission Settings"
+      	},
+		{
+          "type": "text",
+          "id": "ourMnR_top_head",
+          "label": "Top Heading"
+        },
+		{
+          "type": "textarea",
+          "id": "ourMnR_main_head",
+          "label": "Main Heading"
+        },
+		{
+          "type": "text",
+          "id": "ourMnR_btn_label",
+          "label": "Button Label"
+        },
+		{
+          "type": "url",
+          "id": "ourMnR_btn_link",
+          "label": "Button Link"
+        },
+		{
+          "type": "checkbox",
+          "id": "ourMnR_new",
+          "label": "New Window",  
+          "default": true
+        }
+    ],
+    "blocks":[
+    	{
+          "type": "section_block",
+          "name": "Review",
+          "limit": 50,
+              "settings": 
+              [
+                {
+                  "type": "image_picker",
+                  "id": "rvw_auth_thumb",
+                  "label": "Author Image"
+                },
+                {
+                  "type": "text",
+                  "id": "rvw_auth_name",
+                  "label": "Author Name"
+                },
+				{
+                  "type": "textarea",
+                  "id": "rvw_heading",
+                  "label": "Review Heading"
+                }
+              ]
+   		}
+  	],
+    "presets": [
+	    {
+	        "category": "4. Banner",
+	        "name": "Our Mission + Reviews v2"
+	    }
+    ]
+}
+{% endschema %}
+
+<script>
+	jQuery(document).ready(function($){
+    	if( $('.rvw--main .rvw--item').length > 1 ){
+    
+			$('.rvw--main').slick({
+              	infinite:true,
+                autoplay:true,
+              	speed:500,
+                autoplaySpeed:3000,
+              	cssEase:'linear',
+              	dots:false,
+				arrows:false,
+              	fade:true,
+			});
+    	}
+    
+	});
+</script>

@@ -1,0 +1,349 @@
+{% include 'header-5' %}
+
+
+
+ <!--  Additional Murkup  =======-->
+{% include 'search-bar' %}
+{% include 'mini-cart' %}
+{% include 'overlap_menu' %}
+
+<style>
+  .theme-logo img{
+    max-width: {{ section.settings.logo_width }}px;
+  }
+</style>
+
+
+
+{% schema %}
+  {
+    "name": "Header",
+	"blocks": [
+	   {
+          "type": "header_style",
+          "name": "Header Style",
+		  "limit": 1,
+          "settings": [
+			{
+              "type": "header",
+              "content": "Header"
+            },
+			{
+			  "type": "color",
+			  "id": "background_color",
+			  "label": "Header Background Color",
+			  "default": "#fff"
+            },
+            {
+			  "type": "color",
+			  "id": "sticky_background_color",
+			  "label": "Header Sticky Background Color",
+			  "default": "#fff"
+            },
+			{
+			  "type": "color",
+			  "id": "transparent_background_color",
+			  "label": "Transparent Header Bg Color",
+			  "default": "#fff"
+            },
+			{
+			  "type": "color",
+			  "id": "header_bar_icon_color",
+			  "label": "Header Bar icon Color",
+			  "default": "#333333"
+            },
+            {
+			  "type": "color",
+			  "id": "overlay_menu_close_icon_color",
+			  "label": "Overlay Menu Close Icon Color",
+			  "default": "#333"
+            },
+		    {
+			  "type": "color",
+			  "id": "header_account_icon_color",
+			  "label": "Header Account Icon Color",
+			  "default": "#333"
+            },
+            {
+              "type": "header",
+              "content": "Cart Count"
+            },
+			{
+			  "type": "color",
+			  "id": "cart_bg_color",
+			  "label": "Cart Count Bg Color",
+			  "default": "#D3122A"
+            },
+		    {
+			  "type": "color",
+			  "id": "cart_color",
+			  "label": "Cart Count Color",
+			  "default": "#fff"
+            },
+			{
+              "type": "header",
+              "content": "Overlay Menu"
+            },
+			{
+			  "type": "color",
+			  "id": "menu_overlay_color",
+			  "label": "Overlay Menu Bg Color",
+			  "default": "#ffffff"
+            },
+			{
+              "type": "range",
+              "id": "menu_overlay_opaicty",
+              "min": 0,
+              "max": 1,
+              "step": 0.1,
+              "label": "Overlay Color Opacity",
+              "default": 0.9
+            },
+			{
+			  "type": "color",
+			  "id": "overlay_menu_color",
+			  "label": "Menu Color",
+			  "default": "#333"
+            },
+    		{
+			  "type": "color",
+			  "id": "overlay_menu_hover_border_color",
+			  "label": "Menu Border Color",
+			  "default": "#333"
+            },
+			{
+              "type": "header",
+              "content": "Menu Special Badge"
+            },
+			{
+			  "type": "color",
+			  "id": "menu_badge_bg_color",
+			  "label": "Menu Badge Background Color",
+			  "default": "#D3122A"
+            },
+			{
+			  "type": "color",
+			  "id": "menu_badge_color",
+			  "label": "Menu Badge Color",
+			  "default": "#fff"
+            },
+			{
+			  "type": "color",
+			  "id": "menu_sale_badge_bg_color",
+			  "label": "Menu Sale Badge Background Color",
+			  "default": "#98d8ca"
+            },
+			{
+			  "type": "color",
+			  "id": "menu_sale_badge_color",
+			  "label": "Menu Sale Badge Color",
+			  "default": "#fff"
+            },
+			{
+              "type": "header",
+              "content": "Mobile Menu Color"
+            },
+			{
+			  "type": "color",
+			  "id": "mobile_menu_bar_color",
+			  "label": "Mobile Menu bar Icon Color",
+			  "default": "#232324"
+            },
+			{
+			  "type": "color",
+			  "id": "mobile_menu_bg_color",
+			  "label": "Mobile Menu Bg Color",
+			  "default": "#ffffff"
+            },
+			{
+			  "type": "color",
+			  "id": "mobile_menu_item_color",
+			  "label": "Mobile Menu Color",
+			  "default": "#232324"
+            },
+		    {
+			  "type": "color",
+			  "id": "menu_item_border_color",
+			  "label": "Mobile Menu Item Border Color",
+			  "default": "#eeeeee"
+            },
+		    {
+			  "type": "color",
+			  "id": "mobile_menu_arrow_color",
+			  "label": "Submenu Arrow Color",
+			  "default": "#232324"
+            },
+			{
+			  "type": "color",
+			  "id": "mobile_menu_hover_bg_color",
+			  "label": "Mobile Menu Hover bg Color",
+			  "default": "#333333"
+            },
+		    {
+			  "type": "color",
+			  "id": "mobile_menu_hover_color",
+			  "label": "Mobile Menu Hover Color",
+			  "default": "#fff"
+            },
+		    {
+			  "type": "color",
+			  "id": "hover_dropdown_arrow_color",
+			  "label": "Hover Submenu Arrow Color",
+			  "default": "#fff"
+            }
+          ]
+       }
+
+	],
+    "settings": [ 
+        {
+		    "type":      "radio",
+           "id":        "overlay_menu_type",
+           "label": "Header Type Select",
+           "options": [
+             { "value": "style1", "label": "Overlap Style 1" },
+             { "value": "style2", "label": "Overlap Style 2" }
+			 
+           ],
+           "default":   "style1"
+        },
+		{
+          "type": "header",
+          "content": "Header Sticky"
+        },
+		{
+          "type": "checkbox",
+          "id": "header_sticky_enable",
+          "label": "Header Sticky Enable",
+		  "default":   true
+        },
+		{
+          "type": "header",
+          "content": "Transparent Header"
+        },
+		{
+          "type": "checkbox",
+          "id": "header_transparent",
+          "label": "Transparent Header Enable",
+		  "default":   false
+        },
+		{
+          "type": "header",
+          "content": "Logo"
+        },
+		{
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo"
+        },
+		{
+          "type": "paragraph",
+          "content": "Sticky Logo"
+        },
+		{
+          "type": "image_picker",
+          "id": "sticky_logo",
+          "label": "Logo For Transparent Header"
+        },
+        {
+          "type": "range",
+          "id": "logo_width",
+          "label": "Custom logo width",
+          "min": 50,
+          "max": 300,
+          "step": 5,
+          "unit": "px",
+          "default": 150
+        },
+		{
+          "type": "paragraph",
+          "content": "Retina Logo"
+        },
+		{
+          "type": "checkbox",
+          "id": "ratina_logo_enable",
+          "label": "Retina Logo Enable",
+		  "default": false
+        },
+		{
+          "type": "header",
+          "content": "Header Right Info"
+        },
+		{
+          "type": "checkbox",
+          "id": "header_right_info",
+          "label": "Header Right Info Enable",
+		  "default":   true
+        },
+		{
+          "type": "paragraph",
+          "content": "Search Bar"
+        },
+		{
+          "type": "checkbox",
+          "id": "search_bar_enable",
+          "label": "Search Bar Enable",
+		  "default":   true
+        },
+		{
+          "type": "paragraph",
+          "content": "Account Icon"
+        },
+		{
+          "type": "checkbox",
+          "id": "account_icon",
+          "label": "Account Icon Enable",
+		  "default":   true
+        },
+		{
+          "type": "paragraph",
+          "content": "Wishlist"
+        },
+		{
+          "type": "checkbox",
+          "id": "wishlist_enable",
+          "label": "Wishlist Enable",
+		  "default":   true
+        },
+		{
+          "type": "paragraph",
+          "content": "Mini Cart Enable"
+        },
+		{
+          "type": "checkbox",
+          "id": "mini_cart_enable",
+          "label": "Mini Cart Enable",
+		  "default":   true
+        },
+		{
+          "type": "header",
+          "content": "Mini Cart"
+        },
+		{
+          "type": "text",
+          "id": "mini_cart_title",
+          "label": "Mini Cart Header Title",
+		  "default": "Cart"
+		},
+		{
+          "type": "text",
+          "id": "mini_cart_total_title",
+          "label": "Total Title",
+		  "default": "Total:"
+		},
+		{
+          "type": "text",
+          "id": "view_cart_title",
+          "label": "View Cart Btn Title",
+		  "default": "View Cart"
+        },
+		{
+          "type": "text",
+          "id": "mini_cart_checkout_title",
+          "label": "Checkout Btn Title",
+		  "default": "Checkout"
+        }
+		
+	]
+  }
+{% endschema %}

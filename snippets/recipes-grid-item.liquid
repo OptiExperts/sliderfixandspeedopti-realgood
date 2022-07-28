@@ -1,0 +1,61 @@
+<div class="single-slider-post">
+
+  {% if article.image and section.settings.post_thumbnail_enable %}
+  <div class="single-slider-post__image mb-30">
+    <a href="{{ article.url }}">
+      {{ article | img_url: '348x314', crop: 'center' | img_tag: article.title }}
+    </a>
+  </div>
+  {% endif %}
+  
+  <div class="single-slider-post__content slider_item_1">
+    
+    {% if section.settings.post_title_enable %}
+    <h2 class="post-title"><a href="{{ article.url }}">{{ article.title }}</a></h2>
+    {% endif %}
+  </div>
+</div>
+
+
+
+{% comment %}
+<div class="article">
+
+  {% if article.image %}
+  <a class="article__featured-image" href="{{ article.url }}">
+    {{ article | img_url: '1024x1024' | img_tag: article.title }}
+  </a>
+
+
+  {% endif %}
+
+  <h2 class="h3"><a href="{{ article.url }}">{{ article.title }}</a></h2>
+  {% capture author %}<strong>{{ article.author }}</strong>{% endcapture %}
+  {% capture date %}<time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: format: 'month_day_year' }}</time>{% endcapture %}
+  <p>{{ 'blogs.article.author_on_date_html' | t: author: author, date: date }}</p>
+
+  <div class="rte">
+    {% if article.excerpt.size > 0 %}
+    {{ article.excerpt }}
+    {% else %}
+    <p>{{ article.content | strip_html | truncatewords: 50 }}</p>
+    {% endif %}
+  </div>
+
+  <ul class="inline-list">
+    {% if blog.comments_enabled? %}
+    <li>
+      <a href="{{ article.url }}#comments">
+        {{ 'blogs.comments.with_count' | t: count: article.comments_count }}
+      </a>
+    </li>
+    {% endif %}
+
+    {% include 'tags-article' %}
+  </ul>
+
+  <p><a href="{{ article.url }}">{{ 'blogs.article.read_more' | t }} &rarr;</a></p>
+
+</div>
+
+{% endcomment %}

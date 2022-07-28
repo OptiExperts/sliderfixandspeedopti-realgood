@@ -1,0 +1,328 @@
+<style type="text/css">
+    #ez-widget {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 13px;
+      color: #333;
+      width: 500px;
+      max-height: 330px;
+      height: 330px;
+      overflow: auto;
+    }
+
+    #ez-footer {
+      font-size: 12px;
+      line-height: 1.2em;
+      padding: 1em
+    }
+
+    .ez-welcome {
+      font-size: 1.4em;
+      margin-left: 1em;
+      margin-right: 1em;
+    }
+
+    .ez-success {
+      font-size: 1.4em;
+      margin-left: 1em;
+      margin-right: 1em;
+    }
+
+    .ez-blocked-user {
+      font-size: 1.4em;
+      text-align: center;
+      border: 1px dashed black;
+      padding: 10px;
+    }
+
+    #ez-form {
+      margin-top: 1em
+    }
+
+    .ez-el {
+        margin-bottom: 0.4em;
+        clear: both
+    }
+
+
+
+    .ez-lb-checkbox input[type="checkbox"] {
+        float: left
+    }
+
+    .ez-in .ez-text {
+      display: inline-block;
+      width: 90%;
+      width: 10em\9;
+      height: 1.4em;
+      padding: 0 0.4em;
+      font-size: 1em;
+      color: #555;
+      background-color: white;
+      border: 1px solid #CCC;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      border-radius: 3px;
+      -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+      -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+      -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+      -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+      -ms-transition: border linear 0.2s, box-shadow linear 0.2s;
+      -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+      transition: border linear 0.2s, box-shadow linear 0.2s
+    }
+
+  div#ez-widget {
+    width: 100%;
+}
+  p.subscription-subtitle {
+    font-size: 19px;
+}
+
+    .clear {
+        clear: both
+    }
+
+    .tiny .ez-groups .ez-in {
+        margin-left: 4%
+    }
+    .tiny {
+        font-size: 12px
+    }
+
+
+
+    .ez-error {
+        font-size: 1.2em;
+        padding: 1em;
+        color: red;
+        border: 1px dashed red;
+        display: block;
+    }
+  
+  
+  input#PhoneNumber {
+    background: none;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    padding: 10px 0;
+    width: 100%;
+    padding-right: 40px;
+    border-color: #000000;
+    outline: 0;
+    box-shadow: none;
+    border-radius: 0;
+    color: black;
+    padding: 10px 0;
+    width: 100%;
+    padding-right: 40px;
+    height: auto;
+        margin-bottom: 20px;
+}
+input#PhoneNumber::placeholder {
+    color: #333339;
+    font-size: 14px;
+   
+}
+
+button.ez-button,
+a.ez-button2 {
+    background-color: #333;
+    color: #fff!important;
+    text-transform: uppercase;
+    display: inline-block;
+    border-radius: 0;
+    border: 1px solid #333;
+    font-weight: 500;
+    letter-spacing: 1px;
+    font-size: 14px;
+    padding: 10px 45px;
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    border-color: #000000;
+}
+ 
+
+.subscribe-content .alert-success {
+    color: #155724;
+    background-color:#d4edda;
+    border-color: #c3e6cb;
+    font-size: 12px;
+    line-height: 15px;
+    margin-bottom: 0px;
+}
+
+.subscribe_area.area-2 > h2, 
+.subscribe-content > h2
+{
+    font-size: 24px;
+}
+  
+  #ez-widget .klaviyo-form div[data-testid=form-row]{display:block !important;}
+  #ez-widget .klaviyo-form button.needsclick.go3842965096{
+    display:block !important;
+    font-size:22px !important;
+    line-height:1 !important;
+    font-family:'Adrianna-Condensed' !important;
+    font-weight:600 !important;
+    color:#fff !important;
+    background:#DD7C01 !important;
+    letter-spacing:0.1em !important; 
+    padding:12px 24px !important;
+    filter:drop-shadow(0px 3px 2px rgba(0, 0, 0, 0.2)) !important;
+	text-transform:uppercase !important;
+    border-radius:0 !important;
+    width:100%;
+  }
+  #ez-widget .klaviyo-form button.needsclick.go3842965096:hover{opacity:0.85 !important;}
+  
+  @media (max-width:1299px){
+    #ez-widget .klaviyo-form button.needsclick.go3842965096{font-size:21px !important;}
+  }
+  @media (max-width:1199px){
+    #ez-widget .klaviyo-form button.needsclick.go3842965096{font-size:20px !important;}
+  }
+  @media (max-width:767px){
+    #ez-widget .klaviyo-form button.needsclick.go3842965096{
+      font-size:18px !important;
+      padding:9px 18px !important;
+      filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.2)) !important;
+    }
+  }
+  @media (max-width:479px){
+    #ez-widget .klaviyo-form button.needsclick.go3842965096{
+      font-size:16px !important;
+      padding:8px 12px !important;
+    }
+  }
+
+</style>
+
+            
+<div id="ez-widget" class="">
+  <div class="klaviyo-form-Yvzp5x"></div>
+  <!--- <p class="subscription-subtitle">Get coupons straight to your phone!</p>
+            <form
+            enctype="application/x-www-form-urlencoded"
+            action="https://hooks.zapier.com/hooks/catch/6910412/o1k7nj7"
+            id="ez-form"
+            method="post"
+                        target="subscribed" class="inline_eztext_2">
+
+            
+            <div class="success_message alert alert-success" style="display: none;"></div>
+
+    <div class="ez-el">
+
+        <div class="ez-in">
+            <input id="PhoneNumber" class="ez-text" name="phone" type="tel"
+                   value=""
+                   placeholder="Enter 10 digit phone number no spaces or special characters" />
+        </div>
+    </div>
+
+
+
+
+                                
+            <div class="ez-el clear">
+                <div class="ez-in">
+                  {%-comment-%}
+                    <button class="ez-button" type="submit">Join Now</button>
+                  {%-endcomment-%}
+                  	<button class="ez-button" type="submit">Join VIP Club</button>
+                </div>
+            </div>
+        </form> -->
+    
+</div>
+
+<script type="text/javascript">
+
+    /*
+        onsubmit="
+                                                                        window.open(
+                                                '',
+                                                'subscribed',
+                                                'width=530,' +
+                                                'height=370,' +
+                                                'scrollbars=no,resizable=yes,status=no,toolbar=0'
+                                        );
+                                                    "
+    */
+
+    jQuery(document).ready(function(){
+        //var form= jQuery('.inline_eztext_2');
+        var ajaxing = false;
+
+       jQuery('.ez-button').click(function(e){
+            //jQuery( this ).closest( "form" ).submit();
+            var form = jQuery( this ).closest( "form" );
+            var phoneNumber = jQuery('.ez-text', form).val();
+
+               
+               var phone_pattern = /^\d{10}$/; 
+               
+               if(ajaxing)
+               {
+                return false;
+               }
+               else
+               {
+                ajaxing = true;
+               }
+
+               console.log(phoneNumber);
+
+
+               if(!phone_pattern.test( phoneNumber ))
+               {
+                    jQuery('.success_message', form).removeClass('alert-success');
+                    jQuery('.success_message', form).addClass('alert-warning');
+                    jQuery('.success_message', form).html('Please enter the valid number!');
+                    jQuery('.success_message', form).fadeIn(200);
+
+                    ajaxing = false;
+
+                    return false;
+               }
+
+
+               var req = jQuery.ajax({
+                   url: form.attr('action'),
+                   type: 'POST',
+                   data: form.serialize(),
+                   success: function(data){
+                    console.log(data);
+                    setTimeout(function(){
+                        jQuery('.success_message', form).html('Thank you! Your privacy is always protected and your information will not be shared.');
+
+                        jQuery('.success_message', form).removeClass('alert-warning');
+                        jQuery('.success_message', form).addClass('alert-success');
+                        jQuery('.success_message', form).fadeIn(200,function(){
+                                jQuery('.ez-text', form).val('');
+                        });
+                        ajaxing = false;
+                    }, 500); 
+                  },
+                  error: function(errData){
+                      //console.log("Cannot get data "+errData);
+                      setTimeout(function(){
+                            jQuery('.success_message', form).html('Thank you! Msg&data rates may apply. Your privacy is always protected and your information will not be shared.');
+
+                            jQuery('.success_message', form).removeClass('alert-warning');
+                            jQuery('.success_message', form).addClass('alert-success');
+                            jQuery('.success_message', form).fadeIn(200,function(){
+                                    jQuery('.ez-text', form).val('');
+                            });
+                            ajaxing = false;
+                        }, 500); 
+                  }
+
+               });
+
+            return false;     
+       });
+
+    });
+</script>

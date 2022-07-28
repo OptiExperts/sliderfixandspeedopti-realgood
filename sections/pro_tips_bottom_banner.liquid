@@ -1,0 +1,163 @@
+{% if section.settings.section_enable %}
+<div class="blog_banner_with_text" id="section-{{ section.id }}">
+  {% if section.settings.banner_link != blank %}
+  <a class="banner_link" href="{{ section.settings.banner_link }}">
+  {% endif %}
+    <div class="image">
+      <img class="bnrImg" src="{% if section.settings.banner_img != blank %} {{ section.settings.banner_img | img_url: 'master' }}{% else %} https://via.placeholder.com/922x329 {% endif %}" class="lazyload img-fluid" alt="">
+      <img class="bnrImg mobile" src="{% if section.settings.banner_img_mob != blank %} {{ section.settings.banner_img_mob | img_url: 'master' }} {% endif %}" class="lazyload img-fluid" alt="">
+    </div>
+    
+    <div class="heading">
+      <h1>
+        {{ section.settings.banner_heading }}
+        <img class="icon" src="{% if section.settings.heading_icon != blank %} {{ section.settings.heading_icon | img_url: 'master' }} {% endif %}" class="lazyload img-fluid" alt="">
+      </h1>
+    </div>
+    
+  {% if section.settings.banner_link != blank %}  
+  </a>
+  {% endif %}
+</div>
+{% endif %}
+
+<style>
+  .mobile{display:none !important}
+#section-{{ section.id }}{position:relative;width:100%;display:block}
+#section-{{ section.id }} .image{/*width:31.5%*/;width:68.5%}
+#section-{{ section.id }} img{width:100%;max-width:100%;height:auto;display:block}
+#section-{{ section.id }} .heading{
+  position:absolute;
+  /*width:68.5%;*/
+  width:31.5%;
+  height:100%;
+  top:0;
+  right:0;
+  /*padding:15px 5%;*/
+  padding:15px;
+  /*background:rgba(175,71,26, 0.75);*/
+  /*background:#844949;*/
+  background:#551B15;
+  box-sizing:border-box;
+  text-align:center
+}
+#section-{{ section.id }} .heading h1{
+  color:#fff;
+  font-size:49px;
+  line-height:1.15;
+  font-weight:bold;
+  position:relative;
+  top:50%;
+  transform:translateY(-50%);
+  /*text-transform:uppercase;*/
+  margin:auto
+}
+  #section-{{ section.id }} .heading .icon{
+    width:auto;
+   	max-width:100%;
+    height:auto;
+    display:block;
+    /*padding-top:10px;*/
+    margin:0 auto;
+    clear:both
+  }
+  #section-{{ section.id }} .banner_link{display:block}
+  #section-{{ section.id }} .banner_link:hover{opacity:0.8}
+  
+  @media screen and (min-width:1799px){
+    #section-{{ section.id }} .heading h1{font-size:66px}
+  }
+  
+  @media screen and (min-width:1599px){
+    #section-{{ section.id }} .heading h1{font-size:60px}
+  }
+  
+  @media screen and (min-width:1399px){
+    #section-{{ section.id }} .heading h1{font-size:56px}
+  }
+  
+  @media screen and (max-width:1139px){
+    #section-{{ section.id }} .heading h1{font-size:42px}
+  }
+  @media screen and (max-width:979px){
+    #section-{{ section.id }} .heading{/*padding:15px 25px*/}
+    #section-{{ section.id }} .heading h1{font-size:36px}
+    #section-pro_tips_bottom_banner .heading .icon{/*width:50px*/}
+  }
+  @media screen and (max-width:767px){
+    #section-{{ section.id }} .heading{/*padding:10px 25px*/padding:10px}
+    #section-{{ section.id }} .heading h1{font-size:24px}
+    #section-{{ section.id }} .image{/*width:35%*/width:65%}
+    #section-{{ section.id }} .heading{width:35%;/*width:65%;*//*background:#FCC377*/}
+    /*#section-{{ section.id }} .image .bnrImg{display:none}
+    #section-{{ section.id }} .image .bnrImg.mobile{display:block !important}*/
+    #section-pro_tips_bottom_banner .heading .icon{/*width:40px*/}
+  }
+  @media screen and (max-width:639px){
+    #section-{{ section.id }} .heading h1{font-size:20px}
+    #section-pro_tips_bottom_banner .heading .icon{/*width:30px*/}
+    
+  }
+  @media screen and (max-width:479px){
+    #section-{{ section.id }} .heading{/*padding:10px 15px*/}
+    #section-{{ section.id }} .heading h1{font-size:18px}
+    #section-pro_tips_bottom_banner .heading .icon{/*width:28px*/}
+  }
+  @media screen and (max-width:374px){
+   	#section-{{ section.id }} .heading{/*padding:5px 10px*/padding:5px}
+    #section-{{ section.id }} .heading h1{font-size:15px}
+    #section-pro_tips_bottom_banner .heading .icon{/*width:22px*/}
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "Blog Banner With Heading",
+    "settings": [
+		{
+		  "type": "header",
+          "content": "Section Enable"
+        },
+		{
+          "type": "checkbox",
+          "id": "section_enable",
+          "label": "Section Enable",  
+          "default": true
+      	},
+		{
+          "type": "header",
+          "content": "Banner"
+        },
+        {
+          "type": "image_picker",
+          "id": "banner_img",
+          "label": "Image",
+          "info": "Recommended Size: 1920 x 600 px"
+        },
+		{	
+          "type": "image_picker",
+          "id": "banner_img_mob",
+          "label": "Image"
+        },
+		{	
+          "type": "image_picker",
+          "id": "heading_icon",
+          "label": "Icon under Heading"
+        },
+		{
+          "type": "text",
+          "id": "banner_heading",
+          "label": "Heading",
+          "default": "Live Up <br> Real Good"
+        },
+		{	
+          "type": "url",
+          "id": "banner_link",
+          "label": "Banner Link"
+        }
+	]
+  }
+{% endschema %}
+
+{% javascript %}
+{% endjavascript %}

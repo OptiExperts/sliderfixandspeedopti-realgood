@@ -1,0 +1,308 @@
+<div class="rgf_product_blocks product-4cols" id="section-{{ section.id }}">
+  <div class="container wide">
+    {%- if section.settings.pl4_section_text != '' -%}
+    <div class="heading">
+      <h1>{{ section.settings.pl4_section_text }}</h1>
+    </div>
+    {%- endif -%}
+	<div class="productWrap">
+      {%- for block in section.blocks -%}
+          {% assign count = 0 %}
+          <div id="block-{{ block.id }}" class="product_block product_block_{{forloop.index0}}">
+            <div class="product--image">
+              {%- if block.settings.product_image -%}
+              	{%- if block.settings.section_block_link != '' -%}
+              	<a href="{{ block.settings.section_block_link }}">
+              	{%- endif -%}
+                <img src="{{ block.settings.product_image | img_url: 'master' }}" alt="{{ block.settings.section_block_text }}" class="lazyload">
+                {%- if block.settings.section_block_link != '' -%}
+              	</a>
+              	{%- endif -%}
+              {% endif %}
+            </div>
+            <div class="text">
+              {%- if block.settings.section_block_text != '' -%}
+              <h2>
+                {%- if block.settings.section_block_link != '' -%}
+              	<a href="{{ block.settings.section_block_link }}">
+              	{%- endif -%}
+              	{{ block.settings.section_block_text }}
+                {%- if block.settings.section_block_link != '' -%}
+              	</a>
+              	{%- endif -%}
+              </h2>
+              {%- endif -%}
+              <a href="{{ block.settings.section_block_link }}" class="lmBtn">Learn More</a>
+            </div>
+          </div>
+          {% assign count = count | plus: 1 %}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>	
+<style>
+  
+  #shopify-section-{{ section.id }}
+  {
+  	background:#fff;
+    /*max-width: 1900px;*/
+    display:block;
+    margin:0px auto;
+    padding:60px 0 120px;
+  }	
+  #shopify-section-{{ section.id }} .heading{
+  	text-align:center;
+  }
+  #shopify-section-{{ section.id }} .heading h1{
+  	font-size:60px;
+    line-height:1.1;
+    color:#000;
+    font-weight:900;
+/*     font-family:"Work Sans",sans-serif; */
+    font-family:"Montserrat",sans-serif;
+  }
+  #section-{{ section.id }} .productWrap 
+  {
+  	/*background:#C6C6C6;*/
+  	display:-ms-flex;
+    display:-webkit-flex;
+    display:flex;
+    position:relative;
+    flex-direction: row;
+    flex-wrap:wrap;
+/*     padding-top:120px; */
+    padding-top:45px;
+  }
+
+  
+  #section-{{ section.id }}.rgf_product_blocks .product_block 
+  {
+    width:25%;
+    position:relative;
+    text-align:center;
+  }
+  #section-{{ section.id }}.rgf_product_blocks .product_block .product--image{
+  	min-height:235px;
+  }
+
+  #section-{{ section.id }}.rgf_product_blocks .product_block  h2
+  {
+/*     font-size:40px; */
+    font-size:36px;
+    color:#000;
+/*     font-family:"LocalBreweryFour-Regular"; */
+/*     font-family:"SourceSerifPro-Bold"; */
+    font-family:"Montserrat";
+/*     font-weight:400; */
+    font-weight:700;
+    margin-bottom:30px;
+  }
+
+
+  #section-{{ section.id }}.rgf_product_blocks .lmBtn{
+/*     font-family:"SourceSerifPro-Bold"; */
+    font-family:"Montserrat";
+/*   	font-size:26px; */
+    font-size:24px;
+/*     font-weight:900; */
+    font-weight:700;
+    color:#fff;
+/*     background-image:url({{ 'button-bg-1.png' | asset_url }}) !important; */
+    background-image:url({{ 'button-montserrat-bg.png' | asset_url }}) !important;
+/*     background-size:100%; */
+    background-size:100% 100%;
+    background-position:center;
+    background-repeat:no-repeat !important;
+    padding:12px 25px 18px;
+/*     text-shadow:1px 3px 0px rgba(0,0,0,0.34); */
+  }
+  #section-{{ section.id }}.rgf_product_blocks .lmBtn:hover{
+  	opacity:0.95;
+    color:#000;
+  }
+  #section-{{ section.id }} .product--image a:hover img{
+  	opacity:0.8;
+  }
+  
+  
+  @media (min-width:1515px){
+    #section-{{ section.id }} .container.wide{max-width:1485px;}
+    
+  }
+  
+  @media (max-width:1399px){
+    #section-{{ section.id }} .heading h1{
+      font-size:48px;
+    }
+    #section-{{ section.id }} .productWrap{
+/*       padding-top:80px; */
+    }
+    #section-{{ section.id }}.rgf_product_blocks .product_block h2{
+      font-size:32px;
+      margin-bottom:25px;
+    }
+    #section-{{ section.id }}.rgf_product_blocks .product_block .product--image{
+      min-height:220px;
+    }
+    #section-{{ section.id }}.rgf_product_blocks .lmBtn{
+      font-size:22px;
+      padding:10px 25px 16px;
+      
+    }
+    #shopify-section-{{ section.id }}{
+      padding:60px 0 100px;
+    }
+    
+  }
+  @media (max-width:1279px){
+    #section-{{ section.id }} .heading h1{
+      font-size:42px;
+    }
+    #section-{{ section.id }} .productWrap{
+/*       padding-top:60px; */
+    }
+    #section-{{ section.id }}.rgf_product_blocks .product_block{
+      padding:0px 20px;
+    }
+    #section-{{ section.id }}.rgf_product_blocks .product_block .product--image{
+      min-height:215px;
+    }
+    #section-{{ section.id }}.rgf_product_blocks .product_block h2{
+      font-size:30px;
+      margin-bottom:20px;
+    }
+    #section-{{ section.id }}.rgf_product_blocks .lmBtn{
+      font-size:18px;
+      padding:8px 25px 15px;
+      
+    }
+    
+    
+  }
+  @media (max-width:1139px){
+  	#section-{{ section.id }} .heading h1{
+      font-size:36px;
+    }
+  }
+  @media (max-width:991px){
+    #section-{{ section.id }} .heading h1{
+      font-size:32px;
+    }
+    #section-{{ section.id }}.rgf_product_blocks .product_block{
+      width:50%;
+      padding-bottom:45px;
+    }
+    #section-{{ section.id }}.rgf_product_blocks .product_block .product--image{
+      min-height:190px;
+    }
+    #section-{{ section.id }}.rgf_product_blocks .product_block h2{
+      font-size:26px;
+      margin-bottom:15px;
+      margin-top:10px;
+    }
+    #shopify-section-{{ section.id }}{
+      padding:60px 0 45px;
+    }
+    #section-{{ section.id }} .productWrap{
+/*       padding-top:45px; */
+    }
+    
+    
+    .template-index #shopify-section-{{ section.id }}{
+      display:none;
+    }
+    
+  }
+  @media (max-width:767px){
+    #section-{{ section.id }} .heading h1{
+      font-size:30px;
+    }
+  }
+  @media (max-width:639px){
+    #section-{{ section.id }} .heading h1{
+      font-size:28px;
+    }
+    #section-{{ section.id }}.rgf_product_blocks .product_block .product--image{
+      min-height:182px;
+    }
+    #section-{{ section.id }}.rgf_product_blocks .product_block h2{
+      font-size:24px;
+      margin-bottom:12px;
+    }
+    
+  }
+  @media (max-width:479px){
+    #section-{{ section.id }}.rgf_product_blocks .product_block{
+      width:100%;
+    }
+    #section-{{ section.id }}.rgf_product_blocks .product_block .product--image{
+      min-height:unset;
+    }
+    #section-{{ section.id }} .heading h1{
+      font-size:24px;
+    }
+    #section-{{ section.id }}.rgf_product_blocks .product_block h2{
+      font-size:22px;
+      margin-bottom:10px;
+    }
+    #section-{{ section.id }} .productWrap{
+      padding-top:35px;
+    }
+    #shopify-section-{{ section.id }}{
+      padding:50px 0 30px;
+    }
+    
+  }
+  
+  
+  
+
+</style>
+{% schema %}
+{
+    "name": "Product Four Col",
+    "settings": [
+    	{
+         "type": "header",
+         "content": "Product Block Settings"
+      	},
+		{
+          "type": "text",
+          "id": "pl4_section_text",
+          "label": "Section Title",
+		  "default": "Real Food. Feel Good."
+        }
+    ],
+    "blocks":[
+    	{
+          "type": "section_block",
+          "name": "Section Block",
+          "limit": 4,
+              "settings": 
+              [
+                {
+                  "type": "image_picker",
+                  "id": "product_image",
+                  "label": "Product Image"
+                },
+                {
+                  "type": "text",
+                  "id": "section_block_text",
+                  "label": "Product Title"
+                },
+                {
+                  "type": "url",
+                  "id": "section_block_link",
+                  "label": "Product Link"
+                }
+              ]
+   		}
+  	],
+    "presets": [
+	    {
+	        "category": "3. collections",
+	        "name": "Product Four Col"
+	    }
+    ]
+}
+{% endschema %}

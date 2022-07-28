@@ -1,0 +1,111 @@
+<div class="single-slider-post">
+
+  {% if article.image and section.settings.post_thumbnail_enable %}
+  <div class="single-slider-post__image mb-30">
+    <a href="{{ article.url }}">
+      
+      {% if section.settings.blog_layout_grid %}
+      {% comment %} {{ article | img_url: '370x200', crop: 'center' | img_tag: article.title }} {% endcomment %}
+      {{ article | img_url: '348x314', crop: 'center' | img_tag: article.title }}
+      {% else%}
+      {{ article | img_url: '1170x500', crop: 'center' | img_tag: article.title }}
+      {% endif %}
+    </a>
+  </div>
+  {% endif %}
+  
+  <div class="single-slider-post__content">
+    
+     {% if section.settings.post_author_enable or section.settings.post_publish_time_enable or section.settings.post_comment_enbale %}
+    <div class="post-info d-flex flex-wrap align-items-center mb-10">
+      
+      {% if section.settings.post_author_enable %}
+      <div class="post-user  pr-30">
+        <i class="ion-android-person"></i><p><span>{{ section.settings.author_title }}</span> {{ article.author }}</p>
+      </div>
+      {% endif %}
+      
+    
+      {% if section.settings.post_publish_time_enable %}
+      <div class="post-date mb-0 pr-30">
+        <i class="ion-android-calendar"></i>
+        <p><time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: format: 'month_day_year' }}</time></p>
+      </div>
+      {% endif %}
+      
+      {% if blog.comments_enabled? and section.settings.post_comment_enbale %}
+      <div class="post-comment pr-30">
+        <i class="ion-ios-chatbubble-outline"></i>
+        <a href="{{ article.url }}#comments">
+          {{ 'blogs.comments.with_count' | t: count: article.comments_count }}
+        </a>
+      </div>
+      {% endif %}
+    </div>
+    
+    {% endif %}
+    
+    {% if section.settings.post_title_enable %}
+    <h2 class="post-title"><a href="{{ article.url }}">{{ article.title }}</a></h2>
+    {% endif %}
+
+    {% assign contentlen = section.settings.post_content_len %}
+    {% if section.settings.post_content_enbale %}
+    {% if article.excerpt.size > 0 %}
+    {{ article.excerpt }}
+    {% else %}
+    <p class="post-excerpt">{{ article.content | strip_html | truncatewords: contentlen }}</p>
+    {% endif %}
+    {% endif %}
+    
+     {% if section.settings.post_readmore_btn_enbale %}
+    <a class="blog-readmore-btn" href="{{ article.url }}">{{ section.settings.read_more_button | default: 'read more' }}</a>
+    {% endif %}
+    
+
+  </div>
+</div>
+
+
+
+{% comment %}
+<div class="article">
+
+  {% if article.image %}
+  <a class="article__featured-image" href="{{ article.url }}">
+    {{ article | img_url: '1024x1024' | img_tag: article.title }}
+  </a>
+
+
+  {% endif %}
+
+  <h2 class="h3"><a href="{{ article.url }}">{{ article.title }}</a></h2>
+  {% capture author %}<strong>{{ article.author }}</strong>{% endcapture %}
+  {% capture date %}<time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: format: 'month_day_year' }}</time>{% endcapture %}
+  <p>{{ 'blogs.article.author_on_date_html' | t: author: author, date: date }}</p>
+
+  <div class="rte">
+    {% if article.excerpt.size > 0 %}
+    {{ article.excerpt }}
+    {% else %}
+    <p>{{ article.content | strip_html | truncatewords: 50 }}</p>
+    {% endif %}
+  </div>
+
+  <ul class="inline-list">
+    {% if blog.comments_enabled? %}
+    <li>
+      <a href="{{ article.url }}#comments">
+        {{ 'blogs.comments.with_count' | t: count: article.comments_count }}
+      </a>
+    </li>
+    {% endif %}
+
+    {% include 'tags-article' %}
+  </ul>
+
+  <p><a href="{{ article.url }}">{{ 'blogs.article.read_more' | t }} &rarr;</a></p>
+
+</div>
+
+{% endcomment %}

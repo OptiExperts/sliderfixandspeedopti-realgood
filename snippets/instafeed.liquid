@@ -1,0 +1,50 @@
+<div class="instagram-feed" id="section-{{ section.id }}" data-section-type="instafeed-section" data-section-id="{{ section.id }}">
+  
+  <div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <!--=======  variation image instagram area  =======-->
+      {% if section.settings.section_title != blank %}
+      <p class="shop-product__variation-image__title mb-50">{{ section.settings.section_title }}</p>
+      {% endif %}
+
+      <div class="shop-product__variation-image">
+          <div id="instafeed"></div>
+
+      </div>
+      <!--=======  End of variation image instagram area  =======-->
+    </div>
+  </div>
+  </div>
+
+</div>
+
+<script>
+  (function ($) {
+    "use strict";
+
+    jQuery(document).ready(function(){
+      var activeId = $("#instafeed"),
+          myTemplate = '<div class="single-image"><a href="\{\{link\}\}" target="_blank" id="\{\{id\}\}"><img src="\{\{image\}\}"> <span class="image-meta">{{ section.settings.newsfeed_title }}</span> </a></div>';
+          if (activeId.length) {
+            var userID = activeId.attr('data-userid'),
+                accessTokenID = activeId.attr('data-accesstoken'),
+
+                userFeed = new Instafeed({
+                  get: 'user',
+                  userId: '{{ section.settings.instafeed_user_id }}',
+                  accessToken: '{{ section.settings.instafeed_access_token }}',
+                  resolution: '{{ section.settings.image_resolution }}',
+                  template: myTemplate,
+                  sortBy: 'least-recent',
+                  limit: {{ section.settings.instafeed_limit }},
+                  links: false
+                });
+            userFeed.run();
+          }
+
+
+    });
+
+  })(jQuery); 
+</script>

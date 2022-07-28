@@ -1,0 +1,160 @@
+{% assign itemStyle = '' %}{% if cart.item_count == 0 %}{% assign itemStyle = ' style="display:none;"' %}{% endif %}
+{% assign itemEmpty = '' %}{% if cart.item_count == 0 %}{% assign itemEmpty = ' style="display:block;"' %}{% endif %}
+{% assign itemCount = '' %}{% if cart.item_count == 1 %}{% assign itemCount = ' style="display:block;"' %}{% endif %}
+{% assign itemCount2 = '' %}{% if cart.item_count > 1 %}{% assign itemCount2 = ' style="display:block;"' %}{% endif %}
+
+
+{%- assign item_count = cart.item_count -%}
+
+<div class="cart-overlay" id="cart-overlay">
+  <div class="cart-overlay-close inactive"></div>
+  <div class="cart-overlay-content">
+    <!--=======  close icon  =======-->
+
+    <span class="close-icon" id="cart-close-icon">
+      <a href="javascript:void(0)">
+        <i class="ion-android-close"></i>
+      </a>
+    </span>
+
+
+    <div class="offcanvas-cart-content-container">
+      
+      
+      <h3 class="cart-title">{{ section.settings.mini_cart_title | default: 'Cart' }}</h3>
+      
+      
+
+      <div class="single-cart-product empty cartemptyclass" {{ itemEmpty }}>
+        <h3>{{ 'cart.general.empty' | t }}</h3>
+      </div>
+
+      <div class="cart-product-wrapper cartitemclass" {{ itemStyle  }}>
+        <div class="order-value-booster-side-cart"></div>
+        <div class="cart-product-container  ps-scroll single-cart-item-loop">
+          <!--=======  single cart product  =======-->
+
+          {% for item in cart.items %}
+          
+          <div class="single-cart-product cart_rows" idss="{{item.id}}">
+            <span class="cart-close-icon product-remove">
+<!--               <a href="javascript:void(0);" onclick="Shopify.removeItem({ { item.variant.id }})"> -->
+                <i class="ti-close"></i>
+<!--               </a> -->
+            </span>
+            <div class="image">
+              <a href="{{ item.url }}">
+                <img src="{{ item | img_url: 'compact',crop: 'bottom' }}" class="img-fluid" alt=""> 
+              </a>
+            </div>
+            <div class="content">
+              <h5><a href="{{ item.url }}">{{ item.title }}
+                <span class="bold_ro_desc" data-product-id="{{item.id}}-{{ forloop.index0 }}"></span>
+<span class="bold_load_cart_item_properties"></span>
+<span class='booster-cart-item-success-notes' data-key='{{item.key}}'></span><span class='booster-cart-item-upsell-notes' data-key='{{item.key}}'></span></a></h5>
+              <p><span class="cart-count"><span class="qtyyyyyy">{{ item.quantity }}</span> x </span> <span class="discounted-price"><span class="Bold-theme-hook-DO-NOT-DELETE-comment-bold_cart_item_price" style="display:none !important;"></span>{{ item.price | money }}</span></p>
+              <td class="product-quantity pro-quantity">
+                    <div class="pro-qty d-inline-block mx-0 product-quantity">
+                      <input type="text" value="{{ item.quantity }}" name="updates[]">
+                    </div>
+                  </td>
+            </div>
+          </div>
+          
+		{% endfor %}
+          <!--=======  End of single cart product  =======-->
+        </div>
+
+        <!--=======  subtotal calculation  =======-->
+<!--    Shipping Progress Bar Code          -->
+       
+        
+            
+        <p class="cart-subtotal">
+          <span class="subtotal-title"> {{ section.settings.mini_cart_total_title | default: 'Total:' }}</span>
+          <span class="subtotalss subtotal-amount subtotal-amount shopping-cart__total"><span class="wh-original-cart-total"><span class='wh-original-price'><span class="Bold-theme-hook-DO-NOT-DELETE-comment-bold_cart_total" style="display:none !important;"></span>{{ cart.total_price | money }}</span></span><span class="wh-cart-total"></span><div class="additional-notes"><span class="wh-minimums-note"></span><span class="wh-extra-note"></span></div></span>
+        </p>
+
+        <!--=======  End of subtotal calculation  =======-->
+
+        <!--=======  cart buttons  =======-->
+        
+        <!-- Route Code Edited 05/07/2020 -->
+        <div class="route-div" desktop-align="center" style="margin-bottom: -14px;"></div>
+		<!-- End Route Code -->
+
+        <div class="cart-buttons">
+          <a href="/cart">{{ section.settings.view_cart_title }}</a>
+          <a href="/checkout">{{ section.settings.mini_cart_checkout_title }}</a>
+        </div>
+
+		<a href="#" class="continue_shopping cart-close"><span>&laquo;</span>Continue Shopping</a>
+        
+      </div>
+      
+    </div>
+
+  </div>
+</div>
+
+
+
+
+{% comment %}
+
+{% assign itemStyle = '' %}{% if cart.item_count == 0 %}{% assign itemStyle = ' style="display:none;"' %}{% endif %}
+{% assign itemEmpty = '' %}{% if cart.item_count == 0 %}{% assign itemEmpty = ' style="display:block;"' %}{% endif %}
+{% assign itemCount = '' %}{% if cart.item_count == 1 %}{% assign itemCount = ' style="display:block;"' %}{% endif %}
+{% assign itemCount2 = '' %}{% if cart.item_count > 1 %}{% assign itemCount2 = ' style="display:block;"' %}{% endif %}
+
+
+{%- assign item_count = cart.item_count -%}
+
+<span class="item-single-item-count" {{ itemCount }}>{{ section.settings.cart_item_title }}</span> 
+<span class="item-multiple-item-count" {{ itemCount2 }}>{{ section.settings.cart_items_title }}</span>
+<span class="cart-empty-title" {{ itemEmpty }}>{{ section.settings.cart_items_title }}</span>
+|
+
+
+
+<ul>  
+  <li class="cart-empty-title" {{ itemEmpty }}>
+    <h3>{{ 'cart.general.empty' | t }}</h3>
+  </li>
+  <li class="single-product-cart single-cart-item-loop" {{ itemStyle  }}>
+    {% for item in cart.items %}
+    <div class="cart-single-item">
+      <div class="cart-img">
+        <a href="{{ item.url }}"><img src="{{ item | img_url: 'small' }}" alt=""></a>
+      </div>
+      <div class="cart-title">
+        <h3><a href="{{ item.url }}">{{ item.title }}
+          <span class="bold_ro_desc" data-product-id="{{item.id}}-{{ forloop.index0 }}"></span>
+<span class="bold_load_cart_item_properties"></span>
+<span class='booster-cart-item-success-notes' data-key='{{item.key}}'></span><span class='booster-cart-item-upsell-notes' data-key='{{item.key}}'></span></a></h3>
+        <span>{{ section.settings.quantity_itltle }}  {{ item.quantity }} x <span class="Bold-theme-hook-DO-NOT-DELETE-comment-bold_cart_item_price" style="display:none !important;"></span>{{ item.price | money }}</span>
+      </div>
+      <div class="cart-delete">
+        <a href="javascript:void(0);" onclick="Shopify.removeItem({{ item.variant.id }})">Remove</a>
+      </div>
+    </div>
+    {% endfor %}
+  </li>
+  <li class="single-product-cart mini-cart-action" {{ itemStyle  }}>
+    <div class="cart-total">
+      <h4>{{ 'cart.label.total' | t }}: <span class="shopping-cart__total"><span class="wh-original-cart-total"><span class='wh-original-price'><span class="Bold-theme-hook-DO-NOT-DELETE-comment-bold_cart_total" style="display:none !important;"></span>{{ cart.total_price | money }}</span></span><span class="wh-cart-total"></span><div class="additional-notes"><span class="wh-minimums-note"></span><span class="wh-extra-note"></span></div></span></h4>
+    </div>
+  </li>
+  <li class="single-product-cart mini-cart-action" {{ itemStyle  }}>
+    <div class="cart-checkout-btn">
+      <a class="btn-hover cart-btn-style" href="/cart">{{ section.settings.view_cart_title }}</a>
+      <a class="no-mrg btn-hover cart-btn-style" href="/checkout">{{ section.settings.checkout_title }}</a>
+    </div>
+  </li>
+</ul>
+
+{% endcomment %}
+
+
+
+

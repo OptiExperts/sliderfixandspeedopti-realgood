@@ -1,0 +1,387 @@
+{% if section.settings.ourMnR_enable == true %}
+<div class="mission--n--review" id="section-{{ section.id }}">
+  <div class="container wide">
+    <div class="row">
+      <div class="col-lg-5 heading">
+        <div class="inner">
+          {%- if section.settings.ourMnR_top_head != '' -%}
+          <h4 class="top--head">{{ section.settings.ourMnR_top_head }}</h4>
+          {%- endif -%}
+          {%- if section.settings.ourMnR_main_head != '' -%}
+          <h2 class="main--head">{{ section.settings.ourMnR_main_head }}</h2>
+          {%- endif -%}
+          {%- if section.settings.ourMnR_btn_label != '' -%}
+          <div class="btns">
+            <a href="{{ section.settings.ourMnR_btn_link }}" {% if section.settings.ourMnR_new == true %}target="_blank"{%- endif -%}>{{ section.settings.ourMnR_btn_label }}</a>
+          </div>
+          {%- endif -%}
+          
+        </div><!--/heading-->
+      </div>
+
+      <div class="col-lg-7 reviews">
+          <div class="rvw--main">
+          
+            {%- for block in section.blocks -%}
+              {% assign count = 0 %}
+              <div id="block-{{ block.id }}" class="rvw--item rvw--item-{{forloop.index0}}">
+				<div class="row inn">
+                  <div class="col-xs-3 col-sm-3 left--sec">
+                    <div class="auth--info">
+                      {%- if block.settings.rvw_auth_thumb != '' -%}
+                      <span class="auth--thumb"><img src="{{ block.settings.rvw_auth_thumb | img_url: '100x100' }}" alt=""></span>
+                      {% endif %}
+                      {%- if block.settings.rvw_auth_name != '' -%}<span class="auth--name">{{ block.settings.rvw_auth_name }}</span>{% endif %}
+                      {%- if block.settings.rvw_auth_pos != '' -%}<span class="auth--pos">{{ block.settings.rvw_auth_pos }}</span>{% endif %}
+                      <div class="text">@{{ block.settings.rvw_content }}</div>
+                    </div>
+                  </div>
+                  <div class="col-xs-9 col-sm-9 right--sec">
+                    <div class="inner">
+                      {%- if block.settings.rvw_heading != '' -%}<h5 class="title">{{ block.settings.rvw_heading }}</h5>{% endif %}
+                      
+                    </div>
+                  </div>
+                </div>
+              </div><!--gridItem-->
+              {% assign count = count | plus: 1 %}
+            {%- endfor -%}
+            
+          </div><!--/rvw--main-->          
+      </div><!--/reviews-->
+      
+    </div><!--/row-->  
+  </div><!--/container wide-->
+</div>
+{% endif %}
+
+<style>
+  
+  #section-{{ section.id }}{
+/*   	background:#FBCA40; */
+    background:#FFF;
+    display:block;
+    margin:0px auto;
+    padding:70px 0;
+  }
+  #section-{{ section.id }} .container > .row{align-items:center;}
+  #section-{{ section.id }} .heading{text-align:center;}
+  #section-{{ section.id }} .heading .top--head{
+  	font-family:'Adrianna';
+    font-weight:800;
+    font-size:30px;
+    line-height:1.15;
+    color:#000;
+    margin-bottom:20px;
+  }
+  #section-{{ section.id }} .heading .main--head{
+  	font-family:'Adrianna';
+    font-weight:800;
+    font-size:46px;
+    line-height:1.25;
+    color:#000;
+    margin-bottom:15px;
+  }
+  #section-{{ section.id }} .heading .btns{text-align:center;}
+  #section-{{ section.id }} .heading .btns a{
+  	display:inline-block;
+    font-size:22px;
+    line-height:1;
+    font-family:'Adrianna';
+    font-weight:600;
+    color:#fff;
+    background:#DD7C01;
+    padding:12px 45px;
+  }
+  #section-{{ section.id }} .heading .btns a:hover{color:#000;}
+  .rvw--main{
+/*   	padding-right:15px; */
+  }
+  .rvw--main .rvw--item{
+    border-radius:4px;
+  }
+  .rvw--main .rvw--item .left--sec,
+  .rvw--main .rvw--item .right--sec{
+/*   	display:inline-block; */
+  }
+  .rvw--main .rvw--item .left--sec{
+/*   	background:#DD3629; */
+    color:#fff;
+/*     padding:20px; */
+    padding:0;
+    text-align:center;
+  }
+  .rvw--main .rvw--item .right--sec{
+/*   	background:#d5d5d4; */
+/*     padding:30px; */
+    color:#000;
+/*     box-shadow:10px 20px 0 #9b9b9b; */
+    padding:0 20px 20px 0;
+  }
+  .rvw--main .rvw--item .right--sec .inner{
+    background:#d5d5d4;
+  	box-shadow:20px 20px 0 #9b9b9b;
+/*     padding:30px; */
+    padding:30px 20px;
+    border-radius:30px;
+  }
+  .rvw--main .rvw--item .auth--info span{
+  	display:block;
+    word-wrap:break-word;
+    font-family:'Adrianna';
+    line-height:1.15;
+    font-weight:400;
+  }
+  .rvw--main .rvw--item .auth--thumb{
+  	overflow:hidden;
+    border-radius:100%;
+/*     max-width:100px; */
+    max-width:150px;
+    margin:0 auto 10px;
+    background-image:url('https://cdn.shopify.com/s/files/1/0233/7590/4845/files/Layer_1.png?v=1652793502');
+    background-repeat:no-repeat;
+    background-size:100%;
+    background-position:center;
+  }
+  .rvw--main .rvw--item .auth--thumb img{
+  	width:100%;
+    padding:13px;
+    border-radius:100%;
+    overflow:hidden;
+  }
+  .rvw--main .rvw--item .auth--name{
+  	margin-bottom:8px;
+    font-size:16px;
+  }
+/*   .rvw--main .rvw--item .right--sec::before{
+  	content:"";
+    right:100%;
+    top:50px;
+    border:solid transparent;
+    height:0;
+    width:0;
+    position:absolute;
+    pointer-events:none;
+    border-color:transparent;
+    border-right-color:#e9e9e9;
+    border-width:14px 18px 14px 0;
+    margin-top:-1px;
+  } */
+  .rvw--main .rvw--item .right--sec .title{
+  	font-family:'Adrianna';
+    font-size:32px;
+    line-height:1.2;
+    font-weight:800;
+    color:#373737;
+  }
+  .rvw--main .rvw--item .left--sec .text{
+  	font-size:18px;
+    line-height:1.25;
+    color:#72726e;
+    font-family:'Helvetica';
+    font-weight:600;
+    word-wrap:break-word;
+  }
+  .reviews .rvw--main .inn{margin:0;}
+  
+  
+  
+  
+  
+  @media (min-width:1515px){
+    #section-{{ section.id }} .container.wide{max-width:1485px;}
+    
+  }
+  
+  @media (max-width:1399px){
+    
+  
+  }
+  @media (max-width:1279px){
+    #section-{{ section.id }}{padding:55px 0;}
+    
+  
+  }
+  @media (max-width:1199px){
+    #section-{{ section.id }}{padding:50px 0;}
+    #section-{{ section.id }} .heading .top--head{font-size:26px;}
+    #section-{{ section.id }} .heading .main--head{font-size:38px;}
+    .rvw--main .rvw--item .right--sec{padding:20px 15px;}
+/*     .rvw--main .rvw--item .right--sec::before{border-width:12px 12px 12px 0;} */
+    .rvw--main .rvw--item .left--sec{padding:20px 15px;}
+    .rvw--main .rvw--item .right--sec .title{font-size:21px;}
+    #section-{{ section.id }} .heading .btns a{font-size:20px;padding:10px 40px;}
+    
+  }
+  @media (max-width:991px){
+    #section-{{ section.id }}{padding:45px 0;}
+    #section-{{ section.id }} .reviews{padding-top:40px;}
+    #section-{{ section.id }} .heading .top--head{font-size:24px;margin-bottom:15px;}
+    #section-{{ section.id }} .heading .main--head{font-size:32px;line-height:1.2;}
+    .rvw--main{padding-right:0;}
+/*     .rvw--main .rvw--item .right--sec::before{border-width:14px 18px 14px 0;} */
+    .rvw--main .rvw--item .right--sec{padding:20px;}
+    .rvw--main .rvw--item .left--sec{padding:20px;}
+    .rvw--main .rvw--item .right--sec .title{font-size:20px;}
+    .rvw--main .rvw--item .auth--thumb img{padding:12px;}
+    
+  }
+  @media (max-width:767px){
+    #section-{{ section.id }}{padding:40px 0;}
+    #section-{{ section.id }} .container.wide{max-width:100%;}
+    #section-{{ section.id }} .reviews{padding-top:35px;}
+    #section-{{ section.id }} .heading .top--head{font-size:22px;margin-bottom:10px;}
+    #section-{{ section.id }} .heading .main--head{font-size:28px;line-height:1.15;}
+/*     .rvw--main .rvw--item .right--sec::before{border-width:12px 12px 12px 0;} */
+    .rvw--main .rvw--item .right--sec{padding:20px 15px;}
+    .rvw--main .rvw--item .left--sec{padding:20px 15px;}
+    .rvw--main .rvw--item .right--sec .title{font-size:18px;}
+    #section-{{ section.id }} .heading .btns a{font-size:18px;padding:8px 35px;}
+    .rvw--main .rvw--item .right--sec .inner{box-shadow:15px 15px 0 #9b9b9b;}
+    
+    
+  }
+  @media (max-width:575px){
+    #section-{{ section.id }}{padding:35px 0;}
+/*     .rvw--main{padding-right:15px;padding-left:15px;} */
+    #section-{{ section.id }} .heading .top--head{font-size:20px;}
+    #section-{{ section.id }} .heading .main--head{font-size:24px;margin-bottom:12px;}
+    #section-{{ section.id }} .heading .btns a{font-size:17px;}
+/*     .rvw--main .rvw--item .left--sec{padding:20px 15px 25px;}
+    .rvw--main .rvw--item .right--sec::before{
+      right:50%;
+      top:unset;
+      bottom:100%;
+      border-width:0 12px 14px 12px;
+      margin-top:unset;
+      margin-right:-12px;
+      border-color:transparent;
+      border-bottom-color:#e9e9e9;
+    } */
+    
+  }
+  @media (max-width:479px){
+    #section-{{ section.id }} .heading .top--head{font-size:18px;}
+    #section-{{ section.id }} .heading .main--head{font-size:22px;margin-bottom:10px;}
+    #section-{{ section.id }} .heading .btns a{font-size:16px;}
+    .rvw--main .rvw--item .left--sec{padding:10px 10px 0;}
+    .rvw--main .rvw--item .auth--thumb{margin-bottom:10px;}
+/*     .rvw--main .rvw--item .right--sec::before{
+      border-width:0 10px 12px 10px;
+      margin-right:-10px;
+    } */
+    .rvw--main .rvw--item .right--sec{padding:10px;}
+    .rvw--main .rvw--item .right--sec .inner{box-shadow:10px 10px 0 #9b9b9b;padding:15px 10px;border-radius:15px;}
+    
+  }
+  
+  
+
+</style>
+{% schema %}
+{
+    "name": "Our Mission + Reviews",
+    "settings": [
+		{
+          "type": "header",
+          "content": "Section Enable"
+      	},
+        {
+          "type": "checkbox",
+          "id": "ourMnR_enable",
+          "label": "Enable Section",  
+          "default": true
+        },
+    	{
+          "type": "header",
+          "content": "Mission Settings"
+      	},
+		{
+          "type": "text",
+          "id": "ourMnR_top_head",
+          "label": "Top Heading"
+        },
+		{
+          "type": "textarea",
+          "id": "ourMnR_main_head",
+          "label": "Main Heading"
+        },
+		{
+          "type": "text",
+          "id": "ourMnR_btn_label",
+          "label": "Button Label"
+        },
+		{
+          "type": "url",
+          "id": "ourMnR_btn_link",
+          "label": "Button Link"
+        },
+		{
+          "type": "checkbox",
+          "id": "ourMnR_new",
+          "label": "New Window",  
+          "default": true
+        }
+    ],
+    "blocks":[
+    	{
+          "type": "section_block",
+          "name": "Review",
+          "limit": 50,
+              "settings": 
+              [
+                {
+                  "type": "image_picker",
+                  "id": "rvw_auth_thumb",
+                  "label": "Author Image"
+                },
+                {
+                  "type": "text",
+                  "id": "rvw_auth_name",
+                  "label": "Author Name"
+                },
+				{
+                  "type": "text",
+                  "id": "rvw_auth_pos",
+                  "label": "Author Position"
+                },
+				{
+                  "type": "textarea",
+                  "id": "rvw_heading",
+                  "label": "Review Heading"
+                },
+				{
+                  "type": "text",
+                  "id": "rvw_content",
+                  "label": "Review Content / Author"
+                }
+              ]
+   		}
+  	],
+    "presets": [
+	    {
+	        "category": "4. Banner",
+	        "name": "Our Mission + Reviews"
+	    }
+    ]
+}
+{% endschema %}
+
+<script>
+	jQuery(document).ready(function($){
+    	if( $('.rvw--main .rvw--item').length > 1 ){
+    
+			$('.rvw--main').slick({
+              	infinite:true,
+                autoplay:true,
+              	speed:500,
+                autoplaySpeed:3000,
+              	cssEase:'linear',
+              	dots:false,
+				arrows:false,
+              	fade:true,
+			});
+    	}
+    
+	});
+</script>

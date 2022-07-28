@@ -1,0 +1,207 @@
+<div class="rgf_partners partner_logos" id="section-{{ section.id }}">
+  <div class="container wide">
+	
+    <div class="pLogos">
+      {%- for block in section.blocks -%}
+          {% assign count = 0 %}
+          <div id="block-{{ block.id }}" class="plogo plogo_{{forloop.index0}}">
+            {%- if block.settings.partner_link -%}
+            <a href="{{block.settings.partner_link}}" target="_blank">
+            {% endif %}
+            
+              {%- if block.settings.partner_logo -%}
+              <img src="{{ block.settings.partner_logo | img_url: 'master' }}" alt="">
+              {% endif %}
+            {%- if block.settings.partner_link -%}
+            </a>
+            {% endif %}
+            
+          </div>
+          {% assign count = count | plus: 1 %}
+      {%- endfor -%}
+    </div>
+    
+    {%- if section.settings.plogo_button_title != blank -%} 
+    <div class="button">
+      <a href="{{ section.settings.plogo_button_link }}" class="lmBtn btn--type-1">{{ section.settings.plogo_button_title }}</a>
+    </div>
+    {%- endif -%}
+    
+  </div>
+</div>	
+<style>
+  
+  #shopify-section-{{ section.id }}
+  {
+  	background:#fff;
+    display:block;
+    margin:0px auto;
+    padding-bottom:70px;
+  }  
+  #shopify-section-{{ section.id }} .pLogos{
+  	text-align:center;
+  }
+  #shopify-section-{{ section.id }} .plogo{
+  	display:inline-block;
+    vertical-align:middle;
+    padding:0 30px;
+  }
+  #shopify-section-{{ section.id }} .plogo a:hover img{
+  	/*filter: gray;
+    -webkit-filter: grayscale(1);
+    -webkit-filter: grayscale(100%);
+    filter: url(resources.svg#desaturate);
+    filter: grayscale(100%);*/
+    opacity:0.85;
+  }
+  
+  #section-{{ section.id }}.rgf_partners .button{
+  	text-align:center;
+    padding-top:80px;
+  }
+
+  {% comment %}
+  #section-{{ section.id }}.rgf_partners .lmBtn{
+/*     font-family:"LocalBreweryFour-Regular"; */
+/*     font-family:"SourceSerifPro-Bold"; */
+    font-family:"Montserrat";
+/*   	font-size:26px; */
+    font-size:24px;
+/*     font-weight:400; */
+    font-weight:700;
+    color:#fff;
+/*     background-image:url({{ 'button-bg-2.png' | asset_url }}) !important; */
+    background-image:url({{ 'button-montserrat-bg.png' | asset_url }}) !important;
+/*     background-size:100%; */
+    background-size:100% 100%;
+    background-position:center;
+    background-repeat:no-repeat !important;
+/*     padding:10px 50px 24px; */
+    padding:18px 50px 24px;
+    padding:14px 50px 22px;
+/*     text-shadow:1px 3px 0px rgba(0,0,0,0.34); */
+  }
+  #section-{{ section.id }}.rgf_partners .lmBtn:hover{
+  	opacity:0.95;
+    color:#000;
+  }
+  {% endcomment %}
+  
+  @media (min-width:1515px){
+    #section-{{ section.id }} .container.wide{max-width:1485px;}
+    
+  }
+  @media (max-width:1399px){
+    #section-{{ section.id }} .plogo{
+      padding:0 20px;
+    }
+    #section-{{ section.id }}.rgf_partners .button{
+      padding-top:60px;
+    }
+    
+    #section-{{ section.id }}.rgf_partners .lmBtn{
+/*       font-size:24px; */
+    }
+    
+  }
+  @media (max-width:1279px){
+    #section-{{ section.id }} .plogo{
+      margin-bottom:25px;
+    }
+    #section-{{ section.id }}.rgf_partners .button{
+      padding-top:40px;
+    }
+    
+  }
+  @media (max-width:991px){
+  	 #section-{{ section.id }}.rgf_partners .button{
+      padding-top:30px;
+    }
+    #section-{{ section.id }} .plogo{
+      margin-bottom:20px;
+      padding:0 15px;
+    }
+    #section-{{ section.id }}.rgf_partners .lmBtn{
+/*       font-size:22px; */
+    }
+    #shopify-section-{{ section.id }}{
+      padding-bottom:60px;
+    }
+    
+    #section-{{ section.id }}{
+      padding-top:45px;
+    }
+    
+  }
+  @media (max-width:639px){
+    #section-{{ section.id }}.rgf_partners .button{
+      padding-top:30px;
+    }
+    #section-{{ section.id }}.rgf_partners .lmBtn{
+/*       font-size:20px;
+      padding:16px 40px 20px; */
+    }
+    
+    #section-{{ section.id }}{
+      padding-top:35px;
+    }
+    
+    
+  }
+  @media (max-width:479px){
+   	#section-{{ section.id }}.rgf_partners .button{
+      padding-top:25px;
+    }
+    
+  }
+  
+  
+
+</style>
+{% schema %}
+{
+    "name": "Partner Logos",
+    "settings": [
+    	{
+         "type": "header",
+         "content": "Partner Logo Settings"
+      	},
+		{
+          "type": "text",
+          "id": "plogo_button_title",
+          "label": "Button Title",
+		  "default": "Find Locally"
+        },
+		{
+          "type": "url",
+          "id": "plogo_button_link",
+          "label": "Button Link"
+        }
+    ],
+    "blocks":[
+    	{
+          "type": "plogo_partner",
+          "name": "Partner",
+              "settings": 
+              [
+                {
+                  "type": "image_picker",
+                  "id": "partner_logo",
+                  "label": "Partner Logo"
+                },
+                {
+                  "type": "url",
+                  "id": "partner_link",
+                  "label": "Partner Link"
+                }
+              ]
+   		}
+  	],
+    "presets": [
+	    {
+	        "category": "3. collections",
+	        "name": "Partner Logos"
+	    }
+    ]
+}
+{% endschema %}

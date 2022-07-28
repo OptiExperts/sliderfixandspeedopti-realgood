@@ -1,0 +1,70 @@
+{% if settings.product_cart_type == 'ajax_popup_cart' %}
+<!-- modalAddToCart -->
+<div class="modal fade ajax-popup" id="modalAddToCart" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog white-modal modal-md">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="modal-content-text">
+          <div class="popup-image">
+            <p class="success-message"><i class="fa fa-check-circle"></i>{{ settings.successfull_note }}</p>
+            <div class="cart_img_inner">
+              <div class="popup_img_inner">
+                <img class="popupimage" src="">
+              </div>
+              <div class="content_inner">
+                <h6 class="productmsg"></h6>
+<!--                 <span class="pop_current_price"> </span> -->
+              </div>
+            </div>
+          </div>
+          <div class="popup-content">
+            <p class="total_item"> {{ settings.total_cart_before_title }} <span class="cart_count bigcounter">{{ cart.item_count }}</span> {{ settings.total_cart_after_title }}</p>
+            <p class="cart_total"> <span class="total_price_label">{{ settings.total_price_label }} </span> <span class="shopping-cart__total"><span class="wh-original-cart-total"><span class='wh-original-price'>{{ cart.total_price | money }}</span></span><span class="wh-cart-total"></span><div class="additional-notes"><span class="wh-minimums-note"></span><span class="wh-extra-note"></span></div></span></p>
+            
+            <!-- Route Code Edited 05/07/2020 -->
+            <div class="route-div"></div>
+            <!-- End Route Code -->
+
+            <div class="modal-button">
+              <a href="/cart" class="theme-default-button">{{ settings.view_cart_button2 }}</a>
+              <a href="{% if isWsgCustomer == true %}/cart{% else %}/checkout{% endif %}" class="theme-default-button">{{ settings.checkout_button2 }}</a>
+            </div>
+            <div class="continue_btn">
+              <div class="modal-close">
+          <button type="button" class="close extrab" data-dismiss="modal" aria-hidden="true">{{ settings.continue_shopping }}</button>
+        </div>
+            
+            </div>
+          </div>
+        </div>
+        <div class="modal-close">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times-circle"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- modalAddToCart -->
+{% endif %}
+<!-- modalAddToCart Error -->
+<div class="modal fade ajax-popup error-ajax-popup" id="modalAddToCartError" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog white-modal modal-md">
+    <div class="modal-content ">
+      <div class="modal-body">
+        <div class="modal-content-text">
+          <p class="error_message"></p>
+        </div>
+        <div class="modal-close">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times-circle"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Route Custom Style -->
+<style>
+  .route-widget .rw-contents {
+      width: 284px !important;
+  }
+</style>
+<!-- End Route Custom Style -->

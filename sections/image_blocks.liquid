@@ -1,0 +1,195 @@
+<div class="rgf_image_blocks" id="section-{{ section.id }}">
+
+     {%- for block in section.blocks -%}
+        <div id="block-{{ block.id }}" class="image_block image_block_1" {%- if block.settings.section_bg_image -%} style="background-image: url({{ block.settings.section_bg_image | img_url: 'master' }});" {% endif %}>
+          <a href="{{ block.settings.section_block_link }}">
+            {%- if block.settings.section_block_text != '' -%}
+              <h2>{{ block.settings.section_block_text }}</h2>  
+            {%- endif -%}
+          </a>
+        </div>
+        {%- if block.settings.section_block_bg != blank -%} 
+          <style>
+            #section-{{ section.id }}.rgf_image_blocks #block-{{ block.id }}.image_block 
+            {
+                background-color: {{ block.settings.section_block_bg  }} !important;
+                background-size: contain !important;
+                background-position: center center !important;
+            }
+          </style>
+        {% endif %}
+        {%- if block.settings.section_overlay_image != blank -%} 
+          <style>
+            #section-{{ section.id }}.rgf_image_blocks #block-{{ block.id }}.image_block 
+            {
+                  background: url({{ block.settings.section_bg_image | img_url: 'master' }}) center center/contain no-repeat, url({{ block.settings.section_overlay_image | img_url: 'master' }}) left top no-repeat !important;  
+            }
+          </style>
+        {% endif %}
+
+    {%- endfor -%}
+    {% if section.settings.middle_button_text != blank %} 
+      <a href="{{ section.settings.middle_button_url }}" class="lezada-button lezada-button--medium lezada-cta-button lezada-cta-button-white floating_button">{{ section.settings.middle_button_text }}</a>
+    {% endif %}
+</div>
+<style>
+  
+  #section-{{ section.id }}.rgf_image_blocks 
+  {
+    display: -ms-flex;
+    display: -webkit-flex;
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    flex-wrap: wrap;    
+  }
+
+  
+  #section-{{ section.id }}.rgf_image_blocks .image_block 
+  {
+    width: 50%;
+    position: relative;
+  }
+
+  #section-{{ section.id }}.rgf_image_blocks .image_block > a
+  {
+    position: absolute;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+  }
+
+
+  #section-{{ section.id }}.rgf_image_blocks .image_block.image_block_1
+  {
+    background: url('{{ 'our_roots.png' | asset_url }}') 0 0 no-repeat transparent;
+    background-size: cover;
+    min-height: 424px;
+    background-position: 0px;
+   }
+
+
+  #section-{{ section.id }}.rgf_image_blocks .image_block.image_block_2
+  {
+    background: url('{{ 'our_kitchen.png' | asset_url }}') 0 0 no-repeat transparent;
+    background-size: cover;
+    min-height: 424px;
+  }
+
+  #section-{{ section.id }}.rgf_image_blocks .image_block  h2
+  {
+    position: absolute;
+    margin: 0px auto;
+    display: block;
+    font: 400 55px/88px "local_brewerytwo";
+    color: #FFF; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-style: italic;
+  }
+
+  #section-{{ section.id }}.rgf_image_blocks .image_block  h2 span
+  {
+    display: block;
+    font-style: normal;
+    font: 400 72px/88px "local_breweryfour";
+  }
+
+  #section-{{ section.id }}.rgf_image_blocks .floating_button
+  {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin: 0px auto;
+      display: block;
+      z-index: 2;
+      box-shadow: 0px 3px 6px #C4BBBB89;
+  }
+
+  @media screen and (max-width: 800px){
+    #section-{{ section.id }}.rgf_image_blocks .image_block 
+    {
+      width: 100%;
+      position: relative;
+    }
+
+    #section-{{ section.id }}.rgf_image_blocks .floating_button
+    {
+      width: 100%;
+      text-align: center;
+      max-width: 250px;
+    }
+  }
+
+</style>
+{% schema %}
+  {
+    "name": "Image - 2 Blocks",
+    "settings": [
+      {
+         "type": "header",
+         "content": "Block Settings"
+      },
+      {
+          "type": "text",
+          "id": "middle_button_text",
+          "label": "Middle Button Text",
+          "default": "Learn More"
+      },
+      {
+          "type": "url",
+          "id": "middle_button_url",
+          "label": "URL"
+      }
+  ],
+  "blocks":[
+    {
+          "type": "section_block",
+          "name": "Section Block",
+          "limit": 2,
+              "settings": 
+              [
+                {
+                  "type": "image_picker",
+                  "id": "section_bg_image",
+                  "label": "BG Image"
+                },
+                {
+                  "type": "text",
+                  "id": "section_block_text",
+                  "label": "Block Heading"
+                },
+                {
+                  "type": "url",
+                  "id": "section_block_link",
+                  "label": "Block Link"
+                },
+                {
+                  "type": "color",
+                  "id": "section_block_bg",
+                  "label": "Image Block BG"
+                },
+                {
+                  "type": "image_picker",
+                  "id": "section_overlay_image",
+                  "label": "Overlay BG Image"
+                }
+              ]
+    }
+  ],
+  "presets": [
+        {
+          "name": "Image Blocks",
+          "category": "9.2 Theme Others"
+        }
+     ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

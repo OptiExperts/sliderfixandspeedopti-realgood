@@ -1,0 +1,108 @@
+{% if section.settings.section_enable %}
+<div class="custom_heading_type1" id="section-{{ section.id }}">
+  	<div class="container">
+    	<div class="row">
+      		<div class="col-lg-12">
+        		<div class="heading">
+                    {% if section.settings.heading_text != blank %}
+                      	<h2>{{ section.settings.heading_text }}</h2>
+                    {% endif %}
+        		</div>
+      		</div>
+    	</div>
+  	</div>
+</div>
+{% endif %}
+
+<style>  
+  #section-{{ section.id }}{
+  	padding:80px 0 90px;
+	width:100%;
+    background:#FE776C;
+  }
+  #section-{{ section.id }} .heading h2{
+    color:#fff;
+	font-size:60px;
+	line-height:1.05;
+	font-weight:900 !important;
+    text-transform:uppercase
+  }
+  
+  {%- if section.settings.background_color -%}
+    #section-{{ section.id }} {
+      background:{{ section.settings.background_color }}; 
+    }  
+  {%- endif -%}
+  {%- if section.settings.text_color -%}
+    #section-{{ section.id }} .heading {
+      color:{{ section.settings.text_color }}; 
+    }  
+  {%- endif -%}
+  
+  @media screen and (max-width:1139px){
+    #section-{{ section.id }}{padding:60px 0 65px}
+    #section-{{ section.id }} .heading h2{font-size:48px}
+  }
+  @media screen and (max-width:979px){
+    #section-{{ section.id }}{padding:50px 0 60px}
+    #section-{{ section.id }} .heading h2{font-size:42px}
+  }
+  @media screen and (max-width:767px){
+    #section-{{ section.id }} .heading h2{font-size:32px}
+  }
+  @media screen and (max-width:639px){
+    #section-{{ section.id }}{padding:60px 0 90px}
+    #section-{{ section.id }} .heading h2{font-size:25px;font-size:1.15}
+  }
+  @media screen and (max-width:374px){
+    #section-{{ section.id }}{padding:55px 0 85px}
+    #section-{{ section.id }} .heading h2{font-size:22px}
+  }
+  
+</style>
+
+
+{% schema %}
+  {
+    "name": "Heading Type #1",
+    "settings": [		
+		{
+		  "type": "header",
+          "content": "Section Enable"
+        },
+		{
+          "type": "checkbox",
+          "id": "section_enable",
+          "label": "Section Enable",  
+          "default": true
+      	},
+		{
+         "type": "header",
+         "content": "Heading Type #1"
+        },		
+		{
+          "type": "textarea",
+          "id": "heading_text",
+          "label": "Heading Text",
+			"default": "Sample Heading"
+        },
+        {
+         "type": "header",
+         "content": "Colors"
+        },		
+		{
+          "type": "color",
+          "id": "background_color",
+          "label": "Background Color",
+          "default": "#FE776C"
+        },
+		{
+          "type": "color",
+          "id": "text_color",
+          "label": "Text Color",
+          "default": "#fff"
+        }
+		
+	]
+  }
+{% endschema %}

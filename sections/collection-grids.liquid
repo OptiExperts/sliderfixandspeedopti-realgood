@@ -1,0 +1,246 @@
+{% if section.settings.collgrid_enable == true %}
+<div class="grid_4col_items collection--grids" id="section-{{ section.id }}">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 heading">
+        <div class="inner">
+          {%- if section.settings.collgrid_sec_title != '' -%}
+          <h2>{{ section.settings.collgrid_sec_title }}</h2>
+          {%- endif -%}
+          {%- if section.settings.collgrid_sec_subtitle != '' -%}
+          {{ section.settings.collgrid_sec_subtitle }}
+          {%- endif -%}
+        </div><!--/heading-->
+      </div>
+
+      <div class="col-lg-12 gridItems">
+        <div class="row">
+          
+          {%- for block in section.blocks -%}
+              {% assign count = 0 %}
+              <div id="block-{{ block.id }}" class="col-lg-3 col-md-6 col-sm-6 gridItem gridItem_{{forloop.index0}}">
+                <a href="{{block.settings.collgrid_item_link}}" class="inner">
+                  <h4>{{ block.settings.collgrid_item_title }}</h4> 
+                  <div class="item--image">
+                    {%- if block.settings.collgrid_item_image -%}
+                    <img src="{{ block.settings.collgrid_item_image | img_url: '350x350' }}" alt="{{ block.settings.collgrid_item_title }}">
+                    {% endif %}
+                  </div>
+                </a>
+              </div><!--gridItem-->
+              {% assign count = count | plus: 1 %}
+          {%- endfor -%}
+          
+        </div><!--Inner Row-->
+
+      </div><!--/gridItems-->
+      
+    </div><!--/row-->  
+  </div><!--/container wide-->
+</div>
+{% endif %}
+
+<style>
+  
+  #section-{{ section.id }}{
+  	background:#fff;
+    display:block;
+    margin:0px auto;
+    padding:70px 0 85px;
+  }	
+  #section-{{ section.id }} .heading .inner{
+  	max-width:768px;
+    margin:0 auto;
+  }
+  #section-{{ section.id }} .heading{
+  	text-align:center;
+    margin-bottom:35px;
+  }
+  #section-{{ section.id }} .heading h2{
+/*     font-family:'Montserrat'; */
+    font-family:'Adrianna';
+  	font-size:60px;
+    line-height:1.1;
+    color:#000;
+    font-weight:800;
+    margin-bottom:24px;
+  }
+  
+  #section-{{ section.id }} .heading p{
+  	font-size:20px;
+    line-height:1.15;
+    color:#000;
+    font-weight:400;
+    margin-bottom:15px;
+    font-family:'Adrianna';
+  }
+  #section-{{ section.id }} .gridItem{margin-bottom:30px;text-align:center;}
+  #section-{{ section.id }} .gridItem .inner{
+  	border-radius:16px;
+    cursor:pointer;
+    transition:all .2s ease-in-out;
+    box-shadow:0 1px 6px #e1e1e1;
+    padding:15px;
+    overflow:hidden;
+  }
+  #section-{{ section.id }} .gridItem .inner:hover{
+  	box-shadow:0 1px 4px #ababab;
+  }
+  #section-{{ section.id }} .gridItem h4{
+/*     font-family:'Montserrat'; */
+    font-family:'Adrianna';
+  	font-size:22px;
+    font-weight:800;
+    margin-bottom:15px;
+  }
+  
+  
+  
+  @media (min-width:1515px){
+    #section-{{ section.id }} .container.wide{max-width:1485px;}
+    
+  }
+  
+  @media (max-width:1399px){
+    #section-{{ section.id }} .gridItems .row{padding:0 10px;}
+  	#section-{{ section.id }} .heading h2{
+     font-size:48px; 
+    }
+  
+  }
+  @media (max-width:1279px){
+    #section-{{ section.id }}{padding:55px 0 75px;}
+  	#section-{{ section.id }} .heading h2{
+     font-size:42px; 
+    }
+  
+  }
+  @media (max-width:1199px){
+    #section-{{ section.id }}{padding:50px 0 70px;}
+  	#section-{{ section.id }} .heading h2{
+      font-size:36px;
+      margin-bottom:16px;
+    }
+    #section-{{ section.id }} .gridItems .row{padding:0;}
+    #section-{{ section.id }} .gridItem{padding:0 10px;margin-bottom:20px;}
+    #section-{{ section.id }} .gridItem h4{font-size:20px;}
+    
+  }
+  @media (max-width:991px){
+    #section-{{ section.id }}{padding:45px 0 65px;}
+  	#section-{{ section.id }} .heading h2{
+     font-size:32px; 
+    }
+    #section-{{ section.id }} .heading p{
+      font-size:18px;
+    }
+    #section-{{ section.id }} .gridItem{padding:0 15px;margin-bottom:30px;}
+    
+  }
+  @media (max-width:767px){
+    #section-{{ section.id }}{padding:40px 0 60px;}
+  	#section-{{ section.id }} .heading h2{
+      font-size:30px; 
+    }
+    #section-{{ section.id }} .gridItem{padding:0 10px;margin-bottom:20px;}
+    #section-{{ section.id }} .gridItem h4{font-size:18px;margin-bottom:10px;}
+    
+  }
+  @media (max-width:575px){
+    #section-{{ section.id }}{padding:35px 0 60px;}
+  	#section-{{ section.id }} .heading h2{
+      font-size:28px;
+      margin-bottom:12px;
+    }
+    #section-{{ section.id }} .heading{margin-bottom:25px;}
+    #section-{{ section.id }} .heading p{
+      font-size:16px;
+    }
+    #section-{{ section.id }} .gridItems .row{padding:0 10px;}
+    #section-{{ section.id }} .gridItem{
+      -ms-flex: 0 0 50%;
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+    #section-{{ section.id }} .gridItem h4{font-size:16px;}
+    
+    
+  }
+  @media (max-width:479px){
+  	#section-{{ section.id }} .heading h2{
+      font-size:24px;
+      margin-bottom:10px
+    }
+    #section-{{ section.id }} .gridItems .row{padding:0 5px;}
+    #section-{{ section.id }} .gridItem{padding:0 7.5px;margin-bottom:10px;}
+    #section-{{ section.id }} .gridItem .inner{padding:12px 10px;}
+    #section-{{ section.id }} .gridItem h4{font-size:14px;margin-bottom:5px;}
+    
+  }
+  
+  
+
+</style>
+{% schema %}
+{
+    "name": "Collection Grids + Title",
+    "settings": [
+		{
+          "type": "header",
+          "content": "Section Enable"
+      	},
+        {
+          "type": "checkbox",
+          "id": "collgrid_enable",
+          "label": "Enable Section",  
+          "default": true
+        },
+    	{
+          "type": "header",
+          "content": "Grid Block Settings"
+      	},
+		{
+          "type": "text",
+          "id": "collgrid_sec_title",
+          "label": "Section Title"
+        },
+		{
+          "type": "textarea",
+          "id": "collgrid_sec_subtitle",
+          "label": "Section Sub Title",
+          "info": "Include HTML tags"
+        }
+    ],
+    "blocks":[
+    	{
+          "type": "section_block",
+          "name": "Section Block",
+          "limit": 8,
+              "settings": 
+              [
+                {
+                  "type": "image_picker",
+                  "id": "collgrid_item_image",
+                  "label": "Item Image"
+                },
+                {
+                  "type": "text",
+                  "id": "collgrid_item_title",
+                  "label": "Item Title"
+                },
+                {
+                  "type": "url",
+                  "id": "collgrid_item_link",
+                  "label": "Item Link"
+                }
+              ]
+   		}
+  	],
+    "presets": [
+	    {
+	        "category": "3. collections",
+	        "name": "Collection Grid + Title"
+	    }
+    ]
+}
+{% endschema %}

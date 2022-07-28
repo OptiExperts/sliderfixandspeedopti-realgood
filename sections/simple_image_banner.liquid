@@ -1,0 +1,29 @@
+<div class="simple_image_banner">
+  <img class="bnrImg lazy" data-src="{% if section.settings.banner_img != blank %} {{ section.settings.banner_img | img_url: 'master' }}{% else %} https://via.placeholder.com/922x329 {% endif %}" class="lazyload img-fluid" alt="">
+</div>
+
+{% schema %}
+  {
+    "name": "Simple Image Banner",
+    "settings": [
+		{
+          "type": "header",
+          "content": "Banner"
+        },
+        {
+          "type": "image_picker",
+          "id": "banner_img",
+          "label": "Image",
+          "info": "Recommended Size: 1920 x 600 px"
+        }
+	]
+  }
+{% endschema %}
+
+<style>
+.simple_image_banner{position:relative;width:100%;display:block}
+.simple_image_banner img{width:100%;max-width:100%;height:auto;display:block}
+</style>
+
+{% javascript %}
+{% endjavascript %}

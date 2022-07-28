@@ -1,0 +1,632 @@
+{% if section.settings.footer_section_enable == true %}
+<div class="footer-container footer-one {% if section.settings.footer_overlay %} footer_overlay {% endif %}" id="section-{{ section.id }}">
+  <div class="{% if section.settings.container_width == 'container' %} container {% elsif section.settings.container_width == 'fluid' %} container wide {% endif %}">
+    <div class="row">
+
+      {% for block in section.blocks %} 
+      {% case block.type %}	
+
+      {% when 'copyright_logo' %}
+      <div class="col footer-single-widget">
+        <div class="logo">
+          {%- if block.settings.logo -%}
+          <a href="/" class="theme-logo">
+            <img src="{{ block.settings.logo | img_url: '300x300' }}" alt="{{ block.settings.logo.alt | default: shop.name }}">
+
+          </a>
+          {%- else -%}
+          <a href="/">
+            {{ shop.name }}
+          </a>
+          {%- endif -%}
+          
+        </div>
+
+        <div class="copyright-text">
+           {{ block.settings.copy_right_text }}
+        </div>
+
+      </div>
+
+      {% when 'widget_menu' %}
+      <div class="col footer-single-widget">
+        {% if block.settings.footer_widget_title != blank %}
+        <h5 class="widget-title">{{ block.settings.footer_widget_title }}</h5>
+        {% endif %}
+        
+        <div class="footer-nav-container">
+          <nav>
+            <ul>
+              {% assign footer_menu = block.settings.footer_menu_handle %}
+              {% for link in linklists[footer_menu].links %}
+              <li><a href="{{ link.url }}"> {{ link.title }}</a></li>
+              {% endfor %}
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      {% when 'social_icon' %}
+
+      <div class="col footer-single-widget">
+        {% if block.settings.footer_widget_title != blank %}
+        <h5 class="widget-title">{{ block.settings.footer_widget_title }}</h5>
+        {% endif %}
+        
+        <div class="footer-nav-container footer-social-links">
+          <nav>
+            <ul>
+              {% if block.settings.social_icon_1_name != blank %}
+              <li><a href="{{ block.settings.social_icon_1_link }}"><i class="fa fa-{{ block.settings.social_icon_1_name }}"></i> {{ block.settings.social_icon_1_name }}</a></li>        
+              {% endif %}
+              {% if block.settings.social_icon_2_name != blank %}
+              <li><a  href="{{ block.settings.social_icon_2_link }}"><i class="fa fa-{{ block.settings.social_icon_2_name }}"></i> {{ block.settings.social_icon_2_name }} </a></li>        
+              {% endif %}   
+              {% if block.settings.social_icon_3_name != blank %}
+              <li><a  href="{{ block.settings.social_icon_3_link }}"><i class="fa fa-{{ block.settings.social_icon_3_name }}"></i> {{ block.settings.social_icon_3_name }} </a></li>        
+              {% endif %}
+              {% if block.settings.social_icon_4_name != blank %}
+              <li><a href="{{ block.settings.social_icon_4_link }}"><i class="fa fa-{{ block.settings.social_icon_4_name }}"></i> {{ block.settings.social_icon_4_name }} </a></li>        
+              {% endif %}
+              
+              {% if block.settings.social_icon_5_name != blank %}
+              <li><a href="{{ block.settings.social_icon_5_link }}"><i class="fa fa-{{ block.settings.social_icon_5_name }}"></i> {{ block.settings.social_icon_5_name }} </a></li>        
+              {% endif %}
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      {% when 'newsletter' %}
+      <div class="col footer-single-widget">
+        <div class="footer-subscription-widget">
+          {% if block.settings.newsletter_title != blank %}
+          <h2 class="footer-subscription-title">{{ block.settings.newsletter_title }}</h2>
+          {% endif %}
+          
+        </div>
+        
+        
+        {% include "eztexting-subscription" %}
+        {% comment %}
+        <p class="foot--note">By entering your phone number and clicking JOIN VIP CLUB, you agree to receive marketing text messages from us at the number 
+          provided, including messages sent by autodialer. Consent is not a condition of purchase. Message and data rates may apply. Message frequency varies.
+          Reply HELP for help or STOP to cancel. View our <a href="https://realgoodfoods.com/policies/privacy-policy" target="_blank">Privacy Policy</a> and 
+          <a href="https://realgoodfoods.com/policies/terms-of-service" target="_blank">Terms of Service</a></p>
+        {% endcomment %}
+
+      </div>
+
+
+      {% endcase %}
+      {% endfor %}
+
+
+
+    </div>
+  </div>
+</div>
+
+{% if section.settings.footer_copyright != blank %}
+<div class="fCopyright">
+  <div class="container wide">
+    <p>@{{ 'now' | date: "%Y" }} {{section.settings.footer_copyright}}</p>
+  </div>
+</div>
+{% endif %}
+  
+{% endif %}
+
+<style>
+ 
+  {% for block in section.blocks %} 
+  
+  	{% case block.type %}		
+      {% when 'footer_typography' %}
+         #section-{{ section.id }}.footer-container.footer-one {
+           background: {{ block.settings.footer_bg_color }} {%- if block.settings.footer_bg_image -%}url("{{ block.settings.footer_bg_image | img_url: 'master' }}"){%- endif -%} no-repeat scroll center center / cover;
+  		}
+          #section-{{ section.id }} .footer-single-widget h5.widget-title,#section-{{ section.id }} .footer-subscription-widget .footer-subscription-title{
+            color: {{ block.settings.widget_title_color }};
+          }
+          #section-{{ section.id }} .footer-single-widget .copyright-text p,.footer-nav-container nav ul li a,.footer-subscription-widget .subscription-subtitle {
+            color: {{ block.settings.footer_body_color }};
+          }
+           #section-{{ section.id }} .footer-social-links ul li a i {
+             color: {{ block.settings.social_icon_color }};
+          }
+          #section-{{ section.id }}  .mailchimp-success{
+            color: {{ block.settings.mail_sucess_color }};
+          }
+  		   #section-{{ section.id }}  .footer-nav-container nav ul li a:hover,.footer-subscription-widget .subscription-form button:hover{
+              color: {{ block.settings.footer_body_hover_color }};
+          }
+		  .footer-subscription-widget .subscription-form input,.footer-subscription-widget .subscription-form input:focus {
+            border-color: {{ block.settings.input_border_color }};
+          }
+
+       .footer-subscription-widget .subscription-form button {
+            color: {{ block.settings.newsletter_submit_button_color }};
+        }
+          .footer-subscription-widget .subscription-form input {
+            color: {{ block.settings.newsletter_placholder_color }}
+          }
+        .footer-subscription-widget .subscription-form input::-webkit-input-placeholder {
+          color: {{ block.settings.newsletter_placholder_color }};
+          font-style:italic !important;
+        }
+        .footer-subscription-widget .subscription-form input:-ms-input-placeholder {
+          color: {{ block.settings.newsletter_placholder_color }};
+          font-style:italic !important;
+        }
+        .footer-subscription-widget .subscription-form input::placeholder {
+          color: {{ block.settings.newsletter_placholder_color }};
+          font-style:italic !important;
+        }
+  
+     {% endcase %}
+  {% endfor %}
+  
+  
+  #section-{{ section.id }}.footer_overlay::before  {
+    background: {{ section.settings.footer_overlay_color }};
+    opacity: {{ section.settings.footer_overlay_opacity }};
+  }
+  
+  #section-{{ section.id }}{
+  	padding:90px 0 0;
+  }
+  #section-{{ section.id }} .footer-single-widget .widget-title{
+  	font-size:20px;
+    line-height:1.1;
+    font-weight:900;
+    margin-bottom:20px;
+    font-family:"Work Sans",sans-serif;
+  }
+  #section-{{ section.id }} .footer-single-widget li,
+  #section-{{ section.id }} .footer-single-widget p{
+  	font-size:18px;
+    line-height:1.1;
+  }
+  #section-{{ section.id }} .footer-single-widget nav ul li{
+  	padding:7.5px 0;
+  }
+  #section-{{ section.id }} .footer-social-links ul li a i{
+  	width:24px;
+    height:24px;
+    background:#000;
+    text-align:center;
+    vertical-align:middle;
+    line-height:24px;
+    border-radius:5px;
+  }
+  #section-{{ section.id }} .footer-social-links ul li a{
+  	padding-left:33px;
+  }
+  #section-{{ section.id }} .footer-subscription-widget .footer-subscription-title{
+  	font-size:20px;
+    line-height:1.1;
+    font-weight:900;
+    margin-bottom:25px;
+    font-family:"Work Sans",sans-serif;
+  }
+  #section-{{ section.id }} .subscription-subtitle{
+  	margin-bottom:12px;
+  }
+  #section-{{ section.id }} input#PhoneNumber{
+  	background:#fff;
+    border:1px solid #999;
+    font-size:13px;
+    line-height:1;
+    padding:10px 5px;
+    margin-bottom:15px;
+  }
+  #section-{{ section.id }} button.ez-button{
+/*   	font-family:"LocalBreweryFour-Regular"; */
+    font-family:"SourceSerifPro-Bold";
+/*   	font-size:26px; */
+    font-size:18px;
+    font-weight:400;
+    color:#fff;
+    background-color:transparent !important;
+/*     background-image:url({{ 'button-bg-4.png' | asset_url }}) !important; */
+    background-image:url({{ 'button-montserrat-bg-3.png' | asset_url }}) !important;
+/*     background-size:100%; */
+    background-size:100% 100%;
+    background-position:center;
+    background-repeat:no-repeat !important;
+/*     padding:10px 20px 24px; */
+/*     padding:18px 20px 24px; */
+    padding:12px 20px 16px;
+/*     text-shadow:1px 3px 0px rgba(0,0,0,0.34); */
+    border:none !important;
+  }
+  #section-{{ section.id }} button.ez-button:hover{
+  	opacity:0.95;
+    color:#000 !important;
+  }
+  
+  
+  
+  .fCopyright{
+  	background:#301d00;
+    padding:12px 0;
+  }
+  .fCopyright p{
+  	text-align:center;
+    color:#fff;
+    font-size:15px;
+    font-weight:600;
+    line-height:1;
+  }
+  
+  body{overflow-x:hidden;}
+  
+  #section-footer .footer-single-widget .foot--note{
+  	font-size:13px;
+    line-height:1.15;
+    color:#000;
+    margin:2px 0 0;
+  }
+  
+  
+  @media (min-width:1410px){
+    #section-{{ section.id }} .container.wide{max-width:1380px;}
+    
+  }  
+  @media (max-width:991px){
+    #section-footer{
+      padding:75px 0 0;
+    }
+    #section-footer button.ez-button{
+      font-size:22px;
+    }
+    #section-footer .footer-single-widget .widget-title{
+      margin-bottom:15px;
+    }
+    #section-footer .footer-single-widget nav ul li{
+      padding:5px 0;
+    }
+    .footer-container.footer-one .col{
+      margin-bottom:45px;
+    }
+    
+  }
+  @media (max-width:767px){
+    #section-footer{
+      padding:60px 0 0;
+    }
+    .footer-container.footer-one .col{
+      margin-bottom:40px;
+    }
+    
+  }
+  @media (max-width:639px){
+    #section-footer{
+      padding:50px 0 0;
+    }
+    #section-footer button.ez-button{
+      /*font-size:20px;
+      padding:6px 20px 20px;*/
+      font-size:16px;
+      padding:13px 22px 16px;
+    }
+    .footer-container.footer-one .col{
+      margin-bottom:35px;
+    }
+    
+  }
+  @media (max-width:479px){
+    #section-footer .footer-single-widget .widget-title{
+      margin-bottom:10px;
+    }
+    #section-footer .footer-single-widget nav ul li{
+      padding:2.5px 0;
+    }
+  }
+  
+  
+
+</style>
+
+
+{% schema %}
+  {
+  "name": "Footer",
+    "settings": [
+		{
+             "type":  "radio",
+             "id":    "container_width",
+             "label": "Container Width",
+             "options": [
+               { "value": "container", "label": "Container" },
+               { "value": "fluid", "label": "Full Width" }
+             ],
+             "default":   "fluid"
+          },
+		{
+          "type": "header",
+          "content": "Footer Enable"
+        },
+        {
+          "type": "checkbox",
+          "id": "footer_section_enable",
+          "label": "Footer Section Enable",
+          "default": true
+        },
+		{
+          "type": "textarea",
+          "id": "footer_copyright",
+          "label": "Footer Copyright",
+		  "default": "©2022 Real Good Foods. All Rights Reserved"
+        },
+		{
+          "type": "header",
+          "content": "Footer Overlay"
+		},
+        {
+          "type": "checkbox",
+          "id": "footer_overlay",
+          "label": "Footer Overlay Enable",
+          "default": false
+        },
+        {
+          "type": "color",
+          "id": "footer_overlay_color",
+          "label": "Overlay Color",
+          "default": "#000"
+        },
+        {
+          "type": "range",
+          "id": "footer_overlay_opacity",
+          "min": 0,
+          "max": 1,
+          "step": 0.1,
+          "label": "Overlay Color Opacity",
+          "default": 0.5
+        }
+    ],
+	"blocks":[
+		{
+          "type": "footer_typography",
+          "name": "Footer Color Options",
+		  "limit": 1,
+          "settings": [
+              {
+                "type": "color",
+                "id": "footer_bg_color",
+                "label": "Footer  Bg color",
+                "default": "#f8f8f8"
+              },
+			  {
+                "type": "image_picker",
+                "id": "footer_bg_image",
+                "label": "BG Image"
+              },
+			  {
+                "type": "color",
+                "id": "widget_title_color",
+                "label": "Widget Title Color",
+                "default": "#333"
+              },
+			  {
+                "type": "color",
+                "id": "footer_body_color",
+                "label": "Footer Body color",
+                "default": "#999999"
+              },
+			  {
+                "type": "color",
+                "id": "footer_body_hover_color",
+                "label": "Footer Body Hover color",
+                "default": "#333"
+              },
+			  {
+                "type": "color",
+                "id": "social_icon_color",
+                "label": "Social Icon color",
+                "default": "#333"
+              },
+			  {
+                "type": "color",
+                "id": "input_border_color",
+                "label": "Newsletter Input Boder Color",
+                "default": "#ccc"
+              },
+			  {
+                "type": "color",
+                "id": "newsletter_placholder_color",
+                "label": "Newsletter Placeholder Color",
+                "default": "#777"
+              },
+			  {
+                "type": "color",
+                "id": "newsletter_submit_button_color",
+                "label": "Newsletter Submit Button Color",
+                "default": "#ccc"
+              }
+          ]
+		},
+		{
+          "type": "newsletter",
+          "name": "Newsletter",
+          "settings": [
+			  {
+                "type": "text",
+                "id": "newsletter_title",
+                "label": "Newsletter Widget Title",
+                "default": "Subscribe."
+              },
+		      {
+                "type": "header",
+                "content": "Newsletter Type"
+              },
+              {
+                "type": "radio",
+                "id": "newsletter_system",
+                "label": "Newsletter Accept",
+                "options": [
+                  {
+                    "label": "Shopify Form",
+                    "value": "by_shopify_form"
+                  },
+                  {
+                    "label": "MailChimp",
+                    "value": "by_mailchimp"
+                  }
+                ],
+                "default": "by_shopify_form"
+              },
+		 	  {
+                "type": "textarea",
+                "id": "newsletter_description",
+                "label": "Newsletter Widget Desc",
+                "default": "Subscribe to our newsletter to receive news on update."
+              },
+			  {
+                "type": "text",
+                "id": "newsletter_input_placeholder",
+                "label": "Placeholder Title",
+                "default": "Your email address."
+              }
+          ]
+       },
+		{
+          "type": "social_icon",
+          "name": "Social Media",
+          "settings": [
+			  {
+                "type": "text",
+                "id": "footer_widget_title",
+                "label": "Footer Widget Title",
+                "default": "Widget TItle"
+              },
+			  {
+                "type": "header",
+                "content": "Icon With Link"
+              },
+			  {
+                "type": "text",
+                "id": "social_icon_1_name",
+                "label": "Social Icon Name",
+                "default": "twitter",
+                "info": "Fontawesome Icon [See Icon](https:\/\/fontawesome.com\/v4.7.0\/icons\/)"
+              },
+              {
+                "type": "url",
+                "id": "social_icon_1_link",
+                "label": "Link"
+              },
+              {
+                "type": "header",
+                "content": "Icon With Link"
+              },
+              {
+                "type": "text",
+                "id": "social_icon_2_name",
+                "label": "Social Icon Name",
+                "default": "instagram",
+                "info": "Fontawesome Icon [See Icon](https:\/\/fontawesome.com\/v4.7.0\/icons\/)"
+              },
+              {
+                "type": "url",
+                "id": "social_icon_2_link",
+                "label": "Link"
+              },
+              {
+                "type": "header",
+                "content": "Icon With Link"
+              },
+              {
+                "type": "text",
+                "id": "social_icon_3_name",
+                "label": "Social Icon Name",
+                "default": "google-plus",
+                "info": "Fontawesome Icon [See Icon](https:\/\/fontawesome.com\/v4.7.0\/icons\/)"
+              },
+              {
+                "type": "url",
+                "id": "social_icon_3_link",
+                "label": "Link"
+              },
+              {
+                "type": "header",
+                "content": "Icon With Link"
+              },
+              {
+                "type": "text",
+                "id": "social_icon_4_name",
+                "label": "Social Icon Name",
+                "default": "linkedin",
+                "info": "Fontawesome Icon [See Icon](https:\/\/fontawesome.com\/v4.7.0\/icons\/)"
+              },
+              {
+                "type": "url",
+                "id": "social_icon_4_link",
+                "label": "Link"
+              },
+              {
+                "type": "header",
+                "content": "Icon With Link"
+              },
+              {
+                "type": "text",
+                "id": "social_icon_5_name",
+                "label": "Social Icon Name",
+                "default": "pinterest",
+                "info": "Fontawesome Icon [See Icon](https:\/\/fontawesome.com\/v4.7.0\/icons\/)"
+              },
+              {
+                "type": "url",
+                "id": "social_icon_5_link",
+                "label": "Link"
+              }
+          ]
+       },
+		{
+          "type": "copyright_logo",
+          "name": "Logo With Copyright",
+          "settings": [
+			  {
+                "type": "image_picker",
+                "id": "logo",
+                "label": "Logo"
+              },
+		      {
+                "type": "richtext",
+                "id": "copy_right_text",
+                "label": "CopyRight Text",
+                "default": "<p>Copyright © Lezada Shopify All Right Reserved.</p>"
+              }
+          ]
+       },
+		{
+          "type": "widget_menu",
+          "name": "Footer Widget Menu",
+          "settings": [
+			  {
+                "type": "text",
+                "id": "footer_widget_title",
+                "label": "Footer Widget Title",
+                "default": "Widget TItle"
+              },
+			  {
+                  "type": "link_list",
+                  "id": "footer_menu_handle",
+                  "label": "Select Menu"
+              }
+          ]
+       }
+	   
+	]
+  }
+{% endschema %}
+
+
+<script>
+jQuery(document).ready(function($){
+//console.log('this is custom script output in console.');
+//alert('hello');
+});
+</script>
+<script src="{{ 'owl.carousel.min.js' | asset_url }}" async></script>

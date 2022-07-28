@@ -1,0 +1,571 @@
+{%- include 'header_2' -%}
+{%- include 'search-bar' -%}
+{%- include 'mini-cart' -%}
+{%- include 'header_about_us' -%}
+{%- include 'header_typography' -%}
+
+<style>
+  {%- for block in section.blocks -%}
+  {%- case block.type -%}
+  {%- when 'header_style' -%}
+    #section-{{ section.id }} .offcanvas-about-icon a {
+      color: {{ block.settings.header_bar_icon_color }};
+    }
+  
+  {%- endcase -%}
+  {%- endfor -%}
+</style>
+
+{% schema %}
+  {
+    "name": "Header", 
+	"blocks": [
+	   {
+          "type": "header_style",
+          "name": "Header Style",
+		  "limit": 1,
+          "settings": [
+			{
+			  "type": "color",
+			  "id": "header_bg_color",
+			  "label": "Header BG Color",
+			  "default": "#ffffff"
+            },
+			{
+              "type": "header",
+              "content": "Bar Icon"
+            },
+			{
+			  "type": "color",
+			  "id": "header_bar_icon_color",
+			  "label": "Header Bar Icon Color",
+			  "default": "#333"
+            },
+            {
+              "type": "header",
+              "content": "Menu"
+            },
+		    {
+			  "type": "color",
+			  "id": "dropdown_arrow_color",
+			  "label": "Dropdown Arrow Color",
+			  "default": "#D0D0D0"
+            },
+		    {
+			  "type": "color",
+			  "id": "header_menu_color",
+			  "label": "Header Menu Color",
+			  "default": "#7e7e7e"
+            },
+		    {
+			  "type": "color",
+			  "id": "header_menu_hover_color",
+			  "label": "Header Menu Hover Color",
+			  "default": "#333"
+            },
+		    {
+			  "type": "color",
+			  "id": "header_menu_hover_border_color",
+			  "label": "Header Menu Hover Border Color",
+			  "default": "#D0D0D0"
+            },
+		    {
+              "type": "header",
+              "content": "Sub Menu"
+            },
+			{
+			  "type": "color",
+			  "id": "submenu_bg_color",
+			  "label": "Sub Menu Bg Color",
+			  "default": "#ffffff"
+            },
+			{
+			  "type": "color",
+			  "id": "mega_item_menu_title_color",
+			  "label": "Mega Item Title Color",
+			  "default": "#333333"
+            },
+		    {
+			  "type": "color",
+			  "id": "mega_menu_item_color",
+			  "label": "Sub Menu Color",
+			  "default": "#7e7e7e"
+            },
+		    {
+			  "type": "color",
+			  "id": "mega_menu_hover_color",
+			  "label": "Sub Menu Hover Color",
+			  "default": "#333"
+            },
+			{
+			  "type": "color",
+			  "id": "mega_menu_hover_border_color",
+			  "label": "Sub Menu hover Border Color",
+			  "default": "#e7e7e7"
+            },
+			{
+			  "type": "color",
+			  "id": "mega_item_border_color",
+			  "label": "Mega Item Border Color",
+			  "default": "#e7e7e7"
+            },
+			{
+			  "type": "color",
+			  "id": "multi_dropdown_arrow_color",
+			  "label": "Multi Dropdown Arrow Color",
+			  "default": "#777"
+            },
+			{
+              "type": "header",
+              "content": "Menu Special Badge"
+            },
+			{
+			  "type": "color",
+			  "id": "menu_badge_bg_color",
+			  "label": "Menu Badge Background Color",
+			  "default": "#D3122A"
+            },
+			{
+			  "type": "color",
+			  "id": "menu_badge_color",
+			  "label": "Menu Badge Color",
+			  "default": "#fff"
+            },
+			{
+			  "type": "color",
+			  "id": "menu_sale_badge_bg_color",
+			  "label": "Menu Sale Badge Background Color",
+			  "default": "#98d8ca"
+            },
+			{
+			  "type": "color",
+			  "id": "menu_sale_badge_color",
+			  "label": "Menu Sale Badge Color",
+			  "default": "#fff"
+            },
+		    {
+              "type": "header",
+              "content": "Menu Account Icon Color"
+            },
+			{
+			  "type": "color",
+			  "id": "menu_account_icon_color",
+			  "label": "Menu Account Icon Color",
+			  "default": "#333"
+            },
+			{
+			  "type": "color",
+			  "id": "mini_cart_counter_bg",
+			  "label": "Mini Cart Counter Bg Color",
+			  "default": "#D3122A"
+            },
+			{
+			  "type": "color",
+			  "id": "mini_cart_counter_color",
+			  "label": "Mini Cart Counter Color",
+			  "default": "#fff"
+            },
+			{
+              "type": "header",
+              "content": "Mobile Menu Color"
+            },
+			{
+			  "type": "color",
+			  "id": "mobile_menu_bar_color",
+			  "label": "Mobile Menu bar Icon Color",
+			  "default": "#232324"
+            },
+			{
+			  "type": "color",
+			  "id": "mobile_menu_bg_color",
+			  "label": "Mobile Menu Bg Color",
+			  "default": "#ffffff"
+            },
+			{
+			  "type": "color",
+			  "id": "mobile_menu_item_color",
+			  "label": "Mobile Menu Color",
+			  "default": "#232324"
+            },
+		    {
+			  "type": "color",
+			  "id": "menu_item_border_color",
+			  "label": "Mobile Menu Item Border Color",
+			  "default": "#eeeeee"
+            },
+		    {
+			  "type": "color",
+			  "id": "mobile_menu_arrow_color",
+			  "label": "Submenu Arrow Color",
+			  "default": "#232324"
+            },
+			{
+			  "type": "color",
+			  "id": "mobile_menu_hover_bg_color",
+			  "label": "Mobile Menu Hover bg Color",
+			  "default": "#333333"
+            },
+		    {
+			  "type": "color",
+			  "id": "mobile_menu_hover_color",
+			  "label": "Mobile Menu Hover Color",
+			  "default": "#fff"
+            },
+		    {
+			  "type": "color",
+			  "id": "hover_dropdown_arrow_color",
+			  "label": "Hover Submenu Arrow Color",
+			  "default": "#fff"
+            }
+          ]
+       },
+	  {
+          "type": "topbar_style",
+          "name": "Topbar Style",
+		  "limit": 1,
+          "settings": [
+			{
+			  "type": "color",
+			  "id": "phone_lable_color",
+			  "label": "Phone Label Color",
+			  "default": "#7e7e7e"
+            },
+		    {
+			  "type": "color",
+			  "id": "phone_color",
+			  "label": "Phone Text Color",
+			  "default": "#333333"
+            },
+ 			{
+			  "type": "color",
+			  "id": "dropdown_label_color",
+			  "label": "Dropdown Label Color",
+			  "default": "#7e7e7e"
+            },
+			{
+			  "type": "color",
+			  "id": "dropdown_label_hover_color",
+			  "label": "Dropdown Label Hover Color",
+			  "default": "#333"
+            },
+			{
+			  "type": "color",
+			  "id": "dropdown_bg_color",
+			  "label": "Dropdown Bg Color",
+			  "default": "#fff"
+            },
+			{
+			  "type": "color",
+			  "id": "dropdown_text_color",
+			  "label": "Dropdown Text Color",
+			  "default": "#7e7e7e"
+            },
+			{
+			  "type": "color",
+			  "id": "dropdown_text_hover_color",
+			  "label": "Dropdown Text hover Color",
+			  "default": "#333333"
+            },
+			{
+			  "type": "color",
+			  "id": "social_icon_color",
+			  "label": "Social Icon Color",
+			  "default": "#333333"
+            },
+			{
+			  "type": "color",
+			  "id": "separator_color",
+			  "label": "Separator Color",
+			  "default": "#d8d8d8"
+            }
+          ]
+       }
+	],
+    "settings": [ 
+		{
+          "type": "header",
+          "content": "Header Top"
+        },
+		{
+          "type": "checkbox",
+          "id": "header_top_enable",
+          "label": "Header Top Enable",
+		  "default":   false
+        },
+		{
+          "type": "header",
+          "content": "Header Sticky"
+        },
+		{
+          "type": "checkbox",
+          "id": "header_sticky_enable",
+          "label": "Header Sticky Enable",
+		  "default":   true
+        },
+		{
+          "type": "header",
+          "content": "Transparent Header"
+        },
+		{
+          "type": "checkbox",
+          "id": "header_transparent",
+          "label": "Transparent Header Enable",
+		  "default":   false
+        },
+		{
+          "type": "header",
+          "content": "Logo"
+        },
+		{
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo"
+        },
+	     {
+          "type": "paragraph",
+          "content": "Sticky Logo"
+        },
+		{
+          "type": "image_picker",
+          "id": "sticky_logo",
+          "label": "Logo For Transparent Header"
+        },
+		{
+          "type": "range",
+          "id": "logo_width",
+          "label": "Custom logo width",
+          "min": 50,
+          "max": 300,
+          "step": 5,
+          "unit": "px",
+          "default": 150
+        },
+		{
+          "type": "paragraph",
+          "content": "Retina Logo"
+        },
+		{
+          "type": "checkbox",
+          "id": "ratina_logo_enable",
+          "label": "Retina Logo Enable",
+		  "default": false
+        },
+		{
+          "type": "header",
+          "content": "Mega Menu"
+        },
+		{
+          "type": "checkbox",
+          "id": "collection_image_enable",
+          "label": "Collection Image Enable",
+		  "default":   false
+        },
+		{
+          "type": "header",
+          "content": "Topbar Settings"
+        },
+		{
+          "type": "textarea",
+          "id": "welcome_text_msg",
+          "label": "WelCome Text",
+		  "default": "Order Online Call Us"
+        },
+		{
+          "type": "text",
+          "id": "welcome_text_phone_number",
+          "label": "Phone Number",
+		  "default": "(0123) 456789"
+        },
+		{
+          "type": "text",
+          "id": "phone_number_link",
+          "label": "Phone Number Link",
+		  "default": "#",
+		  "info": "tel:0123456789"
+        },
+		{
+          "type": "paragraph",
+          "content": "Topbar Right Side"
+        },
+		{
+          "type": "text",
+          "id": "topbar_right_info_title",
+          "label": "Topbar Right Info Title",
+		  "default": "Purchase Now"
+        },
+		{
+          "type": "link_list",
+          "id": "header_right_menu",
+          "label": "Short Info Menu Select"
+        },
+		{
+          "type": "text",
+          "id": "shopping_cart_title",
+          "label": "Cart Title",
+		  "default": "Shopping Cart"
+        },
+		{
+          "type": "text",
+          "id": "checkout_title",
+          "label": "Checkout Title",
+		  "default": "Checkout"
+		},
+		{
+          "type": "header",
+          "content": "Social Link"
+        },
+		{
+          "type": "checkbox",
+          "id": "social_media_enable",
+          "label": "Social Link Enable",
+		  "default": true
+        },
+		{
+          "type": "header",
+          "content": "Mini Cart"
+        },
+		{
+          "type": "text",
+          "id": "mini_cart_title",
+          "label": "Mini Cart Header Title",
+		  "default": "Cart"
+		},
+		{
+          "type": "text",
+          "id": "mini_cart_total_title",
+          "label": "Total Title",
+		  "default": "Total:"
+		},
+		{
+          "type": "text",
+          "id": "view_cart_title",
+          "label": "View Cart Btn Title",
+		  "default": "View Cart"
+        },
+		{
+          "type": "text",
+          "id": "mini_cart_checkout_title",
+          "label": "Checkout Btn Title",
+		  "default": "Checkout"
+        },
+		{
+          "type": "header",
+          "content": "About Settings"
+        },
+		{
+          "type": "text",
+          "id": "about_us_title",
+          "label": "About Us Title",
+		  "default": "About Us"
+		},
+		{
+          "type": "textarea",
+          "id": "about_us_description",
+          "label": "About Us Description",
+		  "default": "At Lezada, we put a strong emphasis on simplicity, quality and usefulness of fashion products over other factors. Our fashion items never get outdated. They are not short-lived as normal fashion clothes."
+		},
+		{
+          "type": "paragraph",
+          "content": "Email"
+        },
+		{
+          "type": "text",
+          "id": "email_id",
+          "label": "Email Id",
+		  "default": "contact@lezada.com"
+        },
+		{
+          "type": "text",
+          "id": "email_id_link",
+          "label": "Email Link",
+		  "default": "#",
+		  "info": "tel:example@gamil.com"
+        },
+		{
+          "type": "paragraph",
+          "content": "Phone Number"
+        },
+		{
+          "type": "text",
+          "id": "phone_number",
+          "label": "Phone Number",
+		  "default": "(0123) 456789"
+        },
+		{
+          "type": "header",
+          "content": "Social Link"
+        },
+		{
+          "type": "checkbox",
+          "id": "social_media",
+          "label": "Social Media Enable",
+		  "default": true
+        },
+		{
+          "type": "header",
+          "content": "Icon With Link"
+        },
+        {
+          "type": "text",
+          "id": "social_icon_1_name",
+          "label": "Social Icon Name",
+          "default": "twitter",
+          "info": "Fontawesome Icon [See Icon](https:\/\/fontawesome.com\/v4.7.0\/icons\/)"
+        },
+        {
+          "type": "url",
+          "id": "social_icon_1_link",
+          "label": "Link"
+        },
+        {
+          "type": "header",
+          "content": "Icon With Link"
+        },
+        {
+          "type": "text",
+          "id": "social_icon_2_name",
+          "label": "Social Icon Name",
+          "default": "instagram",
+          "info": "Fontawesome Icon [See Icon](https:\/\/fontawesome.com\/v4.7.0\/icons\/)"
+        },
+        {
+          "type": "url",
+          "id": "social_icon_2_link",
+          "label": "Link"
+        },
+        {
+          "type": "header",
+          "content": "Icon With Link"
+        },
+        {
+          "type": "text",
+          "id": "social_icon_3_name",
+          "label": "Social Icon Name",
+          "default": "google-plus",
+          "info": "Fontawesome Icon [See Icon](https:\/\/fontawesome.com\/v4.7.0\/icons\/)"
+        },
+        {
+          "type": "url",
+          "id": "social_icon_3_link",
+          "label": "Link"
+        },
+        {
+          "type": "header",
+          "content": "Icon With Link"
+        },
+        {
+          "type": "text",
+          "id": "social_icon_4_name",
+          "label": "Social Icon Name",
+          "default": "linkedin",
+          "info": "Fontawesome Icon [See Icon](https:\/\/fontawesome.com\/v4.7.0\/icons\/)"
+        },
+        {
+          "type": "url",
+          "id": "social_icon_4_link",
+          "label": "Link"
+        }
+		
+	]
+  }
+{% endschema %}

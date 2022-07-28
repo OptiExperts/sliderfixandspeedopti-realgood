@@ -1,0 +1,115 @@
+{% if section.settings.section_enable %}
+<div class="simple--img--bnr invest-simple-img-bnr" id="section-{{ section.id }}">
+  <div class="image">
+    <img class="bnrImg lazyload" src="{% if section.settings.banner_img != blank %} {{ section.settings.banner_img | img_url: 'master' }}{% else %} https://via.placeholder.com/1920x600 {% endif %}" class="lazyload img-fluid" alt="">
+  </div>
+  
+  {%- comment -%}
+  {% if section.settings.cta_label != blank %}
+  <div class="cta--btn">
+    <a href="{{section.settings.cta_link}}" {% if section.settings.cta_external != blank %}target="_blank"{% endif %}>{{section.settings.cta_label}}</a>
+  </div>
+  {% endif %}
+  {%- endcomment -%}
+  
+</div>
+
+
+<style>
+  #section-{{ section.id }}{position:relative;width:100%;display:block}
+  #section-{{ section.id }} .image{position:relative;z-index:1;}
+  #section-{{ section.id }} .image,
+  #section-{{ section.id }} img{width:100%;max-width:100%;height:auto;display:block}
+  #section-{{ section.id }} .image{position:relative;z-index:1;}
+/*   #section-{{ section.id }} .cta--btn{
+  	position:absolute;
+    width:auto;
+    top:30%;
+    left:0;
+    right:0;
+    margin:auto;
+    z-index:2;
+    text-align:center;
+  }
+  #section-{{ section.id }} .cta--btn a{
+    background:#fff;
+    color:#DD7C01;
+    text-transform:uppercase;
+    border-radius:0;
+    font-weight:bold;
+    font-size:22px;
+    line-height:1;
+    padding:12px 40px;
+    box-shadow:6px 6px 24px #666;
+  }
+  #section-{{ section.id }} .cta--btn a:hover{
+  	color:#000;
+  }
+ */
+
+  @media screen and (max-width:1499px){
+    #section-{{ section.id }} .cta--btn{top:25%;}
+    
+  }
+  @media screen and (max-width:1279px){
+    #section-{{ section.id }} .cta--btn a{font-size:20px;padding:10px 36px;}
+    
+  }
+  @media screen and (max-width:1139px){
+    #section-{{ section.id }} .cta--btn a{font-size:18px;padding:8px 30px;box-shadow:5px 5px 20px #666;}
+    
+  }
+  @media screen and (max-width:979px){
+    #section-{{ section.id }} .cta--btn a{font-size:16px;padding:6px 24px;box-shadow:4px 4px 18px #666;}
+    
+  }
+  @media screen and (max-width:767px){
+    #section-{{ section.id }} .cta--btn a{box-shadow:3px 3px 15px #666;}
+    
+  }
+  @media screen and (max-width:639px){
+    #section-{{ section.id }} .cta--btn a{font-size:14px;padding:5px 20px;}
+  }
+  @media screen and (max-width:479px){
+    
+  }
+  @media screen and (max-width:374px){
+    #section-{{ section.id }} .cta--btn{top:22%;}
+    #section-{{ section.id }} .cta--btn a{font-size:12px;padding:4px 16px;}
+  }
+</style>
+
+{% endif %}
+
+
+{% schema %}
+  {
+    "name": "Invest Simple Img Banner",
+    "settings": [
+		{
+		  "type": "header",
+          "content": "Section Enable"
+        },
+		{
+          "type": "checkbox",
+          "id": "section_enable",
+          "label": "Section Enable",
+          "default": true
+      	},
+		{
+          "type": "header",
+          "content": "Banner"
+        },
+        {
+          "type": "image_picker",
+          "id": "banner_img",
+          "label": "Image",
+          "info": "Recommended Size: 1920 x 600 px"
+        }
+  
+	]
+  }
+{% endschema %}
+
+{% javascript %}
+{% endjavascript %}
