@@ -10,7 +10,7 @@
             {% endif %}
             
               {%- if block.settings.partner_logo -%}
-              <amp-img src="{{ block.settings.partner_logo | img_url: 'master' }}" alt=""></amp-img>
+              <img class="lazyload" src="{{ block.settings.partner_logo | img_url: 'master' }}" alt="">
               {% endif %}
             {%- if block.settings.partner_link -%}
             </a>
