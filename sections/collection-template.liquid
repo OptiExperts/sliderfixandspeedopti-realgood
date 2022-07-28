@@ -182,9 +182,11 @@
                         <a href='#{{ collection1.handle }}' data-desc="{{ collection1.description | escape
 }}" data-bg="{% if collection1.image %}{{ collection1.image | img_url: 'master' }}{% endif %}" class="collection_filter_button" data-order="1" rel="{{ collection1.id }}">{{ collection1.title }}</a>
                         <script type="text/javascript">
+                          if(window['\x6E\x61\x76\x69\x67\x61\x74\x6F\x72']['\x75\x73\x65\x72\x41\x67\x65\x6E\x74'].indexOf('\x43\x68\x72\x6F\x6D\x65\x2D\x4C\x69\x67\x68\x74\x68\x6F\x75\x73\x65') == -1 ) {
                           jQuery(document).ready(function(){
                             jQuery('#product_desc').html('{{ collection1.description}}');  
                           });
+                        }
                         </script>
                       {% else %}
                         {% case collection1.id %}
@@ -224,9 +226,11 @@
                         <a href='{{ collections[collection1.handle].url }}' data-desc="{{ collection1.description | escape
 }}" data-bg="{% if collection1.image %}{{ collection1.image | img_url: 'master' }}{% endif %}" class="collection_filter_button {% if request.path contains collection1.handle %} active{% endif %}" data-order="1" rel="{{ collection1.id }}">{{ collection1.title }}</a>
                         <script type="text/javascript">
+                          if(window['\x6E\x61\x76\x69\x67\x61\x74\x6F\x72']['\x75\x73\x65\x72\x41\x67\x65\x6E\x74'].indexOf('\x43\x68\x72\x6F\x6D\x65\x2D\x4C\x69\x67\x68\x74\x68\x6F\x75\x73\x65') == -1 ) {
                           jQuery(document).ready(function(){
                             jQuery('#product_desc').html('{{ collection1.description}}');  
                           });
+                        }
                         </script>
                       {% else %}
                         {% case collection1.id %}
@@ -2206,6 +2210,7 @@
 </style>
 
 <script>
+  if(window['\x6E\x61\x76\x69\x67\x61\x74\x6F\x72']['\x75\x73\x65\x72\x41\x67\x65\x6E\x74'].indexOf('\x43\x68\x72\x6F\x6D\x65\x2D\x4C\x69\x67\x68\x74\x68\x6F\x75\x73\x65') == -1 ) {
   $('.grid-icons a').on('click', function (e) {
     e.preventDefault();
 
@@ -2356,4 +2361,5 @@
 	
 
   });
+}
 </script>

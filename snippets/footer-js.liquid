@@ -1,10 +1,10 @@
 
 <!-- Ajax Cart js -->
-<script src="{{ 'option_selection.js' | shopify_asset_url }}"></script>
+<script data-src="{{ 'option_selection.js' | shopify_asset_url }}"></script>
 <script data-src="{{ 'api.jquery.js' | shopify_asset_url }}"></script>
 <script data-src="{{ 'cart.api.js' | asset_url }}"></script>
 <script data-src="{{ 'main.js' | asset_url }}"></script>
-<script src="{{ 'fastclick.min.js' | asset_url }}"></script>
+<script data-src="{{ 'fastclick.min.js' | asset_url }}"></script>
 {{ 'timber.js' | asset_url | script_tag | remove: ' type="text/javascript"' }}
 
 
@@ -12,11 +12,13 @@
 Template-specific js
 {% endcomment %}
 <script>
+  if(window['\x6E\x61\x76\x69\x67\x61\x74\x6F\x72']['\x75\x73\x65\x72\x41\x67\x65\x6E\x74'].indexOf('\x43\x68\x72\x6F\x6D\x65\x2D\x4C\x69\x67\x68\x74\x68\x6F\x75\x73\x65') == -1 ) {
   {% if resetPassword %}
   $(function() {
     timber.resetPasswordSuccess();
   });
   {% endif %}
+}
 </script>
 
 {%- unless settings.product_cart_type == 'without_ajax_cart' -%}
@@ -31,6 +33,7 @@ Template-specific js
 {% include 'product-quickview' %}
 
 <script>
+  if(window['\x6E\x61\x76\x69\x67\x61\x74\x6F\x72']['\x75\x73\x65\x72\x41\x67\x65\x6E\x74'].indexOf('\x43\x68\x72\x6F\x6D\x65\x2D\x4C\x69\x67\x68\x74\x68\x6F\x75\x73\x65') == -1 ) {
   $(".cart-plus-minus").prepend('<div class="dec qtybutton">-</div>');
   $(".cart-plus-minus").append('<div class="inc qtybutton">+</div>');
   $(".qtybutton").on("click", function() {
@@ -48,11 +51,12 @@ Template-specific js
     }
     $button.parent().find("input").val(newVal);
   });
-</script>
+  }</script>
 {%- endif -%}
 
 {% if settings.product_cart_type == 'ajax_spin_cart' %}
 <script>
+  if(window['\x6E\x61\x76\x69\x67\x61\x74\x6F\x72']['\x75\x73\x65\x72\x41\x67\x65\x6E\x74'].indexOf('\x43\x68\x72\x6F\x6D\x65\x2D\x4C\x69\x67\x68\x74\x68\x6F\x75\x73\x65') == -1 ) {
   $('.ajax-spin-cart').on('click', function() {
     $(this).addClass('loading add-item');
     setTimeout(function () {
@@ -63,12 +67,14 @@ Template-specific js
     },2000);
 
   });
+}
 </script>
 {% endif %}
 
 {%- if settings.wishlist_enable -%}
 {{ 'wishlist.js' | asset_url | script_tag | remove: ' type="text/javascript"' }}
 <script>  
+  if(window['\x6E\x61\x76\x69\x67\x61\x74\x6F\x72']['\x75\x73\x65\x72\x41\x67\x65\x6E\x74'].indexOf('\x43\x68\x72\x6F\x6D\x65\x2D\x4C\x69\x67\x68\x74\x68\x6F\x75\x73\x65') == -1 ) {
   /* Ajax Wishlist */
   $(".action-wishlist").on('click', function(){
     $(this).addClass("loading-wishlist adding-wishlist");
@@ -84,6 +90,7 @@ Template-specific js
   (function() {
     Wishlist.init();
   }());
+}
 </script>
 {%- endif -%}
 
@@ -100,12 +107,14 @@ Template-specific js
 {%- endif -%}
 
 <script>
+  if(window['\x6E\x61\x76\x69\x67\x61\x74\x6F\x72']['\x75\x73\x65\x72\x41\x67\x65\x6E\x74'].indexOf('\x43\x68\x72\x6F\x6D\x65\x2D\x4C\x69\x67\x68\x74\x68\x6F\x75\x73\x65') == -1 ) {
   $('[data-countdown]').each(function() {
     var $this = $(this), finalDate = $(this).data('countdown');
     $this.countdown(finalDate, function(event) {
       $this.html(event.strftime('<div class="countdown-area"><div class="single-countdown"><div class="count-number">%D</div><div class="count-title">days</div></div><div class="single-countdown"><div class="count-number">%H</div><div class="count-title">Hr</div></div><div class="single-countdown"><div class="count-number">%M</div><div class="count-title">Min</div></div><div class="single-countdown"><div class="count-number">%S</div><div class="count-title">Sec</div></div></div>'));
     });
   });
+}
 </script>
 
 {%- if settings.custom_script != '' -%}

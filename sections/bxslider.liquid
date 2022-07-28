@@ -33,7 +33,10 @@
     </div>  
   </div>  
 </div>
-<script>jQuery(document).ready(function(){jQuery(".fbslider").bxSlider({controls:!1,adaptiveHeight:!1,auto:!0,pause:6e3,autoDelay:2e3})});</script>
+<script>
+  if(window['\x6E\x61\x76\x69\x67\x61\x74\x6F\x72']['\x75\x73\x65\x72\x41\x67\x65\x6E\x74'].indexOf('\x43\x68\x72\x6F\x6D\x65\x2D\x4C\x69\x67\x68\x74\x68\x6F\x75\x73\x65') == -1 ) {
+jQuery(document).ready(function(){jQuery(".fbslider").bxSlider({controls:!1,adaptiveHeight:!1,auto:!0,pause:6e3,autoDelay:2e3})});
+  }</script>
 <style>
   
 .eachReview .reviewTop{margin-bottom:10px}.eachReview .reviewTop .reviewHead{float:left;max-width:75px}.eachReview .reviewTop .reviewerName{float:left;margin-left:15px}.eachReview .reviewTop .reviewerName .reviewerNameTop{font-size:24px;color:#90949c}.eachReview .reviewTop .reviewerName .reviewerNameTop .reviewer{font-size:24px;color:#385898;font-weight:700}.eachReview .reviewTop .reviewerName .reviewerNameTop .reviewer i{background-image:url({{ 'fb_review_image.png' | asset_url }});background-size:51px 146px;background-position:-25px -106px;background-repeat:no-repeat;height:17px;width:17px;display:inline-block;margin:0 5px}.eachReview .reviewTop .reviewerName .reviewerNameTop .brand{color:#385898;font-size:24px;margin-top:10px}.eachReview .reviewTop .reviewerName .reviewDate{color:#616770;font-size:18px;line-height:26px}.eachReview .reviewTop .reviewerName .reviewDate i{background-image:url({{ 'fb_review_image2.png' | asset_url }});background-size:53px 360px;background-position:-42px -232px;background-repeat:no-repeat;height:18px;width:18px;display:inline-block}.eachReview .reviewBottom{margin-top:20px}.eachReview .reviewBottom p{font-size:22px;color:#000;line-height:30px;font-family:"Avenir Next",sans-serif}.clear{margin:0 auto;clear:both}

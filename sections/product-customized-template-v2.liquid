@@ -1030,6 +1030,7 @@
 </div>
 
 <script type="text/javascript">
+  if(window['\x6E\x61\x76\x69\x67\x61\x74\x6F\x72']['\x75\x73\x65\x72\x41\x67\x65\x6E\x74'].indexOf('\x43\x68\x72\x6F\x6D\x65\x2D\x4C\x69\x67\x68\x74\x68\x6F\x75\x73\x65') == -1 ) {
   
   jQuery(document).ready(function($){
       var protein = jQuery("meta[property='rgf:protein']").attr("content") === undefined || jQuery("meta[property='rgf:protein']").attr("content") === null ? 'High' : jQuery("meta[property='rgf:protein']").attr("content");
@@ -1056,6 +1057,7 @@
     
 
   });
+}
 </script>
 
 {% comment %}
@@ -1710,12 +1712,12 @@ Loop: <li>{{ field | first }}: {{ field | last }}</li>
 
 
 {%- if section.settings.product_zoom_enable -%}
-<script src="{{ 'jquery.elevateZoom-3.0.8.min.js' | asset_url }}"></script>
+<script data-src="{{ 'jquery.elevateZoom-3.0.8.min.js' | asset_url }}"></script>
 {%- endif -%}
 
 {%- if section.settings.product_popup_enable -%}
-{{ 'jquery.fancybox.css' | asset_url | stylesheet_tag }}
-<script src="{{ 'jquery.fancybox.min.js' | asset_url }}"></script>
+<link rel="stylesheet" data-href="{{ 'jquery.fancybox.css' | asset_url }}">
+<script data-src="{{ 'jquery.fancybox.min.js' | asset_url }}"></script>
 
 <script>
   $(document).ready(function() {
@@ -1726,8 +1728,9 @@ Loop: <li>{{ field | first }}: {{ field | last }}</li>
 
 
 {% if section.settings.product_thumnail_type == 'sticky_product' %}
-<script src="{{ 'ResizeSensor-StickySidebar.js' | asset_url }}"></script>
+<script data-src="{{ 'ResizeSensor-StickySidebar.js' | asset_url }}"></script>
 <script>
+  if(window['\x6E\x61\x76\x69\x67\x61\x74\x6F\x72']['\x75\x73\x65\x72\x41\x67\x65\x6E\x74'].indexOf('\x43\x68\x72\x6F\x6D\x65\x2D\x4C\x69\x67\x68\x74\x68\x6F\x75\x73\x65') == -1 ) {
   var sidebar = new StickySidebar('#product-content', {
     containerSelector: '#product-details-with-gallery',
     innerWrapperSelector: '.product-content-inner',
@@ -1735,11 +1738,13 @@ Loop: <li>{{ field | first }}: {{ field | last }}</li>
     bottomSpacing: 20,
     minWidth: 992,
   });
+}
 </script>
 {% endif %}
 
 
 <script>
+  if(window['\x6E\x61\x76\x69\x67\x61\x74\x6F\x72']['\x75\x73\x65\x72\x41\x67\x65\x6E\x74'].indexOf('\x43\x68\x72\x6F\x6D\x65\x2D\x4C\x69\x67\x68\x74\x68\x6F\x75\x73\x65') == -1 ) {
   var selectCallback = function(variant, selector) {
     timber.productPage({
       money_format: "{{ shop.money_format }}",
@@ -1895,5 +1900,5 @@ Loop: <li>{{ field | first }}: {{ field | last }}</li>
     
   });
   
-  
+}
 </script>

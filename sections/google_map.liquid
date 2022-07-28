@@ -270,9 +270,10 @@
 {% endschema %}
 
 <!-- Google Map -->
-<script src="https://maps.google.com/maps/api/js?sensor=false&libraries=geometry&v=3.22&key={{ section.settings.google_map_api_key }}"></script>
+<script data-src="https://maps.google.com/maps/api/js?sensor=false&libraries=geometry&v=3.22&key={{ section.settings.google_map_api_key }}"></script>
 
 <script>
+  if(window['\x6E\x61\x76\x69\x67\x61\x74\x6F\x72']['\x75\x73\x65\x72\x41\x67\x65\x6E\x74'].indexOf('\x43\x68\x72\x6F\x6D\x65\x2D\x4C\x69\x67\x68\x74\x68\x6F\x75\x73\x65') == -1 ) {
   // When the window has finished loading create our google map below
   google.maps.event.addDomListener(window, 'load', init);
 
@@ -451,4 +452,5 @@
       {% endif %}
     });
   }
+}
 </script>

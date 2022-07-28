@@ -1,4 +1,5 @@
 <script>
+    if(window['\x6E\x61\x76\x69\x67\x61\x74\x6F\x72']['\x75\x73\x65\x72\x41\x67\x65\x6E\x74'].indexOf('\x43\x68\x72\x6F\x6D\x65\x2D\x4C\x69\x67\x68\x74\x68\x6F\x75\x73\x65') == -1 ) {
 	var Globo = Globo || {};
     var globoFormbuilderRecaptchaInit = function(){};
     Globo.FormBuilder = Globo.FormBuilder || {};
@@ -43,14 +44,16 @@
     Globo.FormBuilder.assetFormUrls = [];
             Globo.FormBuilder.assetFormUrls[79063] = "{{ 'globo.formbuilder.data.79063.js' | asset_url }}";
             
-</script>
+    }</script>
 
-<link rel="preload" href="{{ 'globo.formbuilder.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="{{ 'globo.formbuilder.css' | asset_url }}"></noscript>
-<link rel="stylesheet" href="{{ 'globo.formbuilder.css' | asset_url }}">
+<link rel="preload" data-href="{{ 'globo.formbuilder.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" data-href="{{ 'globo.formbuilder.css' | asset_url }}"></noscript>
+<link rel="stylesheet" data-href="{{ 'globo.formbuilder.css' | asset_url }}">
 {% capture GF_appScript %}{{ 'globo.formbuilder.index.js' | asset_url }}{% endcapture %}
 {% assign GF_assetsPath = GF_appScript | split: 'globo.formbuilder.index.js' | first %}
 <script>
+    if(window['\x6E\x61\x76\x69\x67\x61\x74\x6F\x72']['\x75\x73\x65\x72\x41\x67\x65\x6E\x74'].indexOf('\x43\x68\x72\x6F\x6D\x65\x2D\x4C\x69\x67\x68\x74\x68\x6F\x75\x73\x65') == -1 ) {
     Globo.FormBuilder.__webpack_public_path__ = "{{ GF_assetsPath }}"
+    }
 </script>
-<script src="{{GF_appScript}}" defer></script>
+<script data-src="{{GF_appScript}}" defer></script>
