@@ -9,10 +9,10 @@
     
     <div class="mainImage {% if section.settings.uvt_main_img != blank  %} has_mob_img {% endif %}">
       {%- if section.settings.uvt_main_img -%}
-      	<img class="lazyloading" loading="lazy" src="{{ section.settings.uvt_main_img | img_url: 'master' }}" alt="" class="lazyload img-fluid">
+      	<img  loading="lazy" src="{{ section.settings.uvt_main_img | img_url: 'master' }}" alt="" class="lazyload img-fluid">
       {% endif %}
       {%- if section.settings.uvt_main_img_mob -%}
-      	<img class="lazyloading" loading="lazy" src="{{ section.settings.uvt_main_img_mob | img_url: 'master' }}" alt="" class="lazyload img-fluid mobile">
+      	<img loading="lazy" src="{{ section.settings.uvt_main_img_mob | img_url: 'master' }}" alt="" class="lazyload img-fluid mobile">
       {% endif %}
     </div>
     
