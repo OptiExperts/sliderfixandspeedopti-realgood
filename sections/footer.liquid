@@ -11,7 +11,7 @@
         <div class="logo">
           {%- if block.settings.logo -%}
           <a href="/" class="theme-logo">
-            <img src="{{ block.settings.logo | img_url: '300x300' }}" alt="{{ block.settings.logo.alt | default: shop.name }}">
+            <img class="lazyload" src="{{ block.settings.logo | img_url: '300x300' }}" alt="{{ block.settings.logo.alt | default: shop.name }}">
 
           </a>
           {%- else -%}
