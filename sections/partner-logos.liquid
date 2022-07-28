@@ -10,7 +10,7 @@
             {% endif %}
             
               {%- if block.settings.partner_logo -%}
-              <img class="lazyload" src="{{ block.settings.partner_logo | img_url: 'master' }}" alt="">
+              <img class="lazyload" loading="lazy" src="{{ block.settings.partner_logo | img_url: 'master' }}" alt="">
               {% endif %}
             {%- if block.settings.partner_link -%}
             </a>
