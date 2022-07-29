@@ -1,6 +1,18 @@
+<meta charset="utf-8" />
 {%- section 'revslide_for_furniture' -%}
 <div class="create-custom-page" id="pro_tips">
   <div class="container">
+    <div class="vidFilter">
+      <div class="selectOption mobile"><span class="title">All Videos</span><span id="marker">V</span></div>
+      <ul>
+        <li><a data-type="all" class="active">All Videos</a></li>
+        <li><a data-type="breakfast_sandwiches">Breakfast sandwiches</a></li>
+        <li><a data-type="stuffed_chicken">Stuffed chicken</a></li>
+        <li style="display: none;"><a data-type="enchiladas">Enchiladas</a></li>
+        <li><a data-type="italian-entrees">Italian entrees</a></li>
+        <li><a data-type="pizzas">Pizzas</a></li>
+      </ul>
+    </div>
     {{ page.content }}
   </div>
 </div>
@@ -105,7 +117,7 @@
   @media screen and (max-width:1139px){
     #section-revslide_for_furniture .rev_slider_wrapper,
     #section-revslide_for_furniture .rev_slider{height:458px !important}
-    #section-revslide_for_furniture .tp-revslider-slidesli > div:nth-child(2){top:155px !important}
+    #section-revslide_for_furniture .tp-revslider-slidesli > div:nth-child(2){top:155px !important;}
     #section-revslide_for_furniture .tp-revslider-slidesli > div:nth-child(3){top:195px !important}
     #section-revslide_for_furniture .tp-caption{font-size:24px !important}
     #pro_tips .grid-wrapper{grid-template-columns: repeat(auto-fit, minmax(325px, 1fr))}
