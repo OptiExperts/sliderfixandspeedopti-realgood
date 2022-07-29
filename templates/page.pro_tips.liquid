@@ -1,18 +1,21 @@
 {%- section 'revslide_for_furniture' -%}
 <div class="create-custom-page" id="pro_tips">
-  <div class="container">
-    <div class="vidFilter">
-      <div class="selectOption mobile"><span class="title">All Videos</span><span id="marker">V</span></div>
+  <div class="container wide">
+    <div class="floating--left--nav">
       <ul>
         <li><a data-type="all" class="active">All Videos</a></li>
         <li><a data-type="breakfast_sandwiches">Breakfast sandwiches</a></li>
         <li><a data-type="stuffed_chicken">Stuffed chicken</a></li>
+        {% comment %}
         <li style="display: none;"><a data-type="enchiladas">Enchiladas</a></li>
+        {% endcomment %}}
         <li><a data-type="italian-entrees">Italian entrees</a></li>
         <li><a data-type="pizzas">Pizzas</a></li>
       </ul>
     </div>
-    {{ page.content }}
+    <div class="main--content">
+      {{ page.content }}
+    </div>
   </div>
 </div>
 {%- section 'pro_tips_bottom_banner' -%}
@@ -38,7 +41,7 @@
   }
   
   #pro_tips{padding-top:15px}
-  #pro_tips .vidFilter{display:block;padding-bottom:15px}
+/*   #pro_tips .vidFilter{display:block;padding-bottom:15px}
   #pro_tips .vidFilter ul{margin-left:0;text-align:center}
   #pro_tips .vidFilter li{display:inline-block;margin:15px 2.5px;list-style:none}
   #pro_tips .vidFilter a{
@@ -56,7 +59,7 @@
   #pro_tips .vidFilter a:hover{
   	color:#fff;
     background:#FA8700
-  }
+  } */
   #pro_tips .vidFilter a.active{pointer-events:none}
   #pro_tips .grid-number{position:relative;margin-bottom:10px}
   #pro_tips .grid-number .vidOverlay{
@@ -99,13 +102,13 @@
     width:100%;
     top:50%;
     transform:translateY(-50%);
-    text-transform:uppercase
+    text-transform:uppercase;
   }
   #pro_tips .vidOverlay:hover .img:before{
-  	background:rgba(255, 255, 255, 0)
+  	background:rgba(255, 255, 255, 0);
   }
   #pro_tips .vidOverlay:hover h4{
-  	text-shadow:1px 1px 5px #333
+  	text-shadow:1px 1px 5px #333;
   }
   
   @media screen and (max-width:1279px){
