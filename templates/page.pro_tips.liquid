@@ -110,7 +110,18 @@
   #pro_tips .vidOverlay:hover h4{
   	text-shadow:1px 1px 5px #333;
   }
-  #pro_tips
+  #pro_tips .floating--left--nav{
+    width:165px;
+    position:sticky;
+    left:0;
+    top:150px;
+    height:auto;
+    float:left;
+    z-index:2;
+  }
+  #pro_tips .main--content{
+    padding-left:165px;
+  }
   
   @media screen and (max-width:1279px){
     #pro_tips .grid-wrapper{grid-template-columns: repeat(auto-fit, minmax(450px, 1fr))}
