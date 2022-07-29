@@ -205,3 +205,30 @@
     ]
 }
 {% endschema %}
+
+
+<script>
+  	jQuery(document).ready(function($){
+      	if( $('.pLogos .plogo').length > 0 ){
+
+  			$('.pLogos').slick({
+              infinite:true,
+              slidesToShow:1,
+              slidesToScroll:1,
+              variableWidth:true,
+              centerMode:true,
+              speed:5000,
+              autoplay:true,
+              autoplaySpeed:0,
+              cssEase:'linear',
+              dots:false,
+              arrows:false,
+              pauseOnHover:false,
+              swipeToSlide:false,
+              focusOnSelect:false,
+              adaptiveHeight:false
+  			});
+      	}
+
+  	});
+</script>
