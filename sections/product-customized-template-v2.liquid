@@ -1825,15 +1825,18 @@ Loop: <li>{{ field | first }}: {{ field | last }}</li>
       $('.selector-wrapper').hide();
     {% endif %}
   });
+
+
+  {% comment %}
   
   {%- if section.settings.product_zoom_enable -%}
   function productZoom(){
-    // $(".product-zoom,.zoom_mouse").elevateZoom({
-    //   gallery: 'ProductThumbs',
-    //   galleryActiveClass: "active",
-    //   zoomType: "{{ section.settings.zoom_type }}",
-    //   cursor: "crosshair"
-    // });
+    $(".product-zoom,.zoom_mouse").elevateZoom({
+      gallery: 'ProductThumbs',
+      galleryActiveClass: "active",
+      zoomType: "{{ section.settings.zoom_type }}",
+      cursor: "crosshair"
+    });
     {%- if section.settings.product_popup_enable -%}
     $(".product-zoom").on("click", function(e) {
       var ez = $('.product-zoom').data('elevateZoom');
@@ -1858,6 +1861,8 @@ Loop: <li>{{ field | first }}: {{ field | last }}</li>
     productZoomDisable();
   });
   {%- endif -%}
+
+  {% endcomment %}}
   
   
   /*Slider Thumb JS to play Video*/
