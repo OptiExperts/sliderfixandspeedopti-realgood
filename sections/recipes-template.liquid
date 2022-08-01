@@ -1,7 +1,11 @@
 <div class="blog-page-wrapper mb-50 mt-55 mt-sm-30 mb-md-35 mb-sm-30 mb-md-40" id="section-{{ section.id }}">
+  {% comment %}}
   <div class="{% if section.settings.container_width == 'container' %} container {% elsif section.settings.container_width == 'fluid' %} container-fluid  {%- endif -%}  ">
+  {% endcomment %}}
+  <div class="container wide">
     <div class="row">
       <div class="col-lg-12 order-1 order-lg-2 mb-md-30 mb-sm-20">
+        {% comment %}}
         <div class="vidFilter">
           <ul>
             <li><a data-type="pro-tip" class="active">Pro Tips</a></li>
@@ -12,15 +16,32 @@
             <li><a data-type="snacks-apps">Snacks / Apps</a></li>
           </ul>
         </div>
+        {% endcomment %}}
+
+        <div class="floating--left--nav">
+          <ul>
+            <li><a data-type="pro-tip" class="active">Pro Tips</a></li>
+            <li><a data-type="all">All Recipes</a></li>
+            <li><a data-type="entrees">Entrees</a></li>
+            <li><a data-type="breakfast">Breakfast</a></li>
+            <li><a data-type="pizza">Pizza</a></li>
+            <li><a data-type="snacks-apps">Snacks / Apps</a></li>
+          </ul>
+        </div>
+        
         {%- assign blogs_limit = section.settings.blog_limit_handle -%}
         {%- paginate blog.articles by 1000 -%} 
+
+        <div class="main--content">
         
-        <div class="row {% if section.settings.blog_layout == 'masonry' %}  blog-post-wrapper blog-post-wrapper--masonry {% endif %}">
-          {% for article in blog.articles %}
-            <div class="col-lg-3 col-md-3 col-sm-6 col-12 single-slider-post grid-item mb-60 recipes-post {%- for tag in article.tags -%}{{' '}}{{ tag | handle }}{%- endfor -%}">
-              {% include 'recipes-grid-item' %}
-            </div>
-          {% endfor %}
+          <div class="row {% if section.settings.blog_layout == 'masonry' %}  blog-post-wrapper blog-post-wrapper--masonry {% endif %}">
+            {% for article in blog.articles %}
+              <div class="col-lg-3 col-md-3 col-sm-6 col-12 single-slider-post grid-item mb-60 recipes-post {%- for tag in article.tags -%}{{' '}}{{ tag | handle }}{%- endfor -%}">
+                {% include 'recipes-grid-item' %}
+              </div>
+            {% endfor %}
+          </div>
+
         </div>
         
         <div class="row">
@@ -64,7 +85,7 @@
 </script>
 <style>
   .hideitt { display: none !important; }
-  #section-{{ section.id }} .post-title{width:90%;margin-left:auto;margin-right:auto}
+  #section-{{ section.id }} .post-title{width:90%;margin-left:auto;margin-right:auto;}
   #section-{{ section.id }} .post-title a{
     color:#FC6A00;
     font-size:24px;
@@ -78,7 +99,46 @@
   #section-{{ section.id }} .pagination ul li a:hover{color:#666}
   #section-{{ section.id }} .pagination ul li.disabled a{color:#999}
   #section-{{ section.id }} .pagination ul li.active a{font-weight:bold}
+
+  #section-{{ section.id }} .container.wide{max-width:95%;}
+
+  #section-{{ section.id }} .floating--left--nav{
+    width:200px;
+    position:sticky;
+    left:0;
+    top:150px;
+    height:auto;
+    float:left;
+    z-index:2;
+    padding-right:10px;
+  }
+  #section-{{ section.id }} .main--content{
+    padding-left:200px;
+  }
+  #section-{{ section.id }} .floating--left--nav ul{
+    margin:0;
+  }
+  #section-{{ section.id }} .floating--left--nav li{
+    list-style:none;
+    font-family:'Adrianna';
+    font-weight:400;
+    font-size:18px;
+    line-height:1.25;
+    margin-bottom:15px;
+  }
+  #section-{{ section.id }} .floating--left--nav li a{
+    color:#000;
+  }
+  #section-{{ section.id }} .floating--left--nav li a:hover,
+  #section-{{ section.id }} .floating--left--nav li a.active{
+    text-decoration:underline;
+  }
   
+
+  @media (min-width:1515px){
+    #section-{{ section.id }} .container.wide{max-width:1485px;}
+    
+  }
   @media screen and (max-width:1279px){
     #section-{{ section.id }} .post-title a{font-size:22px}
   }
@@ -87,6 +147,61 @@
     #section-blog-template .post-title{width:95%;margin-top:0}
     #section-{{ section.id }} .col-lg-12 .row > .mb-60{margin-bottom:10px !important}
     #section-{{ section.id }} .single-slider-post__image{margin-bottom:15px !important}
+
+    #section-{{ section.id }} .container.wide{max-width:98%;}
+  
+  }
+  @media screen and (max-width:991px){
+    #section-{{ section.id }} .main--content{padding-left:0;}
+    #section-{{ section.id }} .floating--left--nav{
+      overflow-x:scroll;
+      width:100%;
+      text-align:center;
+      left:0;
+      top:10px;
+      float:none;
+      box-shadow:0 4px 2px -2px #d9d9d9;
+      background:#fff;
+      z-index:9;
+      top:0;
+    }
+    #section-{{ section.id }} .floating--left--nav ul{
+      padding:20px 15px;
+      display:flex;
+      -webkit-box-orient:horizontal;
+      -webkit-box-direction:normal;
+      -ms-flex-direction:row;
+      flex-direction:row;
+      -ms-flex-wrap:nowrap;
+      flex-wrap:nowrap;
+      -webkit-box-pack:start;
+      -ms-flex-pack:start;
+      justify-content:flex-start;
+      -webkit-box-align:center;
+      -ms-flex-align:center;
+      align-items:center;
+      -ms-flex-line-pack:center;
+      align-content:center;
+      max-width:1000px;
+      margin:0px auto;
+    }
+    #section-{{ section.id }} .floating--left--nav ul li{
+      -webkit-box-flex:0;
+      -ms-flex-positive:0;
+      flex-grow:0;
+      text-align:center;
+      cursor:pointer;
+      -webkit-transition:all 200ms ease;
+      transition:all 200ms ease;
+      white-space:nowrap;
+      white-space:nowrap;
+      margin:0;
+      padding:0 18px;
+      font-size:18px;
+    }
+    #section-{{ section.id }} .floating--left--nav ul li:last-child {
+      padding-right:20px;
+    }
   }
   @media screen and (max-width:767px){
     #section-{{ section.id }} .post-title a{font-size:16px}
