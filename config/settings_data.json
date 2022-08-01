@@ -4774,12 +4774,36 @@
       "16509825157c1f74af": {
         "type": "collection-grids",
         "blocks": {
+          "e8d67360-746e-4b78-a5f2-06a7ed09b059": {
+            "type": "section_block",
+            "settings": {
+              "collgrid_item_image": "shopify:\/\/shop_images\/IMG_9226.jpg",
+              "collgrid_item_title": "Costco",
+              "collgrid_item_link": "https:\/\/realgoodfoods.com\/collections\/all\/costco"
+            }
+          },
           "480b6303-b280-428c-a041-95641653309a": {
             "type": "section_block",
             "settings": {
               "collgrid_item_image": "shopify:\/\/shop_images\/category-breakfast-new.jpg",
               "collgrid_item_title": "Breakfast",
               "collgrid_item_link": "https:\/\/realgoodfoods.com\/collections\/all\/breakfast"
+            }
+          },
+          "3af9c4b2-41f1-4dfe-92b3-b5bacacdb473": {
+            "type": "section_block",
+            "settings": {
+              "collgrid_item_image": "shopify:\/\/shop_images\/snacks_34483620-048f-4d04-b3cd-4bbef0068d8b.jpg",
+              "collgrid_item_title": "Snacks",
+              "collgrid_item_link": "https:\/\/realgoodfoods.com\/collections\/all\/snacks"
+            }
+          },
+          "f0b1eb14-ceeb-4fa0-8d4a-737ac18efff2": {
+            "type": "section_block",
+            "settings": {
+              "collgrid_item_image": "shopify:\/\/shop_images\/Image.jpg",
+              "collgrid_item_title": "Breaded Chicken",
+              "collgrid_item_link": "shopify:\/\/products\/chicken-nuggets"
             }
           },
           "54a97c7f-bdb4-490a-a384-aa1afb15548a": {
@@ -4796,30 +4820,6 @@
               "collgrid_item_image": "shopify:\/\/shop_images\/category-homepage-entrees-edge.jpg",
               "collgrid_item_title": "Entrees",
               "collgrid_item_link": "https:\/\/realgoodfoods.com\/collections\/all\/entrees"
-            }
-          },
-          "e8d67360-746e-4b78-a5f2-06a7ed09b059": {
-            "type": "section_block",
-            "settings": {
-              "collgrid_item_image": "shopify:\/\/shop_images\/IMG_9226.jpg",
-              "collgrid_item_title": "Costco",
-              "collgrid_item_link": "https:\/\/realgoodfoods.com\/collections\/all\/costco"
-            }
-          },
-          "f0b1eb14-ceeb-4fa0-8d4a-737ac18efff2": {
-            "type": "section_block",
-            "settings": {
-              "collgrid_item_image": "shopify:\/\/shop_images\/Image.jpg",
-              "collgrid_item_title": "Breaded Chicken",
-              "collgrid_item_link": "shopify:\/\/products\/chicken-nuggets"
-            }
-          },
-          "3af9c4b2-41f1-4dfe-92b3-b5bacacdb473": {
-            "type": "section_block",
-            "settings": {
-              "collgrid_item_image": "shopify:\/\/shop_images\/snacks_34483620-048f-4d04-b3cd-4bbef0068d8b.jpg",
-              "collgrid_item_title": "Snacks",
-              "collgrid_item_link": "https:\/\/realgoodfoods.com\/collections\/all\/snacks"
             }
           },
           "bcaa3312-7109-4721-850d-05c81516c2e5": {
@@ -4840,12 +4840,12 @@
           }
         },
         "block_order": [
+          "e8d67360-746e-4b78-a5f2-06a7ed09b059",
           "480b6303-b280-428c-a041-95641653309a",
+          "3af9c4b2-41f1-4dfe-92b3-b5bacacdb473",
+          "f0b1eb14-ceeb-4fa0-8d4a-737ac18efff2",
           "54a97c7f-bdb4-490a-a384-aa1afb15548a",
           "24a4cada-2663-44ab-8671-fd2330d4e010",
-          "e8d67360-746e-4b78-a5f2-06a7ed09b059",
-          "f0b1eb14-ceeb-4fa0-8d4a-737ac18efff2",
-          "3af9c4b2-41f1-4dfe-92b3-b5bacacdb473",
           "bcaa3312-7109-4721-850d-05c81516c2e5",
           "e4843cd5-5a00-4c86-8958-2a1eb807d27f"
         ],
