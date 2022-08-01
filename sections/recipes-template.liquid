@@ -64,9 +64,10 @@
     jQuery('.recipes-post').addClass('hideitt');
     jQuery('.recipes-post.pro-tip').removeClass('hideitt');
 
-    jQuery('.vidFilter a').on('click', function (e) {
+    // jQuery('.vidFilter a').on('click', function (e) {
+    jQuery('.floating--left--nav ul li a').on('click', function (e) {
         var collid = $(this).attr('data-type');
-        jQuery('.vidFilter a').removeClass('active');
+        jQuery('.floating--left--nav ul li a').removeClass('active');
         jQuery(this).addClass('active');
         if(collid === 'all')
         {
