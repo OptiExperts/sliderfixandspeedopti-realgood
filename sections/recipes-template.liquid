@@ -206,6 +206,21 @@
   }
   @media screen and (max-width:767px){
     #section-{{ section.id }} .post-title a{font-size:16px}
+    #section-{{ section.id }} .floating--left--nav ul li{
+      font-size:16px;
+      padding:0 12px;
+    }
+  }
+  @media screen and (max-width:575px){
+    #section-{{ section.id }} .floating--left--nav ul li{
+      font-size:15px;
+      padding:0 10px;
+    }
+  }
+  @media screen and (max-width:479px){
+    #section-{{ section.id }} .floating--left--nav ul li{
+      padding:0 8px;
+    }
   }
   @media screen and (min-width:375px) and (max-width:639px){
     #section-{{ section.id }} .col-lg-12 .row > .col-sm-6{
