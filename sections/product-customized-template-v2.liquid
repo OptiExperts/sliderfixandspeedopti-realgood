@@ -387,7 +387,10 @@
   .pd--v2 .product_desc > h4 u{
     display:inline-block;
   }
-  
+
+  .pd--v2 .shop-product .shop-product__big-image-gallery-wrapper .shop-product-rightside-icons{
+    display:none !important;
+  }
   
   
   @media only screen and (max-width: 49em) {
@@ -1827,6 +1830,7 @@ Loop: <li>{{ field | first }}: {{ field | last }}</li>
   });
 
 
+  {% comment %}
   
   {%- if section.settings.product_zoom_enable -%}
   function productZoom(){
@@ -1861,7 +1865,7 @@ Loop: <li>{{ field | first }}: {{ field | last }}</li>
   });
   {%- endif -%}
 
-
+  {% endcomment %}}
   
   
   /*Slider Thumb JS to play Video*/
