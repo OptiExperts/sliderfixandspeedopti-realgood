@@ -397,7 +397,7 @@
               "social_icon_4_name": "youtube",
               "social_icon_4_link": "https:\/\/www.youtube.com\/channel\/UCOC2bxx9e6YR4tolrmiYc-g",
               "social_icon_5_name": "twitter",
-              "social_icon_5_link": "http:\/\/twitter.com\/realgoodfoods_"
+              "social_icon_5_link": "https:\/\/twitter.com\/RealGoodFoods"
             }
           },
           "1565982740746": {
@@ -4693,7 +4693,7 @@
         ],
         "settings": {
           "section_enable": true,
-          "ph_heading": "Press Highlights"
+          "ph_heading": "Press Hightlights"
         }
       },
       "press-releases": {
