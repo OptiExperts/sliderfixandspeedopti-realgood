@@ -4456,6 +4456,15 @@
               "job_hours": "",
               "job_desc": "<p>If interested, please email Guadalupe Contreras at <a href=\"mailto:gcontreras@realgoodfoods.com\">gcontreras@realgoodfoods.com<\/a> with your resume, cover letter, location, contact information, and any other information you’d like to share. Also please Take a brief a survey by copying this link to your web browser:  <a href=\"https:\/\/take.surveys.ci\/s\/gSy0UDyIij\/75642\">https:\/\/take.surveys.ci\/s\/gSy0UDyIij\/75642<\/a><\/p>"
             }
+          },
+          "b1710827-2ac7-4f75-83ab-198dd9a342a1": {
+            "type": "Career",
+            "settings": {
+              "job_title": "Demand Planner",
+              "job_locaion": "City of Industry, California",
+              "job_hours": "",
+              "job_desc": "<p>If interested, please email Guadalupe Contreras at <a href=\"mailto:gcontreras@realgoodfoods.com\">gcontreras@realgoodfoods.com<\/a> with your resume, cover letter, location, contact information, and any other information you’d like to share. Also please Take a brief a survey by copying this link to your web browser:  <a href=\"https:\/\/take.surveys.ci\/s\/gSy0UDyIij\/75642\">https:\/\/take.surveys.ci\/s\/gSy0UDyIij\/75642<\/a><\/p>"
+            }
           }
         },
         "block_order": [
@@ -4466,7 +4475,8 @@
           "f6ce2281-60bd-4b27-b09a-90a499168faa",
           "d117dc25-4244-4742-9813-d5252c387281",
           "5999fd47-5a5d-4ae1-a181-108b6b0642df",
-          "76215c0a-f06b-4b61-a8bb-fda567238477"
+          "76215c0a-f06b-4b61-a8bb-fda567238477",
+          "b1710827-2ac7-4f75-83ab-198dd9a342a1"
         ],
         "settings": {
           "enable_current_openings": true,
