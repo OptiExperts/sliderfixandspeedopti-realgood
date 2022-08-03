@@ -4438,6 +4438,15 @@
               "job_hours": "",
               "job_desc": "<p>If interested, please email Henry Foreman at <a href=\"mailto:hforeman@realgoodfoods.com\">Hforeman@realgoodfoods.com<\/a> with your resume, cover letter, location, contact information, and any other information you’d like to share. Also please Take a brief a survey by copying this link to your web browser:  <a href=\"https:\/\/take.surveys.ci\/s\/gSy0UDyIij\/75642\">https:\/\/take.surveys.ci\/s\/gSy0UDyIij\/75642<\/a><\/p>"
             }
+          },
+          "5999fd47-5a5d-4ae1-a181-108b6b0642df": {
+            "type": "Career",
+            "settings": {
+              "job_title": "Marketing Community and Creative Manager",
+              "job_locaion": "Cherry Hill, NJ",
+              "job_hours": "",
+              "job_desc": ""
+            }
           }
         },
         "block_order": [
@@ -4446,7 +4455,8 @@
           "d255429c-0c5d-425c-ba85-78a25f27a9b7",
           "058ac341-fca5-4c2d-8091-0fef4b84e4cf",
           "f6ce2281-60bd-4b27-b09a-90a499168faa",
-          "d117dc25-4244-4742-9813-d5252c387281"
+          "d117dc25-4244-4742-9813-d5252c387281",
+          "5999fd47-5a5d-4ae1-a181-108b6b0642df"
         ],
         "settings": {
           "enable_current_openings": true,
