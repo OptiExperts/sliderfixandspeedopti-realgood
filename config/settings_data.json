@@ -4383,6 +4383,7 @@
         "blocks": {
           "990898a6-38d0-4f1d-b4ea-5d3debad23cc": {
             "type": "Career",
+            "disabled": true,
             "settings": {
               "job_title": "Production Manager 2nd Shift",
               "job_locaion": "City of Industry",
@@ -4392,6 +4393,7 @@
           },
           "e2eb75c7-f77b-4ca5-bf3e-977e8f865945": {
             "type": "Career",
+            "disabled": true,
             "settings": {
               "job_title": "Co-Pack Manager",
               "job_locaion": "New Jersey",
@@ -4401,6 +4403,7 @@
           },
           "d255429c-0c5d-425c-ba85-78a25f27a9b7": {
             "type": "Career",
+            "disabled": true,
             "settings": {
               "job_title": "Food Scientist",
               "job_locaion": "Louisana",
@@ -4410,6 +4413,7 @@
           },
           "058ac341-fca5-4c2d-8091-0fef4b84e4cf": {
             "type": "Career",
+            "disabled": true,
             "settings": {
               "job_title": "Purchasing Director",
               "job_locaion": "New Jersey",
@@ -4425,6 +4429,15 @@
               "job_hours": "",
               "job_desc": "<p>If interested, please email Andi Tole at <a href=\"mailto:atole@realgoodfoods.com\">atole@realgoodfoods.com<\/a> with your resume, cover letter, location, contact information, and any other information you’d like to share. Also please Take a brief a survey by copying this link to your web browser:  <a href=\"https:\/\/take.surveys.ci\/s\/gSy0UDyIij\/75642\">https:\/\/take.surveys.ci\/s\/gSy0UDyIij\/75642<\/a><\/p>"
             }
+          },
+          "d117dc25-4244-4742-9813-d5252c387281": {
+            "type": "Career",
+            "settings": {
+              "job_title": "Staff Accountant",
+              "job_locaion": "Cherry Hill, NJ",
+              "job_hours": "",
+              "job_desc": "<p>If interested, please email Henry Foreman at <a href=\"mailto:hforeman@realgoodfoods.com\">Hforeman@realgoodfoods.com<\/a> with your resume, cover letter, location, contact information, and any other information you’d like to share. Also please Take a brief a survey by copying this link to your web browser:  <a href=\"https:\/\/take.surveys.ci\/s\/gSy0UDyIij\/75642\">https:\/\/take.surveys.ci\/s\/gSy0UDyIij\/75642<\/a><\/p>"
+            }
           }
         },
         "block_order": [
@@ -4432,7 +4445,8 @@
           "e2eb75c7-f77b-4ca5-bf3e-977e8f865945",
           "d255429c-0c5d-425c-ba85-78a25f27a9b7",
           "058ac341-fca5-4c2d-8091-0fef4b84e4cf",
-          "f6ce2281-60bd-4b27-b09a-90a499168faa"
+          "f6ce2281-60bd-4b27-b09a-90a499168faa",
+          "d117dc25-4244-4742-9813-d5252c387281"
         ],
         "settings": {
           "enable_current_openings": true,
