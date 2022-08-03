@@ -4416,13 +4416,23 @@
               "job_hours": "TBD",
               "job_desc": "<p>What You’ll Do: Leads and implements all procurement stategies, negotiates with suppliers and vendors to secure favorable cost redcution. Leads the RFP process to deliver value, capturing the business needs.<\/p>\n<p>If interested, please email Rosie Gaspar at <a href=\"mailto:RosieG@realgoodfoods.com\">RosieG@realgoodfoods.com<\/a> with your resume, cover letter, location, contact information, and any other information you’d like to share.<\/p>"
             }
+          },
+          "f6ce2281-60bd-4b27-b09a-90a499168faa": {
+            "type": "Career",
+            "settings": {
+              "job_title": "Buyer",
+              "job_locaion": "Bolingbrook, IL",
+              "job_hours": "",
+              "job_desc": "<p>If interested, please email Andi Tole at <a href=\"mailto:atole@realgoodfoods.com\">atole@realgoodfoods.com<\/a> with your resume, cover letter, location, contact information, and any other information you’d like to share. Also please Take a brief a survey by copying this link to your web browser:  <a href=\"https:\/\/take.surveys.ci\/s\/gSy0UDyIij\/75642\">https:\/\/take.surveys.ci\/s\/gSy0UDyIij\/75642<\/a><\/p>"
+            }
           }
         },
         "block_order": [
           "990898a6-38d0-4f1d-b4ea-5d3debad23cc",
           "e2eb75c7-f77b-4ca5-bf3e-977e8f865945",
           "d255429c-0c5d-425c-ba85-78a25f27a9b7",
-          "058ac341-fca5-4c2d-8091-0fef4b84e4cf"
+          "058ac341-fca5-4c2d-8091-0fef4b84e4cf",
+          "f6ce2281-60bd-4b27-b09a-90a499168faa"
         ],
         "settings": {
           "enable_current_openings": true,
