@@ -2528,7 +2528,6 @@
       },
       "1563150444425": {
         "type": "banner_with_text",
-        "disabled": true,
         "blocks": {
           "1564973539272": {
             "type": "section_background",
@@ -2553,6 +2552,7 @@
           "1564973539272",
           "1566368465314"
         ],
+        "disabled": true,
         "settings": {
           "banner_img": "shopify:\/\/shop_images\/outlines_Text_Real_food_banner_V3-01_428051de-30d5-4096-96c8-007d9de37592.png",
           "banner_title": "",
@@ -2569,7 +2569,6 @@
       },
       "1563415136047": {
         "type": "product_services",
-        "disabled": true,
         "blocks": {
           "1564973193357": {
             "type": "services_with_img",
@@ -2598,6 +2597,7 @@
           "1564973306984",
           "1564973324341"
         ],
+        "disabled": true,
         "settings": {
           "container_width": "fluid"
         }
@@ -2630,7 +2630,6 @@
       },
       "1566381487924": {
         "type": "video-banner",
-        "disabled": true,
         "blocks": {
           "1566381487924-0": {
             "type": "section_padding",
@@ -2647,6 +2646,7 @@
         "block_order": [
           "1566381487924-0"
         ],
+        "disabled": true,
         "settings": {
           "section_title": "",
           "video_thumbnail_image": "shopify:\/\/shop_images\/thumbnail.jpg",
@@ -2655,7 +2655,6 @@
       },
       "1566526754639": {
         "type": "instagram_slider",
-        "disabled": true,
         "blocks": {
           "1566705670857": {
             "type": "section_padding",
@@ -2672,6 +2671,7 @@
         "block_order": [
           "1566705670857"
         ],
+        "disabled": true,
         "settings": {
           "container_width": "container",
           "instafeed_type": "style1",
@@ -2695,7 +2695,6 @@
       },
       "1575517375318": {
         "type": "bxslider",
-        "disabled": true,
         "blocks": {
           "1576195077512": {
             "type": "bxslider_item",
@@ -2760,6 +2759,7 @@
           "1576195223117",
           "1576195344770"
         ],
+        "disabled": true,
         "settings": {
           "bxslider_background": "shopify:\/\/shop_images\/testimonial-bg_8c471f79-6890-4f65-b61a-bbd21c04349c.png",
           "slider_title": "<i>Real<\/i> reviews from real <i>People<\/i>",
@@ -2768,7 +2768,6 @@
       },
       "1575517455214": {
         "type": "section-productcol",
-        "disabled": true,
         "blocks": {
           "1575517466338": {
             "type": "section_block",
@@ -2817,6 +2816,7 @@
           "1575517551437",
           "1576552829292"
         ],
+        "disabled": true,
         "settings": {
         }
       },
@@ -3382,7 +3382,6 @@
       },
       "16122043092aed158d": {
         "type": "product-list-4col",
-        "disabled": true,
         "blocks": {
           "f2966cd9-9a9b-450a-861c-1fa3f555beef": {
             "type": "section_block",
@@ -3423,6 +3422,7 @@
           "195ee5ca-fb2d-416b-86ee-6fd467798065",
           "77f67cc2-aa24-4f8f-90a6-529bced0deb3"
         ],
+        "disabled": true,
         "settings": {
           "pl4_section_text": ""
         }
@@ -3576,7 +3576,6 @@
       },
       "1618946594cb7df402": {
         "type": "category_slider",
-        "disabled": true,
         "blocks": {
           "c6974373-ee13-4851-ae84-bd5eea390761": {
             "type": "category_slide",
@@ -3626,6 +3625,7 @@
           "fe45a816-0e9a-4c35-91b0-0e94b2f8771a",
           "d696c008-3f9f-4f74-b446-de2eb788bec9"
         ],
+        "disabled": true,
         "settings": {
         }
       },
@@ -4048,7 +4048,7 @@
           "9aa8c2ae-e0b7-4fa6-8f72-951c351914c8": {
             "type": "custom_collection",
             "settings": {
-              "featured_product_handle": "snacks",
+              "featured_product_handle": "snacks_old",
               "collection_img": "default",
               "cat_column": "3",
               "cat_column_md": "4",
@@ -4953,7 +4953,6 @@
       },
       "165192529689479d32": {
         "type": "our_mission",
-        "disabled": true,
         "blocks": {
           "aa78f5bd-4843-44bb-a0da-5e325c6544fe": {
             "type": "section_block",
@@ -5047,6 +5046,7 @@
           "99b2cfbc-1e79-4a6e-a2b6-428ce4b01237",
           "3ca9c933-764b-427d-97a1-172f96d44c36"
         ],
+        "disabled": true,
         "settings": {
           "ourMnR_enable": false,
           "ourMnR_top_head": "Our Mission: #BeRealGood",
